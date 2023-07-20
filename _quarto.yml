@@ -5,10 +5,23 @@ project:
 website:
   title: "Predictive Analytics for Improving Social Services"
 
-  sidebar:
-    style: docked
-    background: light
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
 
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+editor: visual
+  # sidebar:
+  #   style: docked
+  #   background: light
+  #
 #   chapters:
 #     - index.qmd
 #     - part: "How can predictive analytics be used to improve social services?"
@@ -36,19 +49,19 @@ website:
 #
 # bibliography: references.bib
 #
-format:
-  html:
-    theme: cerulean
-    number-sections: true
-    number-depth: 1
-#    css: style.css
-    grid:
-      sidebar-width: 475px
-#      body-width: 900px
-      margin-width: 100px
-#      gutter-width: 1.5rem
-  pdf:
-    documentclass: scrreprt
-
-editor: visual
-
+# format:
+#   html:
+#     theme: cerulean
+#     number-sections: true
+#     number-depth: 1
+# #    css: style.css
+#     grid:
+#       sidebar-width: 475px
+# #      body-width: 900px
+#       margin-width: 100px
+# #      gutter-width: 1.5rem
+#   pdf:
+#     documentclass: scrreprt
+#
+# editor: visual
+#
