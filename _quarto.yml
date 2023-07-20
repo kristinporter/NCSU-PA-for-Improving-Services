@@ -1,0 +1,55 @@
+project:
+  type: book
+
+book:
+  title: "Predictive Analytics for Improving Social Services"
+  author: "Jane Doe"
+  date: "5/16/2023"
+
+  sidebar:
+    style: docked
+    background: light
+
+  chapters:
+    - index.qmd
+    - part: "How can predictive analytics be used to improve social services?"
+      chapters:
+        - paforimprovingss_define.qmd
+        - paforimprovingss_learn.qmd
+        - paforimprovingss_limitations.qmd
+        - paforimprovingss_ethics.qmd
+        - paforimprovingss_context.qmd
+
+    # - part: "Establishing a Code of Ethics"
+    #   chapters:
+    #     - codeofethics_why.qmd
+    #     - codeofethics_ex.qmd
+    - part: "Scoping a PA Project"
+      chapters:
+        - scoping_ex.qmd
+        - scoping_stakeholders.qmd
+        - scoping_usefindings.qmd
+        - scoping_what.qmd
+        - scoping_who.qmd
+        - scoping_when.qmd
+    - part: summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cerulean
+    number-sections: true
+    number-depth: 1
+#    css: style.css
+    grid:
+      sidebar-width: 475px
+#      body-width: 900px
+      margin-width: 100px
+#      gutter-width: 1.5rem
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+

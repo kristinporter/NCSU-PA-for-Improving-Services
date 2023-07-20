@@ -1,0 +1,9 @@
+# Is predictive analytics a good fit for your context?
+
+Considerations:
+
+-   How will findings be communicated and used, and by whom?
+
+-   Data availability, quality and systems.
+
+-   Capacity re communication, analytics, change management.

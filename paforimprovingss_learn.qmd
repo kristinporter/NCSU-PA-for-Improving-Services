@@ -1,0 +1,5 @@
+# What can we learn from predictive analytics?
+
+This section will describe the insights that can be learned from PA when used to improve social services.
+
+Provide links to MDRC publications and external examples.
