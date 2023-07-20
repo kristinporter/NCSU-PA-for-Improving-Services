@@ -44,9 +44,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Preface",
+    "title": "testquarto",
     "section": "",
-    "text": "Preface\nInsert overview of these training materials here."
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
   },
   {
     "objectID": "summary.html",
@@ -89,5 +89,19 @@
     "title": "1 A motivating example",
     "section": "",
     "text": "Here we will describe an example (or more) that we can refer back to."
+  },
+  {
+    "objectID": "index_old.html",
+    "href": "index_old.html",
+    "title": "Preface",
+    "section": "",
+    "text": "Preface\nInsert overview of these training materials here."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
   }
 ]
