@@ -2,23 +2,23 @@
   {
     "objectID": "paforimprovingss_limitations.html",
     "href": "paforimprovingss_limitations.html",
-    "title": "1 What are the limitations?",
+    "title": "What are the limitations?",
     "section": "",
-    "text": "1 What are the limitations?"
+    "text": "What are the limitations?"
   },
   {
     "objectID": "paforimprovingss_context.html",
     "href": "paforimprovingss_context.html",
-    "title": "1 Is predictive analytics a good fit for your context?",
+    "title": "Is predictive analytics a good fit for your context?",
     "section": "",
-    "text": "1 Is predictive analytics a good fit for your context?\nConsiderations:\n\nHow will findings be communicated and used, and by whom?\nData availability, quality and systems.\nCapacity re communication, analytics, change management."
+    "text": "Is predictive analytics a good fit for your context?\nConsiderations:\n\nHow will findings be communicated and used, and by whom?\nData availability, quality and systems.\nCapacity re communication, analytics, change management."
   },
   {
     "objectID": "paforimprovingss_learn.html",
     "href": "paforimprovingss_learn.html",
     "title": "What can we learn from predictive analytics?",
     "section": "",
-    "text": "What can we learn from predictive analytics?\nThis section will describe the insights that can be learned from PA when used to improve social services.\nProvide links to MDRC publications and external examples."
+    "text": "Main header\nThis section will describe the insights that can be learned from PA when used to improve social services.\nProvide links to MDRC publications and external examples.\n\n\nAnother main header\n\n\n\n\n Back to top"
   },
   {
     "objectID": "scoping_usefindings.html",
@@ -32,7 +32,7 @@
     "href": "paforimprovingss_define.html",
     "title": "What is predictive analytics?",
     "section": "",
-    "text": "What is predictive analytics?\nThis section will define predictive analytics and how it can be used to improve social services.\nWe can include links to external literature for broader landscape."
+    "text": "What is predictive analytics?\nThis section will define predictive analytics and how it can be used to improve social services.\nWe can include links to external literature for broader landscape.\n\n\n\n\n Back to top"
   },
   {
     "objectID": "intro.html",
@@ -46,7 +46,7 @@
     "href": "index.html",
     "title": "testquarto",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "summary.html",
@@ -79,9 +79,9 @@
   {
     "objectID": "paforimprovingss_ethics.html",
     "href": "paforimprovingss_ethics.html",
-    "title": "1 What are the ethical considerations?",
+    "title": "What are the ethical considerations?",
     "section": "",
-    "text": "1 What are the ethical considerations?\nThis section will discuss big picture ethical considerations and discuss creating a code of ethics. We can note that we will return to ethical considerations throughout."
+    "text": "What are the ethical considerations?\nThis section will discuss big picture ethical considerations and discuss creating a code of ethics. We can note that we will return to ethical considerations throughout."
   },
   {
     "objectID": "scoping_ex.html",
@@ -109,6 +109,34 @@
     "href": "materials.html",
     "title": "Predictive Analytics for Improving Social Services",
     "section": "",
-    "text": "This section provides course materials."
+    "text": "This section provides course materials.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "paforimprovingss_learn.html#a-subsection",
+    "href": "paforimprovingss_learn.html#a-subsection",
+    "title": "What can we learn from predictive analytics?",
+    "section": "A subsection",
+    "text": "A subsection"
+  },
+  {
+    "objectID": "paforimprovingss_learn.html#another-subsection",
+    "href": "paforimprovingss_learn.html#another-subsection",
+    "title": "What can we learn from predictive analytics?",
+    "section": "Another subsection",
+    "text": "Another subsection"
+  },
+  {
+    "objectID": "paforimprovingss_learn.html#what-can-we-learn-from-predictive-analytics",
+    "href": "paforimprovingss_learn.html#what-can-we-learn-from-predictive-analytics",
+    "title": "Predictive Analytics for Improving Social Services",
+    "section": "",
+    "text": "This section will describe the insights that can be learned from PA when used to improve social services.\nProvide links to MDRC publications and external examples."
+  },
+  {
+    "objectID": "paforimprovingss_learn.html#another-main-header",
+    "href": "paforimprovingss_learn.html#another-main-header",
+    "title": "Predictive Analytics for Improving Social Services",
+    "section": "Another main header",
+    "text": "Another main header"
   }
 ]
