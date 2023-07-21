@@ -44,9 +44,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "testquarto",
+    "title": "Syllabus",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n Back to top"
+    "text": "Syllabus forthcoming.\n\n\n\n Back to top"
   },
   {
     "objectID": "summary.html",
@@ -107,9 +107,9 @@
   {
     "objectID": "materials.html",
     "href": "materials.html",
-    "title": "Predictive Analytics for Improving Social Services",
+    "title": "Course materials",
     "section": "",
-    "text": "This section provides course materials.\n\n\n\n Back to top"
+    "text": "Here I can provide an overview of the materials - what they will cover, when new sections are released, how to navigate, etc.\n\n\n\n Back to top"
   },
   {
     "objectID": "paforimprovingss_learn.html#a-subsection",
@@ -138,5 +138,12 @@
     "title": "Predictive Analytics for Improving Social Services",
     "section": "Another main header",
     "text": "Another main header"
+  },
+  {
+    "objectID": "project.html",
+    "href": "project.html",
+    "title": "Project",
+    "section": "",
+    "text": "Project\nHere I will describe the project - requirements, timing, support, suggested data sets, grading rubric.\n\n\n\n\n Back to top"
   }
 ]

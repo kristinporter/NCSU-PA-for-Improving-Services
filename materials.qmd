@@ -1,1 +1,5 @@
-This section provides course materials.
+---
+title: "Course materials"
+---
+
+Here I can provide an overview of the materials - what they will cover, when new sections are released, how to navigate, etc.

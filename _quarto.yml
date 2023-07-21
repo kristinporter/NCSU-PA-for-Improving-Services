@@ -10,12 +10,14 @@ website:
     background: primary
     search: true
     left:
-      - text: "Home"
+      - text: "Syllabus"
         file: index.qmd
       - text: "Course materials"
         file: materials.qmd
-      - text: "Reference"
-        file: reference.qmd
+      - text: "Project"
+        file: project.qmd
+      - text: "References"
+        file: references.qmd
 
   sidebar:
     - title: "materials"
