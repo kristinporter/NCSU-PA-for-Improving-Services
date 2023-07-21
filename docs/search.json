@@ -16,9 +16,9 @@
   {
     "objectID": "paforimprovingss_learn.html",
     "href": "paforimprovingss_learn.html",
-    "title": "1 What can we learn from predictive analytics?",
+    "title": "What can we learn from predictive analytics?",
     "section": "",
-    "text": "1 What can we learn from predictive analytics?\nThis section will describe the insights that can be learned from PA when used to improve social services.\nProvide links to MDRC publications and external examples."
+    "text": "What can we learn from predictive analytics?\nThis section will describe the insights that can be learned from PA when used to improve social services.\nProvide links to MDRC publications and external examples."
   },
   {
     "objectID": "scoping_usefindings.html",
@@ -30,16 +30,16 @@
   {
     "objectID": "paforimprovingss_define.html",
     "href": "paforimprovingss_define.html",
-    "title": "1 What is predictive analytics?",
+    "title": "What is predictive analytics?",
     "section": "",
-    "text": "1 What is predictive analytics?\nThis section will define predictive analytics and how it can be used to improve social services.\nWe can include links to external literature for broader landscape."
+    "text": "What is predictive analytics?\nThis section will define predictive analytics and how it can be used to improve social services.\nWe can include links to external literature for broader landscape."
   },
   {
     "objectID": "intro.html",
     "href": "intro.html",
-    "title": "1 Introduction",
+    "title": "Introduction",
     "section": "",
-    "text": "1 Introduction"
+    "text": "Introduction"
   },
   {
     "objectID": "index.html",
@@ -103,5 +103,12 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "materials.html",
+    "href": "materials.html",
+    "title": "Predictive Analytics for Improving Social Services",
+    "section": "",
+    "text": "This section provides course materials."
   }
 ]

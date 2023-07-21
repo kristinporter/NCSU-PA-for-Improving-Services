@@ -2,14 +2,62 @@ project:
   type: website
   output-dir: docs
 
+# website:
+#   title: "Predictive Analytics for Improving Social Services"
+#   navbar:
+#     background: primary
+#     search: true
+#     left:
+#       - text: "Home"
+#         file: index.qmd
+#       - talks.qmd
+#       - about.qmd
+#   sidebar:
+#     style: "floating"
+#     search: true
+#     contents:
+#       - section: "How can predictive analytics be used to improve social services?"
+#         contents:
+#           - paforimprovingss_define.qmd
+#           - paforimprovingss_learn.qmd
+#           - paforimprovingss_limitations.qmd
+#           - paforimprovingss_ethics.qmd
+#           - paforimprovingss_context.qmd
+#      - section: "Establishing a Code of Ethics"
+#         contents:
+#           - codeofethics_why.qmd
+#           - codeofethics_ex.qmd
+
 website:
   title: "Predictive Analytics for Improving Social Services"
-
   navbar:
+    background: primary
+    search: true
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - text: "Home"
+        file: index.qmd
+      - text: "Course materials"
+        file: materials.qmd
+      - text: "Reference"
+        file: reference.qmd
+
+  sidebar:
+    - title: "materials"
+      style: "floating"
+      contents:
+        - materials.qmd
+        - section: "How can predictive analytics be used to improve social services?"
+          contents:
+          - paforimprovingss_define.qmd
+          - paforimprovingss_learn.qmd
+          - paforimprovingss_limitations.qmd
+          - paforimprovingss_ethics.qmd
+          - paforimprovingss_context.qmd
+
+    - title: "Reference"
+      contents:
+        - reference.qmd
+
 
 format:
   html:
@@ -32,10 +80,6 @@ editor: visual
 #         - paforimprovingss_ethics.qmd
 #         - paforimprovingss_context.qmd
 #
-#     # - part: "Establishing a Code of Ethics"
-#     #   chapters:
-#     #     - codeofethics_why.qmd
-#     #     - codeofethics_ex.qmd
 #     - part: "Scoping a PA Project"
 #       chapters:
 #         - scoping_ex.qmd
