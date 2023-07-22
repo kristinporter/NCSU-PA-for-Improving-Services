@@ -44,9 +44,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Syllabus",
+    "title": "Course overview",
     "section": "",
-    "text": "Syllabus forthcoming.\n\n\n\n Back to top"
+    "text": "Course description\n\n\nSyllabus\n\n\nClassroom expectations and norms\n\n\nSix ways to get help\n\n\nGrading\n\n\n\n\n Back to top"
   },
   {
     "objectID": "summary.html",
@@ -145,5 +145,54 @@
     "title": "Project",
     "section": "",
     "text": "Project\nHere I will describe the project - requirements, timing, support, suggested data sets, grading rubric.\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "index.html#syllabus",
+    "href": "index.html#syllabus",
+    "title": "Course overview",
+    "section": "Syllabus",
+    "text": "Syllabus"
+  },
+  {
+    "objectID": "index.html#classroom-expectations-and-norms",
+    "href": "index.html#classroom-expectations-and-norms",
+    "title": "Course overview",
+    "section": "Classroom expectations and norms",
+    "text": "Classroom expectations and norms"
+  },
+  {
+    "objectID": "index.html#six-ways-to-get-help",
+    "href": "index.html#six-ways-to-get-help",
+    "title": "Course overview",
+    "section": "Six ways to get help",
+    "text": "Six ways to get help"
+  },
+  {
+    "objectID": "index.html#grading",
+    "href": "index.html#grading",
+    "title": "Course overview",
+    "section": "Grading",
+    "text": "Grading"
+  },
+  {
+    "objectID": "course_description.html",
+    "href": "course_description.html",
+    "title": "Summary",
+    "section": "",
+    "text": "Summary\nFor-profit companies, nonprofit service providers and government agencies often use predictive analytics to improve their services. Predictive analytics harnesses historical data and may incorporate machine learning to model future outcomes. In this class, students will explore the value, limitations and ethical considerations of predictive analytics when used to improve services. Using their own dataset or one provided by the instructor, students will learn and apply a practical approach for planning, implementing and assessing a predictive analytics project. The instruction will highlight topics related to data preparation, model training and selection, validation, fairness, transparency and communication of results.\nPrerequisites: Students should have familiarity with R Studio and some experience using R to manipulate data and run basic descriptive statistics.\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "course_description.html#prerequisites",
+    "href": "course_description.html#prerequisites",
+    "title": "Predictive Analytics for Improving Social Services",
+    "section": "Prerequisites",
+    "text": "Prerequisites\nStudents should have familiarity with R Studio and some experience using R to manipulate data and run basic descriptive statistics."
+  },
+  {
+    "objectID": "course_description.html#summary",
+    "href": "course_description.html#summary",
+    "title": "Predictive Analytics for Improving Social Services",
+    "section": "",
+    "text": "For-profit companies, nonprofit service providers and government agencies often use predictive analytics to improve their services. Predictive analytics harnesses historical data and may incorporate machine learning to model future outcomes. In this class, students will explore the value, limitations and ethical considerations of predictive analytics when used to improve services. Using their own dataset or one provided by the instructor, students will learn and apply a practical approach for planning, implementing and assessing a predictive analytics project. The instruction will highlight topics related to data preparation, model training and selection, validation, fairness, transparency and communication of results.\nPrerequisites: Students should have familiarity with R Studio and some experience using R to manipulate data and run basic descriptive statistics."
   }
 ]

@@ -1,0 +1,5 @@
+# Summary
+
+For-profit companies, nonprofit service providers and government agencies often use predictive analytics to improve their services. Predictive analytics harnesses historical data and may incorporate machine learning to model future outcomes. In this class, students will explore the value, limitations and ethical considerations of predictive analytics when used to improve services. Using their own dataset or one provided by the instructor, students will learn and apply a practical approach for planning, implementing and assessing a predictive analytics project. The instruction will highlight topics related to data preparation, model training and selection, validation, fairness, transparency and communication of results.
+
+**Prerequisites**: Students should have familiarity with R Studio and some experience using R to manipulate data and run basic descriptive statistics.
