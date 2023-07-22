@@ -15,7 +15,7 @@ website:
         file: index.qmd
       - text: "Course materials"
         file: materials.qmd
-      - text: "Project"
+      - text: "Assignments and project"
         file: project.qmd
       - text: "References"
         file: references.qmd
