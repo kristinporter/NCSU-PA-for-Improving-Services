@@ -41,6 +41,25 @@ website:
           - paforimprovingss_limitations.qmd
           - paforimprovingss_ethics.qmd
           - paforimprovingss_context.qmd
+        - section: "Scoping a predictive analytics project"
+          - scoping_ex.qmd
+#         - scoping_stakeholders.qmd
+#         - scoping_usefindings.qmd
+#         - scoping_what.qmd
+#         - scoping_who.qmd
+#         - scoping_when.qmd
+        - section: "Conducting a proof of concept"
+        - section: "Data for predictive analytics PART 1"
+        - section: "Data for predictive analytics PART 2"
+        - section: "Specifying learners PART 1"
+        - section: "Specifying learners PART 2"
+        - section: "Evaluating and comparing predictive performance"
+          contents:
+          - performance_metrics.qmd
+        - section: "Evaluating and comparing bias"
+        - section: "Selecting and validating a learner"
+        - section: "Understanding and communicating results"
+        - section: "Deploying predictive analytics"
 
     - title: "References"
       contents:
@@ -54,31 +73,7 @@ format:
     toc: true
 
 editor: visual
-  # sidebar:
-  #   style: docked
-  #   background: light
-  #
-#   chapters:
-#     - index.qmd
-#     - part: "How can predictive analytics be used to improve social services?"
-#       chapters:
-#         - paforimprovingss_define.qmd
-#         - paforimprovingss_learn.qmd
-#         - paforimprovingss_limitations.qmd
-#         - paforimprovingss_ethics.qmd
-#         - paforimprovingss_context.qmd
-#
-#     - part: "Scoping a PA Project"
-#       chapters:
-#         - scoping_ex.qmd
-#         - scoping_stakeholders.qmd
-#         - scoping_usefindings.qmd
-#         - scoping_what.qmd
-#         - scoping_who.qmd
-#         - scoping_when.qmd
-#     - part: summary.qmd
-#     - references.qmd
-#
+
 # bibliography: references.bib
 #
 # format:
