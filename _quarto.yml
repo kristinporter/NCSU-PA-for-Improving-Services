@@ -42,6 +42,7 @@ website:
           - paforimprovingss_ethics.qmd
           - paforimprovingss_context.qmd
         - section: "Scoping a predictive analytics project"
+          contents:
           - scoping_ex.qmd
 #         - scoping_stakeholders.qmd
 #         - scoping_usefindings.qmd
@@ -55,7 +56,7 @@ website:
         - section: "Specifying learners PART 2"
         - section: "Evaluating and comparing predictive performance"
           contents:
-          - performance_metrics.qmd
+          - scoping_ex.qmd
         - section: "Evaluating and comparing bias"
         - section: "Selecting and validating a learner"
         - section: "Understanding and communicating results"
