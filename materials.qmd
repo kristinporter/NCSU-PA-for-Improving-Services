@@ -2,4 +2,22 @@
 title: "Course materials"
 ---
 
-Here I can provide an overview of the materials - what they will cover, when new sections are released, how to navigate, etc.
+These course materials are designed to give students background reading on all the key topics we will cover in the class. Ideally, students should read assigned materials before coming to class. This allows us to use class time to review main points and to have good opportunities for discussion and questions. I will provide guidance on what to read before each class.
+
+### How to use these materials
+
+The class is organized into the sections (main topics) listed in the left panel of this page. Clicking the down arrow to the right of each main section title will show the sub-sections. Generally, we will cover one main section/topic per class. The sub-sections for topics covered later in the terms will be added to the website as the class progresses. 
+
+The materials consist of text, links to articles, blog posts, videos, etc, and snippets of the code we will use for analyses. Please note:
+
+-   Most hyperlinks throughout these materials are required unless otherwise noted. Most are very short.
+
+-   Hyperlinks that are optional should be clearly stated as such. They provide an opportunity to do a deeper dive into a topic if you are interested.
+
+-   In addition, you will see citations for throughout. There is no expectation for you to read these papers unless you want to.
+
+### Acknowledgements
+
+These course materials were put together by me, Kristin Porter. All errors and omissions are mine. But I have also had lots of help - many sections draw on and even copy valuable text written by Zarni Htet at MDRC and Kristen Hunter at the University of South Wales, Sydney. The framework presented in this class was developed at [MDRC](www.mdrc.org), a nonprofit social policy research organization where I was employed for 16 years. Kristen Hunter also provided very helpful review of all these materials.
+
+This is the first time I have taught this course, and I would not be surprised if there are problems. I very much welcome any and all feedback and questions at any time.

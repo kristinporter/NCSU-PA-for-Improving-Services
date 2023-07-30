@@ -2,8 +2,11 @@ project:
   type: website
   output-dir: docs
 
+bibliography: references.bib
+csl: apa-6th-edition.csl
+
 website:
-  title: "Predictive Analytics for Improving Social Services"
+  title: "Predictive Analytics for Improving Services"
   page-navigation: true
   back-to-top-navigation: true
 
@@ -17,8 +20,8 @@ website:
         file: materials.qmd
       - text: "Assignments and project"
         file: project.qmd
-      - text: "References"
-        file: references.qmd
+      # - text: "References"
+      #   file: references.qmd
 
   sidebar:
     - title: "index"
@@ -34,7 +37,7 @@ website:
       style: "floating"
       contents:
         - materials.qmd
-        - section: "How can predictive analytics be used to improve social services?"
+        - section: "Predictive analytics to improve social services - an overview"
           contents:
           - paforimprovingss_define.qmd
           - paforimprovingss_learn.qmd
@@ -56,38 +59,44 @@ website:
         - section: "Specifying learners PART 2"
         - section: "Evaluating and comparing predictive performance"
           contents:
-          - scoping_ex.qmd
+          # - performance_metrics_PLACEHOLDER.qmd
         - section: "Evaluating and comparing bias"
         - section: "Selecting and validating a learner"
         - section: "Understanding and communicating results"
         - section: "Deploying predictive analytics"
+        - section: "Additional optional material"
+          contents:
+          - OptionalPAvsInfStat.qmd
+        - section: "Issue Log"
+          contents:
+          - issuelog.qmd
 
     - title: "References"
       contents:
         - reference.qmd
 
 
-format:
-  html:
-    theme: cosmo
-    css: styles.css
-    toc: true
-
-editor: visual
+# format:
+#   html:
+#     theme: cosmo
+#     css: styles.css
+#     toc: true
+#
+# editor: visual
 
 # bibliography: references.bib
 #
-# format:
-#   html:
-#     theme: cerulean
-#     number-sections: true
-#     number-depth: 1
-# #    css: style.css
-#     grid:
-#       sidebar-width: 475px
-# #      body-width: 900px
-#       margin-width: 100px
-# #      gutter-width: 1.5rem
+format:
+  html:
+#    theme: cerulean
+    number-sections: true
+    number-depth: 1
+#    css: style.css
+    grid:
+      sidebar-width: 400px
+      body-width: 1200px
+      margin-width: 100px
+#      gutter-width: 1.5rem
 #   pdf:
 #     documentclass: scrreprt
 #

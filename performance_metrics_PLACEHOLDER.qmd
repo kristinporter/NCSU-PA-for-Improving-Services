@@ -80,18 +80,7 @@ A no skills classifier is a learner that predicts every observation as `1`. Supp
 
 ## Performance
 
-We now compare the learners according to both ROC AUC and PR AUC.
-
-```{r bestLearners}
-# best_roc_auc <- learnersMetrics$learnerName[
-#   which.max(learnersMetrics$mean_roc_auc)
-# ]
-# best_pr_auc <- learnersMetrics$learnerName[
-#   which.max(learnersMetrics$mean_pr_auc)
-# ]
-```
-
-According to the mean values of these metrics, the best learners are:
+We now compare the learners according to both ROC AUC and PR AUC.According to the mean values of these metrics, the best learners are:
 
 -   **AUC_ROC**: `r best_roc_auc`
 -   **AUC_PR**: `r best_pr_auc`

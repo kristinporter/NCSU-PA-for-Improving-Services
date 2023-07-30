@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predictive Analytics for Improving Social Services – scoping_what</title>
+<title>Predictive Analytics for Improving Social Services - Predictive Analytics vs.&nbsp;Inferential Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,10 +60,9 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -107,35 +106,34 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#what---exactly---are-we-aiming-to-predict" id="toc-what---exactly---are-we-aiming-to-predict" class="nav-link active" data-scroll-target="#what---exactly---are-we-aiming-to-predict">What - exactly - are we aiming to predict?</a>
-  <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Predictive Analytics vs.&nbsp;Inferential Statistics</h1>
+</div>
 
 
-<section id="what---exactly---are-we-aiming-to-predict" class="level1">
-<h1>What - exactly - are we aiming to predict?</h1>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section"></h2>
-</section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1"></h2>
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Predictive analytics uses patterns in historical data to make predictions about future events. The goals and limitations of predictive analytics are different from those of statistical inference.</p>
+<p>In inference settings, we usually aim to understand properties of a population. “An inferential data analysis quantifies whether an observed pattern will likely hold beyond the data set in hand. This is the most common statistical analysis in the formal scientific literature (Leek and Peng (2015)).” We may ask: what is the mean height of Gentoo penguins? We can construct both a point estimate (such as 30 inches) and a measure of uncertainty, which can be expressed as a standard error (2 inches), or as a confidence interval (we are 95% confident the true mean height is between 26 and 34 inches).</p>
+<p>Statistical inference can also be used to understand relationships between variables. For example, we might be interested in the relationship between penguin body mass and penguin height, so we run a linear regression of body mass on height. The regression gives us a coefficient, which we can interpret as: for each increase in height by 1 inch, body mass increases on average by x inches.</p>
+<p>In predictive analytics, our goal is to make the most accurate prediction possible given the available data. In predictive analytics, we usually focus on point estimates, and often do not look at measures of uncertainty. Certain prediction algorithms give uncertainty estimates, such as regression, but others do not immediately provide uncertainty estimates (without modification or further more complicated algorithms). Without measures of uncertainty, we should take particular care in the use and interpretation of predictive analytics outputs. The algorithm gives its best possible guess of the outcome based on historical data, but we do not know how “confident” we are in the result. For example, consider using the above regression to predict the average body mass of a Gentoo penguin that is 32 inches tall. The regression tells us the expected body mass is 4000g, with a confidence interval of 3800 to 4200g. We then predict the average body mass of a Gentoo penguin that is 40 inches tall. For a penguin of this height, the expected body mass is 4500g, with a confidence interval of 2000g to 6000g. The confidence intervals for different heights have substantially different widths, telling us that we have different amounts of uncertainty around different predictions. In contrast, many prediction algorithms would not give us estimates of uncertainty, so we would only see the point estimates.</p>
+<p>Neither predictive analytics not inferential analysis should be used to make causal conclusions. “Predictive data analyses only show that you can predict one measurement from another; they do not necessarily explain why that choice of prediction works (Leek and Peng (2015)).” If we have an interpretable model, or we use a machine learning interpretation method, we can use the algorithm to better understand historical patterns and relationships in the data. For example, in the above regression, we can conclude that there is a particular historical relationship between body mass and height. However, we cannot conclude that these patterns are causal. Let’s say we aim to predict the number of ice cream sales on a future summer day. We find that the most useful predictor of the number of ice cream sales is the number of lifeguards on duty that day at the local beach. Are those extra lifeguards alone driving our ice cream sales? Probably not! Most likely weather is a confounding variable here. On hot sunny days, more people go to the beach, there are more life guards on duty, and more people buy ice cream. We have found a correlation, but we cannot conclude it is causal. To make conclusions about causal relationships, we must take an entirely different approach. To make rigorous causal conclusions, we would need to carefully design a study, ideally an experiment or in some cases a well-designed observational study. Such causal inference approaches are beyond the scope of this guide.</p>
 
 
-</section>
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
