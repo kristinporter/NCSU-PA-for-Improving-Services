@@ -7,3 +7,5 @@ FORTHCOMING
 MAYBE INSERT TABLE WITH CONTRASTING QUESTIONS
 
 Optional: You can find a short discussion of the differences between predictive analytics and inferential statistics [here](OptionalPAvsInfStat.qmd).
+
+And for fun, Baba Brinkman covers some of these issues in his [rap comparing and contrasting data science and statistics](https://music.bababrinkman.com/track/data-science).

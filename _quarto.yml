@@ -47,11 +47,11 @@ website:
         - section: "Scoping a PA project"
           contents:
           - scoping_ex.qmd
-#         - scoping_stakeholders.qmd
-#         - scoping_usefindings.qmd
-#         - scoping_what.qmd
-#         - scoping_who.qmd
-#         - scoping_when.qmd
+          - scoping_usefindings.qmd
+          - scoping_stakeholders.qmd
+          - scoping_what.qmd
+          - scoping_who.qmd
+          - scoping_when.qmd
         - section: "Conducting a PA proof-of-concept"
         - section: "Data for predictive analytics PART 1"
         - section: "Data for predictive analytics PART 2"

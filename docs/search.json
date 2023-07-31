@@ -37,9 +37,9 @@
   {
     "objectID": "scoping_usefindings.html",
     "href": "scoping_usefindings.html",
-    "title": "How will findings from PA be used?",
+    "title": "What is predictive analytics?",
     "section": "",
-    "text": "How will findings from PA be used?\n\n\n\n\n Back to top"
+    "text": "Back to top"
   },
   {
     "objectID": "assignment1.html",
@@ -53,7 +53,7 @@
     "href": "paforimprovingss_define.html",
     "title": "What is predictive analytics?",
     "section": "",
-    "text": "Predictive analytics is the use historical data to forecast future outcomes.\nPredictive analytics may rely on relatively simple approaches, such as models with a small number of measures, or they may involve complex machine-learning algorithms, taking advantage of the large amounts of data and data-driven methodologies.\nPredictive analytics may make predictions of binary outcomes, which take just two values such as yes or no. For example, we can predict whether students will graduate from high school or not. With binary outcomes, predictive analytics can also be used to estimate the likelihood of the outcome occurring. For example, we can predict the likelihood or probability that a student will graduate from high school. This number likelihood is between 0 and 1.\nPredictive analytics may also forecaset continuous outcomes. For example, we can predict the grade point average (GPA) students will achieve.\nTo narrow the scope of the class, we will focus only on binary outcomes.\n\n\n\n\n Back to top"
+    "text": "Predictive analytics (PA) is the use historical data to forecast future outcomes.\nPA may rely on relatively simple approaches, such as models with a small number of measures, or they may involve complex machine-learning algorithms, taking advantage of the large amounts of data and data-driven methodologies.\nPA may make predictions of binary outcomes, which take just two values such as yes or no. For example, we can predict whether students will graduate from high school or not. With binary outcomes, predictive analytics can also be used to estimate the likelihood of the outcome occurring. For example, we can predict the likelihood or probability that a student will graduate from high school. This number likelihood is between 0 and 1.\nPA may also forecaset continuous outcomes. For example, we can predict the grade point average (GPA) students will achieve.\nTo narrow the scope of the class, we will focus only on binary outcomes.\n\n\n\n\n Back to top"
   },
   {
     "objectID": "intro.html",
@@ -163,9 +163,9 @@
   {
     "objectID": "scoping_ex.html",
     "href": "scoping_ex.html",
-    "title": "1 A motivating example",
+    "title": "Predictive Analytics (PA) for Improving Services",
     "section": "",
-    "text": "Here we will describe an example (or more) that we can refer back to."
+    "text": "A motivating example\nLet’s start with an example. This example is motivated by a project I worked on with a state Temporary Assistance for Needy Families (TANF) agency, but I’ve modified some details for illustration purposes. TANF is a federal assistance program in the United States that aims to help families achieve self-sufficiency by providing them with the necessary resources and services.\n\n\nThe TANF agency came to my team with the following goals:\n\nCould caseworkers better understand which clients were more at risk for adverse outcomes with a data-driven tool?\nCould we develop reliable risk scores that combine and weigh multiple risk factors into a single easy-to-understand number that can be incorporated into decision-making?\nCould trends in risk scores across the population of TANF clients provide new insights for program improvement and resource allocation?\n\n\n\nHow do we scope a project that helps them achieve their goals?\nHere we will talk about scoping in terms of specifying:\n\nHow would information about clients’ risks of adverse outcomes be used?\nWho are the stakeholders?\nWhat data are available?\nWhat, exactly, are we trying to predict?\nFor whom would we be making predictions?\nWhen would we be making the predictions?\n\nAnswering these questions allows us to move forward in planning a potential predictive analytics project. That is what I mean by scoping - what potential project could there be? But importantly, the next step is a to investigate that potential - to see if we can reliably, clearly and fairly make useful and actionable predictions. I refer to this next step as the “proof-of-concept,” which we will turn to in the next section.\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "paforimprovingss_learn.html",
@@ -179,7 +179,7 @@
     "href": "paforimprovingss_limitations.html",
     "title": "What are the limitations of PA for improving services?",
     "section": "",
-    "text": "FORTHCOMING\nMAYBE INSERT TABLE WITH CONTRASTING QUESTIONS\nOptional: You can find a short discussion of the differences between predictive analytics and inferential statistics here.\n\n\n\n Back to top"
+    "text": "FORTHCOMING\nMAYBE INSERT TABLE WITH CONTRASTING QUESTIONS\nOptional: You can find a short discussion of the differences between predictive analytics and inferential statistics here.\nAnd for fun, Baba Brinkman covers some of these issues in his rap comparing and contrasting data science and statistics.\n\n\n\n Back to top"
   },
   {
     "objectID": "paforimprovingss_context.html",
