@@ -2,3 +2,13 @@
 
 ::: {#refs}
 :::
+
+# Papers to maybe work into class...
+
+[The Dangers of Risk Prediction in the Criminal Justice System](https://mit-serc.pubpub.org/pub/risk-prediction-in-cj/release/2)
+
+Abstract: Courts across the United States are using computer software to predict whether a person will commit a crime, the results of which are incorporated into bail and sentencing decisions. It is imperative that such tools be accurate and fair, but critics have charged that the software can be racially biased, favoring white defendants over Black defendants. We evaluate the claim that computer software is more accurate and fairer than people tasked with making similar decisions. We also evaluate, and explain, the presence of racial bias in these predictive algorithms.
+
+[An Algorithm That Grants Freedom, or Takes It Away](https://www.nytimes.com/2020/02/06/technology/predictive-algorithms-crime.html)
+
+2020 NYT article summarizing predictive analytic applications and bias in multiple parts of the CJ system, as well as detecting fraud in the welfare system.

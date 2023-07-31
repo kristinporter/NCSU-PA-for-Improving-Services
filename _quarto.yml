@@ -6,7 +6,7 @@ bibliography: references.bib
 csl: apa-6th-edition.csl
 
 website:
-  title: "Predictive Analytics for Improving Services"
+  title: "Predictive Analytics (PA) for Improving Services"
   page-navigation: true
   back-to-top-navigation: true
 
@@ -37,14 +37,14 @@ website:
       style: "floating"
       contents:
         - materials.qmd
-        - section: "Predictive analytics to improve social services - an overview"
+        - section: "PA to improve social services - an overview"
           contents:
           - paforimprovingss_define.qmd
           - paforimprovingss_learn.qmd
           - paforimprovingss_limitations.qmd
           - paforimprovingss_ethics.qmd
           - paforimprovingss_context.qmd
-        - section: "Scoping a predictive analytics project"
+        - section: "Scoping a PA project"
           contents:
           - scoping_ex.qmd
 #         - scoping_stakeholders.qmd
@@ -52,7 +52,7 @@ website:
 #         - scoping_what.qmd
 #         - scoping_who.qmd
 #         - scoping_when.qmd
-        - section: "Conducting a proof of concept"
+        - section: "Conducting a PA proof-of-concept"
         - section: "Data for predictive analytics PART 1"
         - section: "Data for predictive analytics PART 2"
         - section: "Specifying learners PART 1"
