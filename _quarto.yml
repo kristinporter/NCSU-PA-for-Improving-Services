@@ -16,6 +16,7 @@ website:
     left:
       - text: "Course overview"
         file: index.qmd
+#        file: overview.qmd
       - text: "Course materials"
         file: materials.qmd
       - text: "Assignments and project"

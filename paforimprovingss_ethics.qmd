@@ -26,7 +26,7 @@ When planning, developing and deploying a predictive analytics project, there ar
 
 [Overreliance on Predictions:]{style="color:red"} Blindly relying on predictive analytics without human judgment and intervention can lead to overconfidence and neglect of important contextual factors.
 
-## Addressing ethical considerations
+## Addressing ethical considerations {#addressEthical}
 
 The following are some practices that can help ensure that ethical considerations are raised, reviewed and consistently applied to all steps of a predictive analytics project. It is important for all these practices to consider multiple stakeholders - to include as much as possible the voices of all groups of individuals that are impacted or potentially impacted by the process and outcomes of predictive analytics.
 

@@ -1,0 +1,7 @@
+---
+title: Course overview
+---
+
+Welcome to the class. 
+
+There are a lot of ways that PA can go wrong,  in ways that create missed opportunities to really harness data well for prediction as well as in ways that can lead to misleadingly optimistic findings. 

@@ -1,9 +1,43 @@
-# Is predictive analytics a good fit for your context?
+---
+title: Is predictive analytics a good fit for your context?
+---
 
-Considerations:
+![](shutterstock_wondering.png){} 
 
--   How will findings be communicated and used, and by whom?
+Before embarking on a PA project, it is value to assess whether it is the right approach at the right time for the setting. Here are a some key considerations to determine if PA is a good fit.
 
--   Data availability, quality and systems.
+#### Will PA provide new and actionable information? 
 
--   Capacity re communication, analytics, change management.
+-   Do we anticipate that the PA findings will information that more reliable, more frequent or easier to understand than current information available?
+
+-   How will findings from PA be communicated and used, and by whom?
+
+-   How frequently to PA findings need to be updated to be continuously actionable?
+
+#### Are there plans and buy-in for acting on insights that come out of PA? 
+
+-   Is there sufficient leadership and commitment from the institution?
+
+-   Is there capacity for interpreting, communicating and and acting on PA results? How will findings be communicated?
+
+-   Are there plans for how program services will be changed or introduced based on PA results?
+
+-    To what extent does decision making and service provision currently rely on perceptions or data-driven findings? Are data-driven findings in general, and PA findings more specifically, trusted and used? If not, are there plans for addressing practice and culture to support change?
+
+-   Are there structural or process factors that impede or foster the use predictive analytics (such as dedicated data teams) or the use of results (such as dashboard systems)?
+
+#### Data quality and systems
+
+-   Is there sufficient data that are readily accessible?
+
+-   Are the data sufficiently documented and understood so that reliable measures can be created for PA?
+
+-   Is there sufficient capacity for investigating and depoying PA with existing analytic systems, software and staffing?
+
+#### Potential risks
+
+-    Have their been sufficient processes for identifying potential risks?
+
+-   Are there systems or processes in place to make sure ethical issues are attended to throughout a PA project?
+
+-   Refer back to @addressEthical for a discussion of potential processes.

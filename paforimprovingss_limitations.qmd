@@ -9,8 +9,10 @@ MORE FORTHCOMING
 3.  **External Factors and Change:** Predictive models may not account for unexpected events, external influences, or sudden changes in the environment that can significantly impact the outcome being predicted. As the time horizon extends further into the future, models may become unreliable. For this reason, predictive models need regular monitoring and may require frequent updating.
 4.  **Predictive analytics tells us nothing about causal relationships.**
 5.  **Overfitting:** Overfitting occurs when a predictive model is trained too closely on the training data and becomes overly specific to that data, leading to poor generalization to new, unseen data. It can reduce the model's ability to predict accurately in real-world scenarios. We will discuss overfitting later.
-6.  **Ethical Concerns:** Predictive analytics can raise many ethical concerns, which we turn to next and will return to throughout the course.
+6.  **Ethical Concerns:** Predictive analytics can raise many ethical concerns. This is a very important topic, which we turn to next and will return to throughout the course.
 
 Optional: You can find a short discussion of the differences between predictive analytics and inferential statistics [here](OptionalPAvsInfStat.qmd).
 
-And for fun, Baba Brinkman covers some of these issues in his [rap comparing and contrasting data science and statistics](https://music.bababrinkman.com/track/data-science).
+And for fun, Baba Brinkman covers some of these issues in his rap comparing and contrasting data science and statistics. (Click link below.)
+
+[![](BabaBrinkmanDSvsStat.jpeg){fig-align="center" width="2.5in"}](https://music.bababrinkman.com/track/data-science)
