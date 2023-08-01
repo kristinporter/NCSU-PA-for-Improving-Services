@@ -12,3 +12,5 @@ Abstract: Courts across the United States are using computer software to predict
 [An Algorithm That Grants Freedom, or Takes It Away](https://www.nytimes.com/2020/02/06/technology/predictive-algorithms-crime.html)
 
 2020 NYT article summarizing predictive analytic applications and bias in multiple parts of the CJ system, as well as detecting fraud in the welfare system.
+
+[Predicting Participation in Healthy Marriage and Responsible Fatherhood Programs (and nice technical appendices)](https://www.acf.hhs.gov/opre/report/predicting-participation-healthy-marriage-and-responsible-fatherhood-programs) from Mathematica/OPRE

@@ -2,9 +2,14 @@
 title: "What are the limitations of PA for improving services?"
 ---
 
-FORTHCOMING
+MORE FORTHCOMING
 
-MAYBE INSERT TABLE WITH CONTRASTING QUESTIONS
+1.  **Predictions are only as good as the data on which they are built.** If the data available for analysis is incomplete, inaccurate, or biased, it can lead to unreliable predictions.
+2.  **There can be a trade-off between model performance and transparency and simplicity.** Sometimes the best-performing models are built by complex machine learning algorithms and can therefore be difficult to explain and can be challenging to deploy and maintain. A lack of transparency can be especially problematic in certain domains more ethical considerations.
+3.  **External Factors and Change:** Predictive models may not account for unexpected events, external influences, or sudden changes in the environment that can significantly impact the outcome being predicted. As the time horizon extends further into the future, models may become unreliable. For this reason, predictive models need regular monitoring and may require frequent updating.
+4.  **Predictive analytics tells us nothing about causal relationships.**
+5.  **Overfitting:** Overfitting occurs when a predictive model is trained too closely on the training data and becomes overly specific to that data, leading to poor generalization to new, unseen data. It can reduce the model's ability to predict accurately in real-world scenarios. We will discuss overfitting later.
+6.  **Ethical Concerns:** Predictive analytics can raise many ethical concerns, which we turn to next and will return to throughout the course.
 
 Optional: You can find a short discussion of the differences between predictive analytics and inferential statistics [here](OptionalPAvsInfStat.qmd).
 

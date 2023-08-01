@@ -1,7 +1,4 @@
-# For whom are we making predictions? 
+---
+title: For whom are we making predictions? 
+---
 
-## 
-
-## 
-
-## 
