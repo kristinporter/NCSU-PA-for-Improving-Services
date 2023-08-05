@@ -15,24 +15,22 @@ website:
     search: true
     left:
       - text: "Course overview"
-        file: index.qmd
-#        file: overview.qmd
+        file: overview.qmd
       - text: "Course materials"
         file: materials.qmd
       - text: "Assignments and project"
         file: project.qmd
       # - text: "References"
-      #   file: references.qmd
+      # file: references.qmd
 
   sidebar:
-    - title: "index"
+    - title: "overview"
       style: "floating"
       contents:
-        - course_description.qmd
-        - "Syllabus"
-        - "Classroom expections and norms"
-        - "Six ways to get help"
-        - "Grading"
+#        file: course_syllabus.qmd
+#        file: course_attendancenorms.qmd
+#        file: course_gethelp.qmd
+#        file: course_grading.qmd
 
     - title: "materials"
       style: "floating"
@@ -74,32 +72,7 @@ website:
 
     - title: "References"
       contents:
-        - reference.qmd
+        - references.qmd
 
 
-# format:
-#   html:
-#     theme: cosmo
-#     css: styles.css
-#     toc: true
-#
-# editor: visual
 
-# bibliography: references.bib
-#
-format:
-  html:
-#    theme: cerulean
-    number-sections: true
-    number-depth: 1
-#    css: style.css
-    grid:
-      sidebar-width: 400px
-      body-width: 1200px
-      margin-width: 100px
-#      gutter-width: 1.5rem
-#   pdf:
-#     documentclass: scrreprt
-#
-# editor: visual
-#
