@@ -10,7 +10,7 @@ Let's start with an example. This example is motivated by a project I worked on 
 
 #### **The TANF agency came to my team with the following goals:**
 
-1.  Could caseworkers better understand which clients were more at risk for adverse outcomes with a data-driven tool?
+1.  With a data-driven tool, could caseworkers better understand which clients were more at risk of not reaching key program outcomes - in particular, of not finding employment (among those who were required to) - with a data-driven tool? Note: The current practice for identifying clients who were most at-risk relied on caseworkers reviewing measures they thought were important (e.g. of previous employment history) and making a subjective experience based on their professional expertise. They wondered if predictive analytics would provide an improvement in terms of accuracy and fairness. 
 
 2.  Could we develop reliable risk scores that combine and weigh multiple risk factors into a single easy-to-understand number that can be incorporated into decision-making?
 

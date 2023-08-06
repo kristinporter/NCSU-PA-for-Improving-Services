@@ -39,7 +39,7 @@
     "href": "scoping_usefindings.html",
     "title": "How will findings be used?",
     "section": "",
-    "text": "Back to top"
+    "text": "The department of social services already had a practice of providing extra intervention to those clients who needed them most. These included:\n\ncalling clients to check in,\noffering extra casework sessions, and\nextra workshops to help with job search and job skills.\n\nWith limited staff and financial resources, the department wanted to deliver services to who needed them the most. However, the department thought that their existing approach for identifying those clients could be improved by distilling a wide range of potentially predictive measures into a single “risk score.”\nA few things to note:\n\nThey did not want, nor did the project team recommend, for the risk scores to replace their decision-making process.\nInstead, the risk scores could potentially provide a valuable piece of information - if we could validate good predictive performance and minimal bias.\nThe department planned to train caseworkers to how to interpret and incorporate the risk score into their decisionmaking and prioritizing.\nThe department also wanted to look at how risk scores varied across and within populations served by offices throughout the state. This could help them understand which offices were more in need of support for reaching out to clients and for planning workshops.\n\nThis information about how the department plans to use the information can guide how we scope the predictive analytics projects.\nRemember, we also want to frequently check-in with our ethical considerations. What ethical considerations do we want to be careful about as we proceed?\n\n\n\n Back to top"
   },
   {
     "objectID": "assignment1.html",
@@ -53,7 +53,7 @@
     "href": "paforimprovingss_define.html",
     "title": "What is predictive analytics?",
     "section": "",
-    "text": "Predictive analytics (PA) (or predictive modeling) is the use historical data to forecast future outcomes.\nPA may rely on relatively simple approaches, such as models with a small number of measures, or they may involve complex machine-learning algorithms, taking advantage of the large amounts of data and data-driven methodologies.\nPA may make predictions of binary outcomes, which take just two values such as yes or no. For example, we can predict whether students will graduate from high school or not. With binary outcomes, predictive analytics can also be used to estimate the likelihood of the outcome occurring. For example, we can predict the likelihood or probability that a student will graduate from high school. This number likelihood is between 0 and 1.\nPA may also forecaset continuous outcomes. For example, we can predict the grade point average (GPA) students will achieve.\nTo narrow the scope of the class, we will focus only on binary outcomes.\n\n\n\n\n\n\n\n\n\n Back to top"
+    "text": "Predictive analytics (PA) (or predictive modeling) is the use historical data to forecast future outcomes.\n\n\n\n\n\n\n\nPA may rely on relatively simple approaches, such as models with a small number of measures, or they may involve complex machine-learning algorithms, taking advantage of the large amounts of data and data-driven methodologies.\nPA may make predictions of binary outcomes, which take just two values such as yes or no. For example, we can predict whether students will graduate from high school or not. With binary outcomes, predictive analytics can also be used to estimate the likelihood of the outcome occurring. For example, we can predict the likelihood or probability that a student will graduate from high school. This number likelihood is between 0 and 1.\nPA may also forecaset continuous outcomes. For example, we can predict the grade point average (GPA) students will achieve.\nTo narrow the scope of the class, we will focus only on binary outcomes.\n\n\n\n\n Back to top"
   },
   {
     "objectID": "intro.html",
@@ -165,7 +165,7 @@
     "href": "scoping_ex.html",
     "title": "Predictive Analytics (PA) for Improving Services",
     "section": "",
-    "text": "A motivating example\nLet’s start with an example. This example is motivated by a project I worked on with a Temporary Assistance for Needy Families (TANF) state program, but I’ve modified some details for illustration purposes. TANF is a federal assistance program in the United States that aims to help families achieve self-sufficiency by providing them with the necessary resources and services. Part of what state agencies administering the program do is offer various supportive services to help families overcome barriers to employment and self-sufficiency. They aim to provide personalized assistance based on the unique circumstances and needs of each family. This approach helps address specific challenges and levels of need faced by different households.\n\n\nThe TANF agency came to my team with the following goals:\n\nCould caseworkers better understand which clients were more at risk for adverse outcomes with a data-driven tool?\nCould we develop reliable risk scores that combine and weigh multiple risk factors into a single easy-to-understand number that can be incorporated into decision-making?\nCould trends in risk scores across the population of TANF clients provide new insights for program improvement and resource allocation?\n\n\n\nHow do we scope a project that helps them achieve their goals?\nHere we will talk about scoping in terms of specifying:\n\nHow would information about clients’ risks of adverse outcomes be used?\nWho are the stakeholders?\nWhat data are available?\nWhat, exactly, are we trying to predict?\nFor whom would we be making predictions?\nWhen would we be making the predictions?\n\nAnswering these questions allows us to move forward in planning a potential predictive analytics project. That is what I mean by scoping - what potential project could there be? But importantly, the next step is a to investigate that potential - to see if we can reliably, clearly and fairly make useful and actionable predictions. I refer to this next step as the “proof-of-concept,” which we will turn to in the next main section (next week).\n\n\n\n\n\n Back to top"
+    "text": "A motivating example\nLet’s start with an example. This example is motivated by a project I worked on with a Temporary Assistance for Needy Families (TANF) state program, but I’ve modified some details for illustration purposes. TANF is a federal assistance program in the United States that aims to help families achieve self-sufficiency by providing them with the necessary resources and services. Part of what state agencies administering the program do is offer various supportive services to help families overcome barriers to employment and self-sufficiency. They aim to provide personalized assistance based on the unique circumstances and needs of each family. This approach helps address specific challenges and levels of need faced by different households.\n\n\nThe TANF agency came to my team with the following goals:\n\nWith a data-driven tool, could caseworkers better understand which clients were more at risk of not reaching key program outcomes - in particular, of not finding employment (among those who were required to) - with a data-driven tool? Note: The current practice for identifying clients who were most at-risk relied on caseworkers reviewing measures they thought were important (e.g. of previous employment history) and making a subjective experience based on their professional expertise. They wondered if predictive analytics would provide an improvement in terms of accuracy and fairness.\nCould we develop reliable risk scores that combine and weigh multiple risk factors into a single easy-to-understand number that can be incorporated into decision-making?\nCould trends in risk scores across the population of TANF clients provide new insights for program improvement and resource allocation?\n\n\n\nHow do we scope a project that helps them achieve their goals?\nHere we will talk about scoping in terms of specifying:\n\nHow would information about clients’ risks of adverse outcomes be used?\nWho are the stakeholders?\nWhat data are available?\nWhat, exactly, are we trying to predict?\nFor whom would we be making predictions?\nWhen would we be making the predictions?\n\nAnswering these questions allows us to move forward in planning a potential predictive analytics project. That is what I mean by scoping - what potential project could there be? But importantly, the next step is a to investigate that potential - to see if we can reliably, clearly and fairly make useful and actionable predictions. I refer to this next step as the “proof-of-concept,” which we will turn to in the next main section (next week).\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "paforimprovingss_learn.html",
@@ -179,7 +179,7 @@
     "href": "paforimprovingss_limitations.html",
     "title": "What are the limitations of PA for improving services?",
     "section": "",
-    "text": "MORE FORTHCOMING\n\nPredictions are only as good as the data on which they are built. If the data available for analysis is incomplete, inaccurate, or biased, it can lead to unreliable predictions.\nThere can be a trade-off between model performance and transparency and simplicity. Sometimes the best-performing models are built by complex machine learning algorithms and can therefore be difficult to explain and can be challenging to deploy and maintain. A lack of transparency can be especially problematic in certain domains more ethical considerations.\nExternal Factors and Change: Predictive models may not account for unexpected events, external influences, or sudden changes in the environment that can significantly impact the outcome being predicted. As the time horizon extends further into the future, models may become unreliable. For this reason, predictive models need regular monitoring and may require frequent updating.\nPredictive analytics tells us nothing about causal relationships.\nOverfitting: Overfitting occurs when a predictive model is trained too closely on the training data and becomes overly specific to that data, leading to poor generalization to new, unseen data. It can reduce the model’s ability to predict accurately in real-world scenarios. We will discuss overfitting later.\nEthical Concerns: Predictive analytics can raise many ethical concerns. This is a very important topic, which we turn to next and will return to throughout the course.\n\nOptional: You can find a short discussion of the differences between predictive analytics and inferential statistics here.\nAnd for fun, Baba Brinkman covers some of these issues in his rap comparing and contrasting data science and statistics. (Click link below.)\n\n\n\n\n\n\n\n\n Back to top"
+    "text": "MORE FORTHCOMING\n\nPredictions are only as good as the data on which they are built. If the data available for analysis is incomplete, inaccurate, or biased, it can lead to unreliable predictions.\nThere can be a trade-off between model performance and transparency and simplicity. Sometimes the best-performing models are built by complex machine learning algorithms and can therefore be difficult to explain and can be challenging to deploy and maintain. A lack of transparency can be especially problematic in certain domains more ethical considerations.\nExternal Factors and Change: Predictive models may not account for unexpected events, external influences, or sudden changes in the environment that can significantly impact the outcome being predicted. As the time horizon extends further into the future, models may become unreliable. For this reason, predictive models need regular monitoring and may require frequent updating.\nPredictive analytics tells us nothing about causal relationships. Nor does it tell us that those with the lowest or highest likelihood of an outcome are the most likely to benefit from a new or revised service or intervention.\nOverfitting: Overfitting occurs when a predictive model is trained too closely on the training data and becomes overly specific to that data, leading to poor generalization to new, unseen data. It can reduce the model’s ability to predict accurately in real-world scenarios. We will discuss overfitting later.\nEthical Concerns: Predictive analytics can raise many ethical concerns. This is a very important topic, which we turn to next and will return to throughout the course.\n\nOptional: You can find a short discussion of the differences between predictive analytics and inferential statistics here.\nAnd for fun, Baba Brinkman covers some of these issues in his rap comparing and contrasting data science and statistics. (Click link below.)\n\n\n\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "paforimprovingss_context.html",
@@ -205,7 +205,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Course overview",
+    "title": "Predictive Analytics for Improving Services",
     "section": "",
     "text": "Back to top"
   },
@@ -249,7 +249,7 @@
     "href": "course_syllabus.html",
     "title": "Syllabus",
     "section": "",
-    "text": "Back to top"
+    "text": "DSC495 Special Topics in Data Science: Predictive Analytics for Improving Services\n\n\n\nSemester: Fall 2023\nSection: 613\n\n\nInstructor: Kristin Porter\nClass Meetings: Thursdays\n\n\nEmail: kristin.porter@keporterconsulting.com\nTime: 3-3:50 PM EST\n\n\nOffice hour location: Zoom link\nLocation: Zoom link\n\n\nOffice hours: TBD\nThis meeting is required.\n\n\nLast updated: 08/04/2023\nCredit hours: 1"
   },
   {
     "objectID": "course_grading.html",
@@ -275,8 +275,120 @@
   {
     "objectID": "overview.html",
     "href": "overview.html",
-    "title": "Course overview",
+    "title": "Course information",
     "section": "",
-    "text": "Back to top"
+    "text": "This section of this course website provides course information.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "course_syllabus.html#course-details",
+    "href": "course_syllabus.html#course-details",
+    "title": "Syllabus",
+    "section": "",
+    "text": "DSC495 Special Topics in Data Science: Predictive Analytics for Improving Services\n\n\n\nSemester: Fall 2023\nSection: 613\n\n\nInstructor: Kristin Porter\nClass Meetings: Thursdays\n\n\nEmail: kristin.porter@keporterconsulting.com\nTime: 3-3:50 PM EST\n\n\nOffice hour location: Zoom link\nLocation: Zoom link\n\n\nOffice hours: TBD\nThis meeting is required.\n\n\nLast updated: 08/04/2023\nCredit hours: 1"
+  },
+  {
+    "objectID": "course_syllabus.html#course-description",
+    "href": "course_syllabus.html#course-description",
+    "title": "Syllabus",
+    "section": "Course Description",
+    "text": "Course Description\n\nDescription:\nFor-profit companies, nonprofit service providers and government agencies often use predictive analytics to improve their services. Predictive analytics harnesses historical data and may incorporate machine learning to model future outcomes. Students will explore the value, limitations and ethical considerations of predictive analytics when used to improve services. Using their own dataset or one provided by the instructor, students will learn and apply a practical approach for planning, implementing and assessing a predictive analytics project. The instruction will highlight topics related to data preparation, model training and selection, validation, fairness, transparency and communication of results.\n\n\nPrerequisites:\nStudents should have familiarity with R Studio and some experience using R to manipulate data and run basic descriptive statistics.\n\n\nLearning objectives:\n\nGain the ability to critically assess the potential value and limitations of predictive analytics for improving services when applied to a particular context and data system.\nUnderstand how results from predictive analytics can provide actionable insights for improving services.\nUnderstand how to plan and implement all steps of a predictive analytics workflow using open-source code templates. The steps include planning the analysis to match goals, exploring and preparing data, specifying and training models, and assessing the validity and bias of predictive models – all while prioritizing best-practices for ethics, transparency and replication.\nGain a high-level understanding of sta(s(cal concepts for optmizing predictive analytics and have op(onal choices to dive more deeply.\nPresent predictive analytics results using an R notebook and clearly communicate interpretations, cautions and recommendations.\n\n\n\nAbout the Data Science Academy:\nWelcome to an NCSU Data Science Academy Course! In July 2021, the universitywide and interdisciplinary Data Science Academy was launched to meet the growing needs of data science research, education and expertise in North Carolina and beyond. At NC State, Data Science is for Everyone. Data Science Academy (DSA) Courses are designed to make sure that each student can pursue appropriate level challenges through opportunities to make choices and pursue projects of interest. Whether you have never thought about data science before or bring experience and expertise, we welcome you. Our goal is that after each DSA class you want to learn more! For more on the DSA course design. \n\n\nAbout DSA research:\nTo make sure that we are providing an appropriate collection of courses with a variety of challenge levels within each course, we will be collecting data to help us build a practice of continuous improvement. The purpose of the data is to evaluate the DSA and how well we are serving our students. We hope to be able to share what we learn with other universities and researchers - we will ask your permission at the beginning of the course to be able to share your anonymized data when we communicate about the work of the DSA."
+  },
+  {
+    "objectID": "course_syllabus.html#resources",
+    "href": "course_syllabus.html#resources",
+    "title": "Syllabus",
+    "section": "Resources",
+    "text": "Resources\nThere is no textbook for this class. All reading materials are provided within this website and can be accessed in the “Course Materials” tab at the top of the page. The course materials includes text developed by the instructor as well as links to helpful reading, which may be required or optional as noted."
+  },
+  {
+    "objectID": "course_syllabus.html#grading",
+    "href": "course_syllabus.html#grading",
+    "title": "Syllabus",
+    "section": "Grading",
+    "text": "Grading\nFORTHCOMING"
+  },
+  {
+    "objectID": "course_syllabus.html#course-schedule",
+    "href": "course_syllabus.html#course-schedule",
+    "title": "Syllabus",
+    "section": "Course Schedule",
+    "text": "Course Schedule\nThe course schedule is linked here."
+  },
+  {
+    "objectID": "course_syllabus.html#attendance-policy",
+    "href": "course_syllabus.html#attendance-policy",
+    "title": "Syllabus",
+    "section": "Attendance Policy",
+    "text": "Attendance Policy\nFor complete attendance and excused absence policies, please see http://policies.ncsu.edu/regulation/reg-02-20-03. For coronavirus related attendance guidance, see the “coronavirus information” section.\nAttendance Policy. Students are expected to attend class regularly. Since we only meet once a week, each class is vitally important to keep on track during the semester.\nAbsences Policy. Students should notify the instructor that they will be unable to attend class and schedule a time to meet with the instructor to review materials they missed during class time.\nMakeup Work Policy. Makeup work will be allowed if the student notifies the instructor at least one day before an assignment is due to arrange for a deadline extension. Notification given on the due date will be considered on a case-by-case basis."
+  },
+  {
+    "objectID": "course_syllabus.html#academic-integrity",
+    "href": "course_syllabus.html#academic-integrity",
+    "title": "Syllabus",
+    "section": "Academic Integrity",
+    "text": "Academic Integrity\nStudents are required to comply with the university policy on academic integrity found in the Code of Student Conduct found at http://policies.ncsu.edu/policy/pol-11-35-01.\nStudents are expected to produce work that they personally completed and in accordance with the instructions given for the assignment, project, test or quiz. Work copied from other students, completed by another individual, or directly taken from other sources without appropriate attribution will be in violation of academic integrity. Students are expected to follow the Code of Student Conduct (NCSU POL11.35.01) and Pack Pledge, and violations of academic integrity will be handled in accordance with the Student Discipline Procedures (NCSU REG 11.35.02).\nHonor Pledge. Your submission on any test or assignment indicates “I have neither given nor received unauthorized aid on this test or assignment.” Digital Course Components Students may be required to disclose personally identifiable information to other students in the course, via digital tools, such as email or web-postings, where relevant to the course. Examples include online discussions of class topics, and posting of student coursework. All students are expected to respect the privacy of each other by not sharing or using such information outside the course."
+  },
+  {
+    "objectID": "course_syllabus.html#digital-course-components",
+    "href": "course_syllabus.html#digital-course-components",
+    "title": "Syllabus",
+    "section": "Digital Course Components",
+    "text": "Digital Course Components\nOur primary form of communication outside of online Zoom meetings will be through Moodle. Students are expected to monitor Moodle for announcements, assignments, and other information during the semester. Assignments. Assignments and final projects may be given and submitted through Moodle."
+  },
+  {
+    "objectID": "course_syllabus.html#accommodations-for-disabilities",
+    "href": "course_syllabus.html#accommodations-for-disabilities",
+    "title": "Syllabus",
+    "section": "Accommodations for Disabilities",
+    "text": "Accommodations for Disabilities\nReasonable accommodations will be made for students with verifiable disabilities. In order to take advantage of available accommodations, students must register with the Disability Resource Office at Holmes Hall, Suite 304, Campus Box 7509, 919-515-7653. For more information on NC State’s policy on working with students with disabilities, please see the Academic Accommodations for Students with Disabilities Regulation (REG02.20.01). Non-Discrimination Policy NC State provides equal opportunity and affirmative action efforts, and prohibits all forms of unlawful discrimination, harassment, and retaliation (“Prohibited Conduct”) that are based upon a person’s race, color, religion, sex (including pregnancy), national origin, age (40 or older), disability, gender identity, genetic information, sexual orientation, or veteran status (individually and collectively, “Protected Status”). Additional information as to each Protected Status is included in NCSU REG 04.25.02 (Discrimination, Harassment and Retaliation Complaint Procedure). NC State’s policies and regulations covering discrimination, harassment, and retaliation may be accessed at http://policies.ncsu.edu/policy/pol-04-25-05 or https://oied.ncsu.edu/divweb/. Any person who feels that he or she has been the subject of pro hibited discrimination, harassment, or retaliation should contact the Office for Equal Opportunity (OEO) at 919-515-3148."
+  },
+  {
+    "objectID": "course_syllabus.html#technology-requirements",
+    "href": "course_syllabus.html#technology-requirements",
+    "title": "Syllabus",
+    "section": "Technology Requirements",
+    "text": "Technology Requirements\nThis course may require particular technologies to complete coursework. Specifically, students will need R and R Studio. To avoid challenges that may arise due to different versions of packages, the instructor is providing access to code at the this link. Students will need to create accounts with their email address in order to gain access.\nIf you need access to additional technological support, please contact the Libraries’ Technology Lending Service: https://www.lib.ncsu.edu/devices."
+  },
+  {
+    "objectID": "course_syllabus.html#resources-1",
+    "href": "course_syllabus.html#resources-1",
+    "title": "Syllabus",
+    "section": "Resources",
+    "text": "Resources\nThese are difficult times, and academic and personal stress is a natural result. Everyone is encouraged to take care of themselves and their peers. If you need additional support, there are many resources on campus to help you: \n• Counseling Center https://counseling.dasa.ncsu.edu/ \n• Health Center https://healthypack.dasa.ncsu.edu/ \n• If you or someone you know are experiencing food, housing or financial insecurity, please see the Pack Essentials Program https://dasa.ncsu.edu/pack-essentials/ \nSupporting Fellow Students in Distress. As members of the NC State Wolfpack community, we each share a personal responsibility to express concern for one another and to ensure that this classroom and the campus as a whole remains a healthy and safe environment for learning. Occasionally, you may come across a fellow classmate whose personal behavior concerns or worries you, either for the classmate’s well-being or yours. When this is the case, I would encourage you to report this behavior to the NC State’s Students of Concern website: https://prevention.dasa.ncsu.edu/nc-state-cares. Although you can report anonymously, it is preferred that you share your contact information so they can follow-up with you personally. I may also make a referral to the CARES program if I notice you are having a difficult time. If you don’t know who to talk to or which steps to take, please don’t hesitate to come talk to me and I will help you the best I can. \nStudents are responsible for reviewing the NC State University Policies, Rules, and Regulations (PRRs) which pertain to their course rights and responsibilities, including those referenced both below and above in this syllabus:\nEqual Opportunity and Non-Discrimination Policy Statement: https://policies.ncsu.edu/policy/pol-04-25-05 with additional references at https://oied.ncsu.edu/divweb/policies/\nCode of Student Conduct: https://policies.ncsu.edu/policy/pol-11-35-01."
+  },
+  {
+    "objectID": "welcome.html",
+    "href": "welcome.html",
+    "title": "Predictive Analytics (PA) for Improving Services",
+    "section": "",
+    "text": "Welcome! Click top navigation bar to continue."
+  },
+  {
+    "objectID": "welcome.html#predictive-analytics-for-improving-services",
+    "href": "welcome.html#predictive-analytics-for-improving-services",
+    "title": "Predictive Analytics (PA) for Improving Services",
+    "section": "",
+    "text": "Welcome! Click top navigation bar to continue."
+  },
+  {
+    "objectID": "index.html#predictive-analytics-for-improving-services",
+    "href": "index.html#predictive-analytics-for-improving-services",
+    "title": "Predictive Analytics for Improving Services",
+    "section": "",
+    "text": "Welcome! Click top navigation bar to continue."
+  },
+  {
+    "objectID": "course_syllabus.html#syllabus",
+    "href": "course_syllabus.html#syllabus",
+    "title": "1 Course Description",
+    "section": "",
+    "text": "DSC495 Special Topics in Data Science: Predictive Analytics for Improving Services\n\n\n\nSemester: Fall 2023\nSection: 613\n\n\nInstructor: Kristin Porter\nClass Meetings: Thursdays\n\n\nEmail: kristin.porter@keporterconsulting.com\nTime: 3-3:50 PM EST\n\n\nOffice hour location: Zoom link\nLocation: Zoom link\n\n\nOffice hours: TBD\nThis meeting is required.\n\n\nLast updated: 08/04/2023\nCredit hours: 1"
+  },
+  {
+    "objectID": "scoping_what.html",
+    "href": "scoping_what.html",
+    "title": "What are we trying to predict?",
+    "section": "",
+    "text": "We want to predict employment. But how, exactly are we defining and measuring employment? We need to define it very precisely, considering:\n\nWhat is most important to the TANF program’s goals?\nWhat can be measured - reliably and consistently over time - with the available data?\n\nIn our example, we will focus on just measure, but multiple measures of employment that make sense for the goals of the project could be analyzed.\nThe selected precise outcome measure is: whether a client is employed in a job that is covered by unemployment insurance (UI) for all of the first 3 quarters following program exit. The measure is coded as 1 when this is true and 0 otherwise.\nThis choice was made because:\n\nEmployment sustainability was a priority for the TANF program and this measure captures success in employment sustainability two ways:\n\nIf a client completes the program’s education and training program and then is employed for 3 consecutive quarters, then the measure equals 1 for success.\nIf a client leaves the program early but then is employed for 3 consecutive quarters, then the measure equals 1 for success. The measure is coded as 1 when this is true and 0 otherwise.\nImportant note: if we defined the outcome measure as “whether a client is employed in a job that is covered by unemployment insurance (UI) for all of the first 3 quarters following program completion instead of exit, then our measure would be problematic. Those who left the program because they got a job would not be considered a success and coded as 0. This could lead to misdirecting resources to clients who are likely to get and keep jobs, just early.)\n\nUI data is the data relied on for employment information. These data cover most jobs, but miss things like a lot of gig work and self-employment.\n\nHowever, after defining this measure, the project decided to code this outcome in the negative – so that we were estimating likelihoods of whether someone does not achieve the employment outcome. Therefore, our predicted likelihoods represent risk scores.\n\n\n\n Back to top"
   }
 ]

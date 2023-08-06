@@ -1,4 +1,47 @@
 ---
 title: "How will findings be used?"
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
+The department of social services already had a practice of providing
+extra intervention to those clients who needed them most. These
+included:
+
+-   calling clients to check in,
+
+-   offering extra casework sessions, and
+
+-   extra workshops to help with job search and job skills.
+
+With limited staff and financial resources, the department wanted to
+deliver services to who needed them the most. However, the department
+thought that their existing approach for identifying those clients could
+be improved by distilling a wide range of potentially predictive
+measures into a single "risk score."
+
+A few things to note:
+
+-   They did not want, nor did the project team recommend, for the risk
+    scores to **replace** their decision-making process.
+
+-   Instead, the risk scores could potentially provide a valuable piece
+    of information - if we could validate good predictive performance
+    and minimal bias.
+
+-   The department planned to train caseworkers to how to interpret and
+    incorporate the risk score into their decisionmaking and
+    prioritizing.
+
+-   The department also wanted to look at how risk scores varied across
+    and within populations served by offices throughout the state. This
+    could help them understand which offices were more in need of
+    support for reaching out to clients and for planning workshops.
+
+This information about how the department plans to use the information
+can guide how we scope the predictive analytics projects.
+
+Remember, we also want to frequently check-in with our ethical
+considerations. What ethical considerations do we want to be careful
+about as we proceed?

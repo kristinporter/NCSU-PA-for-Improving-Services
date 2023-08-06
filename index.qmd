@@ -1,0 +1,10 @@
+---
+title: "Predictive Analytics for Improving Services"
+date: August 21, 2023
+author:
+  - name: Kristin E. Porter, PhD
+    email: kristin.porter@keporterconsulting.com
+sidebar: false
+---
+
+![](shutterstock_improvement.png){fig-align="left" width="9in"}
