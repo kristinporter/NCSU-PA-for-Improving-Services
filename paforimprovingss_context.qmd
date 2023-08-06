@@ -2,7 +2,7 @@
 title: Is predictive analytics a good fit for your context?
 ---
 
-![](shutterstock_wondering.png){} 
+![](images/shutterstock_wondering.png){} 
 
 Before embarking on a PA project, it is value to assess whether it is the right approach at the right time for the setting. Here are a some key considerations to determine if PA is a good fit.
 

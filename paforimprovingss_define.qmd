@@ -4,7 +4,7 @@ title: "What is predictive analytics?"
 
 -   Predictive analytics (PA) (or predictive modeling) is the use historical data to forecast future outcomes. 
 
-![](shutterstock_PA2.jpg){fig-align="center" width="6in"} 
+![](images/shutterstock_PA2.jpg){fig-align="center" width="6in"} 
 
 -   PA may rely on relatively simple approaches, such as models with a small number of measures, or they may involve complex machine-learning algorithms, taking advantage of the large amounts of data and data-driven methodologies.
 

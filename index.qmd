@@ -7,4 +7,4 @@ author:
 sidebar: false
 ---
 
-![](shutterstock_improvement.png){fig-align="left" width="9in"}
+![](images/shutterstock_improvement.png){fig-align="left" width="9in"}

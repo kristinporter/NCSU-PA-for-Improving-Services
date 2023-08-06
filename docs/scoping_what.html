@@ -318,24 +318,26 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>We want to predict employment. But how, exactly are we defining and measuring employment? We need to define it very precisely, considering:</p>
+<p><img src="images/shutterstock_workers.png" class="img-fluid" style="width:6in"></p>
+<p>We want to predict employment. But how, <em>exactly</em> are we defining and measuring employment? We need to define it very precisely, considering:</p>
 <ul>
 <li><p>What is most important to the TANF program’s goals?</p></li>
 <li><p>What can be measured - reliably and consistently over time - with the available data?</p></li>
 </ul>
-<p>In our example, we will focus on just measure, but multiple measures of employment that make sense for the goals of the project could be analyzed.</p>
-<p>The selected precise outcome measure is: whether a client is employed in a job that is covered by unemployment insurance (UI) for all of the first 3 quarters following program exit. The measure is coded as 1 when this is true and 0 otherwise.</p>
+<p>In our example, we will focus on just one measure, but multiple measures of employment that make sense for the goals of the project could be analyzed.</p>
+<p>The selected precise outcome measure is: <span style="color:blue">whether a client is employed in a job that is covered by unemployment insurance (UI) for all of the first 3 quarters following program exit</span>. The measure is coded as 1 when this is true and 0 otherwise.</p>
 <p>This choice was made because:</p>
 <ol type="1">
-<li><p>Employment sustainability was a priority for the TANF program and this measure captures success in employment sustainability two ways:</p>
+<li><p>Employment sustainability was a priority for the TANF program and this measure captures success two ways:</p>
 <ul>
-<li><p>If a client completes the program’s education and training program and then is employed for 3 consecutive quarters, then the measure equals 1 for success.</p></li>
-<li><p>If a client leaves the program early but then is employed for 3 consecutive quarters, then the measure equals 1 for success. The measure is coded as 1 when this is true and 0 otherwise.</p>
-<p>Important note: if we defined the outcome measure as “whether a client is employed in a job that is covered by unemployment insurance (UI) for all of the first 3 quarters following program <em>completion</em> instead of <em>exit</em>, then our measure would be problematic. Those who left the program because they got a job would not be considered a success and coded as 0. This could lead to misdirecting resources to clients who are likely to get and keep jobs, just early.)</p></li>
+<li><p>If a client <strong>completes the TANF education and training program and then</strong> is employed for 3 consecutive quarters, then the measure equals 1 for success.</p></li>
+<li><p>If a client <strong>leaves the TANF education and training program early and then</strong> is employed* for 3 consecutive quarters, then the measure equals 1 for success.</p>
+<p><strong>Important note:</strong> if we defined the outcome measure as “whether a client is employed in a job that is covered by unemployment insurance (UI) for all of the first 3 quarters following program <em>completion</em> instead of program <em>exit</em>, then our measure would be problematic. Those who left the program because they got a job would not be considered a success and coded as 0. This could lead to misdirecting resources to clients who are likely to get and keep jobs, just early.</p></li>
 </ul></li>
-<li><p>UI data is the data relied on for employment information. These data cover most jobs, but miss things like a lot of gig work and self-employment.</p></li>
+<li><p>UI data is the data relied on for employment information. These data cover most jobs, but miss things like a lot of gig work and self-employment.</p>
+<p><strong>Note:</strong> If a client has three sustained quarters of self-employment, our modeling would not consider them a success. This is certainly a limititation. However, after consulting with program staff who have a deep understanding of the target population, we learned that it was pretty rare for clients to get and sustain gig or self-employed work for three executive quarters. We decided that the limitation was not big enough to not move forward. This is one example of many in which the deep expertise of service providers is essential to project scoping.</p></li>
 </ol>
-<p>However, after defining this measure, the project decided to code this outcome in the negative – so that we were estimating likelihoods of whether someone does not achieve the employment outcome. Therefore, our predicted likelihoods represent risk scores.</p>
+<p>However, after defining this measure, the project decided to code this outcome in the negative – so that we were estimating likelihoods of whether someone does not achieve the employment outcome measure defined above. Therefore, our predicted likelihoods represent risk scores.</p>
 
 
 

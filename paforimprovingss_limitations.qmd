@@ -15,4 +15,4 @@ Optional: You can find a short discussion of the differences between predictive 
 
 And for fun, Baba Brinkman covers some of these issues in his rap comparing and contrasting data science and statistics. (Click link below.)
 
-[![](BabaBrinkmanDSvsStat.jpeg){fig-align="center" width="2.5in"}](https://music.bababrinkman.com/track/data-science)
+[![](images/BabaBrinkmanDSvsStat.jpeg){fig-align="center" width="2.5in"}](https://music.bababrinkman.com/track/data-science)
