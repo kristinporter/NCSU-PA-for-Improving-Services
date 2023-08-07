@@ -63,6 +63,13 @@ website:
           - poc_addcomplexity.qmd
           - poc_compare.qmd
         - section: "Data for predictive analytics PART 1"
+          contents:
+          - data_overfitting.qmd
+          - data_split.qmd
+          - data_train.qmd
+          - data_validate.qmd
+          - data_test.qmd
+          - data_splitconsiderations.qmd
         - section: "Data for predictive analytics PART 2"
         - section: "Specifying learners PART 1"
         - section: "Specifying learners PART 2"

@@ -1,0 +1,9 @@
+---
+title: "Splitting data for training, testing and validating"
+---
+
+First, model training is when the chosen algorithm is applied to a training data set in order to learn the patterns present in the data. Once an algorithm is trained, it can then be used on unseen data to make new predictions. For example, training a linear regression model consists of estimating the regression coefficients. These coefficients are then applied when making new predictions. For more complex algorithms, the trained model is generally more complex than a single set of coefficients.
+
+Second, validation is when learners are used to make predictions on an unseen set of data, called the "validation" set. The validation set is used to calculate evaluation metrics. In this stage, we use the evaluation results to do learner selection, and pick the best learner.
+
+Finally, testing is when the single final selected learner is used to make predictions on a final unseen set of data, the "test" set. This step gives us a realistic assessment of learner performance on unseen data.
