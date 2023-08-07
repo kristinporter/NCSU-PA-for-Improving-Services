@@ -2,7 +2,7 @@
 title: "Generalizing learners to new data"
 ---
 
-Recall our goal of predictive analytics, as shown in this simply illustration: We use use data with known outcomes to build a model that allows us to predict outcomes - or the likelihood of outcomes in data with unknown outcomes. 
+Recall our goal of predictive analytics, as shown in this simply illustration: We use data with *known* outcomes to build a model that allows us to predict outcomes - or the likelihood of outcomes in data with *unknown* outcomes. 
 
 ![](images/WhatisPA.png){width="6in"}
 

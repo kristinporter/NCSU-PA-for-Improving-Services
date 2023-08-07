@@ -71,15 +71,51 @@ website:
           - data_test.qmd
           - data_splitconsiderations.qmd
         - section: "Data for predictive analytics PART 2"
+          contents:
+          - "Oveview of data quality"
+          - "Handling missing data"
+          - "Stability of measures over time"
+          - "Data leakage"
+          - "Strategies for extracting predictive value"
+          - "Data model for PA Toolset"
         - section: "Specifying learners PART 1"
+          contents:
+          - "Using the PA Toolset to specify learners"
+          - "Specifying predictor sets"
+          - "Specifying modeling approaches"
         - section: "Specifying learners PART 2"
+          contents:
+          - "Machine learning (ML) algorithms for predicting binary outcomes"
+          - "Tuning ML algorithms with the PA Toolset"
         - section: "Evaluating and comparing predictive performance"
           contents:
+          - "Prediction output from learner training"
+          - "Metrics for evaluating predictive performance"
+          - "Visualiziations of predictive performance"
+          - "Guidance for selecting metrics"
           # - performance_metrics_PLACEHOLDER.qmd
         - section: "Evaluating and comparing bias"
+          contents:
+          - "Sources of bias"
+          - "Metrics for assessing bias"
+          - "Visualizations for assessing bias"
+          - "Guidance for selecting the metrics"
+          - "Addressing bias"
         - section: "Selecting and validating a learner"
+          contents:
+          - "Considerations for selecting a learner"
+          - "Validating a learner"
         - section: "Understanding and communicating results"
+          contents:
+          - "Results at the individual level"
+          - "Results at the aggregate level"
+          - "What can we say about which predictors matter most?"
+          - "Reviewing limitations and ethical considerations"
         - section: "Deploying predictive analytics"
+          contents:
+          - "Deciding whether PA should be deployed"
+          - "Approaches for deployment"
+          - "Monitoring performance and fairness over time"
         - section: "Additional optional material"
           contents:
           - OptionalPAvsInfStat.qmd
