@@ -6,6 +6,14 @@ Recall our goal of predictive analytics, as shown in this simply illustration: W
 
 ![](images/WhatisPA.png){width="6in"}
 
-How do we make sure that our model, which is based on information in the data with known outcomes, generalizes to new data? A challenge is that if our model is too closely tailored to the data we use to develop it, then we capture not only statistical patterns but also random fluctuations or noise that is specific to those data. When a model captures noise in underlying data, it will describe, or fit, the original data very well. But when applied to new, unseen data, this same model will make poor predictions. It will not fit new data because it is based on specific noise rather than generalizable patterns. A classic example of overfitting is when a learner perfectly fits to a rare instance. 
+How do we make sure that our model, which is based on information in the data with known outcomes, generalizes to new data? 
+If our model too closely tailored to the data we use to develop it, it risks not only capturing meaningful statistical patterns but also incidental fluctuations or noise unique to that dataset.
+When a model inadvertently incorporates this noise, it excels at describing and fitting the original data.
+However, when confronted with new, unseen data, this same model tends to deliver inaccurate predictions.
+Its inability to adapt to new data stems from being constructed around specific noise rather than encompassing broader, generalizable patterns. 
 
-In this section, we will learn how to build (i.e., estimate, fit, train) compare and select models that do the best job in generalizing to new, unseen data. We will learn strategies for avoiding overfitting. 
+The following simple plots display the concepts of underfitting and overfitting with an example of fitting a model that captures the relationship between two measures. In the first plot, the estimated model, represented by the blue line, does not capture the trend evident in the data. This is corrected in the second plot, in which the model appears to be a a good fit of the general trend. Then, in the the third plot, the model fits the data extremely well, but it overfits because it predicts almost every point - almost every random variation from the overall trend we care about.  
+
+![](images/overfitting.png){width="6in"}
+
+In this first section on data for predictive analytics, we will learn how to develop (i.e., estimate, fit, train), compare and select learners (i.e. predictor sets plus modeling approaches) that do the best job in generalizing to new, unseen data. That is, we will learn strategies for avoiding overfitting. 
