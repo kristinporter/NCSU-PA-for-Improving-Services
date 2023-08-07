@@ -233,9 +233,9 @@
   {
     "objectID": "scoping_who.html",
     "href": "scoping_who.html",
-    "title": "For whom are we making predictions?",
+    "title": "Who are we making predictions for?",
     "section": "",
-    "text": "Back to top"
+    "text": "Our target population is specifically adult TANF recipients who are eligible and approved for the TANF departments education and training program and who are required to work.\nOur data sets include a broader group of TANF applicants and participants so we need to be careful to exclude those who do not meet our criteria.\n\n\n\n Back to top"
   },
   {
     "objectID": "paforimprovingss_ethics.html#addressEthical",
@@ -389,6 +389,62 @@
     "href": "scoping_what.html",
     "title": "What are we trying to predict?",
     "section": "",
-    "text": "We want to predict employment. But how, exactly are we defining and measuring employment? We need to define it very precisely, considering:\n\nWhat is most important to the TANF program’s goals?\nWhat can be measured - reliably and consistently over time - with the available data?\n\nIn our example, we will focus on just one measure, but multiple measures of employment that make sense for the goals of the project could be analyzed.\nThe selected precise outcome measure is: whether a client is employed in a job that is covered by unemployment insurance (UI) for all of the first 3 quarters following program exit. The measure is coded as 1 when this is true and 0 otherwise.\nThis choice was made because:\n\nEmployment sustainability was a priority for the TANF program and this measure captures success two ways:\n\nIf a client completes the TANF education and training program and then is employed for 3 consecutive quarters, then the measure equals 1 for success.\nIf a client leaves the TANF education and training program early and then is employed* for 3 consecutive quarters, then the measure equals 1 for success.\nImportant note: if we defined the outcome measure as “whether a client is employed in a job that is covered by unemployment insurance (UI) for all of the first 3 quarters following program completion instead of program exit, then our measure would be problematic. Those who left the program because they got a job would not be considered a success and coded as 0. This could lead to misdirecting resources to clients who are likely to get and keep jobs, just early.\n\nUI data is the data relied on for employment information. These data cover most jobs, but miss things like a lot of gig work and self-employment.\nNote: If a client has three sustained quarters of self-employment, our modeling would not consider them a success. This is certainly a limititation. However, after consulting with program staff who have a deep understanding of the target population, we learned that it was pretty rare for clients to get and sustain gig or self-employed work for three executive quarters. We decided that the limitation was not big enough to not move forward. This is one example of many in which the deep expertise of service providers is essential to project scoping.\n\nHowever, after defining this measure, the project decided to code this outcome in the negative – so that we were estimating likelihoods of whether someone does not achieve the employment outcome measure defined above. Therefore, our predicted likelihoods represent risk scores.\n\n\n\n Back to top"
+    "text": "It is important to be very thoughtful and precise in defining and developing a measure of the outcome to be predicted. In our motivating example, we want to predict employment, but we need to precisely define a measure of employment. When defining an outcome, the following considerations are essential:\nIn our example, we will focus on predicting just one outcome measure, but multiple measures of employment that make sense for the goals of the department could be analyzed.\nThe selected precise outcome measure is: whether a client holds a job covered by unemployment insurance (UI) for the first three quarters after exiting the department’s education and training program for TANF participants. The measure is coded as 1 when achieved and 0 otherwise.\nThis choice was made because:\nHowever, after defining this measure, the project decided to code this outcome in the negative – so that we were estimating likelihoods of whether someone does not achieve the employment outcome measure defined above. Therefore, our predicted likelihoods represent risk scores.\nAlso, when discussing this project with stakeholders, we want to emphasize sensitivity to clients’ experiences. While we focus on “success” definitions that inform our measures (subsequently turned into “risk” scores), we avoid implying “failure” when clients fall short of departmental employment goals. We acknowledge the multifaceted challenges clients encounter and the program’s mission to assist those facing elevated barriers."
+  },
+  {
+    "objectID": "scoping_when.html",
+    "href": "scoping_when.html",
+    "title": "When are we making predictions?",
+    "section": "",
+    "text": "Deciding when to make predictions not always straightforward but is critical to developing a valid prediction model.\nThe key is to balance two important considerations:\n\nFirst, we want to run predictive models early enough for the findings to be actionable. In our case, we want our caseworkers to be able to help clients early enough that they can address challenges.\nBut running predictive models later may mean we have more data measures available to include in our models and therefore potentially have more accurate models.\n\nIn our TANF program example, through conversations with the program managers and caseworkers on our project team, we learn that there can be substantial lag in the entry of most of data collected during the intake and approval processes for TANF clients.\nWe therefore decide to specify our prediction timepoint as one month after the approval process for the education and training program.\n\nThis allows time for most measures collected up through approval to be entered into the system.\nThis means that our models only include measures that are entered before our timepoint.\nIf the model is deployed, we would need to be careful to wait to apply the model to new data only at the correct timepoint – not earlier. Otherwise, we would have a lot of missing data, which could lead to poor predictions. We will discuss this more later.\n\nIt is a common mistake to not give adequate thought to when predictions are being made and to which measures are available at that time. If we ignore this issue, we might use measures that are collected very close to the outcome. This could lead to excellent performance - great accuracy - but useless predictions.\nFor example, our data may include a measure of whether a TANF client has submitted a job application at the end of a job preparation class. Including this measure in our model could improve its predictive performance. However, because the measure is collected towards the end of the education and training program, if we wait to do our modeling (set our timepoint at the end of the education and training program), then by the time we get results there is little time to take action to help those at highest risk of not finding and sustaining employment.\nThink about this issue when you read or hear about the high accuracy of predictive models. If a company boasts that it predicts an outcome with very high accuracy, one important question to ask is: When are predictions being made? Is it possible that measures are collected so close to the outcome that some predictors are actually proxies for the outcome? Or, what trade-offs are being made in terms of having time to act on predictive analytics results?\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "scoping_stakeholders.html",
+    "href": "scoping_stakeholders.html",
+    "title": "Who are the stakeholders?",
+    "section": "",
+    "text": "forthcoming\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "scoping_what.html#footnotes",
+    "href": "scoping_what.html#footnotes",
+    "title": "What are we trying to predict?",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nAs summarized by the Employment and Training Administration in the U.S. Department of Labor: These data are from the Unemployment Insurance Data Base (UIDB) as well as UI-related data from outside sources (e.g., Bureau of Labor Statistics data on employment and unemployment and U.S. Department of Treasury data on state UI trust fund activities). See this link{https://edd.ca.gov/en/newsroom/facts-and-stats/dashboard/} for more details.↩︎"
+  },
+  {
+    "objectID": "poc_compare.html",
+    "href": "poc_compare.html",
+    "title": "Comparing learners",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "poc_learners.html",
+    "href": "poc_learners.html",
+    "title": "Defining learers",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "poc_importance.html",
+    "href": "poc_importance.html",
+    "title": "A proof-of-concept framework",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "poc_benchmark.html",
+    "href": "poc_benchmark.html",
+    "title": "Specifying a benchmark",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "poc_addcomplexity.html",
+    "href": "poc_addcomplexity.html",
+    "title": "Gradually adding complexity",
+    "section": "",
+    "text": "Back to top"
   }
 ]

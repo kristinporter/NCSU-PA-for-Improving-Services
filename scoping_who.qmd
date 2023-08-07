@@ -1,4 +1,9 @@
 ---
-title: For whom are we making predictions? 
+title: Who are we making predictions for? 
 ---
 
+![](images/shutterstock_who.png){width="6in"}
+
+Our target population is specifically [adult TANF recipients who are eligible and approved for the TANF departments education and training program and who are required to work]{style="color:blue"}.
+
+Our data sets include a broader group of TANF applicants and participants so we need to be careful to exclude those who do not meet our criteria.

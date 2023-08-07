@@ -4,19 +4,25 @@ title: What are we trying to predict?
 
 ![](images/shutterstock_workers.png){width="6in"}
 
-We want to predict employment. But how, *exactly* are we defining and measuring employment? We need to define it very precisely, considering:
+It is important to be very thoughtful and precise in defining and developing a measure of the outcome to be predicted. In our motivating example, we want to predict employment, but we need to precisely define a measure of employment. When defining an outcome, the following considerations are essential:
 
--   What is most important to the TANF program's goals?
+1.  *What is important to the service provider's goals?* In our example, what is most important to the TANF program's goals for its clients?
 
--   What can be measured - reliably and consistently over time - with the available data?
+2.  *How is success defined? Does our measure capture all avenues to success?* In our example, what does a successful employment outcome look like? When does that employment start? How long does it last? What kind of employment is considered?
 
-In our example, we will focus on just one measure, but multiple measures of employment that make sense for the goals of the project could be analyzed.
+3.  *What can be measured - reliably and consistently over time - with the available data?* In our example, the available data include information collected through an intake process when TANF participants apply for the program and information about their participation in TANF program activities. Additionally, the department integrates its administrative data with Unemployment Insurance, which provides state-reported quarterly information about individuals' employment status and earnings.[^1]
 
-The selected precise outcome measure is: [whether a client is employed in a job that is covered by unemployment insurance (UI) for all of the first 3 quarters following program exit]{style="color:blue"}. The measure is coded as 1 when this is true and 0 otherwise.
+[^1]: As summarized by the Employment and Training Administration in the U.S. Department of Labor: These data are from the Unemployment Insurance Data Base (UIDB) as well as UI-related data from outside sources (e.g., Bureau of Labor Statistics data on employment and unemployment and U.S. Department of Treasury data on state UI trust fund activities). See this link{https://edd.ca.gov/en/newsroom/facts-and-stats/dashboard/} for more details.
+
+In our example, we will focus on predicting just one outcome measure, but multiple measures of employment that make sense for the goals of the department could be analyzed.
+
+The selected precise outcome measure is: [whether a client holds a job covered by unemployment insurance (UI) for the first three quarters after exiting the department's education and training program for TANF participants]{style="color:blue"}. The measure is coded as 1 when achieved and 0 otherwise.
 
 This choice was made because:
 
-1.  Employment sustainability was a priority for the TANF program and this measure captures success two ways:
+1.  *Employment sustainability was a priority for the TANF program.*
+
+2.  *This specific employment measure captures success two ways:*
 
     -   If a client **completes the TANF education and training program and then** is employed for 3 consecutive quarters, then the measure equals 1 for success.
 
@@ -24,8 +30,11 @@ This choice was made because:
 
         **Important note:** if we defined the outcome measure as "whether a client is employed in a job that is covered by unemployment insurance (UI) for all of the first 3 quarters following program *completion* instead of program *exit*, then our measure would be problematic. Those who left the program because they got a job would not be considered a success and coded as 0. This could lead to misdirecting resources to clients who are likely to get and keep jobs, just early.
 
-2.  UI data is the data relied on for employment information. These data cover most jobs, but miss things like a lot of gig work and self-employment.
+3.  *Our employment information hinges on UI data.* These data encompass most jobs but possibly missing certain forms of work like gig employment and self-employment.
 
-    **Note:** If a client has three sustained quarters of self-employment, our modeling would not consider them a success. This is certainly a limititation. However, after consulting with program staff who have a deep understanding of the target population, we learned that it was pretty rare for clients to get and sustain gig or self-employed work for three executive quarters. We decided that the limitation was not big enough to not move forward. This is one example of many in which the deep expertise of service providers is essential to project scoping. 
+    **Note:** If a client has three sustained quarters of self-employment or gig-employment, our modeling would *not* consider them as a success for the outcome. This is certainly a limitation. However, after consulting with program staff who have a deep understanding of the target population, we learned that it was pretty rare for clients to get and sustain gig or self-employed work for three executive quarters. We decided that the limitation was not big enough to not move forward. This is one example of many in which the deep expertise of service providers is essential to project scoping.
 
 However, after defining this measure, the project decided to code this outcome in the negative -- so that we were estimating likelihoods of whether someone does not achieve the employment outcome measure defined above. Therefore, our predicted likelihoods represent risk scores.
+
+Also, when discussing this project with stakeholders, we want to emphasize sensitivity to clients' experiences. While we focus on "success" definitions that inform our measures (subsequently turned into "risk" scores), we avoid implying "failure" when clients fall short of departmental employment goals. We acknowledge the multifaceted challenges clients encounter and the program's mission to assist those facing elevated barriers.
+

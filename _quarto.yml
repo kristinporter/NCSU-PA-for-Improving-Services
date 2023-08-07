@@ -51,11 +51,17 @@ website:
           contents:
           - scoping_ex.qmd
           - scoping_usefindings.qmd
-          - scoping_stakeholders.qmd
           - scoping_what.qmd
           - scoping_who.qmd
           - scoping_when.qmd
+          - scoping_stakeholders.qmd
         - section: "Conducting a PA proof-of-concept"
+          contents:
+          - poc_importance.qmd
+          - poc_learners.qmd
+          - poc_benchmark.qmd
+          - poc_addcomplexity.qmd
+          - poc_compare.qmd
         - section: "Data for predictive analytics PART 1"
         - section: "Data for predictive analytics PART 2"
         - section: "Specifying learners PART 1"

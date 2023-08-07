@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./scoping_who.html" rel="next">
-<link href="./scoping_stakeholders.html" rel="prev">
+<link href="./scoping_usefindings.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -194,12 +194,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./scoping_stakeholders.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Engaging stakeholders</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./scoping_what.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">What are we trying to predict?</span></a>
   </div>
@@ -207,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./scoping_who.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">For whom are we making predictions?</span></a>
+ <span class="menu-text">Who are we making predictions for?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -216,11 +210,39 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">When are we making predictions?</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./scoping_stakeholders.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Who are the stakeholders?</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Conducting a PA proof-of-concept</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Conducting a PA proof-of-concept</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+ <span class="menu-text">poc_importance.qmd</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">poc_learners.qmd</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">poc_benchmark.qmd</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">poc_addcomplexity.qmd</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">poc_compare.qmd</span>
+  </li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -319,29 +341,38 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p><img src="images/shutterstock_workers.png" class="img-fluid" style="width:6in"></p>
-<p>We want to predict employment. But how, <em>exactly</em> are we defining and measuring employment? We need to define it very precisely, considering:</p>
-<ul>
-<li><p>What is most important to the TANF program’s goals?</p></li>
-<li><p>What can be measured - reliably and consistently over time - with the available data?</p></li>
-</ul>
-<p>In our example, we will focus on just one measure, but multiple measures of employment that make sense for the goals of the project could be analyzed.</p>
-<p>The selected precise outcome measure is: <span style="color:blue">whether a client is employed in a job that is covered by unemployment insurance (UI) for all of the first 3 quarters following program exit</span>. The measure is coded as 1 when this is true and 0 otherwise.</p>
+<p>It is important to be very thoughtful and precise in defining and developing a measure of the outcome to be predicted. In our motivating example, we want to predict employment, but we need to precisely define a measure of employment. When defining an outcome, the following considerations are essential:</p>
+<ol type="1">
+<li><p><em>What is important to the service provider’s goals?</em> In our example, what is most important to the TANF program’s goals for its clients?</p></li>
+<li><p><em>How is success defined? Does our measure capture all avenues to success?</em> In our example, what does a successful employment outcome look like? When does that employment start? How long does it last? What kind of employment is considered?</p></li>
+<li><p><em>What can be measured - reliably and consistently over time - with the available data?</em> In our example, the available data include information collected through an intake process when TANF participants apply for the program and information about their participation in TANF program activities. Additionally, the department integrates its administrative data with Unemployment Insurance, which provides state-reported quarterly information about individuals’ employment status and earnings.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
+</ol>
+<p>In our example, we will focus on predicting just one outcome measure, but multiple measures of employment that make sense for the goals of the department could be analyzed.</p>
+<p>The selected precise outcome measure is: <span style="color:blue">whether a client holds a job covered by unemployment insurance (UI) for the first three quarters after exiting the department’s education and training program for TANF participants</span>. The measure is coded as 1 when achieved and 0 otherwise.</p>
 <p>This choice was made because:</p>
 <ol type="1">
-<li><p>Employment sustainability was a priority for the TANF program and this measure captures success two ways:</p>
+<li><p><em>Employment sustainability was a priority for the TANF program.</em></p></li>
+<li><p><em>This specific employment measure captures success two ways:</em></p>
 <ul>
 <li><p>If a client <strong>completes the TANF education and training program and then</strong> is employed for 3 consecutive quarters, then the measure equals 1 for success.</p></li>
 <li><p>If a client <strong>leaves the TANF education and training program early and then</strong> is employed* for 3 consecutive quarters, then the measure equals 1 for success.</p>
 <p><strong>Important note:</strong> if we defined the outcome measure as “whether a client is employed in a job that is covered by unemployment insurance (UI) for all of the first 3 quarters following program <em>completion</em> instead of program <em>exit</em>, then our measure would be problematic. Those who left the program because they got a job would not be considered a success and coded as 0. This could lead to misdirecting resources to clients who are likely to get and keep jobs, just early.</p></li>
 </ul></li>
-<li><p>UI data is the data relied on for employment information. These data cover most jobs, but miss things like a lot of gig work and self-employment.</p>
-<p><strong>Note:</strong> If a client has three sustained quarters of self-employment, our modeling would not consider them a success. This is certainly a limititation. However, after consulting with program staff who have a deep understanding of the target population, we learned that it was pretty rare for clients to get and sustain gig or self-employed work for three executive quarters. We decided that the limitation was not big enough to not move forward. This is one example of many in which the deep expertise of service providers is essential to project scoping.</p></li>
+<li><p><em>Our employment information hinges on UI data.</em> These data encompass most jobs but possibly missing certain forms of work like gig employment and self-employment.</p>
+<p><strong>Note:</strong> If a client has three sustained quarters of self-employment or gig-employment, our modeling would <em>not</em> consider them as a success for the outcome. This is certainly a limitation. However, after consulting with program staff who have a deep understanding of the target population, we learned that it was pretty rare for clients to get and sustain gig or self-employed work for three executive quarters. We decided that the limitation was not big enough to not move forward. This is one example of many in which the deep expertise of service providers is essential to project scoping.</p></li>
 </ol>
 <p>However, after defining this measure, the project decided to code this outcome in the negative – so that we were estimating likelihoods of whether someone does not achieve the employment outcome measure defined above. Therefore, our predicted likelihoods represent risk scores.</p>
+<p>Also, when discussing this project with stakeholders, we want to emphasize sensitivity to clients’ experiences. While we focus on “success” definitions that inform our measures (subsequently turned into “risk” scores), we avoid implying “failure” when clients fall short of departmental employment goals. We acknowledge the multifaceted challenges clients encounter and the program’s mission to assist those facing elevated barriers.</p>
 
 
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>As summarized by the Employment and Training Administration in the U.S. Department of Labor: These data are from the Unemployment Insurance Data Base (UIDB) as well as UI-related data from outside sources (e.g., Bureau of Labor Statistics data on employment and unemployment and U.S. Department of Treasury data on state UI trust fund activities). See this link{https://edd.ca.gov/en/newsroom/facts-and-stats/dashboard/} for more details.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -577,13 +608,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./scoping_stakeholders.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Engaging stakeholders</span>
+      <a href="./scoping_usefindings.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">How will findings be used?</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./scoping_who.html" class="pagination-link">
-        <span class="nav-page-text">For whom are we making predictions?</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Who are we making predictions for?</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
