@@ -9,101 +9,123 @@ website:
   title: "Predictive Analytics (PA) for Improving Services"
   page-navigation: true
   back-to-top-navigation: true
-  sidebar:
-    background: light
-    foreground: dark
-    style: "docked"
+
+  navbar:
+    background: primary
     search: true
-    collapse-level: 1
-    pinned: false
-    contents:
-      - index.qmd
-      - materials.qmd
-      - section: "Defining PA for improving services"
-        contents:
+    left:
+      - text: "Welcome"
+        file: index.qmd
+      - text: "Syllabus"
+        file: course_syllabus.qmd
+      - text: "Course materials"
+        file: materials.qmd
+      - text: "Assignments and project"
+        file: project.qmd
+      - text: "Six ways to get help"
+        file: course_gethelp.qmd
+     # - text: "References"
+     #   file: references.qmd
+
+  sidebar:
+    - title: "syllabus"
+      style: "floating"
+      contents:
+        - overview.qmd
+        - section: "Syllabus"
+          contents:
+          - course_syllabus.qmd
+
+    - title: "materials"
+      style: "floating"
+      contents:
+        - materials.qmd
+        - section: "PA to improve social services - an overview"
+          contents:
           - paforimprovingss_define.qmd
           - paforimprovingss_learn.qmd
           - paforimprovingss_limitations.qmd
           - paforimprovingss_ethics.qmd
           - paforimprovingss_context.qmd
-      - section: "Scoping a PA project"
-        contents:
+        - section: "Scoping a PA project"
+          contents:
           - scoping_ex.qmd
           - scoping_usefindings.qmd
           - scoping_what.qmd
           - scoping_who.qmd
           - scoping_when.qmd
-      - section: "Conducting a PA proof-of-concept"
-        contents:
+          - scoping_stakeholders.qmd
+        - section: "Conducting a PA proof-of-concept"
+          contents:
           - poc_importance.qmd
           - poc_learners.qmd
           - poc_benchmark.qmd
           - poc_addcomplexity.qmd
           - poc_compare.qmd
-      - section: "Data for PA: PART 1"
-        contents:
+        - section: "Data for predictive analytics PART 1"
+          contents:
           - data_overfitting.qmd
           - data_split.qmd
           - data_train.qmd
           - data_validate.qmd
           - data_test.qmd
           - data_splitconsiderations.qmd
-      - section: "Data for PA: PART 2"
-        contents:
+        - section: "Data for predictive analytics PART 2"
+          contents:
           - "Oveview of data quality"
           - "Handling missing data"
           - "Stability of measures over time"
           - "Data leakage"
           - "Strategies for extracting predictive value"
           - "Data model for PA Toolset"
-      - section: "Specifying learners: PART 1"
-        contents:
+        - section: "Specifying learners PART 1"
+          contents:
           - "Using the PA Toolset to specify learners"
           - "Specifying predictor sets"
           - "Specifying modeling approaches"
-      - section: "Specifying learners: PART 2"
-        contents:
+        - section: "Specifying learners PART 2"
+          contents:
           - "Machine learning (ML) algorithms for predicting binary outcomes"
           - "Tuning ML algorithms with the PA Toolset"
-      - section: "Evaluating and comparing predictive performance"
-        contents:
+        - section: "Evaluating and comparing predictive performance"
+          contents:
           - "Prediction output from learner training"
           - "Metrics for evaluating predictive performance"
           - "Visualiziations of predictive performance"
           - "Guidance for selecting metrics"
-        # - performance_metrics_PLACEHOLDER.qmd
-      - section: "Evaluating and comparing bias"
-        contents:
+          # - performance_metrics_PLACEHOLDER.qmd
+        - section: "Evaluating and comparing bias"
+          contents:
           - "Sources of bias"
           - "Metrics for assessing bias"
           - "Visualizations for assessing bias"
           - "Guidance for selecting the metrics"
           - "Addressing bias"
-      - section: "Selecting and validating a learner"
-        contents:
+        - section: "Selecting and validating a learner"
+          contents:
           - "Considerations for selecting a learner"
           - "Validating a learner"
-      - section: "Understanding and communicating results"
-        contents:
+        - section: "Understanding and communicating results"
+          contents:
           - "Results at the individual level"
           - "Results at the aggregate level"
           - "What can we say about which predictors matter most?"
           - "Reviewing limitations and ethical considerations"
-      - section: "Deploying predictive analytics"
-        contents:
+        - section: "Deploying predictive analytics"
+          contents:
           - "Deciding whether PA should be deployed"
           - "Approaches for deployment"
           - "Monitoring performance and fairness over time"
-      - section: "Additional optional material"
-        contents:
+        - section: "Additional optional material"
+          contents:
           - OptionalPAvsInfStat.qmd
-      - section: "Issue Log"
-        contents:
+        - section: "Issue Log"
+          contents:
           - issuelog.qmd
 
-    # - title: "References"
-    #   contents:
-    #     - reference.qmd
+    - title: "References"
+      contents:
+        - reference.qmd
 
 
 # format:

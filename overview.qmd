@@ -1,5 +1,0 @@
----
-title: "Course information"
----
-
-This section of this course website provides course information. 

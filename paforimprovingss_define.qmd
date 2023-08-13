@@ -1,5 +1,5 @@
 ---
-title: "What is predictive analytics?"
+title: "What is predictive analytics (PA)?"
 ---
 
 -   Predictive analytics (PA) (or predictive modeling) is the use historical data to forecast future outcomes. 
@@ -8,7 +8,7 @@ title: "What is predictive analytics?"
 
 -   PA may rely on relatively simple approaches, such as models with a small number of measures, or they may involve complex machine-learning algorithms, taking advantage of the large amounts of data and data-driven methodologies.
 
--   PA may make predictions of ***binary*** outcomes, which take just two values such as yes or no. For example, we can predict whether students will graduate from high school or not. With binary outcomes, predictive analytics can also be used to estimate the likelihood of the outcome occurring. For example, we can predict the likelihood or probability that a student will graduate from high school. This number likelihood is between 0 and 1.
+-   PA may make predictions of ***binary*** outcomes, which take just two values such as yes or no. For example, we can predict whether students will graduate from high school on time or not. With binary outcomes, predictive analytics can also be used to estimate the likelihood of the outcome occurring. For example, we can predict the likelihood or probability that a student will graduate from high school. This likelihood is between 0 and 1.
 
 -   PA may also forecaset ***continuous*** outcomes. For example, we can predict the grade point average (GPA) students will achieve.
 

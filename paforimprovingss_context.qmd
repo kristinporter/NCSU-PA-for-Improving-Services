@@ -20,7 +20,7 @@ Before embarking on a PA project, it is value to assess whether it is the right 
 
 -   Is there capacity for interpreting, communicating and and acting on PA results? How will findings be communicated?
 
--   Are there plans for how program services will be changed or introduced based on PA results?
+-   Are there plans for how program services will be changed or how new services will be introduced based on PA results?
 
 -    To what extent does decision making and service provision currently rely on perceptions or data-driven findings? Are data-driven findings in general, and PA findings more specifically, trusted and used? If not, are there plans for addressing practice and culture to support change?
 
@@ -40,4 +40,3 @@ Before embarking on a PA project, it is value to assess whether it is the right 
 
 -   Are there systems or processes in place to make sure ethical issues are attended to throughout a PA project?
 
--   Refer back to @addressEthical for a discussion of potential processes.

@@ -1,4 +1,26 @@
 ---
 title: "A proof-of-concept framework"
 ---
+![](images/shutterstock_poc.jpg){fig-align="center" width="8in"}
 
+After we have scoped our predictive analytics project, the next step is to conduct a "proof-of-concept." That is, before getting too invested in incorporating predictive analytics into systems of service improvement, we need to investigate the following:
+
+1.  **Given the available data, how well can we predict our outcome of interest?**
+
+    When investigating this question, we will want to consider various metrics of model performance, which we will turn to in a later section. We will be concerned with how well our predictive models help us identify those who truly are at risk. We may also be concerned with the extent to which our model makes mistakes - either designating at-risk individuals as not-at-risk, or not-at-risk individuals as being at-risk.
+
+2.  **Given the available data, to what extent is there bias in our predictions?**
+
+    When investigating this question, we will want to consider various metrics of bias, which we will also turn to in a later section. Here we will be concerned with whether and by how much model performance varies for different groups.
+
+3.  **To what extent does a complex predictive model improve upon a simple one or upon current practice?**
+
+    When investigating this question, we want to compare predictive performance and bias across multiple approaches for making predictions. We then want to consider potential trade-offs. If a more complex model does a better job than a simple model, do the improvements outweigh potential losses in transparency and explainability? Do the improvements outweight any potential complications with implementing and sustaining a more complex modeling process? 
+
+4.  **How do stakeholders understand and trust the results from the "best" predictive model?"
+
+
+
+[For further consideration: What other questions would you want to investigate in a proof-of-concept?]{style="color:green"}
+
+4.  **

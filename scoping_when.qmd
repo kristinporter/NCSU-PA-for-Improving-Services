@@ -3,6 +3,7 @@ title: "When are we making predictions?"
 ---
 
 Deciding **when** to make predictions not always straightforward but is critical to developing a valid prediction model.
+![](images/shutterstock_time.png){width="4in"}
 
 The key is to balance two important considerations:
 
@@ -10,18 +11,25 @@ The key is to balance two important considerations:
 
 2.  But running predictive models later may mean we have **more data measures available** to include in our models and therefore potentially have more accurate models.
 
-In our TANF program example, through conversations with the program managers and caseworkers on our project team, we learn that there can be substantial lag in the entry of most of data collected during the intake and approval processes for TANF clients.
+\
 
-We therefore decide to specify our prediction timepoint as [one month after the approval process for the education and training program]{style="color:blue"}.
+In our TANF program example, through conversations with the program managers and caseworkers on our project team, we learned 
+(a) that interventions should be introduced very early, so they wanted risk scores available soon after client intake and approval for the education and training program. But we also learned (b) that there can be substantial lag in the entry of most of data collected during the intake and approval processes for TANF clients.
 
--   This allows time for most measures collected up through approval to be entered into the system.
+We therefore decided to specify our prediction timepoint as [one month after the approval process for the education and training program]{style="color:blue"}.
 
--   This means that our models only include measures that are entered before our timepoint.
+-   This allowed time for most measures collected up through approval to be entered into the system.
+
+-   This means that our models only included measures that are entered before our timepoint.
 
 -   If the model is deployed, we would need to be careful to wait to apply the model to new data only at the correct timepoint -- not earlier. Otherwise, we would have a lot of missing data, which could lead to poor predictions. We will discuss this more later.
 
+\
 It is a common mistake to not give adequate thought to when predictions are being made and to which measures are available at that time. If we ignore this issue, we might use measures that are collected very close to the outcome. This could lead to excellent performance - great accuracy - but useless predictions.
 
 For example, our data may include a measure of whether a TANF client has submitted a job application at the end of a job preparation class. Including this measure in our model could improve its predictive performance. However, because the measure is collected towards the end of the education and training program, if we wait to do our modeling (set our timepoint at the end of the education and training program), then by the time we get results there is little time to take action to help those at highest risk of not finding and sustaining employment.
 
-Think about this issue when you read or hear about the high accuracy of predictive models. If a company boasts that it predicts an outcome with very high accuracy, one important question to ask is: When are predictions being made? Is it possible that measures are collected so close to the outcome that some predictors are actually proxies for the outcome? Or, what trade-offs are being made in terms of having time to act on predictive analytics results?
+Think about this issue when you read or hear about the high accuracy of predictive models. If a company boasts that it predicts an outcome with very high accuracy, one important question to ask is: 
+-   When are predictions being made?
+-   Is it possible that measures are collected so close to the outcome that some predictors are actually proxies for the outcome?
+-   What trade-offs are being made in terms of having time to act on predictive analytics results?

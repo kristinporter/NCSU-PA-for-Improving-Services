@@ -1,20 +1,20 @@
 ---
-title: "Course materials"
+title: "Overview"
 ---
 
-These course materials are designed to give students background reading on all the key topics we will cover in the class. Ideally, students should read assigned materials before coming to class. This allows us to use class time to review main points and to have good opportunities for discussion and questions. I will provide guidance on what to read before each class.
+These materials help you understand the main topics we'll cover in class. It's best to read them before each class, so we can use our time to review important points and discuss any questions. I'll let you know what to read before each class.
 
 ### How to use these materials
 
-The class is organized into the sections (main topics) listed in the left panel of this page. Clicking the down arrow to the right of each main section title will show the sub-sections. Generally, we will cover one main section/topic per class. Material will be added as the class progresses. 
+The class is organized into the sections listed in the left panel of this page. Clicking the arrow to the right of each main section title will show the sub-sections. Generally, we will cover one or two main sections per class. Some sections are currently empty, but will be added as the class progresses. 
 
-The materials consist of text, links to articles, blog posts, videos, etc, and snippets of the code we will use for analyses. Please note:
+The materials consist of text, links (to articles, blog posts, videos, etc.), and snippets of the code we will use for analyses. Please note:
 
--   Most hyperlinks throughout these materials are required unless otherwise noted. Most are very short.
+-   You should use the hyperlinks in these materials unless otherwise noted. Most are short.
 
--   Hyperlinks that are optional should be clearly stated as such. They provide an opportunity to do a deeper dive into a topic if you are interested.
+-   If hyperlinks are optional, this will be clearly stated. They provide an opportunity to do a deeper dive into a topic if you are interested.
 
--   In addition, you will see citations throughout. There is no expectation for you to read these papers unless you want to.
+-   In addition, you will see citations throughout. There is no expectation for you to read the cited papers unless you want to.
 
 ### Acknowledgements
 

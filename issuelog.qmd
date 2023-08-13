@@ -2,14 +2,7 @@
 title: Issue log
 ---
 
--   Formatting of references weird, no change with edits in references.bib or adding apa-6th-edition.csl
-
-### Notes from chat with Rick
-
--   Engage Polina on reviewing output from tool
-
--   Polina could be person to understand what TidyModels is doing.
-
--   Goal: have it ready for deployment.
-
+-   Formatting of references weird - how to capitalize where needed?
 -   
+
+### 

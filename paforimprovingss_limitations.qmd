@@ -2,17 +2,16 @@
 title: "What are the limitations of PA for improving services?"
 ---
 
-MORE FORTHCOMING
+While PA has the potential to provide valuable insights for improving services, it also has many limitations that data scientists need to consider when scoping, implementing and communicating plans and results. The following provides a brief overview of some limitations of PA. We will return to these in more depth later.  
 
 1.  **Predictions are only as good as the data on which they are built.** If the data available for analysis is incomplete, inaccurate, or biased, it can lead to unreliable predictions.
-2.  **There can be a trade-off between model performance and transparency and simplicity.** Sometimes the best-performing models are built by complex machine learning algorithms and can therefore be difficult to explain and can be challenging to deploy and maintain. A lack of transparency can be especially problematic in certain domains more ethical considerations.
-3.  **External Factors and Change:** Predictive models may not account for unexpected events, external influences, or sudden changes in the environment that can significantly impact the outcome being predicted. As the time horizon extends further into the future, models may become unreliable. For this reason, predictive models need regular monitoring and may require frequent updating.
-4.  **Predictive analytics tells us nothing about causal relationships.** Nor does it tell us that those with the lowest or highest likelihood of an outcome are the most likely to benefit from a new or revised service or intervention. 
-5.  **Overfitting:** Overfitting occurs when a predictive model is trained too closely on the training data and becomes overly specific to that data, leading to poor generalization to new, unseen data. It can reduce the model's ability to predict accurately in real-world scenarios. We will discuss overfitting later.
+2.  **There can be a trade-off between model performance and transparency and simplicity.** Sometimes the best-performing models are built by complex machine learning algorithms and can therefore be difficult to explain and can be challenging to deploy and maintain. A lack of transparency can be especially problematic in certain domains with more ethical considerations.
+3.  **External factors may change:** Predictive models rely on patterns in the past to make predictions about the future. But models may not account for unexpected events, external influences, or sudden changes in the environment that can significantly impact the outcome being predicted. As the time horizon extends further into the future, models may become unreliable. For this reason, predictive models need regular monitoring and may require frequent updating.
+4.  **Predictive analytics tells us nothing about causal relationships.** Nor does it tell us that those with the lowest or highest likelihood of an outcome are the most likely to benefit from a new or revised service or intervention. This is determined by other analyses (e.g. rigorous evaluations) or assumed based on the expertise of those using predictive analytics findings for decision-making. 
 6.  **Ethical Concerns:** Predictive analytics can raise many ethical concerns. This is a very important topic, which we turn to next and will return to throughout the course.
 
-Optional: You can find a short discussion of the differences between predictive analytics and inferential statistics [here](OptionalPAvsInfStat.qmd).
+Many of the lessons we learn in inferential statistics do not apply to predictive analytics. You can find a short discussion of the differences [here](OptionalPAvsInfStat.qmd). This is OPTIONAL. 
 
-And for fun, Baba Brinkman covers some of these issues in his rap comparing and contrasting data science and statistics. (Click link below.)
+And for fun, Baba Brinkman covers some of these issues in his rap comparing and contrasting data science and statistics. (Click link below.) (Also OPTIONAL)
 
 [![](images/BabaBrinkmanDSvsStat.jpeg){fig-align="center" width="2.5in"}](https://music.bababrinkman.com/track/data-science)

@@ -5,21 +5,21 @@ editor:
     wrap: 72
 ---
 
-The department of social services already had a practice of providing
-extra intervention to those clients who needed them most. These
-included:
+The social services department had an established practice of offering
+additional support to clients requiring extra assistance. This
+encompassed:
 
--   calling clients to check in,
+-   Initiating check-in calls with clients,
 
--   offering extra casework sessions, and
+-   Facilitating supplementary casework sessions, and
 
--   extra workshops to help with job search and job skills.
+-   Arranging extra workshops to enhance job search and skills.
 
-With limited staff and financial resources, the department wanted to
-deliver services to who needed them the most. However, the department
-thought that their existing approach for identifying those clients could
-be improved by distilling a wide range of potentially predictive
-measures into a single "risk score."
+Given the department's constraints in terms of staff and financial
+resources, their aim was to effectively direct extra services to those
+in greatest need. They recognized that their current method of
+prioritizing such clients could be enhanced by by distilling a wide
+range of potentially predictive information into a single "risk score."
 
 A few things to note:
 
@@ -40,8 +40,8 @@ A few things to note:
     support for reaching out to clients and for planning workshops.
 
 This information about how the department plans to use the information
-can guide how we scope the predictive analytics projects.
+can guide how we scope the predictive analytics project.
 
 Remember, we also want to frequently check-in with our ethical
-considerations. What ethical considerations do we want to be careful
-about as we proceed?
+considerations. [What ethical considerations do we want to be careful
+about as we proceed?]{style="color:green"}
