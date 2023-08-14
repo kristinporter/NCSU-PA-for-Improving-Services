@@ -4,10 +4,20 @@ title: "Identifying data"
 
 We want to be thoughtful about the data that we will use for our proof-of-concept and that we will split for training, validating and testing. Here are some important considerations for identifying data:
 
--   The data should be representative of the population and context for the predictive analytics objective.
+-   **The data should be representative of the population and context for the predictive analytics objective.** Here we want to make sure we have data for individuals who are experiencing a similar context as what we expect for the individuals for whom we will ultimately deploy predictive analytics.
 
--   Important measures should be consistently available.
+    -   In our first example focused on predicting risk of TANF education and training program participants not finding and sustaining employment, we would want to investigate whether eligibility requirements for the program changed significantly. We may want to limit our data to the time period for which eligibility requirements for the education and training program are most similar to those applied currently.
 
--   Data quality should be consistent over times.
+    -   In our other example focused on predicting 10th grade students' risk of not graduating on time, we would want to investigate graduation guidelines. If we include student cohorts who had tougher or easier graduation standards when training our models, then the models may not generalize well to the students for whom we would deploy the models. Depending on when the context for the data change, we may or may not detect limitations of our modeling. That is, if the context changes (e.g. the graduation guidelines change) after when the testing data were obtained, then our testing may indicate great performance, but we would have concerns about deployment validity.
 
-TO BE FILLED IN
+-   **Important measures should be consistently available.** Here we want to assess whether we have sufficient consistency in the way measures are defined and entered into data systems. For example:
+
+    -   Have the data integrations that create the needed datasets been consistently maintained over time, or are important measures absent? Are these integrations viable for the future as well? If certain datasets can't be reliably acquired and merged, they should be excluded from the predictive analytics proof-of-concept. It's vital to consider not just historical data but also future scenarios. If specific data won't be accessible when we implement predictive analytics, then a proof-of-concept dependent on that data won't be genuine.
+
+    -   Was there a rollout of a new data system that had early implementation challenges? Then we may want to eliminate data from those early years.
+
+    -   Is survey data part of our data universe for predictive analytics? If so, do response rates vary substantially over time? Variation in response rates could (but not necessarily) mean that different populations are being capture with each survey. We would need to investigate this.
+
+    -   Were there broad changes in how measures where defined or coded? We may want to limit the data we will use to train, validate and test models to a period in which the measures are consistent to the present (time time close to when any model would be deployed).
+
+        Note that inconsistencies in some measures could have implications in measures we include in our prediction sets rather than implications for how we restrict our data for our proof-of-concept. That is, if some measures change over time, we may need to exclude them from our models. But if there is sufficient consistency across key predictors in data we may not need to exclude data. We will return to measure consistency later, when we discuss data quality issues.

@@ -2,7 +2,7 @@
 title: "Designating data for testing"
 ---
 
-Once we have identified the appropriate data, we want to work backwards. So first, we want to split off a subset that will be used for testing. Some notes about designating the testing data:
+Once we have identified the appropriate data for all steps (train, validate, test) of our PA proof-of-concept workflow, we want to work backwards. So first, we want to split off a subset that will be used for testing. Some notes about designating the testing data:
 
 -   This data subset will not be analyzed until we have completed learner training and validation and have selected our "best" model. We should set it aside and not touch it until we use it for testing.
 

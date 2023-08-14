@@ -516,16 +516,15 @@ ul.task-list li input[type="checkbox"] {
 <p>A benchmark learner consists of a benchmark prediction set - with just a few measures - and a benchmark modeling approach - one that is simple to explain.</p>
 <p>The benchmark learner may align with how a service provider is already making decisions. For example, the benchmark learner may include the same measures the service reviews even if they do not create a model. Or, the benchmark may focus on measures that the service provider thinks are most important based on their expertise or based on related research.</p>
 <p>Remember, any measures included in the benchmark prediction set must be available at the prediction timepoint and for the prediction population.</p>
-<p>For example: Imagine we are exploring how we might use predictive analytics to help a school system improve their “early warning system” and have scoped the project as follows:</p>
+<p>Let’s consider another example: Imagine we are exploring how we might use predictive analytics to help a school system improve their “early warning system” and have scoped the project as follows:</p>
 <ul>
 <li><p><em><strong>What</strong> are we aiming to predict?</em> Whether a student will not graduate from high school on-time (within 4 years of enrolling in 9th grade).</p></li>
-<li><p><em><strong>When</strong> are we aiming to make predictions?</em> After students have completed 9th grade.</p></li>
-<li><p><em><strong>For whom</strong> are we aiming to make predictions?</em> All students who enrolled in 9th grade and do not transfer out of the school district during high school.</p></li>
+<li><p><em><strong>When</strong> are we aiming to make predictions?</em> After students have completed 9th grade. The analytics would be done during summer, after all 9th grade information has been entered in data systems. Prediction results would be available to educators at the start of students’ 10th grade.</p></li>
+<li><p><em><strong>For whom</strong> are we aiming to make predictions?</em> All students who enrolled in 9th grade. However, we would have to exclude students who transfer outside the district during high school since we cannot know their graduation status. (Note this can create a missing data problem that we will discuss later.)</p></li>
 </ul>
 <p>How might we define a benchmark learner for this example?</p>
 <ul>
-<li>The school district has been focusing on so-called ABC indicators of attendance, behavior, and course performance to identify which students are most at-risk of not graduating on time. Therefore, a good benchmark predictor set could include the same three measures of attendance, behavior and course peformance the district has used. If the district used these three measures as indicators (e.g.&nbsp;deemed a student at-risk if they passed a threshold on 2 of the 3 measures), then we could replicate the same empirical rules as a benchmark modeling approach. Alternatively, we could combine the three measures with a logistic regression model.<br>
-</li>
+<li>The school district has been focusing on so-called ABC indicators of attendance, behavior, and course performance to identify which students are most at-risk of not graduating on time. Therefore, a good benchmark predictor set could include the same three measures of attendance, behavior and course peformance the district has used. If the district used these three measures as “indicators” (e.g.&nbsp;deemed a student at-risk if they passed a threshold on 2 of the 3 measures), then we could replicate the same empirical rules as a benchmark modeling approach. Alternatively, we could combine the three measures with a logistic regression model.</li>
 </ul>
 
 

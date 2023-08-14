@@ -514,11 +514,11 @@ ul.task-list li input[type="checkbox"] {
 
 <p>Once we have specified our benchmark learner, we can specify additional learners for comparison. If simplicity and transparency are a goal, we will want to incrementally introduce complexity. For example, for our high school graduation example, we might take the following approach:</p>
 <ol type="1">
-<li><p><strong>Incrementally add more measures to our predictor set.</strong> For example:</p>
+<li><p><strong>Incrementally add more measures to our benchmark predictor set.</strong> For example:</p>
 <table class="table">
 <colgroup>
-<col style="width: 48%">
-<col style="width: 51%">
+<col style="width: 47%">
+<col style="width: 52%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -551,14 +551,14 @@ ul.task-list li input[type="checkbox"] {
 <td><p>(c) Kitchen sink</p>
 <p>This set moves beyond stakeholder input and allows us to see if adding lots of measures adds up to worthwhile improvements.</p></td>
 <td><ul>
-<li>All measures available in administrative records after completion of 9th grade except demographics</li>
+<li>All measures available in administrative records after completion of 9th grade, except demographics.</li>
 </ul></td>
 </tr>
 <tr class="even">
 <td><p>(d) Kitchen sink plus</p>
-<p>This set allows us to see if a tricky data integration would be worth it - if the measures in it lead to a substanial improvement.</p></td>
+<p>This set allows us to see if a tricky data integration would be worth it - if inclusion of the measures in it lead to a substantial improvement.</p></td>
 <td><ul>
-<li>All measures in the kitchen sink plus a set of measures available in an external data set that could be integrated with administrative records.</li>
+<li>All measures in the kitchen sink predictor set plus a set of measures available in an external data set that could be integrated with administrative records.</li>
 </ul></td>
 </tr>
 </tbody>
@@ -591,7 +591,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p>This results in a total of 9 learners because we have a nine combinations of predictor sets and modelling approaches. Ultimately, we will then have 9 models that results from the modeling approaches.</p>
+<p>This results in a total of 9 learners because we have a nine combinations of predictor sets and modelling approaches. Ultimately, we will then have 9 predictive models that results from the nine learners.</p>
 <p>Note: Machine learning algorithms typically require specifications for how they are implemented. These are called “tuning parameters.” For example, the random forest algorithm has tuning parameters that include the number of decision trees in a forest, the maximum depth of the decision trees, and several more. Different values of tuning parameters have different implications for the performance of the algorithm. While the analyst can specify these tuning parameters, it is typically best to use a data-driven approach. We will dive more into this later. However, the point to take away here is that we will “tune” each machine learning algorithm for each predictor set. So when we ultimately compare learners, we are comparing “tuned” versions of them.</p>
 <ol start="3" type="1">
 <li><strong>Compare the learners’ in terms of predictive performance and bias:</strong> This is a big topic which we will divide up across many of the following sections. Importantly, as we will turn to next, we want to compare learners’ performance in <strong>new, unseen data</strong>. This is important because the goal of predictive analytics is to develop models that can make accurate predictions with new, real-world data that the model hasn’t encountered before.</li>
