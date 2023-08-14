@@ -54,4 +54,4 @@ Predictive analytics projects involve complex decision-making processes that can
 
 11. **Continuous Monitoring and Adaptation**: Continuously monitor the performance and ethical implications of the predictive analytics system. Regularly assess the system's outcomes and adapt as needed to address emerging ethical concerns. Additionally, implement feedback mechanisms for individuals to express concerns and provide input on data usage and project outcomes.
 
-By adhering to these practices when they apply to the context, organizations can foster a culture of ethical awareness and responsibility in predictive analytics projects, ensuring that they benefit all stakeholders while minimizing potential harms.
+By adhering to these kinds of practices, when they apply to the context, government agencies, organizations and companies can foster a culture of ethical awareness and responsibility in predictive analytics projects, ensuring that they benefit all stakeholders while minimizing potential harms.

@@ -28,7 +28,7 @@ Before embarking on a PA project, it is value to assess whether it is the right 
 
 #### Data quality and systems
 
--   Is there sufficient data that are readily accessible?
+-   Are there sufficient data that are readily accessible?
 
 -   Are the data sufficiently documented and understood so that reliable measures can be created for PA?
 
