@@ -1,13 +1,24 @@
 ---
-title: "Splitting data for training, testing and validating"
+title: "Data workflow"
 ---
 
-TEXT FROM MEMO
+First, we will define the concepts in the workflow for a PA proof-of-concept. This involves the following three steps:
 
-First, model training is when the chosen algorithm is applied to a training data set in order to learn the patterns present in the data. Once an algorithm is trained, it can then be used on unseen data to make new predictions. For example, training a linear regression model consists of estimating the regression coefficients. These coefficients are then applied when making new predictions. For more complex algorithms, the trained model is generally more complex than a single set of coefficients.
+```{mermaid}
+flowchart LR
+  A(Training) --> B(Validating)
+  B --> C(Testing)
+  
+  
+```
+\
 
-Second, validation is when learners are used to make predictions on an unseen set of data, called the "validation" set. The validation set is used to calculate evaluation metrics. In this stage, we use the evaluation results to do learner selection, and pick the best learner.
+-   **Training:** Uses data with known outcomes to apply a modeling approach (e.g., regression or a machine learning algorithm) in order to build a model of the relationship between predictors and the outcome of interest.
 
-HERE TALK ABOUT HOW WE CAN VALIDATE WITH NEW DATA OR USE CV WITH TRAINING DATA?
+-   **Validating:** uses *new* data with known outcomes to apply all trained models (from all learners). The predictions from the trained models are compared to the known outcomes and metrics of model performance and fairness are computed. This validation can be repeated in multiple validation data sets. Looking across all results, the "best" model is selected. Criteria for a model being selected as "best" vary by context. The analyst may weigh performance, fairness, simplicity/transparency and variability across multiple validations.
 
-Finally, testing is when the single final selected learner is used to make predictions on a final unseen set of data, the "test" set. This step gives us a realistic assessment of learner performance on unseen data.
+-   **Testing:** uses *new, set aside* data with know outcomes to apply the best model. The predictions from the best model are compared to the known outcomes to report predictive performance and fairness to stakeholders.
+
+
+In the following pages, we will go over how to implement these concepts. 
+

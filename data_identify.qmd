@@ -1,0 +1,13 @@
+---
+title: "Identifying data"
+---
+
+We want to be thoughtful about the data that we will use for our proof-of-concept and that we will split for training, validating and testing. Here are some important considerations for identifying data:
+
+-   The data should be representative of the population and context for the predictive analytics objective.
+
+-   Important measures should be consistently available.
+
+-   Data quality should be consistent over times.
+
+TO BE FILLED IN

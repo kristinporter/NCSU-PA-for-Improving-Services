@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predictive Analytics (PA) for Improving Services - Adding and comparing learners</title>
+<title>Predictive Analytics (PA) for Improving Services - Training and validating learners</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./data_overfitting.html" rel="next">
-<link href="./poc_benchmark.html" rel="prev">
+<link href="./data_splitconsiderations.html" rel="next">
+<link href="./data_test.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./poc_importance.html">Conducting a PA proof-of-concept</a></li><li class="breadcrumb-item"><a href="./poc_compare.html">Adding and comparing learners</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_overfitting.html">Data for PA: PART 1</a></li><li class="breadcrumb-item"><a href="./data_trainvalidate.html">Training and validating learners</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -194,13 +194,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Conducting a PA proof-of-concept</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./poc_importance.html" class="sidebar-item-text sidebar-link">
@@ -221,7 +221,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./poc_compare.html" class="sidebar-item-text sidebar-link active">
+  <a href="./poc_compare.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Adding and comparing learners</span></a>
   </div>
 </li>
@@ -230,12 +230,35 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text">Data for PA: PART 1</span></a>
+ <span class="menu-text">Introduction to the PA Toolset</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+ <span class="menu-text">Overview</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">How to access toolset</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">How to specify scope in toolset</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">How to specify learners in toolset</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Data for PA: PART 1</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_overfitting.html" class="sidebar-item-text sidebar-link">
@@ -257,12 +280,12 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_test.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Designate data for testing</span></a>
+ <span class="menu-text">Designating data for testing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_trainvalidate.html" class="sidebar-item-text sidebar-link">
+  <a href="./data_trainvalidate.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Training and validating learners</span></a>
   </div>
 </li>
@@ -276,13 +299,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
  <span class="menu-text">Data for PA: PART 2</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
  <span class="menu-text">Oveview of data quality</span>
   </li>
@@ -305,13 +328,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
  <span class="menu-text">Modeling approaches</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
  <span class="menu-text">Regression for predicting binary outcomes</span>
   </li>
@@ -322,13 +345,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
  <span class="menu-text">Evaluating and comparing predictive performance</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
  <span class="menu-text">Prediction output from learner training</span>
   </li>
@@ -345,13 +368,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
  <span class="menu-text">Evaluating and comparing bias</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
  <span class="menu-text">Sources of bias</span>
   </li>
@@ -371,13 +394,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
  <span class="menu-text">Selecting and validating a learner</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
  <span class="menu-text">Considerations for selecting a learner</span>
   </li>
@@ -388,13 +411,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
  <span class="menu-text">Understanding and communicating results</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
  <span class="menu-text">Results at the individual level</span>
   </li>
@@ -411,13 +434,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
  <span class="menu-text">Deploying predictive analytics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
  <span class="menu-text">Deciding whether PA should be deployed</span>
   </li>
@@ -431,13 +454,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
  <span class="menu-text">Additional optional material</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./OptionalPAvsInfStat.html" class="sidebar-item-text sidebar-link">
@@ -448,13 +471,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
  <span class="menu-text">Issue Log</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./issuelog.html" class="sidebar-item-text sidebar-link">
@@ -474,7 +497,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Adding and comparing learners</h1>
+<h1 class="title">Training and validating learners</h1>
 </div>
 
 
@@ -489,90 +512,10 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Once we have specified our benchmark learner, we can specify additional learners for comparison. If simplicity and transparency are a goal, we will want to incrementally introduce complexity. For example, for our high school graduation example, we might take the following approach:</p>
-<ol type="1">
-<li><p><strong>Incrementally add more measures to our predictor set.</strong> For example:</p>
-<table class="table">
-<colgroup>
-<col style="width: 48%">
-<col style="width: 51%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Predictor Set</th>
-<th>Measures</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><p>(a) Benchmark</p>
-<p>This set is linked to current practice and allows us to see whether predictive analytics with more complex methods can offer improvement.</p></td>
-<td><ul>
-<li><p>whether student had more than 15 absences in 9th grade</p></li>
-<li><p>whether student had any expulsions or suspensions in 9th grade</p></li>
-<li><p>9th grade GPA</p></li>
-</ul></td>
-</tr>
-<tr class="even">
-<td><p>(b) Expanded</p>
-<p>This set adds measures that stakeholders think are important but the list is still limited for transparency and explainability.</p></td>
-<td><ul>
-<li><p>benchmark measures plus…</p></li>
-<li><p>number of absences in 9th grade</p></li>
-<li><p>ELA score on 9th grade standardized test</p></li>
-<li><p>Math score on 9th grade standardized test</p></li>
-<li><p>Whether received free or reduced price lunch</p></li>
-</ul></td>
-</tr>
-<tr class="odd">
-<td><p>(c) Kitchen sink</p>
-<p>This set moves beyond stakeholder input and allows us to see if adding lots of measures adds up to worthwhile improvements.</p></td>
-<td><ul>
-<li>All measures available in administrative records after completion of 9th grade except demographics</li>
-</ul></td>
-</tr>
-<tr class="even">
-<td><p>(d) Kitchen sink plus</p>
-<p>This set allows us to see if a tricky data integration would be worth it - if the measures in it lead to a substanial improvement.</p></td>
-<td><ul>
-<li>All measures in the kitchen sink plus a set of measures available in an external data set that could be integrated with administrative records.</li>
-</ul></td>
-</tr>
-</tbody>
-</table></li>
-<li><p><strong>Combine the predictor sets with different modeling approaches.</strong> Here we consider whether different machine learning algorithms improve performance. We want to use knowledge about how the algorithms work when matching them with predictor sets. For example, some machine learning algorithms are better suited for large numbers of predictors than others. In our example, we might specify as follows:</p></li>
-</ol>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Predictor Set</th>
-<th>Modeling Approach</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Benchmark</td>
-<td>logistic regression</td>
-</tr>
-<tr class="even">
-<td>Expanded</td>
-<td>logistic regression, random forest</td>
-</tr>
-<tr class="odd">
-<td>Kitchen sink</td>
-<td>random forest, support vector machines, Lasso</td>
-</tr>
-<tr class="even">
-<td>Kitchen sink plus</td>
-<td>random forest, support vector machines, Lasso</td>
-</tr>
-</tbody>
-</table>
-<p>This results in a total of 9 learners because we have a nine combinations of predictor sets and modelling approaches. Ultimately, we will then have 9 models that results from the modeling approaches.</p>
-<p>Note: Machine learning algorithms typically require specifications for how they are implemented. These are called “tuning parameters.” For example, the random forest algorithm has tuning parameters that include the number of decision trees in a forest, the maximum depth of the decision trees, and several more. Different values of tuning parameters have different implications for the performance of the algorithm. While the analyst can specify these tuning parameters, it is typically best to use a data-driven approach. We will dive more into this later. However, the point to take away here is that we will “tune” each machine learning algorithm for each predictor set. So when we ultimately compare learners, we are comparing “tuned” versions of them.</p>
-<ol start="3" type="1">
-<li><strong>Compare the learners’ in terms of predictive performance and bias:</strong> This is a big topic which we will divide up across many of the following sections. Importantly, as we will turn to next, we want to compare learners’ performance in <strong>new, unseen data</strong>. This is important because the goal of predictive analytics is to develop models that can make accurate predictions with new, real-world data that the model hasn’t encountered before.</li>
-</ol>
+<p>ROUGH</p>
+<p>Once we have stored away our test data, we need to figure out how to use the rest of our data for training and validation. There are multiple approaches. Here we will go over how the training and validation are implemented in the R toolset, but I will comment on some alternative variations.</p>
+<p>Recall that it is imperative to train in one dataset and to validate (assess performance and fairness) in a different dataset. This buffers against overfitting. Our toolset sets aside a portion of the remaining data for validation and then uses the remaining data for training. For example, we can set aside 20% of the remaining data for validation, and use the remaining 80% for training. That is, we fit all the learners with 80% of our data and compare predictions to the truth in 20% of the data, allowing us to compute various metrics of performance and fairness. But we can also repeat this process more than once. This procedure is referred to “v-fold cross-validation.” The user specifies the number of folds (v), which is the number of partitions of data such that each partition takes a turn as the validation set. The following diagram illustrates 5-fold cross-validation.</p>
+<p>INSERT DIAGRAM AND DESCRIBE.</p>
 
 
 
@@ -812,13 +755,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./poc_benchmark.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Specifying a benchmark learner</span>
+      <a href="./data_test.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Designating data for testing</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./data_overfitting.html" class="pagination-link">
-        <span class="nav-page-text">Generalizing to new data</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./data_splitconsiderations.html" class="pagination-link">
+        <span class="nav-page-text">Considerations for splitting data</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

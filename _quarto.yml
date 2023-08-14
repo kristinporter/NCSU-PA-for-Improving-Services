@@ -38,15 +38,20 @@ website:
           - poc_importance.qmd
           - poc_learners.qmd
           - poc_benchmark.qmd
-          - poc_addcomplexity.qmd
           - poc_compare.qmd
+      - section: "Introduction to the PA Toolset"
+        contents:
+          - "Overview"
+          - "How to access toolset"
+          - "How to specify scope in toolset"
+          - "How to specify learners in toolset"
       - section: "Data for PA: PART 1"
         contents:
           - data_overfitting.qmd
           - data_split.qmd
-          - data_train.qmd
-          - data_validate.qmd
+          - data_identify.qmd
           - data_test.qmd
+          - data_trainvalidate.qmd
           - data_splitconsiderations.qmd
       - section: "Data for PA: PART 2"
         contents:
@@ -56,15 +61,10 @@ website:
           - "Data leakage"
           - "Strategies for extracting predictive value"
           - "Data model for PA Toolset"
-      - section: "Specifying learners: PART 1"
+      - section: "Modeling approaches"
         contents:
-          - "Using the PA Toolset to specify learners"
-          - "Specifying predictor sets"
-          - "Specifying modeling approaches"
-      - section: "Specifying learners: PART 2"
-        contents:
+          - "Regression for predicting binary outcomes"
           - "Machine learning (ML) algorithms for predicting binary outcomes"
-          - "Tuning ML algorithms with the PA Toolset"
       - section: "Evaluating and comparing predictive performance"
         contents:
           - "Prediction output from learner training"

@@ -1,0 +1,16 @@
+---
+title: "Training and validating learners"
+---
+
+ROUGH
+
+Once we have stored away our test data, we need to figure out how to use the rest of our data for training and validation. There are multiple approaches. Here we will go over how the training and validation are implemented in the R toolset, but I will comment on some alternative variations.
+
+Recall that it is imperative to train in one dataset and to validate (assess performance and fairness) in a different dataset. This buffers against overfitting. Our toolset sets aside a portion of the remaining data for validation and then uses the remaining data for training. For example, we can set aside 20% of the remaining data for validation, and use the remaining 80% for training. That is, we fit all the learners with 80% of our data and compare predictions to the truth in 20% of the data, allowing us to compute various metrics of performance and fairness. But we can also repeat this process more than once. This procedure is referred to "v-fold cross-validation." The user specifies the number of folds (v), which is the number of partitions of data such that each partition takes a turn as the validation set. The following diagram illustrates 5-fold cross-validation. 
+
+INSERT DIAGRAM AND DESCRIBE. 
+
+
+
+
+
