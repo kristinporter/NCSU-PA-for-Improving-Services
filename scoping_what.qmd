@@ -16,9 +16,7 @@ It is important to be very thoughtful and precise in defining and developing a m
 
 In our example, we will focus on predicting just one outcome measure, but multiple measures of employment that make sense for the goals of the department could be analyzed. For each outcome, the analytic procedures would need to be repeated. 
 
-**Our outcome:** The selected precise outcome measure for our example is: [whether a client holds a job covered by unemployment insurance (UI) for the first three quarters after exiting the department's education and training program for TANF participants]{style="color:blue"}. The measure is coded as 1 when achieved and 0 otherwise.
-
-**KH** nitpick: highlighting the text in blue makes it look like a clickable hyperlink.
+**Our outcome:** The selected precise outcome measure for our example is: **whether a client holds a job covered by unemployment insurance (UI) for the first three quarters after exiting the department's education and training program for TANF participants**. The measure is coded as 1 when achieved and 0 otherwise.
 
 This choice was made because of the following answers to the above questions:
 
