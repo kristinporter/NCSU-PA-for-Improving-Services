@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./poc_importance.html" rel="next">
+<link href="./data_overfitting.html" rel="next">
 <link href="./scoping_who.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -202,29 +202,17 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_importance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The importance of a proof-of-concept</span></a>
-  </div>
-</li>
+ <span class="menu-text">The importance of a proof-of-concept</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_learners.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Defining learners</span></a>
-  </div>
-</li>
+ <span class="menu-text">Defining learners</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_benchmark.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Specifying a benchmark learner</span></a>
-  </div>
-</li>
+ <span class="menu-text">Specifying a benchmark learner</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_compare.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Adding and comparing learners</span></a>
-  </div>
-</li>
+ <span class="menu-text">Adding and comparing learners</span>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -292,7 +280,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_splitconsiderations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Considerations for splitting data</span></a>
+ <span class="menu-text">Additional considerations</span></a>
   </div>
 </li>
       </ul>
@@ -469,23 +457,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
- <span class="menu-text">Issue Log</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./issuelog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Issue log</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -529,8 +500,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p><br>
 It is a common mistake to not give adequate thought to when predictions are being made and to which measures are available at that time. If we ignore this issue, we might use measures that are collected very close to the outcome. This could lead to excellent performance - great accuracy - but useless predictions.</p>
-<p>For example, our data may include a measure of whether a TANF client has submitted a job application at the end of a job preparation class. Including this measure in our model could improve its predictive performance. However, because the measure is collected towards the end of the education and training program, if we wait to do our modeling (set our timepoint at the end of the education and training program), then by the time we get results there is little time to take action to help those at highest risk of not finding and sustaining employment.</p>
-<p>Think about this issue when you read or hear about the high accuracy of predictive models. If a company boasts that it predicts an outcome with very high accuracy, one important question to ask is: - When are predictions being made? - Is it possible that measures are collected so close to the outcome that some predictors are actually proxies for the outcome? - What trade-offs are being made in terms of having time to act on predictive analytics results?</p>
+<p>For example, our data may include a measure of whether a TANF client has submitted a job application at the end of a job preparation class. Including this measure in our model could improve its predictive performance. However, because this measure is collected towards the end of the education and training program, if we wait to do our modeling (setting our timepoint at the end of the education and training program), there is little time left to take action to help those at highest risk of not finding and sustaining employment.</p>
+<p>Think about this issue when you read or hear about the high accuracy of predictive models. If a company boasts that it predicts an outcome with very high accuracy, it is important to ask: - When are predictions being made? - Is it possible that measures are collected so close to the outcome that some predictors are actually proxies for the outcome? - What trade-offs are being made in terms of having time to act on predictive analytics results?</p>
 
 
 
@@ -775,8 +746,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./poc_importance.html" class="pagination-link">
-        <span class="nav-page-text">The importance of a proof-of-concept</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./data_overfitting.html" class="pagination-link">
+        <span class="nav-page-text">Generalizing to new data</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

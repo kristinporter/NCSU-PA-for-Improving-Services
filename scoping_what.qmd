@@ -14,7 +14,7 @@ It is important to be very thoughtful and precise in defining and developing a m
 
 [^1]: As summarized by the Employment and Training Administration in the U.S. Department of Labor: These data are from the Unemployment Insurance Data Base (UIDB) as well as UI-related data from outside sources (e.g., Bureau of Labor Statistics data on employment and unemployment and U.S. Department of Treasury data on state UI trust fund activities). See this link{https://edd.ca.gov/en/newsroom/facts-and-stats/dashboard/} for more details.
 
-In our example, we will focus on predicting just one outcome measure, but multiple measures of employment that make sense for the goals of the department could be analyzed.
+In our example, we will focus on predicting just one outcome measure, but multiple measures of employment that make sense for the goals of the department could be analyzed. For each outcome, the analytic procedures we will learn would need to be repeated. 
 
 **Our outcome:** The selected precise outcome measure for our example is: [whether a client holds a job covered by unemployment insurance (UI) for the first three quarters after exiting the department's education and training program for TANF participants]{style="color:blue"}. The measure is coded as 1 when achieved and 0 otherwise.
 

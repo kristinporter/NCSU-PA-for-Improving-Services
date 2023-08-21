@@ -27,9 +27,9 @@ We therefore decided to specify our prediction timepoint as [one month after the
 \
 It is a common mistake to not give adequate thought to when predictions are being made and to which measures are available at that time. If we ignore this issue, we might use measures that are collected very close to the outcome. This could lead to excellent performance - great accuracy - but useless predictions.
 
-For example, our data may include a measure of whether a TANF client has submitted a job application at the end of a job preparation class. Including this measure in our model could improve its predictive performance. However, because the measure is collected towards the end of the education and training program, if we wait to do our modeling (set our timepoint at the end of the education and training program), then by the time we get results there is little time to take action to help those at highest risk of not finding and sustaining employment.
+For example, our data may include a measure of whether a TANF client has submitted a job application at the end of a job preparation class. Including this measure in our model could improve its predictive performance. However, because this measure is collected towards the end of the education and training program, if we wait to do our modeling (setting our timepoint at the end of the education and training program), there is little time left to take action to help those at highest risk of not finding and sustaining employment.
 
-Think about this issue when you read or hear about the high accuracy of predictive models. If a company boasts that it predicts an outcome with very high accuracy, one important question to ask is: 
+Think about this issue when you read or hear about the high accuracy of predictive models. If a company boasts that it predicts an outcome with very high accuracy, it is important to ask: 
 -   When are predictions being made?
 -   Is it possible that measures are collected so close to the outcome that some predictors are actually proxies for the outcome?
 -   What trade-offs are being made in terms of having time to act on predictive analytics results?
