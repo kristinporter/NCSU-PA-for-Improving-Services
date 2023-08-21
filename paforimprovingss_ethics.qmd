@@ -4,9 +4,9 @@ title: What are the ethical considerations for using PA to improve services?
 
 ## A broad overview of ethical considerations
 
-When planning, developing and deploying a predictive analytics project, there are many ethical issues to consider. Here is a high-level summary. We will return to these as the class progresses.
+When planning, developing and deploying a predictive analytics project, there are many ethical issues to consider. Here is a high-level summary. We will return to these topics as the class progresses.
 
-[Privacy and Data Protection:]{style="color:red"} Predictive analytics often relies on data about individuals. Collecting, storing, and analyzing this data raise privacy concerns. It's crucial to ensure that data is handled securely and that individuals' personally identifiable information is protected to prevent unauthorized access or misuse.
+[Privacy and Data Protection:]{style="color:red"} Predictive analytics often relies on data about individuals. Collecting, storing, and analyzing this data raise privacy concerns. It's crucial to ensure that data is handled securely, and that individuals' personally identifiable information is protected to prevent unauthorized access or misuse.
 
 [Bias and Fairness:]{style="color:red"} Predictive analytics can perpetuate existing biases present in the data used for training and developing models. If historical data contains discriminatory patterns, the predictive models may inadvertently perpetuate these biases, leading to unfair outcomes for certain groups of people.
 
@@ -14,11 +14,11 @@ When planning, developing and deploying a predictive analytics project, there ar
 
 [Transparency and Explainability:]{style="color:red"} Predictive models can be complex, making it challenging to understand how they arrive at specific predictions. The lack of transparency and explainability can be problematic, especially when those predictions have significant consequences on individuals' lives.
 
-[Informed Consent:]{style="color:red"} Related to data privacy is the issue of informed consent from individuals whose data are being used for predictive analytics. Informed consent is not always necessary but should be thoroughly throught through in many scenarios.
+[Informed Consent:]{style="color:red"} Related to data privacy is the issue of informed consent from individuals whose data are being used for predictive analytics. Informed consent is not always necessary but should be thoroughly considered in many scenarios.
 
 [Accuracy and Reliability:]{style="color:red"} The accuracy and reliability of predictive analytics models are essential. Relying on inaccurate predictions could lead to detrimental decisions, especially in critical areas like healthcare or criminal justice.
 
-[Unintended Consequences:]{style="color:red"} Predictive analytics can influence human behavior and decisions. There's a risk of unintended consequences, such hurting individuals who learn of their predictions, creating self-fulfilling prophecies, creating an environment of surveilance, or "creaming" (preferring) program participants or clients who are more likely to succeed.
+[Unintended Consequences:]{style="color:red"} Predictive analytics can influence human behavior and decisions. There's a risk of unintended consequences, such hurting individuals who learn of their predictions, creating self-fulfilling prophecies, creating an environment of surveillance, or "creaming" (preferring) program participants or clients who are more likely to succeed.
 
 [Discrimination and Social Impact:]{style="color:red"} Predictive analytics can impact individuals and communities differently. If not properly managed, it can exacerbate existing social disparities and contribute to discrimination.
 
@@ -26,9 +26,13 @@ When planning, developing and deploying a predictive analytics project, there ar
 
 [Overreliance on Predictions:]{style="color:red"} Blindly relying on predictive analytics without human judgment and intervention can lead to overconfidence and neglect of important contextual factors.
 
+**KH**: a topic that I have not thought about much is people manipulating PA systems.  Christoph Molnar has a paragraph about this (see the last paragraph in this section)
+
+[https://christophm.github.io/interpretable-ml-book/interpretability-importance.html](https://christophm.github.io/interpretable-ml-book/interpretability-importance.html)
+
 ## Addressing ethical considerations {#addressEthical}
 
-The following are some practices that can help ensure that ethical considerations are raised, reviewed and consistently applied to all steps of a predictive analytics project. It is important for all these practices to consider multiple stakeholders - to include as much as possible, the voices of all groups of individuals that are impacted or potentially impacted by the process and outcomes of predictive analytics.
+The following are some practices that can help ensure that ethical considerations are raised, reviewed and consistently applied to all steps of a predictive analytics project. It is important for all these practices to consider multiple stakeholders. As much as possible, we should try to include the voices of all groups of individuals that are impacted or potentially impacted by the process and outcomes of predictive analytics.
 
 Predictive analytics projects involve complex decision-making processes that can have significant impacts on individuals and society. To ensure ethical considerations are at the forefront of these projects, it is crucial to adopt a set of best practices that encompass multiple stakeholders and address potential biases and ethical implications. Here are some key practices that may be helpful or necessary, depending on the project:
 
@@ -38,7 +42,7 @@ Predictive analytics projects involve complex decision-making processes that can
 
 3.  **Transparency in Model Development and Validation**: Make model validation transparent by sharing the process and, if possible, the code used to develop the predictive models. Transparent model developement validation allows stakeholders to understand the model's strengths and limitations, fostering trust in the project's outcomes.
 
-4.  **Regulatory Frameworks**: Teams should well-versed in relevant regulations and laws that may apply to their data and context, such as the General Data Protection Regulation (GDPR) or similar data protection laws. These frameworks dictate how personal data should be collected, processed, and protected, ensuring that predictive analytics projects comply with legal requirements.
+4.  **Regulatory Frameworks**: Teams should be well-versed in relevant regulations and laws that may apply to their data and context, such as the General Data Protection Regulation (GDPR) or similar data protection laws. These frameworks dictate how personal data should be collected, processed, and protected, ensuring that predictive analytics projects comply with legal requirements.
 
 5.  **Ethical Review Board**: Engage with an ethical review board to assess the potential ethical implications of the predictive analytics project, particularly in sensitive domains like healthcare, workforce hiring, or criminal justice. This board's input and oversight ensure that the project aligns with ethical standards and respects individuals' rights.
 
@@ -50,8 +54,8 @@ Predictive analytics projects involve complex decision-making processes that can
 
 9.  **Project Assessments**: Conduct comprehensive PA project assessments to evaluate the potential ethical consequences of the predictive analytics project on individuals and society. This assessment aids in identifying and mitigating potential harms and ensuring responsible use of predictive insights.
 
-10. **Training on Ethical Interpretation**: Provide training to individuals who will interpret, communicate, and act on the results of the predictive analytics project. This ensures that stakeholders are equipped with the knowledge and understanding needed to handle the information responsibly and ethically.
+10. **Training on Ethical Interpretation**: Provide training to individuals who will interpret, communicate, and act on the results of the predictive analytics project. This training ensures that stakeholders are equipped with the knowledge and understanding needed to handle the information responsibly and ethically.
 
 11. **Continuous Monitoring and Adaptation**: Continuously monitor the performance and ethical implications of the predictive analytics system. Regularly assess the system's outcomes and adapt as needed to address emerging ethical concerns. Additionally, implement feedback mechanisms for individuals to express concerns and provide input on data usage and project outcomes.
 
-By adhering to these kinds of practices, when they apply to the context, government agencies, organizations and companies can foster a culture of ethical awareness and responsibility in predictive analytics projects, ensuring that they benefit all stakeholders while minimizing potential harms.
+By adhering to these kinds of practices (when they apply to the context), government agencies, organizations and companies can foster a culture of ethical awareness and responsibility in predictive analytics projects, ensuring that they benefit all stakeholders while minimizing potential harms.
