@@ -12,9 +12,8 @@ Before embarking on a PA project, it is valuable to assess whether it is the rig
 
 -   How will findings from PA be communicated and used, and by whom?
 
--   How frequently do PA findings need to be updated to be continuously actionable?
+-   How frequently do PA findings need to be updated?
 
-**KH**: not all findings need to be continuously actionable, do they?
 
 #### Are there plans and buy-in for acting on insights that come out of PA? 
 
@@ -24,9 +23,7 @@ Before embarking on a PA project, it is valuable to assess whether it is the rig
 
 -   Are there plans for how program services will be changed or how new services will be introduced based on PA results?
 
--    To what extent does decision making and service provision currently rely on perceptions or data-driven findings? Are data-driven findings in general, and PA findings more specifically, trusted and used? If not, are there plans for addressing practice and culture to support change?
-
-**KH**: what do you mean by relying on perceptions?
+-    To what extent does decision making and service provision currently rely on data-driven findings? Are data-driven findings in general, and PA findings more specifically, trusted and used? If not, are there plans for addressing practice and culture to support change?
 
 -   Are there structural or process factors that impede or foster the use predictive analytics (such as dedicated data teams) or the use of results (such as dashboard systems)?
 
@@ -34,9 +31,7 @@ Before embarking on a PA project, it is valuable to assess whether it is the rig
 
 -   Are there sufficient data that are readily accessible?
 
--   Are the data sufficiently documented and understood so that reliable measures can be created for PA?
-
-**KH**: again, use of "measure" without defining it.  Is a measure a variable?
+-   Are the data sufficiently documented and understood so that reliable measures (variables to be used as outcomes or predictors) can be created for PA?
 
 -   Is there sufficient capacity for investigating and deploying PA with existing analytic systems, software and staffing?
 

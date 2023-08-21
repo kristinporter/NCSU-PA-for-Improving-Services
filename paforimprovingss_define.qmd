@@ -6,13 +6,9 @@ title: "What is predictive analytics (PA)?"
 
 ![](images/shutterstock_PA2.jpg){fig-align="center" width="6in"} 
 
--   The complexity of PA may vary. For example, PA may rely on relatively simple approaches, such as models with a small number of measures. Alternatively, in settings with large amounts of data, they may involve complex machine-learning algorithms.
-
-**KH**: I wonder if "measure" is a confusing term?  Also if a linear regression has a large number of variables, would you say that isn't a simple approach?
+-   The complexity of PA may vary. For example, PA may rely on relatively simple approaches, such as models with a small number of measures (i.e. predictors, variables). Alternatively, in settings with large amounts of data, they may involve complex machine-learning algorithms.
 
 -   PA may make predictions of ***binary*** outcomes, which take just two values such as yes or no. For example, we can predict whether students will graduate from high school on time or not. With binary outcomes, predictive analytics can also be used to estimate the probability of the outcome occurring. For example, we can predict the probability that a student will graduate from high school. This probability is between 0 and 1.
-
-**KH**: I avoid using the term "likelihood" unless I mean it in the technical statistical sense of a likelihood function.
 
 -   PA may also forecast ***continuous*** outcomes. For example, we can predict the grade point average (GPA) students will achieve.
 
