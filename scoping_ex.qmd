@@ -14,6 +14,8 @@ Let's begin with an example. This example is inspired by a project I was involve
 
 2.  Could we develop reliable risk scores that combine and weigh multiple risk factors into a single easy-to-understand number that can be incorporated into decision-making?
 
+**KH** points 1 and 2 sort of seem the same to me?
+
 3.  Could trends in risk scores across the population of TANF clients provide new insights for program improvement and resource allocation?
 
 #### **How do we scope a project that helps them achieve their goals?**

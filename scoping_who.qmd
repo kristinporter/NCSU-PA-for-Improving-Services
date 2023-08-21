@@ -7,3 +7,5 @@ title: Who are we making predictions for?
 Our target population is specifically [adult TANF recipients who are eligible and approved for the TANF department's education and training program and who are required to work]{style="color:blue"}.
 
 Our data sets include a broader group of TANF applicants and participants so we need to be careful to exclude those who do not meet our criteria.
+
+**KH**: is it worth discussing more about who we need to exclude?  Not necessarily, just a thought.

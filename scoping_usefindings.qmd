@@ -23,25 +23,25 @@ range of potentially predictive information into a single "risk score."
 
 A few things to note:
 
--   They did not want, nor did the project team recommend, for their decision-making process to become completely dependent on the risk
-    scores.
+-   They did not want, nor did the project team recommend, for their 
+    decision-making process to become completely dependent on the risk scores.
 
 -   Instead, the risk scores could potentially provide a valuable piece
     of information (if we could validate good predictive performance
     and minimal bias).
 
--   The department planned to train caseworkers to how to interpret and
-    incorporate the risk score into their decisionmaking and
+-   The department planned to train caseworkers in how to interpret and
+    incorporate the risk score into their decision-making and
     prioritizing.
 
 -   The department also wanted to look at how risk scores varied across
-    and within populations served by offices throughout the state. This
+    and within populations served by offices throughout the state. This analysis
     could help them understand which offices were more in need of
     support for reaching out to clients and for planning workshops.
 
 This information about how the department plans to use the information
 can guide how we scope the predictive analytics project.
 
-Remember, we also want to frequently check-in with our ethical
+Remember, we also want to frequently check in with our ethical
 considerations. [What ethical considerations do we want to be careful
 about as we proceed?]{style="color:green"}
