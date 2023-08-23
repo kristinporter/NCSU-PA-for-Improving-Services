@@ -12,5 +12,5 @@ A **learner** is a combination of:
 
 ![](images/circuits.png){fig-align="center" width="6in"}
 
-Machine learning algorithms automate model building using a series of steps that are driven by patterns in the data - rather than relying on functional forms specified by an analyst. Examples include decision trees, random forests, stepwise regression, support vector machines, among many others. 
+Machine learning algorithms automate model building using a series of steps that are driven by patterns in the data - rather than relying on functional forms specified by an analyst. Examples include decision trees, random forests, stepwise regression, and support vector machines, among many others. 
 
