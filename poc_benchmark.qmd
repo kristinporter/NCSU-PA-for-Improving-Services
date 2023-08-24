@@ -2,22 +2,22 @@
 title: "Specifying a benchmark learner"
 ---
 
-If simplicity and transparency are goals for our predictive model (it may not be in all contexts), then we want to specify a simple and transparent learner as a "benchmark" to which all other, increasingly complex learners are compared.
+If simplicity and transparency are goals for our predictive model (these goals may not apply in all contexts), then we want to specify a simple and transparent learner as a "benchmark" to which all other, increasingly complex learners are compared.
 
-A benchmark learner consists of a benchmark prediction set - with just a few measures - and a benchmark modeling approach - one that is simple to explain.
+A benchmark learner consists of a benchmark prediction set (with a small number of measures) - and a benchmark modeling approach (one that is simple to explain, such as a decision tree or regression model).
 
-The benchmark learner may align with how a service provider is already making decisions. For example, the benchmark learner may include the same measures the service reviews even if they do not create a model. Or, the benchmark may focus on measures that the service provider thinks are most important based on their expertise or based on related research.
+The benchmark learner may align with how a service provider is already making decisions. For example, the benchmark learner may include the same measures the service currently reviews in making a decision, even if they do not create a model. Or, the benchmark may focus on measures that the service provider thinks are most important based on their expertise or based on related research.
 
 Remember, any measures included in the benchmark prediction set must be available at the prediction timepoint and for the prediction population.
 
-Let's consider another example: Imagine we are exploring how we might use predictive analytics to help a school system improve their "early warning system" and have scoped the project as follows:
+Let's consider an example: Imagine we are exploring how we might use predictive analytics to help a school system improve their "early warning system," and we have scoped the project as follows:
 
--   ***What** are we aiming to predict?* Whether a student will not graduate from high school on-time (within 4 years of enrolling in 9th grade).
+-   ***What** are we aiming to predict?* Whether a student will *not* graduate from high school on-time (within 4 years of enrolling in 9th grade).
 
--   ***When** are we aiming to make predictions?* After students have completed 9th grade. The analytics would be done during summer, after all 9th grade information has been entered in data systems. Prediction results would be available to educators at the start of students' 10th grade.
+-   ***When** are we aiming to make predictions?* After students have completed 9th grade. The analytics would be done during summer, after all 9th grade information has been entered in data systems. Prediction results would be available to educators before the start of students' 10th grade.
 
 -   ***For whom** are we aiming to make predictions?* All students who enrolled in 9th grade. However, we would have to exclude students who transfer outside the district during high school since we cannot know their graduation status. (Note this can create a missing data problem that we will discuss later.)
 
 How might we define a benchmark learner for this example?
 
--   The school district has been focusing on so-called ABC indicators of attendance, behavior, and course performance to identify which students are most at-risk of not graduating on time. Therefore, a good benchmark predictor set could include the same three measures of attendance, behavior and course peformance the district has used. If the district used these three measures as "indicators" (e.g. deemed a student at-risk if they passed a threshold on 2 of the 3 measures), then we could replicate the same empirical rules as a benchmark modeling approach. Alternatively, we could combine the three measures with a logistic regression model. 
+-   The school district has been focusing on so-called ABC indicators of attendance, behavior, and course performance to identify which students are most at-risk of not graduating on time. Therefore, a good benchmark predictor set could include the same three measures of attendance, behavior and course performance the district has used. If the district used these three measures as "indicators" (e.g. deemed a student at-risk if they passed a threshold on 2 of the 3 measures), then we could replicate the same empirical rules as a benchmark modeling approach. Alternatively, we could combine the three measures with a logistic regression model. 
