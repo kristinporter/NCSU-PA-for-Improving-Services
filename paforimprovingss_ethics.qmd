@@ -26,9 +26,6 @@ When planning, developing and deploying a predictive analytics project, there ar
 
 [Overreliance on Predictions:]{style="color:red"} Blindly relying on predictive analytics without human judgment and intervention can lead to overconfidence and neglect of important contextual factors.
 
-**KH**: a topic that I have not thought about much is people manipulating PA systems.  Christoph Molnar has a paragraph about this (see the last paragraph in this section)
-
-[https://christophm.github.io/interpretable-ml-book/interpretability-importance.html](https://christophm.github.io/interpretable-ml-book/interpretability-importance.html)
 
 ## Addressing ethical considerations {#addressEthical}
 
