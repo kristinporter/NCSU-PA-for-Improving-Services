@@ -14,7 +14,7 @@ Ultimately, the goal is to have a large enough training set to train the models 
 
 4.  **Availability of Data**: Sometimes the amount of available data is a limiting factor. In such cases, it is important to make the best use of the available data and adjust the methods accordingly.
 
-Ultimately, if the learner/model performs well in validation and generalizes well to the test data, the dataset is likely large enough. If the model overfits to the training data - it does not generalize well to the test data, one reason may be that the modeling approach was to complex for the size of the available data.
+Ultimately, if the learner/model performs well in validation and generalizes well to the test data, the dataset is likely large enough. However, if the model overfits to the training data, one reason may be that the modeling approach was to complex for the size of the available data, but there may be other explanations as well - e.g. lack of data consistency over time.
 
 ### **What ratios should be designated for training, validation and testing?**
 
