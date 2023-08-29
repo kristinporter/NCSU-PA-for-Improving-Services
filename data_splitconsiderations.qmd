@@ -2,12 +2,36 @@
 title: "Additional considerations"
 ---
 
-INSERT DISCUSSION ABOUT DIFFERENT APPROACHES FOR TRAINING AND VALIDATING - E.G., TAKING OUT A SUBSET THAT IS AHEAD IN TIME OF TRAINING, USING JUST ONE LARGER VALIDATION DATASET.
+### **How much data do you need?**
 
-INSERT REFERENCES TO PAPERS ON DIFFERENT METHODS CONSIDERATIONS?  SAY NONE ARE PERFECT.
+Ultimately, the goal is to have a large enough training set to train the models effectively, and large enough validation and test sets to get reliable estimates of the models' performance. The definition of "large enough" can vary based on:
 
-REMIND BIG PICTURE. HOW MUCH DIFFERENCE DO SOME DETAILS MAKE? 
+1.  **Model Complexity**: More complex models (e.g., deep neural networks with many layers and parameters) typically require larger training datasets to avoid overfitting while simpler models (e.g., linear regression, decision trees) may require smaller training datasets.
 
-INSERT DISCUSSION ABOUT SAMPLE SIZES. ADMIT I DON'T HAVE GOOD ADVICE HERE BUT LIST SOME CONSIDERATIONS. 
+2.  **Data Variability**: If the data has a lot of variability or noise, a larger dataset may be needed to capture the underlying patterns and relationships.
 
-NOTE WE WILL TALK ABOUT HOW TO COMPARE AND SELECT LEARNERS LATER. 
+3.  **Balance between the classes of a binary outcome:** This is a specific case of #2. If one class is much more common than the others, you may need a larger dataset to ensure that the model is exposed to enough examples of each class during training.
+
+4.  **Availability of Data**: Sometimes the amount of available data is a limiting factor. In such cases, it is important to make the best use of the available data and adjust the methods accordingly.
+
+Ultimately, if the learner/model performs well in validation and generalizes well to the test data, the dataset is likely large enough. If the model overfits to the training data - it does not generalize well to the test data, one reason may be that the modeling approach was to complex for the size of the available data.
+
+### **What ratios should be designated for training, validation and testing?**
+
+There is no one-size-fits-all answer to this question. A common starting point is a 60% training, 20% validation, and 20% testing split. However, the size of your dataset may necessitate a different allocation. For instance, a very large dataset might allow for a 50% training, 25% validation, and 25% testing split. Conversely, a smaller dataset might require a larger proportion for training, such as a 70% training, 15% validation, and 15% testing split. As previously mentioned, we will be combining the training and validation data to conduct $v$-fold cross-validation.
+
+### **How much do all these decisions matter?**
+
+![](images/worried.jpg){width="3in"}
+
+-   Navigating the maze of decisions required for training, validating, and testing can be both confusing and frustrating, especially when there is no clear guidance. Here are some key takeaways to consider:
+
+1.  **Reserving a Test Set**: The most crucial practice is to reserve a test set until a final learner has been selected. This allows for a fair evaluation of your final predictive model's performance on new, unseen data. Failing to adhere to this practice can lead to significant issues.
+
+    -   Remember that metrics of model performance, which we will discuss shortly, are estimates and come with inherent uncertainty. In other words, if you measured model performance using different samples, your results would vary. This uncertainty is even more pronounced with a smaller testing sample size. Although it is often overlooked, a good practice is to estimate this uncertainty, for example, by calculating the standard error or confidence interval.
+
+2.  **Focus on the Ultimate Goal**: Throughout the entire process, keep the ultimate goal in mind: to find a model that generalizes well to new data. The end goal is to deploy a model that can provide insights for improving services. Ensure that your test set is representative of the data you will use in deployment. Otherwise, your results may be overly optimistic, even if you adhered to the first point. Additionally, ensure that your training and validation data are as similar as possible to the data you will ultimately use for deployment.
+
+3.  **Impact of Tuning and Validation Setup**: The specific details of how you set up tuning and validation are important for model selection. The worst-case scenario is that you miss the opportunity to select the "best" model, but it is unlikely that you will choose the "wrong" model. Poor performance is more likely due to the limitations of your data and context rather than the choices made in setting up cross-validation.
+
+Remember, while it is important to make informed decisions throughout the process, limitations in your data and context often have a more significant impact on performance than the specific details of how you set up cross-validation.

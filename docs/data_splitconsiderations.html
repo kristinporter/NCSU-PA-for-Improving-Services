@@ -61,6 +61,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -202,29 +204,17 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_importance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The importance of a proof-of-concept</span></a>
-  </div>
-</li>
+ <span class="menu-text">The importance of a proof-of-concept</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_learners.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Defining learners</span></a>
-  </div>
-</li>
+ <span class="menu-text">Defining learners</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_benchmark.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Specifying a benchmark learner</span></a>
-  </div>
-</li>
+ <span class="menu-text">Specifying a benchmark learner</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_compare.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Adding and comparing learners</span></a>
-  </div>
-</li>
+ <span class="menu-text">Adding and comparing learners</span>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -469,23 +459,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
- <span class="menu-text">Issue Log</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./issuelog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Issue log</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -512,13 +485,39 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>INSERT DISCUSSION ABOUT DIFFERENT APPROACHES FOR TRAINING AND VALIDATING - E.G., TAKING OUT A SUBSET THAT IS AHEAD IN TIME OF TRAINING, USING JUST ONE LARGER VALIDATION DATASET.</p>
-<p>INSERT REFERENCES TO PAPERS ON DIFFERENT METHODS CONSIDERATIONS? SAY NONE ARE PERFECT.</p>
-<p>REMIND BIG PICTURE. HOW MUCH DIFFERENCE DO SOME DETAILS MAKE?</p>
-<p>INSERT DISCUSSION ABOUT SAMPLE SIZES. ADMIT I DON’T HAVE GOOD ADVICE HERE BUT LIST SOME CONSIDERATIONS.</p>
-<p>NOTE WE WILL TALK ABOUT HOW TO COMPARE AND SELECT LEARNERS LATER.</p>
+<section id="how-much-data-do-you-need" class="level3">
+<h3 class="anchored" data-anchor-id="how-much-data-do-you-need"><strong>How much data do you need?</strong></h3>
+<p>Ultimately, the goal is to have a large enough training set to train the models effectively, and large enough validation and test sets to get reliable estimates of the models’ performance. The definition of “large enough” can vary based on:</p>
+<ol type="1">
+<li><p><strong>Model Complexity</strong>: More complex models (e.g., deep neural networks with many layers and parameters) typically require larger training datasets to avoid overfitting while simpler models (e.g., linear regression, decision trees) may require smaller training datasets.</p></li>
+<li><p><strong>Data Variability</strong>: If the data has a lot of variability or noise, a larger dataset may be needed to capture the underlying patterns and relationships.</p></li>
+<li><p><strong>Balance between the classes of a binary outcome:</strong> This is a specific case of #2. If one class is much more common than the others, you may need a larger dataset to ensure that the model is exposed to enough examples of each class during training.</p></li>
+<li><p><strong>Availability of Data</strong>: Sometimes the amount of available data is a limiting factor. In such cases, it is important to make the best use of the available data and adjust the methods accordingly.</p></li>
+</ol>
+<p>Ultimately, if the learner/model performs well in validation and generalizes well to the test data, the dataset is likely large enough. If the model overfits to the training data - it does not generalize well to the test data, one reason may be that the modeling approach was to complex for the size of the available data.</p>
+</section>
+<section id="what-ratios-should-be-designated-for-training-validation-and-testing" class="level3">
+<h3 class="anchored" data-anchor-id="what-ratios-should-be-designated-for-training-validation-and-testing"><strong>What ratios should be designated for training, validation and testing?</strong></h3>
+<p>There is no one-size-fits-all answer to this question. A common starting point is a 60% training, 20% validation, and 20% testing split. However, the size of your dataset may necessitate a different allocation. For instance, a very large dataset might allow for a 50% training, 25% validation, and 25% testing split. Conversely, a smaller dataset might require a larger proportion for training, such as a 70% training, 15% validation, and 15% testing split. As previously mentioned, we will be combining the training and validation data to conduct <span class="math inline">\(v\)</span>-fold cross-validation.</p>
+</section>
+<section id="how-much-do-all-these-decisions-matter" class="level3">
+<h3 class="anchored" data-anchor-id="how-much-do-all-these-decisions-matter"><strong>How much do all these decisions matter?</strong></h3>
+<p><img src="images/worried.jpg" class="img-fluid" style="width:3in"></p>
+<ul>
+<li>Navigating the maze of decisions required for training, validating, and testing can be both confusing and frustrating, especially when there is no clear guidance. Here are some key takeaways to consider:</li>
+</ul>
+<ol type="1">
+<li><p><strong>Reserving a Test Set</strong>: The most crucial practice is to reserve a test set until a final learner has been selected. This allows for a fair evaluation of your final predictive model’s performance on new, unseen data. Failing to adhere to this practice can lead to significant issues.</p>
+<ul>
+<li>Remember that metrics of model performance, which we will discuss shortly, are estimates and come with inherent uncertainty. In other words, if you measured model performance using different samples, your results would vary. This uncertainty is even more pronounced with a smaller testing sample size. Although it is often overlooked, a good practice is to estimate this uncertainty, for example, by calculating the standard error or confidence interval.</li>
+</ul></li>
+<li><p><strong>Focus on the Ultimate Goal</strong>: Throughout the entire process, keep the ultimate goal in mind: to find a model that generalizes well to new data. The end goal is to deploy a model that can provide insights for improving services. Ensure that your test set is representative of the data you will use in deployment. Otherwise, your results may be overly optimistic, even if you adhered to the first point. Additionally, ensure that your training and validation data are as similar as possible to the data you will ultimately use for deployment.</p></li>
+<li><p><strong>Impact of Tuning and Validation Setup</strong>: The specific details of how you set up tuning and validation are important for model selection. The worst-case scenario is that you miss the opportunity to select the “best” model, but it is unlikely that you will choose the “wrong” model. Poor performance is more likely due to the limitations of your data and context rather than the choices made in setting up cross-validation.</p></li>
+</ol>
+<p>Remember, while it is important to make informed decisions throughout the process, limitations in your data and context often have a more significant impact on performance than the specific details of how you set up cross-validation.</p>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
