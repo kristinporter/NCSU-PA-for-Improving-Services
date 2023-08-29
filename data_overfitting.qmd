@@ -4,15 +4,15 @@ title: "Generalizing to new data"
 
 ### The objective of predictive analytics
 
-Recall that our objective, as shown in this simple illustration, is to use data with *known* outcomes to build a model that allows us to predict outcomes - or the likelihood of outcomes - in data with *unknown* outcomes. As a reminder, we are focusing on binary outcomes (those with just two values - yes or no), which is why we focus on predicting likelihoods. 
+Recall that our objective, as shown in this simple illustration, is to use data with *known* outcomes to build a model that allows us to predict outcomes - or the likelihood of outcomes - in data with *unknown* outcomes. As a reminder, we are focusing on binary outcomes (those with just two values - yes or no), which is why we focus on predicting probabilities or likelihoods of outcomes. 
 
 ![](images/WhatisPA.png){width="6in"}
 
 ### Avoiding "overfitting"
 
-How do we make sure that our learner, or model, which is based on information in the data with known outcomes (data from the past), generalizes to new data? If our learner/model is too closely tailored to the data we use to develop it, it risks not only capturing meaningful statistical patterns but also incidental fluctuations or noise unique to that data. When a model inadvertently incorporates this noise, it excels at describing and fitting the original data. However, when confronted with new, unseen data, this same model tends to deliver inaccurate predictions. This is called "overfitting." **Overfitting is the inability to adapt to new data stems - due to being constructed around specific noise rather than encompassing broader, generalizable patterns.**
+How do we make sure that our learner, or model, which is based on information in the data with known outcomes (data from the past), generalizes to new data? If our learner/model is too closely tailored to the data we use to develop it, it risks not only capturing meaningful statistical patterns but also incidental fluctuations or noise unique to that data. When a model inadvertently incorporates this noise, it excels at describing and fitting the original data. However, when confronted with new, unseen data, this same model tends to deliver inaccurate predictions. This is called "overfitting." **Overfitting refers to a model's inability to generalize to new data - due to being constructed around specific noise rather than based on broader patterns.**
 
-The following simple plots display the concept of overfitting, as an overcorrection to "underfitting." Each plot shows an attempt to capture the relationship between two measures. In the first plot, the estimated model, represented by the blue line, does not capture the trend evident in the data (shown by orange points). This is corrected in the second plot, in which the model appears to be a a good fit of the general trend. Then, in the the third plot, the model fits the data extremely well, but it overfits because it predicts almost every point - almost every random variation from the overall trend we care about.
+The following simple plots display the concept of overfitting, as an overcorrection to "underfitting." Each plot shows an attempt to capture the relationship between two measures. In the first plot, the estimated model, represented by the blue line, does not capture the trend evident in the data, shown by orange points. This is corrected in the second plot, in which the model appears to be a a good fit of the general trend. Then, in the the third plot, the model fits the data extremely well, but it overfits because it predicts almost every point - almost every random variation from the overall trend we care about.
 
 ![](images/overfitting.png){width="6in"}
 
