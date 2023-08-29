@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./data_overfitting.html" rel="next">
-<link href="./poc_benchmark.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -73,7 +71,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./poc_importance.html">Conducting a PA proof-of-concept</a></li><li class="breadcrumb-item"><a href="./poc_compare.html">Adding and comparing learners</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Predictive Analytics (PA) for Improving Services
+      </li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -194,37 +194,25 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Conducting a PA proof-of-concept</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_importance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The importance of a proof-of-concept</span></a>
-  </div>
-</li>
+ <span class="menu-text">The importance of a proof-of-concept</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_learners.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Defining learners</span></a>
-  </div>
-</li>
+ <span class="menu-text">Defining learners</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_benchmark.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Specifying a benchmark learner</span></a>
-  </div>
-</li>
+ <span class="menu-text">Specifying a benchmark learner</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_compare.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Adding and comparing learners</span></a>
-  </div>
-</li>
+ <span class="menu-text">Adding and comparing learners</span>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -292,7 +280,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_splitconsiderations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Considerations for splitting data</span></a>
+ <span class="menu-text">Additional considerations</span></a>
   </div>
 </li>
       </ul>
@@ -469,23 +457,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
- <span class="menu-text">Issue Log</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./issuelog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Issue log</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -512,58 +483,49 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Once we have specified our benchmark learner, we can specify additional learners for comparison. If simplicity and transparency are a goal, we will want to incrementally introduce complexity. For example, for our high school graduation example, we might take the following approach:</p>
+<p>Once we have specified our benchmark learner, we can specify additional learners for comparison. If simplicity and transparency are goals, we will want to incrementally introduce complexity. For example, for our high school graduation example, we might take the following approach:</p>
 <ol type="1">
 <li><p><strong>Incrementally add more measures to our benchmark predictor set.</strong> For example:</p>
 <table class="table">
 <colgroup>
-<col style="width: 47%">
-<col style="width: 52%">
+<col style="width: 44%">
+<col style="width: 50%">
+<col style="width: 4%">
 </colgroup>
-<thead>
-<tr class="header">
-<th>Predictor Set</th>
-<th>Measures</th>
-</tr>
-</thead>
 <tbody>
 <tr class="odd">
-<td><p>(a) Benchmark</p>
+<td rowspan="2"><h1 id="predictor-set" data-number="1"><span class="header-section-number">1</span> Predictor Set</h1>
+<p>(a) Benchmark</p>
 <p>This set is linked to current practice and allows us to see whether predictive analytics with more complex methods can offer improvement.</p></td>
-<td><ul>
+<td rowspan="2"><h1 id="measures" data-number="2"><span class="header-section-number">2</span> Measures</h1>
+<ul>
 <li><p>whether student had more than 15 absences in 9th grade</p></li>
 <li><p>whether student had any expulsions or suspensions in 9th grade</p></li>
 <li><p>9th grade GPA</p></li>
 </ul></td>
+<td></td>
 </tr>
 <tr class="even">
-<td><p>(b) Expanded</p>
-<p>This set adds measures that stakeholders think are important but the list is still limited for transparency and explainability.</p></td>
-<td><ul>
-<li><p>benchmark measures plus…</p></li>
-<li><p>number of absences in 9th grade</p></li>
-<li><p>ELA score on 9th grade standardized test</p></li>
-<li><p>Math score on 9th grade standardized test</p></li>
-<li><p>Whether received free or reduced price lunch</p></li>
+<td></td>
+</tr>
+<tr class="odd">
+<td colspan="3">(b) Expanded | - benchmark measures plus… | | | This set adds measures that stakeholders think are important, but the list is still limited for transparency and explainability. | - number of absences in 9th grade | | | | - ELA score on 9th grade standardized test | | | | - Math score on 9th grade standardized test | | | | - Whether received free or reduced price lunch |</td>
+</tr>
+<tr class="even">
+<td><p>(c) Kitchen sink</p>
+<p>This set moves beyond stakeholder input and allows us to see if adding lots of measures adds up to worthwhile improvements.</p></td>
+<td colspan="2"><ul>
+<li>All measures available in administrative records after completion of 9th grade, except demographics.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> | | |</li>
 </ul></td>
 </tr>
 <tr class="odd">
-<td><p>(c) Kitchen sink</p>
-<p>This set moves beyond stakeholder input and allows us to see if adding lots of measures adds up to worthwhile improvements.</p></td>
-<td><ul>
-<li>All measures available in administrative records after completion of 9th grade, except demographics.</li>
-</ul></td>
-</tr>
-<tr class="even">
-<td><p>(d) Kitchen sink plus</p>
-<p>This set allows us to see if a tricky data integration would be worth it - if inclusion of the measures in it lead to a substantial improvement.</p></td>
-<td><ul>
-<li>All measures in the kitchen sink predictor set plus a set of measures available in an external data set that could be integrated with administrative records.</li>
-</ul></td>
+<td colspan="3">(d) Kitchen sink plus | - All measures in the kitchen sink predictor set plus a set of measures available in an external data set that could be integrated with administrative records. | | | This set allows us to see if a tricky data integration would be worth it - if inclusion of the measures in the external data lead to a substantial improvement. |</td>
 </tr>
 </tbody>
 </table></li>
-<li><p><strong>Combine the predictor sets with different modeling approaches.</strong> Here we consider whether different machine learning algorithms improve performance. We want to use knowledge about how the algorithms work when matching them with predictor sets. For example, some machine learning algorithms are better suited for large numbers of predictors than others. In our example, we might specify as follows:</p></li>
+</ol>
+<ol start="2" type="1">
+<li><strong>Combine the predictor sets with different modeling approaches.</strong> Here we consider whether different machine learning algorithms improve performance. We want to use knowledge about how the algorithms work when matching them with predictor sets. For example, some machine learning algorithms are better suited for large numbers of predictors than others. In our example, we might specify as follows:</li>
 </ol>
 <table class="table">
 <thead>
@@ -591,15 +553,21 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p>This results in a total of 9 learners because we have a nine combinations of predictor sets and modelling approaches. Ultimately, we will then have 9 predictive models that results from the nine learners.</p>
-<p>Note: Machine learning algorithms typically require specifications for how they are implemented. These are called “tuning parameters.” For example, the random forest algorithm has tuning parameters that include the number of decision trees in a forest, the maximum depth of the decision trees, and several more. Different values of tuning parameters have different implications for the performance of the algorithm. While the analyst can specify these tuning parameters, it is typically best to use a data-driven approach. We will dive more into this later. However, the point to take away here is that we will “tune” each machine learning algorithm for each predictor set. So when we ultimately compare learners, we are comparing “tuned” versions of them.</p>
+<p>This results in a total of nine learners because we have nine combinations of predictor sets and modelling approaches. Ultimately, we will then have nine predictive models that result from the nine learners.</p>
+<p>Note: Machine learning algorithms typically require specifications for how they are implemented. These are called “tuning parameters.” For example, the random forest algorithm has tuning parameters that include the number of decision trees in a forest, the maximum depth of the decision trees, and several more options. Different values of tuning parameters have different implications for the performance of the algorithm. While the analyst can specify these tuning parameters, it is typically best to use a data-driven approach. We will dive more into this later. However, the point to take away here is that we will “tune” each machine learning algorithm for each predictor set. So when we ultimately compare learners, we are comparing “tuned” versions of them.</p>
 <ol start="3" type="1">
-<li><strong>Compare the learners’ in terms of predictive performance and bias:</strong> This is a big topic which we will divide up across many of the following sections. Importantly, as we will turn to next, we want to compare learners’ performance in <strong>new, unseen data</strong>. This is important because the goal of predictive analytics is to develop models that can make accurate predictions with new, real-world data that the model hasn’t encountered before.</li>
+<li><strong>Compare the learners in terms of predictive performance and bias:</strong> This is a big topic which we will divide up across many of the following sections. Importantly, as we will turn to next, we want to compare learners’ performance on <strong>new, unseen data</strong>. This evaluation is important because the goal of predictive analytics is to develop models that can make accurate predictions for new people that the model hasn’t encountered before.</li>
 </ol>
 
 
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Demographic information like race is excluded for ethics reasons. This decision will be discussed more in-depth when we discuss algorithmic bias.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -833,18 +801,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./poc_benchmark.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Specifying a benchmark learner</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./data_overfitting.html" class="pagination-link">
-        <span class="nav-page-text">Generalizing to new data</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 

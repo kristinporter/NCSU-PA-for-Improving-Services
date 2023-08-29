@@ -202,29 +202,17 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_importance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The importance of a proof-of-concept</span></a>
-  </div>
-</li>
+ <span class="menu-text">The importance of a proof-of-concept</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_learners.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Defining learners</span></a>
-  </div>
-</li>
+ <span class="menu-text">Defining learners</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_benchmark.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Specifying a benchmark learner</span></a>
-  </div>
-</li>
+ <span class="menu-text">Specifying a benchmark learner</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_compare.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Adding and comparing learners</span></a>
-  </div>
-</li>
+ <span class="menu-text">Adding and comparing learners</span>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -292,7 +280,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_splitconsiderations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Considerations for splitting data</span></a>
+ <span class="menu-text">Additional considerations</span></a>
   </div>
 </li>
       </ul>
@@ -469,23 +457,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
- <span class="menu-text">Issue Log</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./issuelog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Issue log</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -514,18 +485,18 @@ ul.task-list li input[type="checkbox"] {
 
 <p>We want to be thoughtful about the data that we will use for our proof-of-concept and that we will split for training, validating and testing. Here are some important considerations for identifying data:</p>
 <ul>
-<li><p><strong>The data should be representative of the population and context for the predictive analytics objective.</strong> Here we want to make sure we have data for individuals who are experiencing a similar context as what we expect for the individuals for whom we will ultimately deploy predictive analytics.</p>
+<li><p><strong>The data should be representative of the population and context for the predictive analytics objective.</strong> Here we want to make sure we have data for units that are experiencing a similar context as what we expect for the units for whom we will ultimately deploy predictive analytics.</p>
 <ul>
-<li><p>In our first example focused on predicting risk of TANF education and training program participants not finding and sustaining employment, we would want to investigate whether eligibility requirements for the program changed significantly. We may want to limit our data to the time period for which eligibility requirements for the education and training program are most similar to those applied currently.</p></li>
-<li><p>In our other example focused on predicting 10th grade students’ risk of not graduating on time, we would want to investigate graduation guidelines. If we include student cohorts who had tougher or easier graduation standards when training our models, then the models may not generalize well to the students for whom we would deploy the models. Depending on when the context for the data change, we may or may not detect limitations of our modeling. That is, if the context changes (e.g.&nbsp;the graduation guidelines change) after when the testing data were obtained, then our testing may indicate great performance, but we would have concerns about deployment validity.</p></li>
+<li><p>Recall our our earlier example focused on predicting TANF training program participants’ risks of not finding and sustaining employment. When identifying which years of past data to include in our learner workflow, we would want to investigate whether and when eligibility requirements for the training program changed significantly. We may want to limit our data to a time period for which eligibility requirements for the training program are most similar to those currently eligible for the TANF training program.</p></li>
+<li><p>In our other example focused on predicting 10th grade students’ risk of not graduating on time, we would want to investigate graduation guidelines. If we include student cohorts who had tougher or easier graduation standards when training our models compared to the cohorts for whom we apply the models, then the models may not generalize well in years outside of our training-validation-testing workflow.</p></li>
 </ul></li>
 <li><p><strong>Important measures should be consistently available.</strong> Here we want to assess whether we have sufficient consistency in the way measures are defined and entered into data systems. For example:</p>
 <ul>
-<li><p>Have the data integrations that create the needed datasets been consistently maintained over time, or are important measures absent? Are these integrations viable for the future as well? If certain datasets can’t be reliably acquired and merged, they should be excluded from the predictive analytics proof-of-concept. It’s vital to consider not just historical data but also future scenarios. If specific data won’t be accessible when we implement predictive analytics, then a proof-of-concept dependent on that data won’t be genuine.</p></li>
-<li><p>Was there a rollout of a new data system that had early implementation challenges? Then we may want to eliminate data from those early years.</p></li>
-<li><p>Is survey data part of our data universe for predictive analytics? If so, do response rates vary substantially over time? Variation in response rates could (but not necessarily) mean that different populations are being capture with each survey. We would need to investigate this.</p></li>
+<li><p>Have the data integrations been consistently maintained over time? That is, if the data we aim to use are a merge of multiple underlying data sources, are those merges consistently done? If not, important measures may sometimes be missing for all units. Also, are these integrations/merges viable for the future as well? If certain data cannot be reliably acquired and merged, they should be excluded from the predictive analytics proof-of-concept. It is vital to consider not just historical data but also future scenarios. If specific data won’t be accessible when we implement predictive analytics, then a proof-of-concept dependent on that data won’t be genuine.</p></li>
+<li><p>Was there a rollout of a new data system that had early implementation challenges? If so, we may want to eliminate data from those early years.</p></li>
+<li><p>Is survey data part of our data universe for predictive analytics? If so, do response rates vary substantially over time? Variation in response rates could (but not necessarily) mean that different populations are being captured with each survey. We would need to investigate this.</p></li>
 <li><p>Were there broad changes in how measures where defined or coded? We may want to limit the data we will use to train, validate and test models to a period in which the measures are consistent to the present (time time close to when any model would be deployed).</p>
-<p>Note that inconsistencies in some measures could have implications in measures we include in our prediction sets rather than implications for how we restrict our data for our proof-of-concept. That is, if some measures change over time, we may need to exclude them from our models. But if there is sufficient consistency across key predictors in data we may not need to exclude data. We will return to measure consistency later, when we discuss data quality issues.</p></li>
+<p>Note that inconsistencies in some measures could have implications in measures we include in our prediction sets rather than implications for how we restrict our data for our proof-of-concept. That is, if some measures change over time, we may need to exclude just those measures from our models. If there is sufficient consistency across key predictors in data we may not need to restrict the data. We will return to measure consistency later, when we discuss data quality issues.</p></li>
 </ul></li>
 </ul>
 

@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./data_split.html" rel="next">
-<link href="./poc_compare.html" rel="prev">
+<link href="./scoping_when.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -202,29 +202,17 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_importance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The importance of a proof-of-concept</span></a>
-  </div>
-</li>
+ <span class="menu-text">The importance of a proof-of-concept</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_learners.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Defining learners</span></a>
-  </div>
-</li>
+ <span class="menu-text">Defining learners</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_benchmark.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Specifying a benchmark learner</span></a>
-  </div>
-</li>
+ <span class="menu-text">Specifying a benchmark learner</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_compare.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Adding and comparing learners</span></a>
-  </div>
-</li>
+ <span class="menu-text">Adding and comparing learners</span>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -292,7 +280,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_splitconsiderations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Considerations for splitting data</span></a>
+ <span class="menu-text">Additional considerations</span></a>
   </div>
 </li>
       </ul>
@@ -469,23 +457,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
- <span class="menu-text">Issue Log</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./issuelog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Issue log</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -514,15 +485,15 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="the-objective-of-predictive-analytics" class="level3">
 <h3 class="anchored" data-anchor-id="the-objective-of-predictive-analytics">The objective of predictive analytics</h3>
-<p>Recall that our objective, as shown in this simple illustration, is to use data with <em>known</em> outcomes to build a model that allows us to predict outcomes - or the likelihood of outcomes in data with <em>unknown</em> outcomes. As a reminder, we are focusing on binary outcomes (those with just two values - yes or no), which is why we focus on predicting likelihoods.</p>
+<p>Recall that our objective, as shown in this simple illustration, is to use data with <em>known</em> outcomes to build a model that allows us to predict outcomes - or the likelihood of outcomes - in data with <em>unknown</em> outcomes. As a reminder, we are focusing on binary outcomes (those with just two values - yes or no), which is why we focus on predicting likelihoods.</p>
 <p><img src="images/WhatisPA.png" class="img-fluid" style="width:6in"></p>
 </section>
 <section id="avoiding-overfitting" class="level3">
-<h3 class="anchored" data-anchor-id="avoiding-overfitting">Avoiding overfitting</h3>
-<p>How do we make sure that our model, which is based on information in the data with known outcomes, generalizes to new data? If our model is too closely tailored to the data we use to develop it, it risks not only capturing meaningful statistical patterns but also incidental fluctuations or noise unique to that dataset. When a model inadvertently incorporates this noise, it excels at describing and fitting the original data. However, when confronted with new, unseen data, this same model tends to deliver inaccurate predictions. This is called “overfitting.” Overfitting is the inability to adapt to new data stems - due to being constructed around specific noise rather than encompassing broader, generalizable patterns.</p>
-<p>The following simple plots displays the concept of overfitting, as an overcorrection to “underfitting.” Each plot has shows an attempt to capture the relationship between two measures. In the first plot, the estimated model, represented by the blue line, does not capture the trend evident in the data. This is corrected in the second plot, in which the model appears to be a a good fit of the general trend. Then, in the the third plot, the model fits the data extremely well, but it overfits because it predicts almost every point - almost every random variation from the overall trend we care about.</p>
+<h3 class="anchored" data-anchor-id="avoiding-overfitting">Avoiding “overfitting”</h3>
+<p>How do we make sure that our learner, or model, which is based on information in the data with known outcomes (data from the past), generalizes to new data? If our learner/model is too closely tailored to the data we use to develop it, it risks not only capturing meaningful statistical patterns but also incidental fluctuations or noise unique to that data. When a model inadvertently incorporates this noise, it excels at describing and fitting the original data. However, when confronted with new, unseen data, this same model tends to deliver inaccurate predictions. This is called “overfitting.” <strong>Overfitting is the inability to adapt to new data stems - due to being constructed around specific noise rather than encompassing broader, generalizable patterns.</strong></p>
+<p>The following simple plots display the concept of overfitting, as an overcorrection to “underfitting.” Each plot shows an attempt to capture the relationship between two measures. In the first plot, the estimated model, represented by the blue line, does not capture the trend evident in the data (shown by orange points). This is corrected in the second plot, in which the model appears to be a a good fit of the general trend. Then, in the the third plot, the model fits the data extremely well, but it overfits because it predicts almost every point - almost every random variation from the overall trend we care about.</p>
 <p><img src="images/overfitting.png" class="img-fluid" style="width:6in"></p>
-<p>In this first section on data for predictive analytics, we will learn how to develop (i.e., estimate, fit, train), compare, select learners so that we identify the learner that does the “best” job in generalizing to new, unseen data. Note that “best” is in quotation marks because we have not yet discussed what how we define “best”. We will turn to that soon.</p>
+<p>In this first section on data for predictive analytics, we will learn how to develop, compare, and select learners/models so that we identify the one that does the “best” job in generalizing to new, unseen data. Note that “best” is in quotation marks because we have not yet discussed what how we define “best”. We will turn to that soon.</p>
 
 
 </section>
@@ -763,8 +734,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./poc_compare.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Adding and comparing learners</span>
+      <a href="./scoping_when.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">When are we making predictions?</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

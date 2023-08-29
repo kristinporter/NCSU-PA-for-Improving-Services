@@ -204,29 +204,17 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_importance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The importance of a proof-of-concept</span></a>
-  </div>
-</li>
+ <span class="menu-text">The importance of a proof-of-concept</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_learners.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Defining learners</span></a>
-  </div>
-</li>
+ <span class="menu-text">Defining learners</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_benchmark.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Specifying a benchmark learner</span></a>
-  </div>
-</li>
+ <span class="menu-text">Specifying a benchmark learner</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_compare.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Adding and comparing learners</span></a>
-  </div>
-</li>
+ <span class="menu-text">Adding and comparing learners</span>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -471,23 +459,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
- <span class="menu-text">Issue Log</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./issuelog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Issue log</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -514,34 +485,39 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>ROUGH</p>
-<p>Once we have stored away our test data, we need to figure out how to use the rest of our data for training and validation. There are multiple approaches. Here we will go over how the training and validation are implemented in the PA Toolset, but I will comment on some alternative variations.</p>
+<p>Once we have stored away our test data, we need to figure out how to use the rest of our data for training and validation. There are multiple approaches. Here we will go over how the training and validation are implemented in the PA Tool Set templates you will use, but I will comment on some alternative variations.</p>
 <p>Recall that it is imperative to train in one dataset and to validate (assess performance and fairness) in a different dataset. This buffers against overfitting.</p>
-<p>We can sets aside a portion of the remaining data and designate it for validation. We can the uses the remaining data for training. For example, we can set aside 20% of the remaining data for validation, and use the remaining 80% for training. That is, we fit all the learners with 80% of our data and compare predictions to the truth in 20% of the data, allowing us to compute various metrics of performance and fairness.</p>
-<p>We can also repeat this process more than once. That is, we can let different portions of the data take turns for training and for validation. This procedure is referred to <span class="math inline">\(v\)</span><strong>-fold cross-validation</strong>, in which <span class="math inline">\(v\)</span> is the number of folders or partitions. The following diagram illustrates 5-fold cross-validation:</p>
+<p>We can set aside a portion of the non-test data and designate that portion for validation. We can then use the remaining data for training. For example, we can set aside 20% of the remaining data for validation, and use the remaining 80% for training. That is, we fit all the learners with 80% of our data and compare predictions to the truth in 20% of the data, allowing us to compute various metrics of performance and fairness.</p>
+<p>We can also repeat this process more than once. That is, we can let different portions of the data take turns for training and for validation. This procedure is referred to <span class="math inline">\(v\)</span>-fold cross-validation, in which <span class="math inline">\(v\)</span> is the number of folders or partitions - or times we repeating the training and validation. The following diagram illustrates 5-fold cross-validation:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/CV diagram.png" class="img-fluid figure-img" style="width:8in"></p>
 </figure>
 </div>
-<p>This diagram is showing that the data are split into 5 folds. Each fold takes a turn as a validation fold, while all the other folds are combined for learner training. When a fold takes a turn as a validation fold, we obtain predicted likelihoods for each observation in that fold. We can then compute metrics of learner performance and fairness for each fold. We can average the metrics across the 5 folds. Alternatively, we can use the predicted likelihoods that result across all the folds to compute metrics. Our PA Toolset does a combination of both. For a few of metrics, it returns averages from across the folds. For remaining metrics, it relies on the predicted likelihoods. This will be reviewed when we turn to the code.</p>
-<p>The PA Toolset implements <span class="math inline">\(v\)</span>-fold cross-validation for the user. The procedure does not need to be coded. Instead, the user specifies how the cross-validation should be implemented, following the guidance below:</p>
+<p>This diagram is showing that the data are split into 5 folds. Each fold takes a turn as a validation fold, while all the other folds are combined for learner training. When a fold takes a turn as a validation fold, we obtain predicted likelihoods for each observation in that fold. We can then compute metrics of learner performance and fairness for each fold. We can average the metrics across the 5 folds. Alternatively, we can use the predicted likelihoods that result across all the folds to compute metrics. Our PA Tool Set does a combination of both. For a few of metrics, it returns averages from across the folds. For remaining metrics, it relies on the predicted likelihoods. This will be reviewed when we turn to the code.</p>
+<p>The PA Tool Set implements <span class="math inline">\(v\)</span>-fold cross-validation for the user. The procedure does not need to be coded. Instead, the user specifies how the cross-validation should be implemented, following the guidance below:</p>
 <section id="guidance-for-implementing-v-fold-cross-validation" class="level3">
 <h3 class="anchored" data-anchor-id="guidance-for-implementing-v-fold-cross-validation"><strong>Guidance for implementing</strong> <span class="math inline">\(v\)</span><strong>-fold cross-validation:</strong></h3>
 <ul>
-<li><p><em>Number of folds:</em> A good default for <span class="math inline">\(v\)</span> is 5. <span class="math inline">\(v\)</span> can be increased when the sample size is large. Alternatively, the entire <span class="math inline">\(v\)</span>-fold cross-validation procedure can be repeated more than once. That is, we can get results from 5 folds, then resample the folds so that we also get results from another 5 folds of the same size. This may be desirable if the sample size is small, resulting in high variability in the metrics across folds. However, our toolset currently does not allow for this.</p></li>
-<li><p><em>How to specify folds:</em> Typically, the folds are randomly partitioned. However, it may be desirable to specify the folds to align with analytic goals. For example, a key limitation of <span class="math inline">\(v\)</span>-fold cross-validation with random partitioning is that each fold consists of observations from different points in time. That is, if the data we are using for training and validation consists of 5 years of data, random partitioning would mean data from across all five years are used in training and in validation. Since our goal is to generalize a model over time, we might want to have each year of data serve as a validation fold.</p>
-<ul>
-<li>NOTE check status of toolset for this.</li>
-</ul></li>
-<li><p><em>Stratification:</em> In some circumstances, we recommend stratifying the cross-validation. For example, if a positive or negative value of a binary outcome is rare (e.g.&nbsp;it is “yes” or “1” for less than 30 percent of the sample), then some folds could have an unlucky random draw with very few “yes” or “1” outcomes. To protect against this, we can stratify the cross-validation. This means we can randomly partition those observations for which the outcome = 1 and then randomly partition those observations for which the outcome = 0. Note that the PA Toolset will ask if you want to stratify by a measure. If you enter a variable name, the stratified cross-validation will be automatically done for you.</p></li>
+<li><p><em>Number of folds:</em> A good default for <span class="math inline">\(v\)</span> is 5. <span class="math inline">\(v\)</span> can be increased when the sample size is large. Alternatively, the entire <span class="math inline">\(v\)</span>-fold cross-validation procedure can be repeated more than once. That is, we can get results from 5 folds, then resample to get 5 different folds and therefore get another set of results from another 5 folds of the same size. This may be desirable if the sample size is small because there could be high variability in the metrics across folds. However, our tool set templates currently do not allow for this.</p></li>
+<li><p><em>How to specify folds:</em> Typically, the folds are randomly partitioned. However, it may be desirable to specify the folds to align with analytic goals. For example, a key limitation of <span class="math inline">\(v\)</span>-fold cross-validation with random partitioning is that each fold consists of observations from different points in time. That is, if the data we are using for training and validation consists of 5 years of data, random partitioning would mean data from across all five years are used in training and in validation. Since our goal is to generalize a model over time, we might want to have each year of data serve as a validation fold.</p></li>
+<li><p><em>Stratification:</em> In some circumstances, we recommend stratifying the cross-validation. For example, if a positive or negative value of a binary outcome is rare (e.g.&nbsp;it is “yes” or “1” for less than 30 percent of the sample), then some folds could have an unlucky random draw with very few “yes” or “1” outcomes. To protect against this, we can stratify the cross-validation. This means we can (1st) randomly partition those observations for which the outcome = 1; and then (2nd) separately randomly partition those observations for which the outcome = 0; then (3rd) pair each partition with outcome =1 with a partition with outcome = 0 to get <span class="math inline">\(v\)</span> folds with equal proportions of each value of the outcome. Note that the PA Tool Set templates will ask if you want to stratify by a measure. If you enter a variable name, the stratified cross-validation will be automatically done for you.</p></li>
 </ul>
 </section>
 <section id="tuning-with-v-fold-cross-validation" class="level3">
 <h3 class="anchored" data-anchor-id="tuning-with-v-fold-cross-validation"><strong>Tuning with</strong> <span class="math inline">\(v\)</span><strong>-fold cross-validation:</strong></h3>
 <ul>
-<li><p>The PA Toolset will automatically optimize tuning parameters. It does this with <span class="math inline">\(v\)</span>-fold cross-validation. The code will automatically compare learner validation across a grid of different combinations of tuning parameters.</p></li>
+<li><p>The PA Tool Set will automatically optimize tuning parameters. It does this with <span class="math inline">\(v\)</span>-fold cross-validation. The code will automatically compare learner validation across a grid of different combinations of tuning parameters.</p></li>
 <li><p>The comparisons will focus on just one of two metrics selected by the user - either the area under the curve of the receiver-operator curve (AUC ROC) or the area under the curve of the precision-recall curve (AUC PR). We will learn about these two measures later. The point to take away here is that the combination of tuning parameters that results in the highest AUC ROC or AUC PR, averaged across the <span class="math inline">\(v\)</span> folds, will be selected as the “tuned learner.” The user will then only view results of the tuned learner going forward.</p></li>
+</ul>
+</section>
+<section id="an-alternative-approach-to-training-and-validation" class="level3">
+<h3 class="anchored" data-anchor-id="an-alternative-approach-to-training-and-validation"><strong>An alternative approach to training and validation</strong></h3>
+<p>The approach of <span class="math inline">\(v\)</span>-fold cross-validation has at least a few of limitations:</p>
+<ul>
+<li><p>One, as mentioned above, if we use random splits of the data to create the <span class="math inline">\(v\)</span> folds, we miss the opportunity to to assess how a model built on past data performs in future data - unless we set up the folds to be aligned with time.</p></li>
+<li><p>Two, we introduce “data leakage” in our validation process. Data leakage refers to the situation in which we are “peeking” at information about our validation or test data when we do our training. One way this peeking can happen is to use information from combined data when doing data preparation. For example, we may transform some predictor variables to be “mean centered,” which means we subtract the mean of the predictor variable from each unit’s value so that the mean of this new, transformed variable is zero. (Some machine algorithms will peform better when our measures are mean-centered.) With <span class="math inline">\(v\)</span>-fold cross-validation, we rely on a single data set for training and validation even though we rely on different partitions for training vs.&nbsp;validation. Therefore, mean-centered predictors would have the same mean in the training subsets as in the validation subsets. As a result, training data and the subsequent model fit learn "something" about the validation data distribution. This can potentially lead to overfitting. We will return to the concept of data leakage in Part 2 of “Data for PA.”</p></li>
+<li><p>Three, with <span class="math inline">\(v\)</span>-fold cross-validation, we are using the same procedure for both parameter tuning and for comparing the tuned learners. Therefore, we awing the</p></li>
 </ul>
 
 

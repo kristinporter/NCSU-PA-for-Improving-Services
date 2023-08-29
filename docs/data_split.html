@@ -205,29 +205,17 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_importance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The importance of a proof-of-concept</span></a>
-  </div>
-</li>
+ <span class="menu-text">The importance of a proof-of-concept</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_learners.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Defining learners</span></a>
-  </div>
-</li>
+ <span class="menu-text">Defining learners</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_benchmark.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Specifying a benchmark learner</span></a>
-  </div>
-</li>
+ <span class="menu-text">Specifying a benchmark learner</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_compare.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Adding and comparing learners</span></a>
-  </div>
-</li>
+ <span class="menu-text">Adding and comparing learners</span>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -295,7 +283,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_splitconsiderations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Considerations for splitting data</span></a>
+ <span class="menu-text">Additional considerations</span></a>
   </div>
 </li>
       </ul>
@@ -472,23 +460,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
- <span class="menu-text">Issue Log</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./issuelog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Issue log</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -515,7 +486,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Here we will define the workflow for a PA proof-of-concept. This involves the following three steps:</p>
+<p>Here we will define the learner workflow for a PA proof-of-concept. This involves the following three steps:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -532,11 +503,11 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p><br>
 </p>
-<ul>
-<li><p><strong>Training:</strong> Uses data with known outcomes to apply a modeling approach (e.g., regression or a machine learning algorithm) in order to build a model of the relationship between predictors and the outcome of interest.</p></li>
-<li><p><strong>Validating:</strong> uses <em>new</em> data with known outcomes (data not used for training) to apply all trained models (from all learners). The predictions from the trained models/learners are compared to the known outcomes and metrics of model performance and fairness are computed. This validation can be repeated in multiple validation data sets. Looking across all results, the “best” model is selected. Criteria for a model being selected as “best” vary by context. To determine the “best” model/learner, the team may weigh performance (accuracy), fairness, simplicity/transparency and variability across multiple validations.</p></li>
-<li><p><strong>Testing:</strong> uses <em>new, set aside</em> data with know outcomes (data not used for training or validation) to apply the best model. The predictions from the best model are compared to the known outcomes to report predictive performance, fairness and simplicity/transparency to stakeholders.</p></li>
-</ul>
+<ol type="1">
+<li><p><strong>Training:</strong> Uses data with known outcomes to apply a modeling approach (e.g., regression or a machine learning algorithm) in order to build (i.e., estimate, fit, train) a model of the relationship between predictors and the outcome of interest.</p></li>
+<li><p><strong>Validating:</strong> uses <em>new</em> data with known outcomes (data not used for training) to apply all trained learners/models. The predictions from the trained learners/models are compared to the known outcomes so that metrics of model performance and fairness are computed. This validation can be repeated in multiple validation data sets. Looking across all results, the “best” model is selected. Criteria for a model being selected as “best” vary by context. To determine the “best” learner/model, the team will weigh different definitions and metrics of predictive performance and of fairness. We will take a deep dive into these metrics soon. The team may also weight the simplicity and transparency of the learner, as well as variability across multiple validations.</p></li>
+<li><p><strong>Testing:</strong> uses <em>new, set aside</em> data with know outcomes (data not used for training or validation) to apply the “best” model. The predictions from the best model are compared to the known outcomes to report on predictive performance and fairness to stakeholders and to make a decision about whether the learner/model should be deployed for use.</p></li>
+</ol>
 <p>In the following pages, we will go over how to implement these concepts.</p>
 
 

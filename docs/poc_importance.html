@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./poc_learners.html" rel="next">
-<link href="./scoping_when.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -73,7 +71,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./poc_importance.html">Conducting a PA proof-of-concept</a></li><li class="breadcrumb-item"><a href="./poc_importance.html">The importance of a proof-of-concept</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Predictive Analytics (PA) for Improving Services
+      </li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -194,37 +194,25 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Conducting a PA proof-of-concept</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_importance.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">The importance of a proof-of-concept</span></a>
-  </div>
-</li>
+ <span class="menu-text">The importance of a proof-of-concept</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_learners.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Defining learners</span></a>
-  </div>
-</li>
+ <span class="menu-text">Defining learners</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_benchmark.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Specifying a benchmark learner</span></a>
-  </div>
-</li>
+ <span class="menu-text">Specifying a benchmark learner</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poc_compare.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Adding and comparing learners</span></a>
-  </div>
-</li>
+ <span class="menu-text">Adding and comparing learners</span>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -292,7 +280,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_splitconsiderations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Considerations for splitting data</span></a>
+ <span class="menu-text">Additional considerations</span></a>
   </div>
 </li>
       </ul>
@@ -469,23 +457,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
- <span class="menu-text">Issue Log</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./issuelog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Issue log</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -521,12 +492,21 @@ ul.task-list li input[type="checkbox"] {
 <ol type="1">
 <li><p><strong>Given the available data, how well can we predict our outcome of interest?</strong></p>
 <p>When investigating this question, we will want to consider various metrics of model performance, which we will turn to in a later section. We will be concerned with how well our predictive models help us identify those who truly are at risk. We may also be concerned with the extent to which our model makes mistakes - either designating at-risk individuals as being not-at-risk, or not-at-risk individuals as being at-risk.</p></li>
+</ol>
+<p><strong>KH</strong>: not every setting predicts who is at-risk, but I’m not sure how to modify this so that it’s more general but still clear.</p>
+<ol start="2" type="1">
 <li><p><strong>Given the available data, to what extent is there bias in our predictions?</strong></p>
 <p>When investigating this question, we will want to consider various metrics of bias, which we will also turn to in a later section. Here we will be concerned with whether and by how much model performance varies for different groups.</p></li>
-<li><p><strong>To what extent do more complex predictive models improve upon a simple one or upon current practice?</strong></p>
-<p>When investigating this question, our focus is on contrasting predictive capabilities and potential biases across various prediction approaches. A simple predictive model might encompass just a handful of measures, which are combined and weighted in a straightforward manner. For instance, individuals meeting specific criteria based on these measures might be predicted to realize the outcome of interest. Alternatively, these metrics could be plugged into a regression model to estimate their relationship with the outcome. We may add complexity to the predictive modeling by adding more measuers and by using advanced, data-driven algorithms. The crux then lies in weighing the pros and cons when comparing different models. Should a more complex model yield superior results compared to a simpler one, it prompts a consideration: Are the improvements significant enough to offset potential drawbacks in terms of transparency and explainability? Additionally, do these improvements outweigh any potential challenges in implementing and sustaining a more intricate modeling process?</p></li>
+</ol>
+<p><strong>KH</strong> I’m not sure where to introduce this concept–I probably should have made a comment earlier–but I think it’s important to remind the students there are multiple definitions of bias. Statistical bias does not always match our usual English definition of bias. Algorithmic bias can also take many forms, and is a bit fuzzy. For example, if an algorithm predicts Black people are more at-risk, and that prediction matches the true underlying population risk, is that “bias”? For these reasons I tend toward using terms like “equity” or “fairness” but those have their own problems as well.</p>
+<ol start="3" type="1">
+<li><p><strong>To what extent are complex predictive models worthwhile? Do they improve upon a simpler model or decision-making process? Do they improve upon current practice?</strong></p>
+<p>When investigating this question, our focus is on contrasting predictive capabilities and potential biases across various prediction approaches.</p>
+<p>We start by looking at the simplest approach, which doesn’t necessarily involve a statistical model at all. A simple decision-making process might involve taking a small number of measures and combining and weighting them in a straightforward manner based on prior knowledge. One version of this type of approach is choosing specific criteria based on these measures that put people into one predicted catgory or the other. For example, perhaps everyone who both has children and is below a certain income level are predicted to be high-risk, while all other people are considered to be low-risk. This type of approach is sometimes called a rules-based approach or a decision tree, among other terminology.</p>
+<p>Moving to more complex approaches, we could plug a small number of measures into a regression model to estimate their relationship with the outcome. Finally, the most complex approaches might involve adding more measures, potentially a large number, and/or using advanced, data-driven algorithms such as a support vector machine or random forest.</p>
+<p>The crux then lies in weighing the pros and cons when comparing different models. Should a more complex approach yield superior results compared to a simpler one, it prompts a consideration: Are the improvements significant enough to offset potential drawbacks in terms of transparency and explainability? Additionally, do these improvements outweigh any potential challenges in implementing and sustaining a more intricate modeling process?</p></li>
 <li><p><strong>Do stakeholders understand and trust the results from the “best” predictive model?</strong></p>
-<p>While stakeholders should be engaged in the PA scoping process, the proof-of-concept provides another opportunity for valuable consultation. Sharing results used to investigate the above questions supports transparency and trust in the process. Stakeholders input and questions are essential to the goals of the proof-of-concept - to assess whether and how predictive analytics should be deployed, communicated and used to improve services.</p></li>
+<p>While stakeholders should be engaged in the PA scoping process, the proof-of-concept provides another opportunity for valuable consultation. Sharing results used to investigate the above questions supports transparency and trust in the process. Stakeholders’ input and questions are essential to the goals of the proof-of-concept - to assess whether and how predictive analytics should be deployed, communicated and used to improve services.</p></li>
 </ol>
 <p><br>
 </p>
@@ -768,18 +748,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./scoping_when.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">When are we making predictions?</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./poc_learners.html" class="pagination-link">
-        <span class="nav-page-text">Defining learners</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 
