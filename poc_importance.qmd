@@ -7,7 +7,7 @@ After we have scoped our predictive analytics project, the next step is to condu
 
 1.  **Given the available data, how well can we predict our outcome of interest?**
 
-    When investigating this question, we will want to consider various metrics of model performance, which we will turn to in a later section. We will be concerned with the reliablity of our results. How "accurate" are they? I put "accurate" in quotations because I am referring to a general assessment of model performance, rather than the precise statistical definition of accuracy, which we will discuss soon. In our high school example, we are concented with the extent to which the predictive models help us identify those who truly are or are not at risk of not graduating on time, as well as with the extent to which our model makes mistakes - either designating at-risk individuals as being not-at-risk, or not-at-risk individuals as being at-risk.
+    When investigating this question, we will want to consider various metrics of model performance, which we will turn to in a later section. We will be concerned with the reliablity of our results. How "accurate" are they? I put "accurate" in quotations because I am referring to a general assessment of model performance, rather than the precise statistical definition of accuracy, which we will discuss soon, along with many other metrics of predictive performance. 
     
 
 2.  **Given the available data, to what extent is there bias in our predictions?**
