@@ -43,12 +43,6 @@ website:
           - poc_learners.qmd
           - poc_benchmark.qmd
           - poc_compare.qmd
-      - section: "Introduction to the PA Toolset"
-        contents:
-          - "Overview"
-          - "How to access toolset"
-          - "How to specify scope in toolset"
-          - "How to specify learners in toolset"
       - section: "Data for PA: PART 1"
         contents:
           - "Generalizing to new data"
@@ -71,6 +65,12 @@ website:
           - "Data leakage"
           - "Strategies for extracting predictive value"
           - "Data model for PA Toolset"
+      - section: "Introduction to the PA Toolset"
+        contents:
+          - "Overview"
+          - "How to access toolset"
+          - "How to specify scope in toolset"
+          - "How to specify learners in toolset"
       - section: "Modeling approaches"
         contents:
           - "Regression for predicting binary outcomes"
