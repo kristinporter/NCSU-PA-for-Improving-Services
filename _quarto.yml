@@ -35,14 +35,14 @@ website:
           - scoping_when.qmd
       - section: "Conducting a PA proof-of-concept"
         contents:
-          - "The importance of a proof-of-concept"
-          - "Defining learners"
-          - "Specifying a benchmark learner"
-          - "Adding and comparing learners"
-          # - poc_importance.qmd
-          # - poc_learners.qmd
-          # - poc_benchmark.qmd
-          # - poc_compare.qmd
+          # - "The importance of a proof-of-concept"
+          # - "Defining learners"
+          # - "Specifying a benchmark learner"
+          # - "Adding and comparing learners"
+          - poc_importance.qmd
+          - poc_learners.qmd
+          - poc_benchmark.qmd
+          - poc_compare.qmd
       - section: "Introduction to the PA Toolset"
         contents:
           - "Overview"
