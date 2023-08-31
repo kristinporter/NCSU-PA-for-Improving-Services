@@ -7,15 +7,12 @@ After we have scoped our predictive analytics project, the next step is to condu
 
 1.  **Given the available data, how well can we predict our outcome of interest?**
 
-    When investigating this question, we will want to consider various metrics of model performance, which we will turn to in a later section. We will be concerned with how well our predictive models help us identify those who truly are at risk. We may also be concerned with the extent to which our model makes mistakes - either designating at-risk individuals as being not-at-risk, or not-at-risk individuals as being at-risk.
+    When investigating this question, we will want to consider various metrics of model performance, which we will turn to in a later section. We will be concerned with how well our predictive models help us identify those who truly are at risk (or truly will realize the outcome of interest - this might not always be "risk" or conversely, "success" but I use this as a easier way to talk about it). We may also be concerned with the extent to which our model makes mistakes - either designating at-risk individuals as being not-at-risk, or not-at-risk individuals as being at-risk.
     
-**KH**: not every setting predicts who is at-risk, but I'm not sure how to modify this so that it's more general but still clear.
 
 2.  **Given the available data, to what extent is there bias in our predictions?**
 
     When investigating this question, we will want to consider various metrics of bias, which we will also turn to in a later section. Here we will be concerned with whether and by how much model performance varies for different groups.
-    
-**KH** I'm not sure where to introduce this concept--I probably should have made a comment earlier--but I think it's important to remind the students there are multiple definitions of bias.  Statistical bias does not always match our usual English definition of bias.  Algorithmic bias can also take many forms, and is a bit fuzzy.  For example, if an algorithm predicts Black people are more at-risk, and that prediction matches the true underlying population risk, is that "bias"? For these reasons I tend toward using terms like "equity" or "fairness" but those have their own problems as well.
 
 3.  **To what extent are complex predictive models worthwhile? Do they improve upon a simpler model or decision-making process?  Do they improve upon current practice?**
 
