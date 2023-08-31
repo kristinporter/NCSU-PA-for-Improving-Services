@@ -482,16 +482,16 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Incrementally add more measures to our benchmark predictor set.</strong> For example:</p>
 <table class="table">
 <colgroup>
-<col style="width: 44%">
-<col style="width: 50%">
-<col style="width: 4%">
+<col style="width: 45%">
+<col style="width: 53%">
+<col style="width: 1%">
 </colgroup>
 <tbody>
 <tr class="odd">
-<td rowspan="2"><h1 id="predictor-set" data-number="1"><span class="header-section-number">1</span> Predictor Set</h1>
+<td><h3 id="predictor-set" class="anchored">Predictor Set</h3>
 <p>(a) Benchmark</p>
 <p>This set is linked to current practice and allows us to see whether predictive analytics with more complex methods can offer improvement.</p></td>
-<td rowspan="2"><h1 id="measures" data-number="2"><span class="header-section-number">2</span> Measures</h1>
+<td><h3 id="measures" class="anchored">Measures</h3>
 <ul>
 <li><p>whether student had more than 15 absences in 9th grade</p></li>
 <li><p>whether student had any expulsions or suspensions in 9th grade</p></li>
@@ -501,23 +501,44 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="odd">
-<td colspan="3">(b) Expanded | - benchmark measures plus… | | | This set adds measures that stakeholders think are important, but the list is still limited for transparency and explainability. | - number of absences in 9th grade | | | | - ELA score on 9th grade standardized test | | | | - Math score on 9th grade standardized test | | | | - Whether received free or reduced price lunch |</td>
+<td><p>(b) Expanded</p>
+<p>This set adds measures that stakeholders think are important, but the list is still limited for transparency and explainability.</p></td>
+<td><ul>
+<li><p>benchmark measures plus…</p></li>
+<li><p>number of absences in 9th grade</p></li>
+<li><p>ELA score on 9th grade standardized test</p></li>
+<li><p>Math score on 9th grade standardized test</p></li>
+<li><p>Whether received free or reduced price lunch</p></li>
+</ul></td>
+<td></td>
 </tr>
 <tr class="even">
 <td><p>(c) Kitchen sink</p>
 <p>This set moves beyond stakeholder input and allows us to see if adding lots of measures adds up to worthwhile improvements.</p></td>
-<td colspan="2"><ul>
-<li>All measures available in administrative records after completion of 9th grade, except demographics.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> | | |</li>
+<td><ul>
+<li>All measures available in administrative records after completion of 9th grade, except demographics.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
 </ul></td>
+<td></td>
 </tr>
 <tr class="odd">
-<td colspan="3">(d) Kitchen sink plus | - All measures in the kitchen sink predictor set plus a set of measures available in an external data set that could be integrated with administrative records. | | | This set allows us to see if a tricky data integration would be worth it - if inclusion of the measures in the external data lead to a substantial improvement. |</td>
+<td><p>(d) Kitchen sink plus</p>
+<p>This set allows us to see if a tricky data integration would be worth it</p></td>
+<td><ul>
+<li><p>All measures in the kitchen sink predictor set plus a set of measures available in an external data set that could be integrated with administrative records.</p>
+<ul>
+<li>if inclusion of the measures in the external data lead to a substantial improvement.</li>
+</ul></li>
+</ul></td>
+<td></td>
 </tr>
 </tbody>
 </table></li>
 </ol>
+<!-- -->
 <ol start="2" type="1">
 <li><strong>Combine the predictor sets with different modeling approaches.</strong> Here we consider whether different machine learning algorithms improve performance. We want to use knowledge about how the algorithms work when matching them with predictor sets. For example, some machine learning algorithms are better suited for large numbers of predictors than others. In our example, we might specify as follows:</li>
 </ol>
