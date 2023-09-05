@@ -59,12 +59,15 @@ website:
           # - data_splitconsiderations.qmd
       - section: "Data for PA: PART 2"
         contents:
-          - "Oveview of data quality"
-          - "Handling missing data"
-          - "Stability of measures over time"
-          - "Data leakage"
-          - "Strategies for extracting predictive value"
-          - "Data model for PA Toolset"
+#          - "Oveview of data quality"
+#          - "Handling missing data"
+#          - "Stability of measures over time"
+#          - "Data leakage"
+#          - "Strategies for extracting predictive value"
+#          - "Data model for PA Toolset"
+          - data2_overview.qmd
+          - data2_whymissing.qmd
+          - data2_handlemissing.qmd
       - section: "Introduction to the PA Toolset"
         contents:
           - "Overview"
