@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predictive Analytics (PA) for Improving Services - Overview of data quality</title>
+<title>Predictive Analytics (PA) for Improving Services - Data preparation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Data for PA: PART 2</li><li class="breadcrumb-item"><a href="./data2_overview.html">Overview of data quality</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data2_overview.html">Data for PA: PART 2</a></li><li class="breadcrumb-item"><a href="./data2_overview.html">Data preparation</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -266,12 +266,9 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">Oveview of data quality</span>
-  </li>
-          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data2_overview.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Overview of data quality</span></a>
+ <span class="menu-text">Data preparation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -282,22 +279,28 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data2_handlemissing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Missing data for predictors</span></a>
+  <a href="./data2_missingpredictors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Handling missing data - predictors</span></a>
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">Stability of measures over time</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./data2_missingoutcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview of data quality</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Data leakage</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./data2_extract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extracting predictive value</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Strategies for extracting predictive value</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Data model for PA Toolset</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./data2_datamodel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extracting predictive value</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -477,7 +480,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Overview of data quality</h1>
+<h1 class="title">Data preparation</h1>
 </div>
 
 
@@ -492,6 +495,15 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>image on messiness</p>
+<p>This section covers best practices and considerations for preparing data for predictive analytics. The data we use for predictive analytics can often be messy.</p>
+<ul>
+<li><p>There may be missing data values that can create confusion and errors if not handled thoughtfully;</p></li>
+<li><p>There may be mistakes or nonsensical values that create noise obfuscate underlying patterns;</p></li>
+<li><p>There may be valuable information that needs to be extracted from raw measures; and</p></li>
+<li><p>There may be differences in data variables over time that threaten the performance of our models.</p></li>
+</ul>
+<p>Note that for predictive analytics, data preparation may be an iterative process. In data with a large number of predictors, it may make sense to focus first on a core set of variables that are hypothesized to be strong predictors - those specified in a benchmark predictor set or incrementally expanded predictor sets. If validation of learners with these predictor sets indicate strong performance, then the data science team may move on to model selection and testing. However, if learner performance in the validation step is lower than desired or anticipated, then the data science team can circle back and work to extract more predictive value from the raw data.</p>
 
 
 

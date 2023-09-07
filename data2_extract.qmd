@@ -1,0 +1,10 @@
+---
+title: "Extracting predictive value"
+---
+
+1. Exploratory data analyses
+  - find good examples on line to link to? Plots and analyses to do?
+2. Transformations
+
+For both - issues of leakage, iteration
+

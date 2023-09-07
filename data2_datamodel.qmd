@@ -1,0 +1,8 @@
+---
+title: "Extracting predictive value"
+---
+
+1. Exploratory data analyses
+2. Transformations
+
+For both - issues of leakage

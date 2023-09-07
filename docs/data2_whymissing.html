@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Data for PA: PART 2</li><li class="breadcrumb-item"><a href="./data2_whymissing.html">Overview of missing data</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data2_overview.html">Data for PA: PART 2</a></li><li class="breadcrumb-item"><a href="./data2_whymissing.html">Overview of missing data</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -266,9 +266,6 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">Oveview of data quality</span>
-  </li>
-          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data2_overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview of data quality</span></a>
@@ -283,21 +280,9 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data2_handlemissing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Missing data for predictors</span></a>
+ <span class="menu-text">Handling missing data - predictors</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
- <span class="menu-text">Stability of measures over time</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Data leakage</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Strategies for extracting predictive value</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Data model for PA Toolset</span>
-  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -492,18 +477,19 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>It is rare for data to be complete for all observations and all variables. Missing data is a challenge for just about any data analysis. In R, missing data often looks like what we see in the following example. Here, missing information is indicated by <code>NA.</code> An analyst may indicate missingness their own way, but this would need to be translated to R’s convention of using <code>NA</code>. Below, we see a missing value for the third observation’s age and for the fourth observation’s wage.</p>
+<p>It is rare for data to be complete for all observations and all variables. Missing data is a challenge for just about any data analysis. In R, missing data often looks like what we see in the following example. Here, missing information is indicated by <code>NA.</code> Missing information may be indicated in other ways in data (e.g.&nbsp;a specific numeric value outside the range of the variable, or ” “). These cases would need to be translated to R’s convention of using <code>NA</code> during data cleaning.</p>
+<p>Below, we see a missing value for the 3rd student’s math score and proficiency level, based on a standardized test. We also see a missing value for whether the 5th student graduated on time.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>  ID Site Age Wage JobRetention
-1  1    A  25 16.5            1
-2  2    A  32 50.0            0
-3  3    B  NA 20.0            1
-4  4    B  28   NA            0
-5  5    B  40 40.0            1</code></pre>
+<pre><code>  ID School MathScore MathProfiency GradOnTime
+1  1      A        40             1          1
+2  2      A        60             2          0
+3  3      B        NA            NA          1
+4  4      B        80             3          0
+5  5      B        60             2         NA</code></pre>
 </div>
 </div>
-<p>Data may be missing for many reasons, including:</p>
+<p>Across many types of data, information may be missing for many reasons, including:</p>
 <ol type="1">
 <li><p><strong>Non-Response</strong>: When individuals respond to a survey, questionnaire, application, etc., some may choose not to answer certain questions due to the sensitivity of the topic, lack of knowledge, or other reasons. This can lead to missing values.</p></li>
 <li><p><strong>Data Entry Errors</strong>: Mistakes made during data entry can result in missing values. Data entry errors - due to typos, misinterpretation of handwriting, or glitches - can also lead to nonsensical information that later gets converted to missing.</p></li>
@@ -759,7 +745,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./data2_handlemissing.html" class="pagination-link">
-        <span class="nav-page-text">Missing data for predictors</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Handling missing data - predictors</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

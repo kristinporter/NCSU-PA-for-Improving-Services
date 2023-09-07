@@ -2,22 +2,24 @@
 title: "Overview of missing data"
 ---
 
-It is rare for data to be complete for all observations and all variables. Missing data is a challenge for just about any data analysis. In R, missing data often looks like what we see in the following example. Here, missing information is indicated by `NA.` An analyst may indicate missingness their own way, but this would need to be translated to R's convention of using `NA`. Below, we see a missing value for the third observation's age and for the fourth observation's wage. 
+It is rare for data to be complete for all observations and all variables. Missing data is a challenge for just about any data analysis. In R, missing data often looks like what we see in the following example. Here, missing information is indicated by `NA.` Missing information may be indicated in other ways in data (e.g. a specific numeric value outside the range of the variable, or " "). These cases would need to be translated to R's convention of using `NA` during data cleaning.
+
+Below, we see a missing value for the 3rd student's math score and proficiency level, based on a standardized test. We also see a missing value for whether the 5th student graduated on time. 
 
 ```{r echo=FALSE}
 # Creating a mini data frame with missing values
 toydata <- data.frame(
   ID = c(1, 2, 3, 4, 5),
-  Site = c("A","A","B","B","B"),
-  Age = c(25, 32, NA, 28, 40),
-  Wage = c(16.50, 50, 20, NA, 40),
-  JobRetention = c(1,0,1,0,1)
+  School = c("A","A","B","B","B"),
+  MathScore = c(40,60,NA,80,60),
+  MathProfiency = c(1, 2, NA, 3, 2),
+  GradOnTime = c(1,0,1,0,NA)
 )
 
 print(toydata)
 ```
 
-Data may be missing for many reasons, including: 
+Across many types of data, information may be missing for many reasons, including: 
 
 1. **Non-Response**: When individuals respond to a survey, questionnaire, application, etc., some may choose not to answer certain questions due to the sensitivity of the topic, lack of knowledge, or other reasons. This can lead to missing values.
 
