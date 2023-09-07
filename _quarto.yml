@@ -45,18 +45,18 @@ website:
           - poc_compare.qmd
       - section: "Data for PA: PART 1"
         contents:
-          - "Generalizing to new data"
-          - "Data workflow"
-          - "Identifying data"
-          - "Designating data for testing"
-          - "Training and validating learners"
-          - "Additional considerations"
-          # - data_overfitting.qmd
-          # - data_split.qmd
-          # - data_identify.qmd
-          # - data_test.qmd
-          # - data_trainvalidate.qmd
-          # - data_splitconsiderations.qmd
+          # - "Generalizing to new data"
+          # - "Data workflow"
+          # - "Identifying data"
+          # - "Designating data for testing"
+          # - "Training and validating learners"
+          # - "Additional considerations"
+          - data_overfitting.qmd
+          - data_split.qmd
+          - data_identify.qmd
+          - data_test.qmd
+          - data_trainvalidate.qmd
+          - data_splitconsiderations.qmd
       - section: "Data for PA: PART 2"
         contents:
 #          - "Data preparation"
@@ -65,12 +65,12 @@ website:
 #          - "Missing data - outcomes"
 #          - "Extracting predictive value"
 #          - "Data model for PA Toolset"
-          - data2_overview.qmd
-          - data2_whymissing.qmd
-          - data2_missingpredictors.qmd
-          - data2_missingoutcomes.qmd
-          - data2_extract.qmd
-          - data2_datamodel.qmd
+          # - data2_overview.qmd
+          # - data2_whymissing.qmd
+          # - data2_missingpredictors.qmd
+          # - data2_missingoutcomes.qmd
+          # - data2_extract.qmd
+          # - data2_datamodel.qmd
       - section: "Introduction to the PA Toolset"
         contents:
           - "Overview"

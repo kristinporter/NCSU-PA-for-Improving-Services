@@ -2,9 +2,19 @@
 title: "Extracting predictive value"
 ---
 
-1. Exploratory data analyses
-  - find good examples on line to link to? Plots and analyses to do?
-2. Transformations
+Here we discuss data preparation steps focused on extracting helpful information from data in order to enhance the performance of our predictive models. This set of steps is often referred to as "feature engineering" (as predictors are often referred to "features.") The data preparation process involves domain knowledge, intuition, and experimentation to represent data in a manner that makes it more suitable or informative - often leading to improved model accuracy and generalization. After addressing missingness according to the guidance on the previous pages, data preparation, or feature engineering, involves the following: 
+
+1. **Variable Creation**: Crafting new variables from existing ones. For example, from a dataset with 'birth year', you can create an 'age' feature.
+
+2. **Variable Transformations**: Such as taking the logarithm of a variable, binning a continuous variable, or standardizing/normalizing variables.
+
+3. **Encoding Categorical Variables**: Like one-hot encoding, ordinal encoding, or using techniques like mean encoding.
+  
+4. **Dimensionality Reduction**: Techniques to reduce the number of predictors/independent variables/features.
+
+Below, we will discuss each of these approaches. Note that data preparation (feature engineering) can be a iterative process. That is, data scientists may focus on optimizing a small set of key measures and see how well their learners perform in validation. If predictive performance is not satisfactory, additional feature engineering can then be carried out. This means that the specification of the predictor sets that make up the learners can also be iterative. An important reminder is that no additional feature engineering should be done after learner testing in the held out test data. 
+
+1. **Variable Creation**
 
 For both - issues of leakage, iteration
 
