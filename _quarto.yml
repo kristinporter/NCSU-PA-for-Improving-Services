@@ -35,10 +35,6 @@ website:
           - scoping_when.qmd
       - section: "Conducting a PA proof-of-concept"
         contents:
-          # - "The importance of a proof-of-concept"
-          # - "Defining learners"
-          # - "Specifying a benchmark learner"
-          # - "Adding and comparing learners"
           - poc_importance.qmd
           - poc_learners.qmd
           - poc_benchmark.qmd
@@ -59,7 +55,6 @@ website:
          - "Missing data - outcomes"
          - "Extracting predictive value"
          - "Data model for PA Toolset"
-         - "test"
           # - data2_overview.qmd
           # - data2_whymissing.qmd
           # - data2_missingpredictors.qmd
