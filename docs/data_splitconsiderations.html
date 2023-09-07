@@ -204,51 +204,40 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
- <span class="menu-text">The importance of a proof-of-concept</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./poc_importance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The importance of a proof-of-concept</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Defining learners</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./poc_learners.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Defining learners</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Specifying a benchmark learner</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./poc_benchmark.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Specifying a benchmark learner</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Adding and comparing learners</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./poc_compare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Adding and comparing learners</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text">Introduction to the PA Toolset</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
- <span class="menu-text">Overview</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">How to access toolset</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">How to specify scope in toolset</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">How to specify learners in toolset</span>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Data for PA: PART 1</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_overfitting.html" class="sidebar-item-text sidebar-link">
@@ -288,31 +277,29 @@ ul.task-list li input[type="checkbox"] {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Data for PA: PART 2</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text">Data for PA: PART 2</span></a>
+ <span class="menu-text">Introduction to the PA Toolset</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
- <span class="menu-text">Oveview of data quality</span>
+ <span class="menu-text">Overview</span>
   </li>
           <li class="sidebar-item">
- <span class="menu-text">Handling missing data</span>
+ <span class="menu-text">How to access toolset</span>
   </li>
           <li class="sidebar-item">
- <span class="menu-text">Stability of measures over time</span>
+ <span class="menu-text">How to specify scope in toolset</span>
   </li>
           <li class="sidebar-item">
- <span class="menu-text">Data leakage</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Strategies for extracting predictive value</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Data model for PA Toolset</span>
+ <span class="menu-text">How to specify learners in toolset</span>
   </li>
       </ul>
   </li>
@@ -494,7 +481,7 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Balance between the classes of a binary outcome:</strong> This is a specific case of #2. If one class is much more common than the others, you may need a larger dataset to ensure that the model is exposed to enough examples of each class during training.</p></li>
 <li><p><strong>Availability of Data</strong>: Sometimes the amount of available data is a limiting factor. In such cases, it is important to make the best use of the available data and adjust the methods accordingly.</p></li>
 </ol>
-<p>Ultimately, if the learner/model performs well in validation and generalizes well to the test data, the dataset is likely large enough. However, if the model overfits to the training data, one reason may be that the modeling approach was to0 complex for the size of the available data, but there may be other explanations as well - e.g.&nbsp;lack of data consistency over time as discussed a few pages back.</p>
+<p>Ultimately, if the learner/model performs well in validation and generalizes well to the test data, the dataset is likely large enough. However, if the model overfits to the training data, one reason may be that the modeling approach was too complex for the size of the available data. But there may be other explanations as well - e.g.&nbsp;lack of data consistency over time as discussed a few pages back.</p>
 </section>
 <section id="what-ratios-should-be-designated-for-training-validation-and-testing" class="level3">
 <h3 class="anchored" data-anchor-id="what-ratios-should-be-designated-for-training-validation-and-testing"><strong>What ratios should be designated for training, validation and testing?</strong></h3>
@@ -509,8 +496,8 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Relatedly, remember that metrics of model performance, which we will discuss shortly, are estimates and come with inherent uncertainty. In other words, if you measured model performance using different samples, your results would vary. This uncertainty is even more pronounced with a smaller testing sample size. Although it is often overlooked, a good practice is to estimate this uncertainty, for example, by calculating the standard error or confidence interval of the performance metric estimate.</li>
 </ul></li>
-<li><p><strong>Focus on the ultimate goal</strong>: Throughout the entire process, keep the ultimate goal in mind: to find a model that generalizes well to new, unseen (and often, future) data so that we can provide insights for improving services. With this ultimate goal in mind, ensure that your test set is representative of the data you will use in deployment. Otherwise, your results may be overly optimistic, even if you adhered to the first point. Additionally, ensure that your training and validation data are as similar as possible to the data you will ultimately use for deployment.</p></li>
-<li><p><strong>How much does the set-up of the training and validation matter?</strong>: The specific details of how you set up tuning and validation are important for model selection but probably will not completely derail your project. The worst-case scenario is that you miss the opportunity to select the “best” model, but it is unlikely that you will choose the “wrong” model. Poor performance is more likely due to the limitations of your data and context rather than the choices made in setting up cross-validation. [KH: opinions here?]</p></li>
+<li><p><strong>Focus on the ultimate goal</strong>: Throughout the entire process, keep the ultimate goal in mind: to find a model that generalizes well to new, unseen (and often, future) data so that we can provide insights for improving services. With this ultimate goal in mind, ensure that your test set is representative of the data you will use in deployment. Otherwise, your results may be overly optimistic, even if you adhered to the first point above. Additionally, ensure that your training and validation data are as similar as possible to the data you will ultimately use for deployment.</p></li>
+<li><p><strong>How much does the set-up of the training and validation matter?</strong>: The specific details of how you set up tuning and validation are important for model selection but probably will not completely derail your project. The worst-case scenario is that you miss the opportunity to select the “best” model, but it is unlikely that you will choose the “wrong” model. Poor performance is more likely due to the limitations of your data and context rather than the choices made in setting up cross-validation.</p></li>
 </ol>
 
 

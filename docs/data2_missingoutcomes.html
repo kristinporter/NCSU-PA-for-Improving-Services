@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predictive Analytics (PA) for Improving Services - Designating data for testing</title>
+<title>Predictive Analytics (PA) for Improving Services - Overview of data quality</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./data_trainvalidate.html" rel="next">
-<link href="./data_identify.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -73,7 +71,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_overfitting.html">Data for PA: PART 1</a></li><li class="breadcrumb-item"><a href="./data_test.html">Designating data for testing</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Predictive Analytics (PA) for Improving Services
+      </li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -229,13 +229,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
  <span class="menu-text">Data for PA: PART 1</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data_overfitting.html" class="sidebar-item-text sidebar-link">
@@ -256,7 +256,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_test.html" class="sidebar-item-text sidebar-link active">
+  <a href="./data_test.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Designating data for testing</span></a>
   </div>
 </li>
@@ -455,7 +455,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Designating data for testing</h1>
+<h1 class="title">Overview of data quality</h1>
 </div>
 
 
@@ -470,19 +470,6 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/testutc.jpg" class="img-fluid figure-img" style="width:5in"></p>
-</figure>
-</div>
-<p>Once we have identified the appropriate data for all steps (train, validate, test) of our PA proof-of-concept workflow, we want to work backwards. So first, we want to split off a subset that will be used for testing. Some notes about designating the testing data:</p>
-<ul>
-<li><p>The test data will not be analyzed until we have completed learner training and validation and have selected our “best” model. We should set it aside and not touch it until we have made a final learner selection.</p></li>
-<li><p>In the case that the goal of predictive analytics is to make predictions for *future* service recipients, then ideally, we want our test data set to include individuals (or other units) that are forward in time, compared to the data we will use for training and validation. This provides the best check of how well our “best” model generalizes not only to different data, but also to the future.</p></li>
-<li><p>Ideally, we would want data as close in time as possible to when we would deploy a predictive model. This might be tricky. For example, if our proof-of-concept is assessing possible deployment for predicting high school drop out risk of 10th graders in the 2024-2025 school year, then the best test data may be <em>the most recent cohort of 10th graders for whom we know graduation status</em>. This would be students who graduated in 2023 and were therefore 10th graders in the 2020-2021 academic year.</p></li>
-<li><p>In some cases, we might be making predictions for a new location (e.g.&nbsp;for a new site, office, store). Then, we might designate testing data that is from a different location than data we will use for training and validation.</p></li>
-</ul>
-<p><strong>Ultimately, for an honest assessment of our selected, “best” model, we want to conduct testing in a test data set that best mimics how the predictive model would be deployed.</strong></p>
 
 
 
@@ -720,18 +707,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./data_identify.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Identifying data</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./data_trainvalidate.html" class="pagination-link">
-        <span class="nav-page-text">Training and validating learners</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 
