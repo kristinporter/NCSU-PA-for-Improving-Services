@@ -41,15 +41,15 @@ contents:
 - poc_compare.qmd
 - section: "Data for PA: PART 1"
 contents:
-  # - data_overfitting.qmd
-  # - data_split.qmd
-  # - data_identify.qmd
-  # - data_test.qmd
-  # - data_trainvalidate.qmd
-  # - data_splitconsiderations.qmd
+  - data_overfitting.qmd
+  - data_split.qmd
+  - data_identify.qmd
+  - data_test.qmd
+  - data_trainvalidate.qmd
+  - data_splitconsiderations.qmd
   - section: "Data for PA: PART 2"
 contents:
-  #  # - "Data preparation"
+  # - "Data preparation"
   # - "Missing data overview"
   # - "Missing data - predictors"
   # - "Missing data - outcomes"
