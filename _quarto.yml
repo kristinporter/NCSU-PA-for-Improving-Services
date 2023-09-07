@@ -45,12 +45,6 @@ website:
           - poc_compare.qmd
       - section: "Data for PA: PART 1"
         contents:
-          # - "Generalizing to new data"
-          # - "Data workflow"
-          # - "Identifying data"
-          # - "Designating data for testing"
-          # - "Training and validating learners"
-          # - "Additional considerations"
           - data_overfitting.qmd
           - data_split.qmd
           - data_identify.qmd
