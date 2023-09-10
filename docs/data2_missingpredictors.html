@@ -20,7 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,6 +49,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./data2_missingoutcomes.html" rel="next">
+<link href="./data2_whymissing.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -71,9 +92,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Predictive Analytics (PA) for Improving Services
-      </li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data2_overview.html">Data for PA: PART 2</a></li><li class="breadcrumb-item"><a href="./data2_missingpredictors.html">Handling missing data - predictors</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -275,8 +294,51 @@ ul.task-list li input[type="checkbox"] {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Data for PA: PART 2</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Data for PA: PART 2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data preparation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_whymissing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview of missing data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_missingpredictors.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Handling missing data - predictors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_missingoutcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Missing data - outcomes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_extract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extracting predictive value</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_datamodel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data model for code templates</span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -470,24 +532,25 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p><img src="images/jigsaw.jpg" class="img-fluid" style="width:6in" data-fig-align="left"><br>
-Here we focus on how to handle missingness in variables that are potential predictors for our learners. Some implementations of machine learning algorithms have a built-in way to handle missing data. Others either will not run if the model is fed in data containing missingness or will drop observations with any missing values. We will address missing values before using any modeling functions in R so that the approach will not vary across modeling approaches. Addressing missing data consistently allows us to make a fair comparison of differnt models’ performances.</p>
-<p>There are many different methods for managing missing data. They typically involve “filling in” - or “imputing” - missing data points with plausible values. Imputation can be a valuable approach to consider, and it is discussed below. But imputation should not be the primary strategy. Instead, we should recognize that <strong>missingness may be informative.</strong> Therefore, it is valuable to capture the missingness in our modeling.</p>
+<p>Here we focus on how to handle missingness in variables that are potential predictors of our outcome of interest. Some implementations of machine learning algorithms have a built-in way to handle missing data. Others either will not run if fed data with missing values or will drop observations with any missing values. We will address missing values <em>before</em> using any modeling functions in R so that the approach will not vary across modeling approaches. Addressing missing data consistently allows us to make a fair comparison of differnt models’ performances.</p>
+<p><img src="images/jigsaw.jpg" class="img-fluid" style="width:5in" data-fig-align="left"><br>
+</p>
+<p>There are many different methods for managing missing data. They typically involve “filling in” - or “imputing” - missing data points with plausible values. Imputation can be a valuable approach to consider, and it is discussed below. But I would argue that imputation should not be the primary strategy for predictive analytics, at least in settings in which careful data preparation is being done.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Instead, we should recognize that <strong>missingness may be informative.</strong> Therefore, it is valuable to capture the missingness in our modeling.</p>
 <section id="capturing-information-in-missingness" class="level3">
 <h3 class="anchored" data-anchor-id="capturing-information-in-missingness">Capturing information in missingness</h3>
-<p>The idea here is pretty simple. Data may be missing for a reason - or for multiple reasons, which may be related to the outcome we are trying to predict, even if in a small way.</p>
-<p>For example, when predicting whether a student will graduate on time, their standardized math score and the resulting proficiency level are potential predictors. Here the math score is on a scale from 0 to 100, and a proficiency value of 1 indicates the student scored “below proficient”; a value of 2 indicates the student scored as “proficient;” and a value of 3 indicates the student scored “above proficient.” Students who have missing values for these variables may not have taken the test. Perhaps they were absent on the day of the test and the day of the make-up. It is possible some of these students tend to be absent more often than the average student. Therefore, missingness on a math test may tell us something about a student’s level of absenteeism. Or, perhaps some students are exempt from the test because they are on a different math track.</p>
-<p>We have no way of knowing the reasons students are missing data for variables with information about the math standardized test. But…</p>
+<p>The idea here is pretty simple. Data may be missing for a reasons that may be related to the outcome we are trying to predict, even if in a small way.</p>
+<p>For example, when predicting whether a student will graduate on time, their standardized math score and the resulting proficiency level are potentially valuable predictors. In our toy example, the math score is on a scale from 0 to 100. The proficiency level takes on the following values: 1 indicates the student scored “below proficient”; 2 indicates the student scored as “proficient;” and 3 indicates the student scored “above proficient.” Students who have missing values for these variables may not have taken the test. Perhaps they were absent on the day of the test and again on the day of the make-up. It is possible some of these students tend to be absent more often than the average student. Therefore, missingness on a math test may tell us something about a student’s level of absenteeism. Or, perhaps some students are exempt from the test because they are on a different math track. In this case, the missingness could tell us something about their math level.</p>
+<p>We have no way of knowing why students are missing data for the variables with information about the math test. But…</p>
 <ul>
-<li><p>It is quite possible that those with missing data are different than those entered data; therefore imputation based on entered data would likely be biased. And…</p></li>
+<li><p>It is quite possible that students with missing data are systematically different from those with entered data; therefore imputation based on entered data would likely be biased. And…</p></li>
 <li><p>Students with missing data may be less or more likely to graduate on time. Therefore, we want to allow for missingness to be predictive of the outcome of interest.</p></li>
 </ul>
 <p>To capture the missingness information in our modeling, we can take the following approaches</p>
 <ol type="1">
-<li><p>For categorical variables, we add a category for the missingness.</p>
+<li><p><strong>For categorical variables, we add a category for the missingness.</strong></p>
 <ul>
-<li><p>Note if our raw variable (before accounting for missingness) is an “ordered” categorical variable, for which the categories have a clear and meaningful order or scale, then adding a category for missingness means that our newly formatted variable is an “unordered” categorical variable. In R, a <code>factor</code> (a class of an R object or of a column in a data frame) is used to represent categorical variables. (By default a factor treats values as unordered categorical variables, although factors can also be ordered.)</p></li>
-<li><p>Equivalently, we can create a set of dummies (binary variables with values 0 or 1 indicating whether an observation belongs to each category or not). Note, when we create a set of dummies, we leave one category out, as a reference category. For some modeling approaches, including all possible categories can create unstable estimation. So for example, we might create a set of three dummies indicating (1) proficient, (2) above proficient, and (3) missing proficiency information (leaving the 4th category of below proficiency out).</p></li>
+<li><p>Note if our raw variable (before accounting for missingness) is an “ordered” categorical variable, for which the categories have a clear and meaningful order or scale, then adding a category for missingness means that our newly formatted variable is an “unordered” categorical variable. In R, a <code>factor</code> (a class of an R object or of a column in a data frame) is used to represent categorical variables. By default a factor treats values as unordered categorical variables, although factors can also be ordered.</p></li>
+<li><p>Equivalently, we can create a set of dummies (binary variables with values 0 or 1 indicating whether an observation belongs to each category or not). Note, when we create a set of dummies, we must leave one category out, as a reference category. For some modeling approaches, including all possible categories can create unstable estimation. So for example, to deal with missingness in the math proficiency variable, we might create a set of three dummies indicating: (1) proficient, (2) above proficient, or (3) missing proficiency information - leaving out the 4th category of below proficiency.</p></li>
 </ul></li>
 </ol>
 <p>Below, we see how this looks in a revised R data frame:</p>
@@ -507,12 +570,14 @@ Here we focus on how to handle missingness in variables that are potential predi
 5         NA</code></pre>
 </div>
 </div>
-<pre><code>-   If we have a small category, we will want to combine it with another category. For example, if there are just a few missing values, we might create a factor variable where one category is "proficient"; another is "above proficient"; and the other is "either below proficient or missing proficiency information" - or we create two dummies (leaving one category out).
-
--   If missingness is a very large category, this may indicate a problem with the reliability of the variable. Variables with large amounts of missing data should perhaps be eliminated from analyses - but this is an issue to discuss with those who have expertise with the data systems and data entry processess. </code></pre>
+<p>A couple of notes:</p>
+<ul>
+<li><p>If we have a small category, we will want to combine it with another category. For example, if there are just a few missing values, we might create a factor variable or a set of binary variables such that one category is “proficient”; another is “above proficient”; and the other is “either below proficient or missing proficiency information.”</p></li>
+<li><p>If missingness is a very large category, this may indicate a problem with the reliability of the variable. Variables with large amounts of missing data should perhaps be eliminated from analyses - but this is an issue to discuss with those who have expertise with the data systems and data entry process.</p></li>
+</ul>
 <ol start="2" type="1">
-<li><p>For continuous variables, we can turn create a new, transformed categorical variable. That is, if our data only contained the math test score, to address missingness, we can turn it into a variable that captures different levels and missingness as above. Converting continuous variables to categorical variables may be desirable for extracting predictive information as well. For example, whether a student scored at a proficient level or not may be more predictive than their raw score.</p></li>
-<li><p>For continuous variables, we can also do a combination of imputation and creating a dummy to capture missingness. This method, “dummy variable adjustment” (Cohen and Cohen, 1985) is illustrated below. Here we impute the missing math scores with the mean of the nonmissing math scores, and we create a dummy variable that is 1 for observations with inputations and 0 otherwise.</p>
+<li><p><strong>For continuous variables, we can turn create a new, transformed categorical variable.</strong> That is, if our data only contained the math test score, to address missingness, we can turn it into a variable that captures different levels and missingness as above. Converting continuous variables into categorical variables may be desirable for extracting predictive information as well. For example, whether a student scored at a proficient level or not may be more predictive than their raw score.</p></li>
+<li><p><strong>For continuous variables, we can also do a combination of imputation and creating a dummy to capture missingness.</strong> This method, “dummy variable adjustment” (<span class="citation" data-cites="CohenCohen1985">(<a href="#ref-CohenCohen1985" role="doc-biblioref">Cohen &amp; Cohen, 1985</a>)</span>) is illustrated below. Here we impute the missing math scores with the mean of the nonmissing math scores, and we create a dummy variable that is 1 for observations with imputed values and 0 otherwise.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>  ID School MathScore Impute.MathScore Miss.MathScore GradOnTime
@@ -523,10 +588,9 @@ Here we focus on how to handle missingness in variables that are potential predi
 5  5      B        60               60              0         NA</code></pre>
 </div>
 </div>
-<p>When we use this “dummy variable adjsutment,” we include both the new variable with imputed values and the new dummy in our modeling. Note that in a regression, the choice of the value used for imputation does not affect the coefficient of <code>Miss.MathScore</code> or <code>Impute.MathScore</code>. The coefficient for <code>Impute.MathScore</code> can be regarded as an estimate of the effect of the math score among the subgroup of those observations that have complete math score data. The only aspect of the model that depends on the choice of the imputation value is the coefficient on the missing dummies. When we impute with the mean (or the median or mode) of non-missing values, the coefficient of a missingness dummy can be interpreted as the predicted value of the outcome for individuals with missing data on X minus the predicted value of Y for individuals at the mean of X, controlling for other covariates in the model.</p>
-<p>There has been a considerable amount of criticism focused on this approach in the literature. Jones (1996) and Allison (2002) show that, generally in studies using observational data, this approach leads to biased estimates of the coefficients in the regression model.9 Despite the uniform criticism of the method in the literature, however, we believe this approach still warrants consideration in the special case of random assignment evaluations.</p></li>
+<p>When we use this “dummy variable adjsutment,” we include both the new variable with imputed values and the new dummy in our modeling. There has been a considerable amount of criticism focused on this approach in the literature. <span class="citation" data-cites="Jones1996">(<a href="#ref-Jones1996" role="doc-biblioref">Jones, 1996</a>)</span> and <span class="citation" data-cites="Allison2002">(<a href="#ref-Allison2002" role="doc-biblioref">Allison, 2002</a>)</span> show that, generally in studies using observational data, this approach leads to biased estimates of the coefficients in the regression model. However, our primary objective with predictive analytics is not to have interpretable coefficients in our models. Our primary objective is to achieve “good” predictions.</p>
+<p>Here is an illustration of the dummy variable adjustment approach in our toy data set.</p></li>
 </ol>
-<p>Here is some R code to illustrate. Here, we have a variable for math test level. Level 1 is not proficient, while Level 2 is proficient. Two of the 5 students do not have any informtion entered in the data.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>  math.test math.test.levels math.test.proficient math.test.missing
@@ -538,17 +602,32 @@ Here we focus on how to handle missingness in variables that are potential predi
 </div>
 </div>
 </section>
-<section id="imputation" class="level3">
-<h3 class="anchored" data-anchor-id="imputation">Imputation</h3>
-<p>If it is missing not at random (MNAR), we recommend using an imputation approach along with creating a missingness indicator to capture informative missingness. In the companion predictive analytics tool, we have made the default assumption of missing not at random.</p>
-<p>For example, a simple version of imputation is to replace missing values of continuous variables with mean or median of the non-missing values, or to replace missing values of categorical variables with the mode. While this practice solves the operational difficulty of missing data, it can potentially create problems. On the last page, we reviewed a list of of reasons why data may be missing. Many of reasons suggest that units of observations (e.g.&nbsp;individuals) with missing data may be different from units without missing data. People who are resistant to reporting their wage may be more likely to have a low wage. Data collection at one site of a business may be more reliable at entering data than another site.</p>
-<p>Therefore, if we replace missing values with the mean of nonmissing values, this mean is not a good estimate because it was computed for a different population. When estimating statistical parameters, imputation can introduce bias - that is, it can lead to inflated or undervalued estimates. When fitting a predictive model, this practice can lead to diminished performance because the relationships between predictors (e.g.&nbsp;age and wage) and an outcome (e.g., job retention) can be faulty.</p>
-<p>Some analysts focus on doing a really good job at finding plausible values for their imputation. This is a very active area in statistical research. For example, the imputed values may be estimated by modeling - using information throughout the dataset to come up with more plausible values because they are similar to observations with a similar profile across numerous measures (variables). With an approach called “multiple imputation,” the modeling for the missing values is repeated multiple times, resulting in multiple complete data sets. This repeated modeling accounts for both sampling uncertainty as well as modeling (specification) uncertainty of imputed values. (E.g., Gelman and Hill (2007)). The multiple complete datasets can be combined in different ways or results from repeated analyses of the multiple datasets can be combined. Multiple imputation methods reduce but do not eliminate bias in filled-in values.</p>
+<section id="a-bit-more-about-imputation" class="level3">
+<h3 class="anchored" data-anchor-id="a-bit-more-about-imputation">A bit more about imputation…</h3>
+<p>Some imputation methods may be straightforward and acceptable, especially when redundant information exists in other variables. For instance, if gender data is absent but titles such as Mr.&nbsp;or Ms.&nbsp;are present, these titles can be reliably used to infer missing gender values.</p>
+<p>However, imputation often presents a more complex challenge. Many data scientists invest considerable effort to identify plausible values for imputation. This is an ongoing area of research. A popular approach is to derive imputed values by modeling them, drawing information from the entire dataset. Another strategy, known as “multiple imputation,” involves repeatedly modeling the missing values, which produces several complete datasets. This repetition considers both sampling uncertainty and modeling (or specification) uncertainty of imputed values, as discussed in sources like @GellmanJill2007. Results from analyzing these multiple datasets can be combined in various ways. While multiple imputation methods decrease bias in the imputed values, they do not entirely eliminate it.</p>
+
 
 
 </section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list">
+<div id="ref-Allison2002" class="csl-entry" role="listitem">
+Allison, P. D. (2002). Missing data. <em>Sage University Press</em>.
+</div>
+<div id="ref-CohenCohen1985" class="csl-entry" role="listitem">
+Cohen, J., &amp; Cohen, P. (1985). <em>Applied multiple regression and correlation analysis for the behavioral sciences</em>. Mahwah, NJ: Lawrence Erlbaum Associates.
+</div>
+<div id="ref-Jones1996" class="csl-entry" role="listitem">
+Jones, M. P. (1996). Indicator and stratification methods for missing explanatory variables in multiple linear regression. <em>Journal of the American Statistical Association</em>, <em>91:433</em>, 222–230.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>In some settings, that rely on frequent streams of big data for example or that have very minimal missing values, data preparation may need to be fully automated and imputation may be preferred.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -782,6 +861,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./data2_whymissing.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Overview of missing data</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./data2_missingoutcomes.html" class="pagination-link">
+        <span class="nav-page-text">Missing data - outcomes</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

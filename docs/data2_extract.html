@@ -20,7 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,6 +49,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./data2_changesovertime.html" rel="next">
+<link href="./data2_EDA.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -71,9 +92,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Predictive Analytics (PA) for Improving Services
-      </li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data2_overview.html">Data for PA: PART 2</a></li><li class="breadcrumb-item"><a href="./data2_extract.html">Extracting predictive value</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -275,8 +294,57 @@ ul.task-list li input[type="checkbox"] {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Data for PA: PART 2</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Data for PA: PART 2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data preparation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_whymissing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview of missing data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_missingpredictors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Handling missing data - predictors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_missingoutcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Missing data - outcomes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_EDA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory data analysies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_extract.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Extracting predictive value</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_changesovertime.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Changes in data over time</span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -470,22 +538,53 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Here we discuss data preparation steps focused on extracting helpful information from data in order to enhance the performance of our predictive models. This set of steps is often referred to as “feature engineering” (as predictors are often referred to “features.”) The data preparation process involves domain knowledge, intuition, and experimentation to represent data in a manner that makes it more suitable or informative - often leading to improved model accuracy and generalization. After addressing missingness according to the guidance on the previous pages, data preparation, or feature engineering, involves the following:</p>
+<p>Here we discuss data preparation steps focused on extracting helpful information from data in order to enhance the performance of our predictive models. This set of steps is often referred to as “feature engineering” (as predictors are often referred to “features.”) The data preparation process can be guided by EDA in some cases, but it also involves domain knowledge, intuition, and experimentation to represent data in a manner that makes it more suitable or informative - often leading to improved model accuracy and generalization. After addressing missingness according to the guidance on the previous pages, data preparation, or feature engineering, involves the following:</p>
 <ol type="1">
-<li><p><strong>Variable Creation</strong>: Crafting new variables from existing ones. For example, from a dataset with ‘birth year’, you can create an ‘age’ feature.</p></li>
-<li><p><strong>Variable Transformations</strong>: Such as taking the logarithm of a variable, binning a continuous variable, or standardizing/normalizing variables.</p></li>
-<li><p><strong>Encoding Categorical Variables</strong>: Like one-hot encoding, ordinal encoding, or using techniques like mean encoding.</p></li>
-<li><p><strong>Dimensionality Reduction</strong>: Techniques to reduce the number of predictors/independent variables/features.</p></li>
+<li><p><strong>Variable Creation</strong>: This involves deriving new variables from existing ones.</p>
+<p>This process is inherently creative and often benefits from domain expertise, both in terms of understanding the dataset’s content and discerning factors that might influence the outcome in question.</p>
+<ul>
+<li><p><em>Single Variable Extraction</em>: Sometimes, rich information can be gleaned from just one raw variable. Take, for instance, the “Titanic” dataset on Kaggle. Here, a key variable is “name”, which frequently contains titles such as Mr., Mrs., Miss., Master, Dr., Lady, Sir, Countess, and so on. These titles can hint at a passenger’s gender, marital status, social class, and occasionally, their profession. With programming languages like R, string manipulation techniques can be employed to break down the Name column and distill these titles. Subsequently, these titles can be categorized in various ways to encapsulate essential details.</p></li>
+<li><p><em>Aggregating Across Variables</em>: At times, it’s useful to amalgamate information from multiple raw variables. Consider a dataset detailing daily student attendance over an academic year. From this raw data, one could derive: (a) an overall attendance rate; (b) a binary indicator denoting if a student surpasses a set number of absences, labeling them as “chronically absent”; (c) an assessment of whether a student’s attendance improved or deteriorated over the course of the year, and so on.</p></li>
+</ul></li>
+<li><p><strong>Variable Transformations</strong>: Such as taking the logarithm of a variable, standardizing/normalizing variables or binning a continuous variable.</p>
+<ul>
+<li>If a predictor is highly skewed, it may benefit model performance to do a transformation to make the distribution more symmetric. Some algorithms including linear regression, support vector machines, and neural networks use polynomial calculations that can benefit from non-skewed data. Taking the log of a skewed variable or using a Box-Cox transformation can help reduce skew. Other transformations (e.g.&nbsp;smoothing for time-series data or basis expansion and splines for variables with nonlinear patterns) are also used but are beyond the scope of this class. For a deeper dive, you can check out chapter 6 of <span class="citation" data-cites="KuhnJohnson2020">Kuhn &amp; Johnson (<a href="#ref-KuhnJohnson2020" role="doc-biblioref">2020</a>)</span>.</li>
+<li>For some machine learning algorithms, it will be desirable to mean center continuous numeric variables. This involves subtracting the mean of that variable from each observation. This process results in the variable having a new mean of zero. Sometimes, we also standardize the variables (compute a Z-score), which means we divide by their standard deviation.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> When and why to do this gets pretty complicated. I will try to give you guidance about which machine learning algorithms need which kind of transformations so that you can align predictor sets and modeling approaches accordingly.</li>
+<li>As discussed when handling missing data, another common type of predictor transformation is to discretize a numeric predictor into a series of categorical predictors. Common reasons for this transformation are to simplify interpretation, to allow for more flexible relationships between the predictor and outcome, or to address missingness. But there are cautions for this. It may be better to avoid discretization when the cut points are arbitrary. Try to rely on meaningful cut-points (e.g.&nbsp;scores that indicate proficiency on a math test). Often, numeric predictors in their continuous form are more predictive. The good news is that you do not necessarily have to choose one approach. You can have both a continuous and a discretized version of a predictor and put different versions in different predictor sets for your learners.</li>
+</ul></li>
+<li><p><strong>Dimensionality Reduction</strong>: Techniques to reduce the number of predictors/independent variables/features.</p>
+<p>Finally, multiple predictors can be engineered to a small number of predictors. There are multiple approahces for this. It is helpful to be aware of these approaches, but they are beyond the scope of this class. If you are curious to learn more, these blog posts are helpful optional reading:</p>
+<ul>
+<li><a href="https://www.geeksforgeeks.org/dimensionality-reduction/">Introduction to Dimensionality Reduction</a></li>
+<li><a href="https://towardsdatascience.com/11-dimensionality-reduction-techniques-you-should-know-in-2021-dcb9500d388b">11 Dimensionality reduction techniques you should know in 2021</a></li>
+<li><a href="https://arshren.medium.com/a-comprehensive-guide-to-dimensionality-reduction-851624b7377d">A Comprehensive Guide to Dimensionality Reduction</a></li>
+</ul></li>
 </ol>
-<p>Below, we will discuss each of these approaches. Note that data preparation (feature engineering) can be a iterative process. That is, data scientists may focus on optimizing a small set of key measures and see how well their learners perform in validation. If predictive performance is not satisfactory, additional feature engineering can then be carried out. This means that the specification of the predictor sets that make up the learners can also be iterative. An important reminder is that no additional feature engineering should be done after learner testing in the held out test data.</p>
-<ol type="1">
-<li><strong>Variable Creation</strong></li>
+<section id="a-note-about-data-leakage" class="level3">
+<h3 class="anchored" data-anchor-id="a-note-about-data-leakage">A note about data leakage…</h3>
+<p><img src="images/waterdrip.jpg" class="img-fluid" style="width:2.5in" data-fig-align="left"><br>
+</p>
+<p>As mentioned earlier, data leakage refers to the (typically accidental) practice of “peeking” at validation or testing data when focused on modeling in an earlier stage. Data leakage can occur in data preparation and feature engineering when data transformations are carried with information from combined data rather than data specific to the training set. For example, when mean centering continuous variables, if we calculate the mean based on the full data set, information from the validation and test sets is informing our training process. This can lead to potential overfitting, although the effects are negligible if training, validation and test data are from similar distributions (Yang et al.&nbsp;(2022)). To avoid data leakage, it is considered good practice to save data preprocessing parameters, such as the mean and standard deviations derived from training data set, to apply to future incoming unseen data. For a deeper dive into data leakage issues in predictive analytics, see</p>
+<p>For an optional dive further into the topic of data leakage, see <a href="https://towardsdatascience.com/data-leakage-in-machine-learning-how-it-can-be-detected-and-minimize-the-risk-8ef4e3a97562.">Data Leakage in Machine Learning: How It Can Be Detected and Minimize the Risk</a> Or see Chapter 5 in Designing Machine Learning Systems (<span class="citation" data-cites="Huyen2022">Huyen (<a href="#ref-Huyen2022" role="doc-biblioref">2022</a>)</span>).</p>
+
+
+
+</section>
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list">
+<div id="ref-Huyen2022" class="csl-entry" role="listitem">
+Huyen, C. (2022). <em>Designing machine learning systems</em>. Sebastopol, California: O’Reily.
+</div>
+<div id="ref-KuhnJohnson2020" class="csl-entry" role="listitem">
+Kuhn, M., &amp; Johnson, K. (2020). <em>Feature engineering and selection: A practical approach for predictive models</em>. Boca Raton: Chapman; Hall, CRC Press.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Mean centering supports numeric stability for machine learning algorithms that involve matrix inversion or optimization by scaling down the numbers. Algorithms that rely on gradient descent can converge faster when data is centered and normalized because it shapes the cost function into a more bowl-like form, making it easier to reach the global minimum. Some algorithms assume that the data is centered around zero. For instance, LASSO and Ridge regression add penalty terms based on the magnitude of the coefficients. If the predictors are not centered, the penalty might be applied in a biased manner because it would be influenced by the scale and mean of the predictors. Also, many machine learning algorithms, such as Support Vector Machines, k-means clustering, and deep learning networks, work better or converge faster when data variables are standardized to z-scores. Mean centering and standardizing might not always be necessary or beneficial. It largely depends on the context, the nature of the data, and the specific algorithm being employed. For example, in tree-based algorithms like Decision Trees or Random Forests, mean centering usually doesn’t offer any advantage because these algorithms are scale-invariant.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-<p>For both - issues of leakage, iteration</p>
-
-
-
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -719,6 +818,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./data2_EDA.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exploratory data analysies</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./data2_changesovertime.html" class="pagination-link">
+        <span class="nav-page-text">Changes in data over time</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

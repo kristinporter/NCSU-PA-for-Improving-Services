@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./data2_handlemissing.html" rel="next">
+<link href="./data2_missingpredictors.html" rel="next">
 <link href="./data2_overview.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -237,23 +237,41 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
- <span class="menu-text">Generalizing to new data</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./data_overfitting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generalizing to new data</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Data workflow</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./data_split.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data workflow</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Identifying data</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./data_identify.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Identifying data</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Designating data for testing</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./data_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Designating data for testing</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Training and validating learners</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./data_trainvalidate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Training and validating learners</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Additional considerations</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./data_splitconsiderations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Additional considerations</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -268,7 +286,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data2_overview.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview of data quality</span></a>
+ <span class="menu-text">Data preparation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -279,8 +297,32 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data2_handlemissing.html" class="sidebar-item-text sidebar-link">
+  <a href="./data2_missingpredictors.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Handling missing data - predictors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_missingoutcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Missing data - outcomes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_EDA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory data analysies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_extract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extracting predictive value</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_changesovertime.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Changes in data over time</span></a>
   </div>
 </li>
       </ul>
@@ -477,8 +519,8 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>It is rare for data to be complete for all observations and all variables. Missing data is a challenge for just about any data analysis. In R, missing data often looks like what we see in the following example. Here, missing information is indicated by <code>NA.</code> Missing information may be indicated in other ways in data (e.g.&nbsp;a specific numeric value outside the range of the variable, or ” “). These cases would need to be translated to R’s convention of using <code>NA</code> during data cleaning.</p>
-<p>Below, we see a missing value for the 3rd student’s math score and proficiency level, based on a standardized test. We also see a missing value for whether the 5th student graduated on time.</p>
+<p>It is rare for data to be complete for all observations and all variables. Missing data is a challenge for just about any data analysis. In R, missing data often looks like what we see in the following example. Here, missing information is indicated by <code>NA.</code> Missing information may be indicated in other ways too (e.g.&nbsp;a specific numeric value outside the range of the variable, or ” “). These cases would need to be translated to R’s convention of using <code>NA</code> during data cleaning.</p>
+<p>In the toy data set below, we see a missing value for the 3rd student’s math score and corresponding proficiency level. We also see a missing value for whether the 5th student graduated on time.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>  ID School MathScore MathProfiency GradOnTime
@@ -489,15 +531,14 @@ ul.task-list li input[type="checkbox"] {
 5  5      B        60             2         NA</code></pre>
 </div>
 </div>
-<p>Across many types of data, information may be missing for many reasons, including:</p>
+<p>Across many types of data, information may be missing for a variety reasons, including:</p>
 <ol type="1">
-<li><p><strong>Non-Response</strong>: When individuals respond to a survey, questionnaire, application, etc., some may choose not to answer certain questions due to the sensitivity of the topic, lack of knowledge, or other reasons. This can lead to missing values.</p></li>
+<li><p><strong>Non-Response</strong>: When individuals respond to a questionnaire, fill out an application, etc., some may choose not to answer certain questions due to the sensitivity of the topic, lack of knowledge, or other reasons. This can lead to missing values.</p></li>
 <li><p><strong>Data Entry Errors</strong>: Mistakes made during data entry can result in missing values. Data entry errors - due to typos, misinterpretation of handwriting, or glitches - can also lead to nonsensical information that later gets converted to missing.</p></li>
 <li><p><strong>Technical Issues</strong>: Technical problems such as software crashes, network failures, or sensor malfunctions can lead to missing data points, particularly in real-time data collection scenarios.</p></li>
 <li><p><strong>Privacy and Confidentiality Concerns</strong>: In some cases, data might be intentionally omitted or masked to protect individuals’ privacy or sensitive information. For instance, certain personal identifiers might be removed from the dataset.</p></li>
 <li><p><strong>Skip Patterns</strong>: In surveys or questionnaires, skip patterns are used where respondents are directed to skip certain questions based on their previous responses. This can lead to missing values for respondents who don’t meet the criteria for certain questions.</p></li>
 <li><p><strong>Data Collection Costs</strong>: Collecting certain types of data can be expensive and time-consuming. As a result, researchers might prioritize certain data points over others, leading to missing values in less prioritized areas.</p></li>
-<li><p><strong>Sample Bias</strong>: In some cases, missing data might not be random but related to the characteristics of the individuals or entities being studied. This can introduce bias into the analysis if not handled properly.</p></li>
 <li><p><strong>Data Migration or Integration</strong>: When merging data from different sources or migrating data to a new system, compatibility issues might result in missing values or discrepancies.</p></li>
 </ol>
 
@@ -740,11 +781,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./data2_overview.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Overview of data quality</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data preparation</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./data2_handlemissing.html" class="pagination-link">
+      <a href="./data2_missingpredictors.html" class="pagination-link">
         <span class="nav-page-text">Handling missing data - predictors</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

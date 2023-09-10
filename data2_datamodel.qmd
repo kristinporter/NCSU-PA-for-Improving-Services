@@ -1,8 +1,4 @@
 ---
-title: "Extracting predictive value"
+title: "Data model for code templates"
 ---
 
-1. Exploratory data analyses
-2. Transformations
-
-For both - issues of leakage

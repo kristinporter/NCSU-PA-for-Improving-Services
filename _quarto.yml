@@ -49,18 +49,20 @@ website:
           - data_splitconsiderations.qmd
       - section: "Data for PA: PART 2"
         contents:
-        # - "Data preparation"
-        # - "Missing data overview"
-        # - "Missing data - predictors"
-        # - "Missing data - outcomes"
-        # - "Extracting predictive value"
-        # - "Data model for PA Toolset"
-        # - data2_overview.qmd
-        # - data2_whymissing.qmd
-        # - data2_missingpredictors.qmd
-        # - data2_missingoutcomes.qmd
-        # - data2_extract.qmd
-      # - data2_datamodel.qmd
+        - "Data preparation"
+        - "Overview of missing data"
+        - "Missing data - predictors"
+        - "Missing data - outcomes"
+        - "Exploratory data analyses"
+        - "Extracting predictive value"
+        - "Changes in data over time"
+        #   - data2_overview.qmd
+        #   - data2_whymissing.qmd
+        #   - data2_missingpredictors.qmd
+        #   - data2_missingoutcomes.qmd
+        #   - data2_EDA.qmd
+        #   - data2_extract.qmd
+        #   - data2_changesovertime.qmd
       - section: "Introduction to the PA Toolset"
         contents:
           - "Overview"

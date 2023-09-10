@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./data2_whymissing.html" rel="next">
-<link href="./poc_compare.html" rel="prev">
+<link href="./data_splitconsiderations.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -237,23 +237,41 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
- <span class="menu-text">Generalizing to new data</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./data_overfitting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generalizing to new data</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Data workflow</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./data_split.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data workflow</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Identifying data</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./data_identify.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Identifying data</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Designating data for testing</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./data_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Designating data for testing</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Training and validating learners</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./data_trainvalidate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Training and validating learners</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Additional considerations</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./data_splitconsiderations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Additional considerations</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -286,7 +304,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data2_missingoutcomes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview of data quality</span></a>
+ <span class="menu-text">Missing data - outcomes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_EDA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory data analysies</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -297,8 +321,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data2_datamodel.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Extracting predictive value</span></a>
+  <a href="./data2_changesovertime.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Changes in data over time</span></a>
   </div>
 </li>
       </ul>
@@ -495,15 +519,16 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>image on messiness</p>
-<p>This section covers best practices and considerations for preparing data for predictive analytics. The data we use for predictive analytics can often be messy.</p>
+<p><img src="images/busypeoplecomputers.jpg" class="img-fluid" style="width:6in" data-fig-align="left"><br>
+</p>
+<p>This section covers best practices and considerations for preparing data for predictive analytics. The data we use for predictive analytics can often be messy...</p>
 <ul>
 <li><p>There may be missing data values that can create confusion and errors if not handled thoughtfully;</p></li>
-<li><p>There may be mistakes or nonsensical values that create noise obfuscate underlying patterns;</p></li>
-<li><p>There may be valuable information that needs to be extracted from raw measures; and</p></li>
+<li><p>There may be mistakes or nonsensical values that create noise and obfuscates underlying patterns;</p></li>
+<li><p>There may be valuable information that needs to be extracted from raw measures that may not provide clear empirical meaning (e.g.&nbsp;text data); and</p></li>
 <li><p>There may be differences in data variables over time that threaten the performance of our models.</p></li>
 </ul>
-<p>Note that for predictive analytics, data preparation may be an iterative process. In data with a large number of predictors, it may make sense to focus first on a core set of variables that are hypothesized to be strong predictors - those specified in a benchmark predictor set or incrementally expanded predictor sets. If validation of learners with these predictor sets indicate strong performance, then the data science team may move on to model selection and testing. However, if learner performance in the validation step is lower than desired or anticipated, then the data science team can circle back and work to extract more predictive value from the raw data.</p>
+<p>Note that for predictive analytics, data preparation may be an <em>iterative</em> process. In data with a large number of predictors, it may make sense to focus first on a core set of variables that are hypothesized to be strong predictors - those specified in a benchmark predictor set or incrementally expanded predictor sets. If validation of learners with these predictor sets indicate strong performance, then the data science team may move on to model selection and testing. However, if learner performance in the validation step is lower than desired or anticipated, then the data science team can circle back and work to extract more predictive value from the raw data.</p>
 
 
 
@@ -743,8 +768,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./poc_compare.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Adding and comparing learners</span>
+      <a href="./data_splitconsiderations.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Additional considerations</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
