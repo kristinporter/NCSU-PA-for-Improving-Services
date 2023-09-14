@@ -1,0 +1,43 @@
+---
+title: "Lasso"
+editor: 
+  markdown: 
+    wrap: sentence
+---
+
+Lasso, which stands for "Least Absolute Shrinkage and Selection Operator," is a "penalized" form of regression.
+
+In Lasso regression, the primary tuning parameter is $\lambda$ (lambda), which controls the strength of the penalization.
+
+-   When $\lambda=0$, Lasso regression reduces to the ordinary least squares (for linear regression) or logistic regression (for binary outcomes).
+    No penalty is applied, and the result will include all predictors.
+
+-   As $\lambda$ increases, the penalization effect becomes stronger, and more coefficients are shrunk towards zero.
+    For a sufficiently large value of $\lambda$, all coefficients may become exactly zero.
+
+-   The value of $\lambda$ can be selected with cross-validation with the training data.
+
+### Advantages:
+
+-   **Feature selection**: One of the key advantages of Lasso regression is its ability to perform feature or variable selection.
+    This can be very helpful when you have a large number of predictors, and you suspect that many of them are irrelevant or redundant.
+
+-   **Dealing with lots or predictors**: In situations where the number of predictors ($p$) is close to or exceeds the number of observations \\(n\\), classical logistic regression might overfit or might not even run at all.
+    Lasso can be a solution in these high-dimensional settings.
+
+-   **Multicollinearity**: When predictor variables are highly correlated, standard logistic regression's estimates can be very unstable.
+    Lasso helps to alleviate multicollinearity issues by penalizing certain coefficients and pushing them towards zero.
+
+-   **Interpretability:** Because Lasso can zero out coefficients, the resulting model can be more interpretable than a model with many predictors.
+
+-   **Model Performance**: If there's a concern about overfitting due to a large number of predictors, Lasso can provide a more generalized model that might perform better on out-of-sample data compared to a non-regularized logistic regression.
+
+### Disadvantages:
+
+-   **True model:** If the true underlying model is very sparse (i.e., very few predictors truly matter), then Lasso will perform very well.
+    However, if a large number of predictors matter, lasso may not be stable.
+
+-   **Challenge with highly correlated predictors:** With highly correlated predictors, lasso arbitrarily chooses which to include in the model.
+
+-   **Inference in interpreting coefficients:** Though inference is possible, post-lasso inference is complex.
+    However, this does not matter when our primary goal is prediction.

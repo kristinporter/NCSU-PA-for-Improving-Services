@@ -1,0 +1,72 @@
+---
+title: "Logistic Regression"
+editor: 
+  markdown: 
+    wrap: sentence
+---
+
+With multiple linear regression, we predict a continuous outcome based on multiple predictors.
+It looks like this:
+
+\[ Y = \beta\_0 + \beta\_1X_1 + \beta\_2X_2 + ... + \beta\_kX_k + \epsilon \]
+
+Where:
+
+-   ( Y ) is the outcome variable we're trying to predict.
+-   ( \beta\_0 ) is the y-intercept.
+-   ( \beta\_1, \beta\_2, ... ) are coefficients corresponding to the predictor variables.
+-   ( X_1, X_2, ... ) are the predictor variables.
+-   ( \epsilon ) represents the error term.
+
+To estimate coefficient values (( \beta\_0, \beta\_1, ... )), we minimize the sum of squared errors across all observations.
+
+**Logistic** regression can be used to predict the probability of a particular category of a **binary** outcome.
+
+If we use a linear regression model, we can get predicted values that are outside the \[0,1\] range, which doesn't make sense for probabilities.
+To ensure predictions stay in the \[0,1\] range, logistic regression uses the logistic function:
+
+\[ P(Y=1) = \frac{e^{\beta_0 + \beta_1X_1 + ... + \beta_kX_k}}{1 + e^{\beta_0 + \beta_1X_1 + ... + \beta_kX_k}} \]
+
+Where: - ( P(Y=1) ) is the probability of the outcome being 1.
+- ( \beta\_0, \beta\_1, ... ) are coefficients.
+These numbers show the importance or weight of each predictor variable ( X ).
+- ( e ) is the base of natural logarithms (approximately equal to 2.71828).
+
+This can also be written as follows:
+
+\[ \log\left(\frac{P(Y=1)}{P(Y=0)}\right) = \beta\_0 + \beta\_1X_1 + \beta\_2X_2 + ... + \beta\_kX_k \]
+
+Here, the log odds (or the logarithm of the odds) of the outcome being 1 (versus 0) is expressed as a linear combination of predictor variables:
+
+Where:
+
+-   ( \log(\cdot) ) is the natural logarithm.
+-   ( P(Y=1) ) is the probability of the outcome being 1.
+-   ( P(Y=0) ) is the probability of the outcome being 0 (which is just ( 1 - P(Y=1) )).
+-   ( \beta\_0 ) is the intercept.
+-   ( \beta\_1, \beta\_2, ... ) are coefficients corresponding to the predictor variables.
+-   ( X_1, X_2, ... ) are the predictor variables.
+
+The right-hand side of the equation represents the log odds of the event ( Y=1 ), which can range from negative to positive infinity.
+As we plug in values for the predictors, the linear combination gives us the log odds, which can then be transformed to get the actual probability ( P(Y=1) ).
+
+With logistic regression, we use **maximum likelihood estimation** to find the best-fitting coefficients, and there's a whole realm of tests and diagnostics to assess model fit, significance of predictors, and more.
+
+Unlike many machine learning algorithms, when a data scientist uses logistic regression, they are specifying this specific functional form of the relationship between the predictors and the outcome.
+
+**Advantages**
+
+-   Simple model that is easy to interpret.
+
+-   No tuning parameters to tune.
+
+-   Incorporates statistical inference, so it is straightforward to compute uncertainty estimates.
+
+-   Short training time.
+
+**Disadvantages**
+
+-   Not a very flexible model.
+    If linear assumption is wrong, could be a poor fit.
+
+-   User must manually incorporate interaction terms if they are of interest.
