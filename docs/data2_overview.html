@@ -328,27 +328,8 @@ ul.task-list li input[type="checkbox"] {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text">Introduction to the PA Toolset</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
- <span class="menu-text">Overview</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">How to access toolset</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">How to specify scope in toolset</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">How to specify learners in toolset</span>
-  </li>
-      </ul>
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Introduction to the PA Toolset</span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -524,9 +505,9 @@ ul.task-list li input[type="checkbox"] {
 <p>This section covers best practices and considerations for preparing data for predictive analytics. The data we use for predictive analytics can often be messy...</p>
 <ul>
 <li><p>There may be missing data values that can create confusion and errors if not handled thoughtfully;</p></li>
-<li><p>There may be mistakes or nonsensical values that create noise and obfuscates underlying patterns;</p></li>
-<li><p>There may be valuable information that needs to be extracted from raw measures that may not provide clear empirical meaning (e.g.&nbsp;text data); and</p></li>
-<li><p>There may be differences in data variables over time that threaten the performance of our models.</p></li>
+<li><p>There may be mistakes or nonsensical values that create noise and obfuscate underlying patterns;</p></li>
+<li><p>There may be valuable information to be extracted from raw measures that may not provide clear empirical value (e.g.&nbsp;text data); and</p></li>
+<li><p>There may be differences in data variables over time, which can threaten the performance of our models.</p></li>
 </ul>
 <p>Note that for predictive analytics, data preparation may be an <em>iterative</em> process. In data with a large number of predictors, it may make sense to focus first on a core set of variables that are hypothesized to be strong predictors - those specified in a benchmark predictor set or incrementally expanded predictor sets. If validation of learners with these predictor sets indicate strong performance, then the data science team may move on to model selection and testing. However, if learner performance in the validation step is lower than desired or anticipated, then the data science team can circle back and work to extract more predictive value from the raw data.</p>
 

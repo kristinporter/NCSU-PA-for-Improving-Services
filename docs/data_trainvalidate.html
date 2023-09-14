@@ -277,31 +277,61 @@ ul.task-list li input[type="checkbox"] {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Data for PA: PART 2</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text">Introduction to the PA Toolset</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Data for PA: PART 2</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
- <span class="menu-text">Overview</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./data2_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data preparation</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">How to access toolset</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./data2_whymissing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview of missing data</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">How to specify scope in toolset</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./data2_missingpredictors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Handling missing data - predictors</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">How to specify learners in toolset</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./data2_missingoutcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Missing data - outcomes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_EDA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory data analysies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_extract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extracting predictive value</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_changesovertime.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Changes in data over time</span></a>
+  </div>
+</li>
       </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Introduction to the PA Toolset</span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -478,10 +508,10 @@ ul.task-list li input[type="checkbox"] {
 <p>We can also repeat this process more than once. That is, we can let different portions of the data take turns for training and for validation. This procedure is referred to <span class="math inline">\(v\)</span>-fold cross-validation, in which <span class="math inline">\(v\)</span> is the number of folders or partitions - or times we repeating the training and validation. The following diagram illustrates 5-fold cross-validation:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/CV diagram.png" class="img-fluid figure-img" style="width:8in"></p>
+<p><img src="images/CVdiagram.png" class="img-fluid figure-img" style="width:8in"></p>
 </figure>
 </div>
-<p>This diagram is showing that the data are split into 5 folds. Each fold takes a turn as a validation fold, while all the other folds are combined for learner training. When a fold takes a turn as a validation fold, we obtain predicted likelihoods for each observation in that fold. We can then compute metrics of learner performance and fairness for each fold. We can average the metrics across the 5 folds. Alternatively, we can use the predicted likelihoods that result across all the folds to compute metrics. Our PA Tool Set does a combination of both. For a few of metrics, it returns averages from across the folds. For remaining metrics, it relies on the predicted likelihoods. This will be reviewed when we turn to the code. (And don’t worry - the PA Tool Set implements <span class="math inline">\(v\)</span>-fold cross-validation for the user. You will not need to code the procedure; you will just specify how to the cross-validation should be implemented, following the guidance below.)</p>
+<p>This diagram is showing that the data are split into 5 folds. Each fold takes a turn as a validation fold, while all the other folds are combined for learner training. When a fold takes a turn as a validation fold, we obtain predicted likelihoods for each observation in that fold. We can then compute metrics of learner performance and fairness for each fold. We can average the metrics across the 5 folds. Alternatively, we can use the predicted likelihoods that result across all the folds to compute metrics. Our PA Tool Set does a combination of both. For a few metrics, it returns averages from across the folds. For remaining metrics, it relies on the predicted likelihoods. This will be reviewed when we turn to the code. (And don’t worry - the PA Tool Set implements <span class="math inline">\(v\)</span>-fold cross-validation for the user. You will not need to code the procedure; you will just specify how to the cross-validation should be implemented, following the guidance below.)</p>
 <section id="guidance-for-implementing-v-fold-cross-validation" class="level3">
 <h3 class="anchored" data-anchor-id="guidance-for-implementing-v-fold-cross-validation"><strong>Guidance for implementing</strong> <span class="math inline">\(v\)</span><strong>-fold cross-validation:</strong></h3>
 <ul>

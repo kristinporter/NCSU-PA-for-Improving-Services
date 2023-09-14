@@ -328,40 +328,27 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./data2_EDA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory data analysies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./data2_extract.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Extracting predictive value</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data2_datamodel.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data model for code templates</span></a>
+  <a href="./data2_changesovertime.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Changes in data over time</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text">Introduction to the PA Toolset</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
- <span class="menu-text">Overview</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">How to access toolset</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">How to specify scope in toolset</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">How to specify learners in toolset</span>
-  </li>
-      </ul>
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Introduction to the PA Toolset</span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -538,9 +525,9 @@ div.csl-indent {
 <p>There are many different methods for managing missing data. They typically involve “filling in” - or “imputing” - missing data points with plausible values. Imputation can be a valuable approach to consider, and it is discussed below. But I would argue that imputation should not be the primary strategy for predictive analytics, at least in settings in which careful data preparation is being done.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Instead, we should recognize that <strong>missingness may be informative.</strong> Therefore, it is valuable to capture the missingness in our modeling.</p>
 <section id="capturing-information-in-missingness" class="level3">
 <h3 class="anchored" data-anchor-id="capturing-information-in-missingness">Capturing information in missingness</h3>
-<p>The idea here is pretty simple. Data may be missing for a reasons that may be related to the outcome we are trying to predict, even if in a small way.</p>
+<p>The idea here is pretty simple. Data may be missing for reasons that are related to the outcome we are trying to predict.</p>
 <p>For example, when predicting whether a student will graduate on time, their standardized math score and the resulting proficiency level are potentially valuable predictors. In our toy example, the math score is on a scale from 0 to 100. The proficiency level takes on the following values: 1 indicates the student scored “below proficient”; 2 indicates the student scored as “proficient;” and 3 indicates the student scored “above proficient.” Students who have missing values for these variables may not have taken the test. Perhaps they were absent on the day of the test and again on the day of the make-up. It is possible some of these students tend to be absent more often than the average student. Therefore, missingness on a math test may tell us something about a student’s level of absenteeism. Or, perhaps some students are exempt from the test because they are on a different math track. In this case, the missingness could tell us something about their math level.</p>
-<p>We have no way of knowing why students are missing data for the variables with information about the math test. But…</p>
+<p>We may not know why students are missing data for the math test variables. But…</p>
 <ul>
 <li><p>It is quite possible that students with missing data are systematically different from those with entered data; therefore imputation based on entered data would likely be biased. And…</p></li>
 <li><p>Students with missing data may be less or more likely to graduate on time. Therefore, we want to allow for missingness to be predictive of the outcome of interest.</p></li>
@@ -549,25 +536,19 @@ div.csl-indent {
 <ol type="1">
 <li><p><strong>For categorical variables, we add a category for the missingness.</strong></p>
 <ul>
-<li><p>Note if our raw variable (before accounting for missingness) is an “ordered” categorical variable, for which the categories have a clear and meaningful order or scale, then adding a category for missingness means that our newly formatted variable is an “unordered” categorical variable. In R, a <code>factor</code> (a class of an R object or of a column in a data frame) is used to represent categorical variables. By default a factor treats values as unordered categorical variables, although factors can also be ordered.</p></li>
-<li><p>Equivalently, we can create a set of dummies (binary variables with values 0 or 1 indicating whether an observation belongs to each category or not). Note, when we create a set of dummies, we must leave one category out, as a reference category. For some modeling approaches, including all possible categories can create unstable estimation. So for example, to deal with missingness in the math proficiency variable, we might create a set of three dummies indicating: (1) proficient, (2) above proficient, or (3) missing proficiency information - leaving out the 4th category of below proficiency.</p></li>
+<li><p>Note if our raw variable (before accounting for missingness) is an “ordered” categorical variable, for which the categories have a clear and meaningful order or scale, then adding a category for missingness means that our newly formatted variable is an “unordered” categorical variable. In R, a <code>factor</code> (a class of an R object or of a column in a data frame) is used to represent categorical variables. By default, a factor treats values as unordered categorical variables, although factors can also be ordered.</p></li>
+<li><p>Equivalently, we can create a set of dummies (binary variables with values 0 or 1) indicating whether an observation belongs to each category or not. This is my recommendation. Note, when we create a set of dummies, we must leave one category out, as a reference category. For some modeling approaches, including all possible categories can create unstable estimation. So for example, to deal with missingness in the math proficiency variable, we might create a set of three dummies indicating: (1) proficient, (2) above proficient, or (3) missing proficiency information - leaving out the 4th category of below proficiency.</p></li>
 </ul></li>
 </ol>
-<p>Below, we see how this looks in a revised R data frame:</p>
+<p>Below, we see how this looks in a revised R data frame, creating the dummies based on the raw variable <code>MathProficiency</code>:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>  ID School MathScore Math.Proficient Math.AboveProficient Math.Missing
-1  1      A        40               0                    0            0
-2  2      A        60               1                    1            0
-3  3      B        NA               0                    0            1
-4  4      B        80               0                    1            0
-5  5      B        60               1                    0            0
-  GradOnTime
-1          1
-2          0
-3          1
-4          0
-5         NA</code></pre>
+<pre><code>  ID School MathProficiency Math.Proficient Math.AboveProficient Math.Missing
+1  1      A               1               0                    0            0
+2  2      A               2               1                    1            0
+3  3      B              NA               0                    0            1
+4  4      B               3               0                    1            0
+5  5      B               2               1                    0            0</code></pre>
 </div>
 </div>
 <p>A couple of notes:</p>
@@ -575,32 +556,23 @@ div.csl-indent {
 <li><p>If we have a small category, we will want to combine it with another category. For example, if there are just a few missing values, we might create a factor variable or a set of binary variables such that one category is “proficient”; another is “above proficient”; and the other is “either below proficient or missing proficiency information.”</p></li>
 <li><p>If missingness is a very large category, this may indicate a problem with the reliability of the variable. Variables with large amounts of missing data should perhaps be eliminated from analyses - but this is an issue to discuss with those who have expertise with the data systems and data entry process.</p></li>
 </ul>
+<p><br>
+</p>
 <ol start="2" type="1">
-<li><p><strong>For continuous variables, we can turn create a new, transformed categorical variable.</strong> That is, if our data only contained the math test score, to address missingness, we can turn it into a variable that captures different levels and missingness as above. Converting continuous variables into categorical variables may be desirable for extracting predictive information as well. For example, whether a student scored at a proficient level or not may be more predictive than their raw score.</p></li>
-<li><p><strong>For continuous variables, we can also do a combination of imputation and creating a dummy to capture missingness.</strong> This method, “dummy variable adjustment” (<span class="citation" data-cites="CohenCohen1985">(<a href="#ref-CohenCohen1985" role="doc-biblioref">Cohen &amp; Cohen, 1985</a>)</span>) is illustrated below. Here we impute the missing math scores with the mean of the nonmissing math scores, and we create a dummy variable that is 1 for observations with imputed values and 0 otherwise.</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>  ID School MathScore Impute.MathScore Miss.MathScore GradOnTime
-1  1      A        40               40              0          1
-2  2      A        60               60              0          0
-3  3      B        NA               60              1          1
-4  4      B        80               80              0          0
-5  5      B        60               60              0         NA</code></pre>
-</div>
-</div>
-<p>When we use this “dummy variable adjsutment,” we include both the new variable with imputed values and the new dummy in our modeling. There has been a considerable amount of criticism focused on this approach in the literature. <span class="citation" data-cites="Jones1996">(<a href="#ref-Jones1996" role="doc-biblioref">Jones, 1996</a>)</span> and <span class="citation" data-cites="Allison2002">(<a href="#ref-Allison2002" role="doc-biblioref">Allison, 2002</a>)</span> show that, generally in studies using observational data, this approach leads to biased estimates of the coefficients in the regression model. However, our primary objective with predictive analytics is not to have interpretable coefficients in our models. Our primary objective is to achieve “good” predictions.</p>
-<p>Here is an illustration of the dummy variable adjustment approach in our toy data set.</p></li>
+<li><p><strong>For continuous variables, we can create a new, transformed categorical variable.</strong> That is, if our data only contained the math test score, to address missingness, we can turn it into a variable that captures different levels and missingness as above. Converting continuous variables into categorical variables may be desirable for extracting predictive information as well. For example, whether a student scored at a proficient level or not may be more predictive than their raw score.</p></li>
+<li><p><strong>For continuous variables, we can also do a combination of imputation and creating a dummy to capture missingness.</strong> This method, “dummy variable adjustment” <span class="citation" data-cites="CohenCohen1985">(<a href="#ref-CohenCohen1985" role="doc-biblioref">Cohen &amp; Cohen, 1985</a>)</span> is illustrated below. Here we impute the missing math scores with the mean of the nonmissing math scores, and we create a dummy variable that is 1 for observations with imputed values and 0 otherwise.</p></li>
 </ol>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>  math.test math.test.levels math.test.proficient math.test.missing
-1         1                1                    0                 0
-2         2                2                    1                 0
-3        NA                0                    0                 1
-4         1                1                    0                 0
-5         2                2                    1                 0</code></pre>
+<pre><code>  ID School MathScore Impute.MathScore Miss.MathScore
+1  1      A        40               40              0
+2  2      A        60               60              0
+3  3      B        NA               60              1
+4  4      B        80               80              0
+5  5      B        60               60              0</code></pre>
 </div>
 </div>
+<pre><code>When we use this "dummy variable adjsutment," we must include both the new variable with imputed values and the new dummy in our modeling. There has been a considerable amount of criticism focused on this approach in the literature. For example, @Jones1996 and @Allison2002 show that, generally in studies using observational data, this approach leads to biased estimates of the coefficients in the regression model. However, our primary objective with predictive analytics is not to have interpretable coefficients in our models. Our primary objective is to achieve "good" predictions.</code></pre>
 </section>
 <section id="a-bit-more-about-imputation" class="level3">
 <h3 class="anchored" data-anchor-id="a-bit-more-about-imputation">A bit more about imputation…</h3>
@@ -613,14 +585,8 @@ div.csl-indent {
 
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list">
-<div id="ref-Allison2002" class="csl-entry" role="listitem">
-Allison, P. D. (2002). Missing data. <em>Sage University Press</em>.
-</div>
 <div id="ref-CohenCohen1985" class="csl-entry" role="listitem">
 Cohen, J., &amp; Cohen, P. (1985). <em>Applied multiple regression and correlation analysis for the behavioral sciences</em>. Mahwah, NJ: Lawrence Erlbaum Associates.
-</div>
-<div id="ref-Jones1996" class="csl-entry" role="listitem">
-Jones, M. P. (1996). Indicator and stratification methods for missing explanatory variables in multiple linear regression. <em>Journal of the American Statistical Association</em>, <em>91:433</em>, 222–230.
 </div>
 </div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 

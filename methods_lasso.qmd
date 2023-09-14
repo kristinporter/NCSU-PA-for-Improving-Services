@@ -41,3 +41,8 @@ In Lasso regression, the primary tuning parameter is $\lambda$ (lambda), which c
 
 -   **Inference in interpreting coefficients:** Though inference is possible, post-lasso inference is complex.
     However, this does not matter when our primary goal is prediction.
+
+### Implementation in R
+
+In R, we implement lasso with `glmnet()`.
+The code templates will do this for you.

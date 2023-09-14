@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predictive Analytics (PA) for Improving Services - Missing data - outcomes</title>
+<title>Predictive Analytics (PA) for Improving Services - Lasso</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./data2_EDA.html" rel="next">
-<link href="./data2_missingpredictors.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -61,6 +59,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -73,7 +73,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data2_overview.html">Data for PA: PART 2</a></li><li class="breadcrumb-item"><a href="./data2_missingoutcomes.html">Missing data - outcomes</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Predictive Analytics (PA) for Improving Services
+      </li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -276,13 +278,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
  <span class="menu-text">Data for PA: PART 2</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data2_overview.html" class="sidebar-item-text sidebar-link">
@@ -303,7 +305,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data2_missingoutcomes.html" class="sidebar-item-text sidebar-link active">
+  <a href="./data2_missingoutcomes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Missing data - outcomes</span></a>
   </div>
 </li>
@@ -485,7 +487,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Missing data - outcomes</h1>
+<h1 class="title">Lasso</h1>
 </div>
 
 
@@ -500,14 +502,37 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Outcome values could be missing for multiple reasons:</p>
-<ol type="1">
-<li><strong>The outcome has not been sufficiently defined.</strong> For example, imagine the case in which a company wants to predict whether a customer signs up for an advertised service. The binary outcome for the outcome may be equal to 1 if a customer signs up, and 0 if they decline to sign up. But what about those who haven’t indicated “yes” (1) or “no” (0) yet. The may have a missing value. It is critical here to define a window of time for observing the outcome. That is, we need to define by when the sign-up occurs - e.g.&nbsp;within 1 month. Then the missing values would take the value of 0 - “no” the customer did not sign up for the services within 1 month of advertising it.</li>
-<li><strong>All the same reasons predictors can be missing.</strong> If an outcome is missing due to “random” typos, technical glitches or messiness, then this is probably not a problem. These observations would have to be excluded from the modeling. However, it an outcomes is missing in nonnegligible due to nonrandom reasons - e.g.&nbsp;some were hesitant to report the information for the outcome variable - then this could introduce a big problem for the analytics. If the outcome is observed for a subgroup that differs from the overall population in your data in some meaningful way, then your modeling will only apply to that subgroup. And, if you can only identify that subgroup by nonmissing outcome data, then you will be applying that model to make predictions for a broader population, introducing unreliable results when the model is deployed with data in which the outcomes are unknown.</li>
-<li><strong>The outcome cannot be observed for a subgroup.</strong> This is similar to #2 above but occurs somewhat differently. Consider the following example: Across the country, release and detention decisions for defendants in the pretrial period — that is, the period after arrest while a criminal case is being adjudicated — are increasingly guided by risk assessments, which rely on data to estimate defendants’ risk of failing to appear for a court date or of being charged with new criminal activity if released pending trial. In this setting, predictive models are generally fit to only those defendants not detained while awaiting trial. Those detained, potentially because they were unable to make bail, are not included as there is no outcome related to new criminal activity or failure to appear (this is referred to as “censorship”). This censorship can cause multiple problems. First, if the people who are detained are systematically different from the people who are not detained, the final models may not generalize: the models may not accurately predict risk for those people who were detained. Additionally, if detention patterns differ by racial group, bias may be introduced by fitting models using different subsets of the racial groups. One of the approaches to address the censoring problem when validating pretrial risk assessments is to impute missing outcomes for detained or partly detained defendants. This imputation could include race and other characteristics not used for the final risk model. (As imputation is only used to build the model, these defendant characteristics will not, in the end, be used as risk factors by the final predictive model and thus the overall risk assessment.) As long as the imputation captures any differential relationships between detention and subgroups, the subsequent model-fitting process will not be as vulnerable to biases from censoring.</li>
-</ol>
+<p>Lasso, which stands for “Least Absolute Shrinkage and Selection Operator,” is a “penalized” form of regression.</p>
+<p>In Lasso regression, the primary tuning parameter is <span class="math inline">\(\lambda\)</span> (lambda), which controls the strength of the penalization.</p>
+<ul>
+<li><p>When <span class="math inline">\(\lambda=0\)</span>, Lasso regression reduces to the ordinary least squares (for linear regression) or logistic regression (for binary outcomes). No penalty is applied, and the result will include all predictors.</p></li>
+<li><p>As <span class="math inline">\(\lambda\)</span> increases, the penalization effect becomes stronger, and more coefficients are shrunk towards zero. For a sufficiently large value of <span class="math inline">\(\lambda\)</span>, all coefficients may become exactly zero.</p></li>
+<li><p>The value of <span class="math inline">\(\lambda\)</span> can be selected with cross-validation with the training data.</p></li>
+</ul>
+<section id="advantages" class="level3">
+<h3 class="anchored" data-anchor-id="advantages">Advantages:</h3>
+<ul>
+<li><p><strong>Feature selection</strong>: One of the key advantages of Lasso regression is its ability to perform feature or variable selection. This can be very helpful when you have a large number of predictors, and you suspect that many of them are irrelevant or redundant.</p></li>
+<li><p><strong>Dealing with lots or predictors</strong>: In situations where the number of predictors (<span class="math inline">\(p\)</span>) is close to or exceeds the number of observations \(n\), classical logistic regression might overfit or might not even run at all. Lasso can be a solution in these high-dimensional settings.</p></li>
+<li><p><strong>Multicollinearity</strong>: When predictor variables are highly correlated, standard logistic regression’s estimates can be very unstable. Lasso helps to alleviate multicollinearity issues by penalizing certain coefficients and pushing them towards zero.</p></li>
+<li><p><strong>Interpretability:</strong> Because Lasso can zero out coefficients, the resulting model can be more interpretable than a model with many predictors.</p></li>
+<li><p><strong>Model Performance</strong>: If there’s a concern about overfitting due to a large number of predictors, Lasso can provide a more generalized model that might perform better on out-of-sample data compared to a non-regularized logistic regression.</p></li>
+</ul>
+</section>
+<section id="disadvantages" class="level3">
+<h3 class="anchored" data-anchor-id="disadvantages">Disadvantages:</h3>
+<ul>
+<li><p><strong>True model:</strong> If the true underlying model is very sparse (i.e., very few predictors truly matter), then Lasso will perform very well. However, if a large number of predictors matter, lasso may not be stable.</p></li>
+<li><p><strong>Challenge with highly correlated predictors:</strong> With highly correlated predictors, lasso arbitrarily chooses which to include in the model.</p></li>
+<li><p><strong>Inference in interpreting coefficients:</strong> Though inference is possible, post-lasso inference is complex. However, this does not matter when our primary goal is prediction.</p></li>
+</ul>
+</section>
+<section id="implementation-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="implementation-in-r">Implementation in R</h3>
+<p>In R, we implement lasso with <code>glmnet()</code>. The code templates will do this for you.</p>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -743,18 +768,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./data2_missingpredictors.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Handling missing data - predictors</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./data2_EDA.html" class="pagination-link">
-        <span class="nav-page-text">Exploratory data analysies</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 

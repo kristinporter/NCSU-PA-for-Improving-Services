@@ -8,10 +8,10 @@ This section covers best practices and considerations for preparing data for pre
 
 -   There may be missing data values that can create confusion and errors if not handled thoughtfully;
 
--   There may be mistakes or nonsensical values that create noise and obfuscates underlying patterns;
+-   There may be mistakes or nonsensical values that create noise and obfuscate underlying patterns;
 
--   There may be valuable information that needs to be extracted from raw measures that may not provide clear empirical meaning (e.g. text data); and
+-   There may be valuable information to be extracted from raw measures that may not provide clear empirical value (e.g. text data); and
 
--   There may be differences in data variables over time that threaten the performance of our models.
+-   There may be differences in data variables over time, which can threaten the performance of our models.
 
 Note that for predictive analytics, data preparation may be an *iterative* process. In data with a large number of predictors, it may make sense to focus first on a core set of variables that are hypothesized to be strong predictors - those specified in a benchmark predictor set or incrementally expanded predictor sets. If validation of learners with these predictor sets indicate strong performance, then the data science team may move on to model selection and testing. However, if learner performance in the validation step is lower than desired or anticipated, then the data science team can circle back and work to extract more predictive value from the raw data.
