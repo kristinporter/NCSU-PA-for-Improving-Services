@@ -18,6 +18,6 @@ We want to be thoughtful about the data that we will use for our proof-of-concep
 
     -   Is survey data part of our data universe for predictive analytics? If so, do response rates vary substantially over time? Variation in response rates could (but not necessarily) mean that different populations are being captured with each survey. We would need to investigate this.
 
-    -   Were there broad changes in how measures where defined or coded? We may want to limit the data we will use to train, validate and test models to a period in which the measures are consistent to the present (time time close to when any model would be deployed).
+    -   Were there broad changes in how measures where defined or coded? We may want to limit the data we will use to train, validate and test models to a period in which the measures are consistent to the present (time close to when any model would be deployed).
 
         Note that inconsistencies in some measures could have implications in measures we include in our prediction sets rather than implications for how we restrict our data for our proof-of-concept. That is, if some measures change over time, we may need to exclude just those measures from our models. If there is sufficient consistency across key predictors in data we may not need to restrict the data. We will return to measure consistency later, when we discuss data quality issues.

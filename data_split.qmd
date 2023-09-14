@@ -20,4 +20,4 @@ flowchart LR
 
 3.  **Testing:** uses *new, set aside* data with known outcomes (data not used for training or validation) to apply the "best" model. The predictions from the best model are compared to the known outcomes to report on predictive performance and fairness to stakeholders and to make a decision about whether the learner/model should be deployed for use.
 
-In the following pages, we will go over how to implement these concepts, but first we will discuss considerations for selecting data that would be used to across the full workflow.
+In the following pages, we will go over how to implement these concepts, but first we will discuss considerations for selecting data that would be used across the full workflow.
