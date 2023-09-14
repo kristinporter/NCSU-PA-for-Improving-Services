@@ -328,27 +328,8 @@ ul.task-list li input[type="checkbox"] {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text">Introduction to the PA Toolset</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
- <span class="menu-text">Overview</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">How to access toolset</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">How to specify scope in toolset</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">How to specify learners in toolset</span>
-  </li>
-      </ul>
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Introduction to the PA Toolset</span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -519,27 +500,12 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Exploratory data analysis (EDA) is valuable for gaining an understanding of your data before diving into predictive analytics. EDA is not technically a required step in a predictive analytics work flow. In some contexts, it may be possible to achieve excellent model performance with raw data measures and without understanding the underlying data very well. However, EDA is typically recommended and extremely valuable.</p>
-<ol type="1">
-<li><strong>Data Quality Assessment</strong>:</li>
-</ol>
-<p>EDA uncovers data quality issues like missing values, outliers, or implausible values, which might be the result of data entry errors. Addressing these quality concerns is imperative as they can drastically affect model accuracy. Plots of variables’ distributions and summary statistics (e.g., mean, median, standard deviation, range, quartiles, interquartile range) aids in this assessment.</p>
-<ol start="2" type="1">
-<li><strong>Informational Value of Variables</strong>:</li>
-</ol>
-<p>Variables with little variation often add negligible value to predictive models. For instance, a binary predictor that’s consistent across 99% of observations offers limited insight. Similarly, a continuous variable clustering around a singular value isn’t very informative. Again plots and statistics that summarize variables’ distributions are helpful.</p>
-<ol start="3" type="1">
-<li><strong>Identification of Potential Predictors:</strong></li>
-</ol>
-<p>Correlations between independent variables and the outcome of interest can hint at important predictors. However, keep in mind that variables not strongly correlated with the outcome can still be valuable in models, especially when they interact with other variables or aid in capturing complex, non-linear relationships. It is difficult or impossible to visualize interaction terms: when predictors have a different relationship with the outcome when considered together than when considered apart.</p>
-<ol start="4" type="1">
-<li><strong>Redundancy Detection:</strong></li>
-</ol>
-<p>Tools like correlation matrices or heatmaps elucidate inter-variable correlations, highlighting redundancy. When faced with overlapping predictors, it’s beneficial to opt for the most explanatory variable, especially when aiming for model simplicity and interpretability.</p>
-<ol start="5" type="1">
-<li><strong>Potential Bias:</strong></li>
-</ol>
-<p>EDA is instrumental in detecting biases. Visual tools, such as histograms, display group distributions. An underrepresentation of a specific group, compared to the target population, can introduce model bias. Furthermore, a disproportionate frequency of missing values or outliers for certain groups is another bias indicator. Moreover, It’s crucial to evaluate the relationship between multiple variables and protected attributes (e.g., race, gender) or other important equity attributes (e.g., income level, geographical location). Variables strongly correlated with these sensitive attributes can inadvertently become proxies, potentially leading to biased decisions. For instance, using a neighborhood-based variable that correlates closely with race might unintentionally result in decisions influenced by racial attributes. EDA is an important first step for being attentive to bias, but assessing bias of model results is also essential. We will turn to this soon.</p>
+<p>Exploratory data analysis (EDA) is valuable for gaining an understanding of your data before diving into predictive analytics. EDA is not technically a required step in a predictive analytics work flow. In some contexts, it may be possible to achieve excellent model performance with raw data measures and without understanding the underlying data very well. However, EDA is typically recommended and often, extremely valuable for…</p>
+<p><strong>Data Quality Assessment</strong>: EDA uncovers data quality issues like missing values, outliers, or implausible values, which might be the result of data entry errors. Addressing these quality concerns is imperative as they can drastically affect model accuracy. Plots of variables’ distributions and summary statistics (e.g., mean, median, standard deviation, range, quartiles, interquartile range) aid in this assessment.</p>
+<p><strong>Informational Value of Variables</strong>: Variables with little variation often add negligible value to predictive models. For instance, a binary predictor that’s consistent across 99% of observations offers limited insight. Similarly, a continuous variable clustering around a singular value isn’t very informative. Again plots and statistics that summarize variables’ distributions are helpful.</p>
+<p><strong>Identification of Potential Predictors</strong>:Correlations between independent variables and the outcome of interest can hint at important predictors. However, keep in mind that variables not strongly correlated with the outcome can still be valuable in models, especially when they interact with other variables or aid in capturing complex, non-linear relationships. It is difficult or impossible to visualize interaction terms (i.e.&nbsp;when predictors have a different relationship with the outcome when considered together than when considered apart).</p>
+<p><strong>Redundancy Detection:</strong> Tools like correlation matrices or heatmaps elucidate inter-variable correlations, highlighting redundancy. When faced with overlapping predictors, it’s beneficial to opt for the most explanatory variable, especially when aiming for model simplicity and interpretability.</p>
+<p><strong>Potential Bias:</strong> EDA is instrumental in detecting biases. Visual tools, such as histograms, display group distributions. An underrepresentation of a specific group, compared to the target population, can introduce model bias. Furthermore, a disproportionate frequency of missing values or outliers for certain groups is another bias indicator. Moreover, It’s crucial to evaluate the relationship between multiple variables and protected attributes (e.g., race, gender) or other important equity attributes (e.g., income level, geographical location). Variables strongly correlated with these sensitive attributes can inadvertently become proxies, potentially leading to biased decisions. For instance, using a neighborhood-based variable that correlates closely with race might unintentionally result in decisions influenced by racial attributes. EDA is an important first step for being attentive to bias, but assessing bias of model results is also essential. We will turn to this soon.</p>
 
 
 

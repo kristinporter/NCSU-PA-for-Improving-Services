@@ -347,27 +347,8 @@ div.csl-indent {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text">Introduction to the PA Toolset</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
- <span class="menu-text">Overview</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">How to access toolset</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">How to specify scope in toolset</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">How to specify learners in toolset</span>
-  </li>
-      </ul>
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Introduction to the PA Toolset</span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -548,10 +529,12 @@ div.csl-indent {
 </ul></li>
 <li><p><strong>Variable Transformations</strong>: Such as taking the logarithm of a variable, standardizing/normalizing variables or binning a continuous variable.</p>
 <ul>
-<li>If a predictor is highly skewed, it may benefit model performance to do a transformation to make the distribution more symmetric. Some algorithms including linear regression, support vector machines, and neural networks use polynomial calculations that can benefit from non-skewed data. Taking the log of a skewed variable or using a Box-Cox transformation can help reduce skew. Other transformations (e.g.&nbsp;smoothing for time-series data or basis expansion and splines for variables with nonlinear patterns) are also used but are beyond the scope of this class. For a deeper dive, you can check out chapter 6 of <span class="citation" data-cites="KuhnJohnson2020">Kuhn &amp; Johnson (<a href="#ref-KuhnJohnson2020" role="doc-biblioref">2020</a>)</span>.</li>
-<li>For some machine learning algorithms, it will be desirable to mean center continuous numeric variables. This involves subtracting the mean of that variable from each observation. This process results in the variable having a new mean of zero. Sometimes, we also standardize the variables (compute a Z-score), which means we divide by their standard deviation.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> When and why to do this gets pretty complicated. I will try to give you guidance about which machine learning algorithms need which kind of transformations so that you can align predictor sets and modeling approaches accordingly.</li>
+<li>If a predictor is highly skewed, it may benefit model performance to do a transformation to make the distribution more symmetric. Some algorithms including linear regression, support vector machines, and neural networks use polynomial calculations that can benefit from non-skewed data. Taking the log of a skewed variable or using a Box-Cox transformation can help reduce skew. Other transformations (e.g.&nbsp;smoothing for time-series data or basis expansion and splines for variables with nonlinear patterns) are also used but are beyond the scope of this class. For an optional deeper dive, you can check out Chapter 6 of <span class="citation" data-cites="KuhnJohnson2020">Kuhn &amp; Johnson (<a href="#ref-KuhnJohnson2020" role="doc-biblioref">2020</a>)</span>.</li>
+<li>For some machine learning algorithms, it will be desirable to “mean- center” continuous variables. This involves subtracting the mean of that variable from each observation. This process results in the variable having a new mean of zero. Sometimes, we also “standardize” the variables (compute a Z-score), which means that after we mean-center, we divide by the standard deviation.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> When and why to do this gets pretty complicated. I will try to give you guidance about which machine learning algorithms need which kind of transformations so that you can align predictor sets and modeling approaches accordingly.</li>
 <li>As discussed when handling missing data, another common type of predictor transformation is to discretize a numeric predictor into a series of categorical predictors. Common reasons for this transformation are to simplify interpretation, to allow for more flexible relationships between the predictor and outcome, or to address missingness. But there are cautions for this. It may be better to avoid discretization when the cut points are arbitrary. Try to rely on meaningful cut-points (e.g.&nbsp;scores that indicate proficiency on a math test). Often, numeric predictors in their continuous form are more predictive. The good news is that you do not necessarily have to choose one approach. You can have both a continuous and a discretized version of a predictor and put different versions in different predictor sets for your learners.</li>
 </ul></li>
+<li><p><strong>Interactions</strong>: Creating variables that interact two or more other variables.</p>
+<p>Recall that interactions occur when combined predictors have a different relationship with the outcome than when each is considered separately. We will learn later that some machine learning algorithms are helping in finding interactions. However, sometimes the project team has subject-matter knowledge about potential interactions. They may want to specify these interactions in one or more learners, especially if they are using a regression model. One way to do this is to create interaction variables by multiplying them together or combining in a way that makes sense to the team.</p></li>
 <li><p><strong>Dimensionality Reduction</strong>: Techniques to reduce the number of predictors/independent variables/features.</p>
 <p>Finally, multiple predictors can be engineered to a small number of predictors. There are multiple approahces for this. It is helpful to be aware of these approaches, but they are beyond the scope of this class. If you are curious to learn more, these blog posts are helpful optional reading:</p>
 <ul>
@@ -564,7 +547,7 @@ div.csl-indent {
 <h3 class="anchored" data-anchor-id="a-note-about-data-leakage">A note about data leakage…</h3>
 <p><img src="images/waterdrip.jpg" class="img-fluid" style="width:2.5in" data-fig-align="left"><br>
 </p>
-<p>As mentioned earlier, data leakage refers to the (typically accidental) practice of “peeking” at validation or testing data when focused on modeling in an earlier stage. Data leakage can occur in data preparation and feature engineering when data transformations are carried with information from combined data rather than data specific to the training set. For example, when mean centering continuous variables, if we calculate the mean based on the full data set, information from the validation and test sets is informing our training process. This can lead to potential overfitting, although the effects are negligible if training, validation and test data are from similar distributions (Yang et al.&nbsp;(2022)). To avoid data leakage, it is considered good practice to save data preprocessing parameters, such as the mean and standard deviations derived from training data set, to apply to future incoming unseen data. For a deeper dive into data leakage issues in predictive analytics, see</p>
+<p>As mentioned earlier, data leakage refers to the (typically accidental) practice of “peeking” at validation or testing data when focused on modeling in an earlier stage. Data leakage can occur in data preparation and feature engineering when data transformations are carried out with information from combined data rather than data specific to the training set. For example, when mean-centering continuous variables, if we calculate the mean based on the full data set, information from the validation and test sets is informing our training process. This can lead to potential overfitting, although the effects are negligible if training, validation and test data are from similar distributions <span class="citation" data-cites="YangEtAl2022">(<a href="#ref-YangEtAl2022" role="doc-biblioref">Yang &amp; Kastner, 2022</a>)</span>. To avoid data leakage, it is considered good practice to save data preprocessing parameters, such as the mean and standard deviations derived from training data set, to apply to future incoming unseen data.</p>
 <p>For an optional dive further into the topic of data leakage, see <a href="https://towardsdatascience.com/data-leakage-in-machine-learning-how-it-can-be-detected-and-minimize-the-risk-8ef4e3a97562.">Data Leakage in Machine Learning: How It Can Be Detected and Minimize the Risk</a> Or see Chapter 5 in Designing Machine Learning Systems (<span class="citation" data-cites="Huyen2022">Huyen (<a href="#ref-Huyen2022" role="doc-biblioref">2022</a>)</span>).</p>
 
 
@@ -578,6 +561,9 @@ Huyen, C. (2022). <em>Designing machine learning systems</em>. Sebastopol, Calif
 </div>
 <div id="ref-KuhnJohnson2020" class="csl-entry" role="listitem">
 Kuhn, M., &amp; Johnson, K. (2020). <em>Feature engineering and selection: A practical approach for predictive models</em>. Boca Raton: Chapman; Hall, CRC Press.
+</div>
+<div id="ref-YangEtAl2022" class="csl-entry" role="listitem">
+Yang, R. A. B.-S., C., &amp; Kastner, C. (2022). Data leakage in notebooks: Static detection and better processes. <em>arXiv Https://Arxiv.org/Abs/2209.03345</em>.
 </div>
 </div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 

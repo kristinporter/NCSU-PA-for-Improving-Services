@@ -559,8 +559,12 @@ div.csl-indent {
 <p><br>
 </p>
 <ol start="2" type="1">
-<li><p><strong>For continuous variables, we can create a new, transformed categorical variable.</strong> That is, if our data only contained the math test score, to address missingness, we can turn it into a variable that captures different levels and missingness as above. Converting continuous variables into categorical variables may be desirable for extracting predictive information as well. For example, whether a student scored at a proficient level or not may be more predictive than their raw score.</p></li>
-<li><p><strong>For continuous variables, we can also do a combination of imputation and creating a dummy to capture missingness.</strong> This method, “dummy variable adjustment” <span class="citation" data-cites="CohenCohen1985">(<a href="#ref-CohenCohen1985" role="doc-biblioref">Cohen &amp; Cohen, 1985</a>)</span> is illustrated below. Here we impute the missing math scores with the mean of the nonmissing math scores, and we create a dummy variable that is 1 for observations with imputed values and 0 otherwise.</p></li>
+<li><strong>For continuous variables, we can create a new, transformed categorical variable.</strong> That is, if our data only contained the math test score, to address missingness, we can turn it into a variable that captures different levels and missingness as above. Converting continuous variables into categorical variables may be desirable for extracting predictive information as well. For example, whether a student scored at a proficient level or not may be more predictive than their raw score.</li>
+</ol>
+<p><br>
+</p>
+<ol start="3" type="1">
+<li><strong>For continuous variables, we can also do a combination of imputation and creating a dummy to capture missingness.</strong> This method, “dummy variable adjustment” <span class="citation" data-cites="CohenCohen1985">(<a href="#ref-CohenCohen1985" role="doc-biblioref">Cohen &amp; Cohen, 1985</a>)</span> is illustrated below. Here we impute the missing math scores with the mean of the nonmissing math scores, and we create a dummy variable that is 1 for observations with imputed values and 0 otherwise.</li>
 </ol>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -572,12 +576,12 @@ div.csl-indent {
 5  5      B        60               60              0</code></pre>
 </div>
 </div>
-<pre><code>When we use this "dummy variable adjsutment," we must include both the new variable with imputed values and the new dummy in our modeling. There has been a considerable amount of criticism focused on this approach in the literature. For example, @Jones1996 and @Allison2002 show that, generally in studies using observational data, this approach leads to biased estimates of the coefficients in the regression model. However, our primary objective with predictive analytics is not to have interpretable coefficients in our models. Our primary objective is to achieve "good" predictions.</code></pre>
+<p>When we use this “dummy variable adjsutment,” we must include both the new variable with imputed values and the new dummy in our modeling. There has been a considerable amount of criticism focused on this approach in the literature. For example, <span class="citation" data-cites="Jones1996">Jones (<a href="#ref-Jones1996" role="doc-biblioref">1996</a>)</span> and <span class="citation" data-cites="Allison2002">Allison (<a href="#ref-Allison2002" role="doc-biblioref">2002</a>)</span> show that, generally in studies using observational data, this approach leads to biased estimates of the coefficients in the regression model. However, our primary objective with predictive analytics is not to have interpretable coefficients in our models. Our primary objective is to achieve “good” predictions.</p>
 </section>
 <section id="a-bit-more-about-imputation" class="level3">
 <h3 class="anchored" data-anchor-id="a-bit-more-about-imputation">A bit more about imputation…</h3>
-<p>Some imputation methods may be straightforward and acceptable, especially when redundant information exists in other variables. For instance, if gender data is absent but titles such as Mr.&nbsp;or Ms.&nbsp;are present, these titles can be reliably used to infer missing gender values.</p>
-<p>However, imputation often presents a more complex challenge. Many data scientists invest considerable effort to identify plausible values for imputation. This is an ongoing area of research. A popular approach is to derive imputed values by modeling them, drawing information from the entire dataset. Another strategy, known as “multiple imputation,” involves repeatedly modeling the missing values, which produces several complete datasets. This repetition considers both sampling uncertainty and modeling (or specification) uncertainty of imputed values, as discussed in sources like @GellmanJill2007. Results from analyzing these multiple datasets can be combined in various ways. While multiple imputation methods decrease bias in the imputed values, they do not entirely eliminate it.</p>
+<p>Some imputation methods may be straightforward and acceptable, especially when redundant information exists in other variables. For instance, if gender data is absent but titles such as Mr., Ms.&nbsp;and Mx. are present, these titles may provide a decent guess for inferring missing gender values.</p>
+<p>However, imputation often presents a more complex challenge. Many data scientists invest considerable effort to identify plausible values for imputation. This is an active area of statistical research. A popular approach is to derive imputed values by modeling them, drawing information from the entire dataset. Another strategy, known as “multiple imputation,” involves <em>repeatedly</em> modeling the missing values, which produces several complete datasets. This repetition considers both sampling uncertainty and modeling (or specification) uncertainty of imputed values, as discussed in sources like <span class="citation" data-cites="GellmanJill2007">Gellman &amp; Hill (<a href="#ref-GellmanJill2007" role="doc-biblioref">2007</a>)</span>. Results from analyzing these multiple datasets can be combined in various ways. While multiple imputation methods decrease bias in the imputed values, they do not entirely eliminate it.</p>
 
 
 
@@ -585,8 +589,17 @@ div.csl-indent {
 
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list">
+<div id="ref-Allison2002" class="csl-entry" role="listitem">
+Allison, P. D. (2002). Missing data. <em>Sage University Press</em>.
+</div>
 <div id="ref-CohenCohen1985" class="csl-entry" role="listitem">
 Cohen, J., &amp; Cohen, P. (1985). <em>Applied multiple regression and correlation analysis for the behavioral sciences</em>. Mahwah, NJ: Lawrence Erlbaum Associates.
+</div>
+<div id="ref-GellmanJill2007" class="csl-entry" role="listitem">
+Gellman, A., &amp; Hill, J. (2007). <em>Data analysis using regression and multilevel hierarchical models</em>. Cambridge: Cambridge University Press.
+</div>
+<div id="ref-Jones1996" class="csl-entry" role="listitem">
+Jones, M. P. (1996). Indicator and stratification methods for missing explanatory variables in multiple linear regression. <em>Journal of the American Statistical Association</em>, <em>91:433</em>, 222–230.
 </div>
 </div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 

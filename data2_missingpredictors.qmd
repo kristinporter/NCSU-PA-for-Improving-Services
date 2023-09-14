@@ -57,6 +57,8 @@ A couple of notes:
 
 2.  **For continuous variables, we can create a new, transformed categorical variable.** That is, if our data only contained the math test score, to address missingness, we can turn it into a variable that captures different levels and missingness as above. Converting continuous variables into categorical variables may be desirable for extracting predictive information as well. For example, whether a student scored at a proficient level or not may be more predictive than their raw score.
 
+\
+
 3.  **For continuous variables, we can also do a combination of imputation and creating a dummy to capture missingness.** This method, "dummy variable adjustment" [@CohenCohen1985] is illustrated below. Here we impute the missing math scores with the mean of the nonmissing math scores, and we create a dummy variable that is 1 for observations with imputed values and 0 otherwise.
 
 ```{r echo=FALSE}
@@ -73,11 +75,11 @@ A couple of notes:
     print(toydata)
 ```
 
-    When we use this "dummy variable adjsutment," we must include both the new variable with imputed values and the new dummy in our modeling. There has been a considerable amount of criticism focused on this approach in the literature. For example, @Jones1996 and @Allison2002 show that, generally in studies using observational data, this approach leads to biased estimates of the coefficients in the regression model. However, our primary objective with predictive analytics is not to have interpretable coefficients in our models. Our primary objective is to achieve "good" predictions.
+When we use this "dummy variable adjsutment," we must include both the new variable with imputed values and the new dummy in our modeling. There has been a considerable amount of criticism focused on this approach in the literature. For example, @Jones1996 and @Allison2002 show that, generally in studies using observational data, this approach leads to biased estimates of the coefficients in the regression model. However, our primary objective with predictive analytics is not to have interpretable coefficients in our models. Our primary objective is to achieve "good" predictions.
 
 
 ### A bit more about imputation...
 
-Some imputation methods may be straightforward and acceptable, especially when redundant information exists in other variables. For instance, if gender data is absent but titles such as Mr. or Ms. are present, these titles can be reliably used to infer missing gender values.
+Some imputation methods may be straightforward and acceptable, especially when redundant information exists in other variables. For instance, if gender data is absent but titles such as Mr., Ms. and Mx. are present, these titles may provide a decent guess for inferring missing gender values.
 
-However, imputation often presents a more complex challenge. Many data scientists invest considerable effort to identify plausible values for imputation. This is an ongoing area of research. A popular approach is to derive imputed values by modeling them, drawing information from the entire dataset. Another strategy, known as "multiple imputation," involves repeatedly modeling the missing values, which produces several complete datasets. This repetition considers both sampling uncertainty and modeling (or specification) uncertainty of imputed values, as discussed in sources like \@GellmanJill2007. Results from analyzing these multiple datasets can be combined in various ways. While multiple imputation methods decrease bias in the imputed values, they do not entirely eliminate it.
+However, imputation often presents a more complex challenge. Many data scientists invest considerable effort to identify plausible values for imputation. This is an active area of statistical research. A popular approach is to derive imputed values by modeling them, drawing information from the entire dataset. Another strategy, known as "multiple imputation," involves *repeatedly* modeling the missing values, which produces several complete datasets. This repetition considers both sampling uncertainty and modeling (or specification) uncertainty of imputed values, as discussed in sources like @GellmanJill2007. Results from analyzing these multiple datasets can be combined in various ways. While multiple imputation methods decrease bias in the imputed values, they do not entirely eliminate it.

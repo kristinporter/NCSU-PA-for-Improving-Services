@@ -49,26 +49,27 @@ website:
           - data_splitconsiderations.qmd
       - section: "Data for PA: PART 2"
         contents:
-        - "Data preparation"
-        - "Overview of missing data"
-        - "Missing data - predictors"
-        - "Missing data - outcomes"
-        - "Exploratory data analyses"
-        - "Extracting predictive value"
-        - "Changes in data over time"
-        #   - data2_overview.qmd
-        #   - data2_whymissing.qmd
-        #   - data2_missingpredictors.qmd
-        #   - data2_missingoutcomes.qmd
-        #   - data2_EDA.qmd
-        #   - data2_extract.qmd
-        #   - data2_changesovertime.qmd
+        # - "Data preparation"
+        # - "Overview of missing data"
+        # - "Missing data - predictors"
+        # - "Missing data - outcomes"
+        # - "Exploratory data analyses"
+        # - "Extracting predictive value"
+        # - "Changes in data over time"
+          - data2_overview.qmd
+          - data2_whymissing.qmd
+          - data2_missingpredictors.qmd
+          - data2_missingoutcomes.qmd
+          - data2_EDA.qmd
+          - data2_extract.qmd
+          - data2_changesovertime.qmd
       - section: "Introduction to the PA Toolset"
         contents:
-          - "Overview"
-          - "How to access toolset"
-          - "How to specify scope in toolset"
-          - "How to specify learners in toolset"
+          # - "Overview"
+          # - "How to access toolset"
+          # - "How to specify scope in toolset"
+          # - "How to specify learners in toolset"
+
       - section: "Modeling approaches"
         contents:
           - "Regression for predicting binary outcomes"
