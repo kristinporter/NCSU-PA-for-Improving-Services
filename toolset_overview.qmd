@@ -1,0 +1,21 @@
+---
+title: "Overview of PA templates"
+---
+
+This section provides an orientation to the code templates for implementing the PA proof-of-concept framework. These templates were developed by colleagues at MDRC and edited by me. Here are some notes about these templates:
+
+-   They can be accessed at: https://patools.sprouthub.io. You will log in with the provided username and password. This will take you to your personal work space in R Studio, where you can upload data, edit R notebooks, run analyses and download results.
+
+-   The templates are organized into three primary R notebooks:
+
+    -   01_Learner_Specification.Rmd
+
+    -   02_Learner_Training_and_Validation.Rmd
+
+    -   03_Learner_Testing.Rmd
+
+        If you are not familiar with R notebooks, they are files with a .Rmd extension that combine text (written using `markdown` language, although R Studio provides a "visual" mode, which acts more like a typical text editor) and "code chunks." Sections of the notebooks can be run from within the .Rmd file for testing and editing. And, the entire notebooks can be compiled (or "knit") to produce a pdf (or htlm or doc) document that combines all text, code (if you opt to show it) and output into a nicely formatted report.
+
+-   The R notebook templates are designed to be "user-friendly" in that they do not include lengthy chunks of complicated code. Rather, they call other R scripts that contain multiple functions
+
+    \
