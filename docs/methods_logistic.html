@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./methods_lasso.html" rel="next">
+<link href="./toolset_datamodel.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -59,6 +61,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -71,9 +75,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Predictive Analytics (PA) for Improving Services
-      </li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Modeling approaches</li><li class="breadcrumb-item"><a href="./methods_logistic.html">Logistic Regression</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -328,24 +330,61 @@ ul.task-list li input[type="checkbox"] {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Introduction to the PA Toolset</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
- <span class="menu-text">Modeling approaches</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Introduction to the PA Toolset</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./toolset_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview of PA templates</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./toolset_datamodel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data model for the code templates</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text">Modeling approaches</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
  <span class="menu-text">Regression for predicting binary outcomes</span>
   </li>
           <li class="sidebar-item">
  <span class="menu-text">Machine learning (ML) algorithms for predicting binary outcomes</span>
   </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_logistic.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Logistic Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_lasso.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lasso</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_rf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Random forest</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -501,47 +540,47 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p>With multiple linear regression, we predict a continuous outcome based on multiple predictors. It looks like this:</p>
-<p>[ Y = _0 + _1X_1 + _2X_2 + … + _kX_k + ]</p>
+<p><span class="math inline">\(Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_kX_k + \epsilon\)</span></p>
 <p>Where:</p>
 <ul>
-<li>( Y ) is the outcome variable we’re trying to predict.</li>
-<li>( _0 ) is the y-intercept.</li>
-<li>( _1, _2, … ) are coefficients corresponding to the predictor variables.</li>
-<li>( X_1, X_2, … ) are the predictor variables.</li>
-<li>( ) represents the error term.</li>
+<li><span class="math inline">\(Y\)</span> is the outcome variable we’re trying to predict,</li>
+<li><span class="math inline">\(X_1\)</span>,<span class="math inline">\(X_2\)</span>, …,<span class="math inline">\(X_k\)</span> are the predictor variables,</li>
+<li><span class="math inline">\(\beta_0\)</span> is the Y-intercept,</li>
+<li><span class="math inline">\(\beta_1\)</span>, <span class="math inline">\(\beta_2\)</span>, …,<span class="math inline">\(\beta_k\)</span> are coefficients corresponding to the predictor variables, and</li>
+<li><span class="math inline">\(\epsilon\)</span> is the error term.</li>
 </ul>
-<p>To estimate coefficient values (( _0, _1, … )), we minimize the sum of squared errors across all observations.</p>
+<p>To estimate coefficient values <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span>, …,<span class="math inline">\(\beta_k\)</span>, we minimize the sum of squared errors across all observations.</p>
 <p><strong>Logistic</strong> regression can be used to predict the probability of a particular category of a <strong>binary</strong> outcome.</p>
 <p>If we use a linear regression model, we can get predicted values that are outside the [0,1] range, which doesn’t make sense for probabilities. To ensure predictions stay in the [0,1] range, logistic regression uses the logistic function:</p>
-<p>[ P(Y=1) = ]</p>
-<p>Where: - ( P(Y=1) ) is the probability of the outcome being 1. - ( _0, _1, … ) are coefficients. These numbers show the importance or weight of each predictor variable ( X ). - ( e ) is the base of natural logarithms (approximately equal to 2.71828).</p>
-<p>This can also be written as follows:</p>
-<p>[ () = _0 + _1X_1 + _2X_2 + … + _kX_k ]</p>
-<p>Here, the log odds (or the logarithm of the odds) of the outcome being 1 (versus 0) is expressed as a linear combination of predictor variables:</p>
+<p><span class="math inline">\(P(Y=1) = \frac{e^{\beta_0 + \beta_1X_1 + ... + \beta_kX_k}}{1 + e^{\beta_0 + \beta_1X_1 + ... + \beta_kX_k}}\)</span></p>
 <p>Where:</p>
 <ul>
-<li>( () ) is the natural logarithm.</li>
-<li>( P(Y=1) ) is the probability of the outcome being 1.</li>
-<li>( P(Y=0) ) is the probability of the outcome being 0 (which is just ( 1 - P(Y=1) )).</li>
-<li>( _0 ) is the intercept.</li>
-<li>( _1, _2, … ) are coefficients corresponding to the predictor variables.</li>
-<li>( X_1, X_2, … ) are the predictor variables.</li>
+<li><p><span class="math inline">\(P(Y=1)\)</span> is the probability of the outcome equals 1,</p></li>
+<li><p><span class="math inline">\(X_1\)</span>,<span class="math inline">\(X_2\)</span>,…,<span class="math inline">\(X_k\)</span> are the predictor variables,</p></li>
+<li><p><span class="math inline">\(\beta_0\)</span> is the Y-intercept,</p></li>
+<li><p><span class="math inline">\(\beta_1\)</span>, <span class="math inline">\(\beta_2\)</span>,…,<span class="math inline">\(\beta_k\)</span> are coefficients corresponding to the predictor variables, and</p></li>
+<li><p><span class="math inline">\(e\)</span> is the base of natural logarithms (approximately equal to 2.71828).</p></li>
 </ul>
-<p>The right-hand side of the equation represents the log odds of the event ( Y=1 ), which can range from negative to positive infinity. As we plug in values for the predictors, the linear combination gives us the log odds, which can then be transformed to get the actual probability ( P(Y=1) ).</p>
-<p>With logistic regression, we use <strong>maximum likelihood estimation</strong> to find the best-fitting coefficients, and there’s a whole realm of tests and diagnostics to assess model fit, significance of predictors, and more.</p>
-<p>Unlike many machine learning algorithms, when a data scientist uses logistic regression, they are specifying this specific functional form of the relationship between the predictors and the outcome.</p>
-<p><strong>Advantages</strong></p>
+<p>This can also be written as follows:</p>
+<p><span class="math inline">\(\log\left(\frac{P(Y=1)}{P(Y=0)}\right) = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_kX_k\)</span></p>
+<p>Here, the log odds (or the logarithm of the odds) of the outcome being 1 (versus 0) is expressed as a linear combination of predictor variables. The right-hand side of the equation represents the log odds of the event, which can range from negative to positive infinity. As we plug in values for the predictors, the linear combination gives us the log odds, which can then be transformed to get the actual probability(<span class="math inline">\(P(Y=1)\)</span> ).</p>
+<p>With logistic regression, we use <em>maximum likelihood estimation</em> to find the best-fitting coefficients.</p>
+<p>Unlike many machine learning algorithms, when a data scientist uses logistic regression, they are specifying this specific functional form of the relationship between the predictors and the outcome. With logistic regression, we are specifying that the log odds is a linear function of the predictors.</p>
+<p><span style="color:green"><strong>Advantages of Logistic Regression</strong></span></p>
 <ul>
 <li><p>Simple model that is easy to interpret.</p></li>
 <li><p>No tuning parameters to tune.</p></li>
 <li><p>Incorporates statistical inference, so it is straightforward to compute uncertainty estimates.</p></li>
 <li><p>Short training time.</p></li>
 </ul>
-<p><strong>Disadvantages</strong></p>
+<p><span style="color:green"><strong>Disdvantages of Logistic Regression</strong></span></p>
 <ul>
 <li><p>Not a very flexible model. If linear assumption is wrong, could be a poor fit.</p></li>
 <li><p>User must manually incorporate interaction terms if they are of interest.</p></li>
 </ul>
+<p><span style="color:green"><strong>Implementation of Lasso in R</strong></span></p>
+<p>In R, we implement logistic regression with <code>glm()</code> in Base R, setting <code>family=binomial(link="logit")</code>.</p>
+<p>The code templates will do this for you.</p>
 
 
 
@@ -779,6 +818,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./toolset_datamodel.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data model for the code templates</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./methods_lasso.html" class="pagination-link">
+        <span class="nav-page-text">Lasso</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

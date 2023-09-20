@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predictive Analytics (PA) for Improving Services - Random forest</title>
+<title>Predictive Analytics (PA) for Improving Services - Decision trees and random forests</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./OptionalPAvsInfStat.html" rel="next">
+<link href="./methods_lasso.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -59,6 +61,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -71,9 +75,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Predictive Analytics (PA) for Improving Services
-      </li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Modeling approaches</li><li class="breadcrumb-item"><a href="./methods_rf.html">Decision trees and random forests</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -328,24 +330,61 @@ ul.task-list li input[type="checkbox"] {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Introduction to the PA Toolset</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
- <span class="menu-text">Modeling approaches</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Introduction to the PA Toolset</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./toolset_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview of PA templates</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./toolset_datamodel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data model for the code templates</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text">Modeling approaches</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
  <span class="menu-text">Regression for predicting binary outcomes</span>
   </li>
           <li class="sidebar-item">
  <span class="menu-text">Machine learning (ML) algorithms for predicting binary outcomes</span>
   </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_logistic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logistic Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_lasso.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lasso</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_rf.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Decision trees and random forests</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -485,7 +524,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Random forest</h1>
+<h1 class="title">Decision trees and random forests</h1>
 </div>
 
 
@@ -500,11 +539,52 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>The building block of the random forest machine learning algorithm is a decision tree. A decision tree is a deterministic algorithm that makes a prediction based on predictor values. A series of nodes serve as decision points.</p>
-<p>The following figure depicts a decision tree to predict the log salary of a baseball player (James et al.&nbsp;(2013)).<br>
-The first node, or branch in the tree, considers how many years the player has been playing. If the player has been playing less than 4.5 years, they have a prediction of 5.11. If the player has been playing at least 4.5 years, the decision tree branches further. If their hitting average is less than 117.5, the log salary is 6, and if it is above, the log salary is 6.74. A random forest is called thus because it considers many different possible decision trees (a forest). It has no initial assumptions of the functional form between predictor and response variables. The predictor and response variables could be related linearly, non-linearly, with interactively, etc. Thus, the random forest algorithm can be used in both classification and regression problems (@) A boostrap sample is taken from the data, and a decision tree is constructed. Then, this process is repeated many times, resulting in many different possible decision trees. The final prediction is the average prediction across the different trees. By considering many trees instead of a single tree, the variance of the final predictions is reduced. Random forests take a particular approach by constructing decorrelated trees. At every possible split, the algorithm only considers a random subset of the possible predictors, rather than considering all the possible predictors. This extra step ensures that the trees are different from each other. Without this approach, if there were a strong predictor driving the outcome, nearly all trees would have an early split based on that predictor, so the trees would be highly correlated. Variance is reduced more when taking the average of uncorrelated observations than when taking the average of correlated observations. To get a good fit, the algorithm needs a sufficiently large number of bootstrap samples/trees. Tuning parameters The number of trees B is chosen to be sufficiently large that results are stable across repeated runs. B=500 is the default for the PA tool. The number of predictors to consider at each node m. One rule of thumb is m=√p where p is the total number of predictors. The minimum node size is the minimum number of observations that can be in a terminal node. For the PA tool the default is 10. The maximum tree depth is the allowed maximum number of layers. It is similar to minimum node size in also limiting tree complexity. The PA tool does not constrain tree depth for random forests. Besides the number of trees B, the other parameters can either be set to reasonable defaults, or chosen through cross validation. Advantages Flexible modeling approach which can model non-linear relationships. Directly takes into account potential interactions between predictors. Robust to outliers. Not always necessary to choose tuning parameters; default parameter choices often provide good performance. Disadvantages Difficult to interpret directly. Can result in overfitting.</p>
+<section id="decision-trees" class="level3">
+<h3 class="anchored" data-anchor-id="decision-trees">Decision trees</h3>
+<p>A decision tree is a simple machine learning algorithm consisting of a set of flowchart-like <strong>nodes</strong> representing decisions, which are based on a variable’s value, and <strong>branches</strong> representing the outcomes of those decisions, which lead to either a subsequent node/decision or a final prediction. We can think of a decision tree as a series of “questions” we ask the data. Based on the answers, the algorithm makes decisions or predictions.</p>
+<p>The following illustrates a very simple decision tree for predicting whether bank customers will remain with their bank throughout the next year.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/decisiontreebanking.png" class="img-fluid figure-img" style="width:6in"></p>
+</figure>
+</div>
+<p>This tree illustrates, starting on the right side, that if a customer has a low balance and a loan with the bank, they’re likely considering leaving, possibly due to financial constraints. However, if they have a low balance but no loan, the deciding factor might be their interaction with customer service. Many calls could indicate dissatisfaction, making them likely to leave. On the left side of the tree, we see that customers with medium to high balances are further segmented based on account type. Those with basic accounts who have had many interactions with customer service are predicted to leave. However, those with premium accounts are predicted to stay.</p>
+<p>With real data, the decisions made at the various nodes in a decision tree are based on a a measure of “split quality.” The exact process depends on the algorithm used, but here’s a general outline of how decisions are made at the nodes using the popular CART (Classification And Regression Trees) approach:</p>
+<p><strong>Selection of node variables</strong>: For each predictor, the algorithm evaluates its ability to distinguish between outcomes = 1 and outcomes = 0. This distinction is usually measured using impurity scores, such as Gini impurity or entropy. The predictor variable that provides the best separation is selected as the node variable.</p>
+<p><strong>Determining the splits</strong>: For each potential predictor variable, the algorithm assesses every possible threshold or category. If it’s a categorical predictor (e.g., low balance: yes or no), it directly checks the separation created by this category. If it’s a continuous predictor (e.g., account balance amount), it might consider every unique value or use binning techniques to determine the best split point. The threshold or category that gives the most distinct separation (least impurity) is chosen as the split.</p>
+<p><strong>Iterative process</strong>: After choosing the best variable and its split, the data is divided accordingly, resulting in two child nodes. This process is recursively applied to each child node until a stopping criterion is reached, like a maximum tree depth or a minimum number of samples in a node.</p>
+<p><strong>Pruning</strong> (for some DT algorithms): After the tree is fully grown, it can be pruned to remove branches that have little importance or add little predictive power. This is done to simplify the model and improve its performance on unseen data.</p>
+<p>In essence, the decisions made at each node are data-driven, aiming to improve the prediction accuracy (or reduce error) of the tree. The tree-building process aims to find the splits that most effectively segregate the data in terms of the target outcome.</p>
+</section>
+<section id="random-forests" class="level3">
+<h3 class="anchored" data-anchor-id="random-forests">Random forests</h3>
+<p>A random forest considers many different possible decision trees. A bootstrap sample (a random sample of the units (rows), with replacement) is taken from the data, and a decision tree is constructed. Then, this process is repeated many times, resulting in many different possible decision trees.</p>
+<p>When growing each tree, instead of considering all features for splitting at a node, only a random subset of the predictors is considered. This introduces variability and helps “de-correlate the trees,” making the model more robust.</p>
+<p>To aggregate results across all the trees in the forest, the algorithm takes an “ensemble” approach. For regression (including for predicting probabilities of a binary outcome), the average prediction of all the individual trees is the final prediction. For classification, the class (i.e., yes or no, 0 or 1) that gets the most votes from all the individual trees is the final prediction (majority voting).</p>
+<p>The combination of diverse trees reduces the variance (overfitting) without increasing the bias, leading to a more accurate and robust model compared to a single decision tree.</p>
+<p><em>Tuning parameters for Random Forest:</em> There are many tuning parameters for the Random Forest algorithm. While not a comprehensive list, some of the key tuning parameters include:</p>
+<ul>
+<li><p><em>Number of trees</em> (<span class="math inline">\(B\)</span>): chosen to be sufficiently large so that results are stable. <span class="math inline">\(B\)</span>=500 is the default in the code templates.</p></li>
+<li><p><em>Number of predictors to consider at each node</em> (<span class="math inline">\(m\)</span>). One rule of thumb is <span class="math inline">\(m=\sqrt(p)\)</span> where <span class="math inline">\(p\)</span> is the total number of predictors.</p></li>
+<li><p><em>Minimum node size</em>. This is the minimum number of observations that can be in a terminal node. For the code templates the default is 10.</p></li>
+<li><p><em>Maximum tree depth</em>. This limits tree complexity. The code templates do not constrain tree depth for random forests.</p></li>
+</ul>
+<p><span style="color:green"><strong>Advantages of Random Forest</strong></span></p>
+<ul>
+<li><p><strong>Performance</strong>: Because Random Forest takes an ensemble approach - by aggregating across multiple trees (bagging), the algorithm reduces variance and buffers against overfitting. Because Random Forest tends to be much less prone to overfitting than individual decision trees, it is recommended over using individual decision trees.</p></li>
+<li><p><strong>Flexibility</strong>: The Random Forest algorithm works well for classification and regression. It also works well with categorical and continuous predictors. Also, it does not require transforming predictors values (e.g.&nbsp;mean centering or scaling). Moreover, it does not require the data analyst to specify a functional form of the relationship between predictors and the outcome and therefore excels over regression methods that assume linear relationships.</p></li>
+<li><p><strong>Detects interactions</strong>: The Random Forest algorithm inherently captures interactions between variables without the data scientist needing to explicitly specify them. Moreover, Random Foriest can capture not only 2-way interactions, but also 3-way or higher interactions, as well as non-linear interactions between variables, which might be missed or hard to model in traditional regression techniques.</p></li>
+<li><p><strong>Handles large data sets</strong>: The algorithm can handle large datasets efficiently. The sampling technique ensures that it can scale well with the increase in data.</p></li>
+</ul>
+<p><span style="color:green"><strong>Disadvantages of Random Forest</strong></span></p>
+<ul>
+<li><p><strong>Computationally Intensive</strong>: Training a Random Forest can be time-consuming, especially on large datasets, and depending on the number of trees.</p></li>
+<li><p><strong>Interpretability</strong>: Individual decision trees, with their hierarchical structure, can be visualized and interpreted easily. However, Random Forest, being an ensemble of multiple trees, lacks this level of interpretability. “Variable importance” methods, which we will turn to later, can give some insights, however.</p></li>
+<li><p><strong>Tuning Required</strong>: While Random Forest can perform reasonably well with default parameters, to get the most out of the algorithm, hyperparameter tuning is often required, which can be time-consuming.</p></li>
+</ul>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -740,6 +820,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./methods_lasso.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lasso</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./OptionalPAvsInfStat.html" class="pagination-link">
+        <span class="nav-page-text">Predictive Analytics vs.&nbsp;Inferential Statistics</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

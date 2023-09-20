@@ -8,53 +8,51 @@ editor:
 With multiple linear regression, we predict a continuous outcome based on multiple predictors.
 It looks like this:
 
-\[ Y = \beta\_0 + \beta\_1X_1 + \beta\_2X_2 + ... + \beta\_kX_k + \epsilon \]
+$Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_kX_k + \epsilon$
 
 Where:
 
--   ( Y ) is the outcome variable we're trying to predict.
--   ( \beta\_0 ) is the y-intercept.
--   ( \beta\_1, \beta\_2, ... ) are coefficients corresponding to the predictor variables.
--   ( X_1, X_2, ... ) are the predictor variables.
--   ( \epsilon ) represents the error term.
+-   $Y$ is the outcome variable we're trying to predict,
+-   $X_1$,$X_2$, ...,$X_k$ are the predictor variables,
+-   $\beta_0$ is the Y-intercept,
+-   $\beta_1$, $\beta_2$, ...,$\beta_k$ are coefficients corresponding to the predictor variables, and
+-   $\epsilon$ is the error term.
 
-To estimate coefficient values (( \beta\_0, \beta\_1, ... )), we minimize the sum of squared errors across all observations.
+To estimate coefficient values $\beta_0$, $\beta_1$, ...,$\beta_k$, we minimize the sum of squared errors across all observations.
 
 **Logistic** regression can be used to predict the probability of a particular category of a **binary** outcome.
 
 If we use a linear regression model, we can get predicted values that are outside the \[0,1\] range, which doesn't make sense for probabilities.
 To ensure predictions stay in the \[0,1\] range, logistic regression uses the logistic function:
 
-\[ P(Y=1) = \frac{e^{\beta_0 + \beta_1X_1 + ... + \beta_kX_k}}{1 + e^{\beta_0 + \beta_1X_1 + ... + \beta_kX_k}} \]
-
-Where: - ( P(Y=1) ) is the probability of the outcome being 1.
-- ( \beta\_0, \beta\_1, ... ) are coefficients.
-These numbers show the importance or weight of each predictor variable ( X ).
-- ( e ) is the base of natural logarithms (approximately equal to 2.71828).
-
-This can also be written as follows:
-
-\[ \log\left(\frac{P(Y=1)}{P(Y=0)}\right) = \beta\_0 + \beta\_1X_1 + \beta\_2X_2 + ... + \beta\_kX_k \]
-
-Here, the log odds (or the logarithm of the odds) of the outcome being 1 (versus 0) is expressed as a linear combination of predictor variables:
+$P(Y=1) = \frac{e^{\beta_0 + \beta_1X_1 + ... + \beta_kX_k}}{1 + e^{\beta_0 + \beta_1X_1 + ... + \beta_kX_k}}$
 
 Where:
 
--   ( \log(\cdot) ) is the natural logarithm.
--   ( P(Y=1) ) is the probability of the outcome being 1.
--   ( P(Y=0) ) is the probability of the outcome being 0 (which is just ( 1 - P(Y=1) )).
--   ( \beta\_0 ) is the intercept.
--   ( \beta\_1, \beta\_2, ... ) are coefficients corresponding to the predictor variables.
--   ( X_1, X_2, ... ) are the predictor variables.
+-   $P(Y=1)$ is the probability of the outcome equals 1,
 
-The right-hand side of the equation represents the log odds of the event ( Y=1 ), which can range from negative to positive infinity.
-As we plug in values for the predictors, the linear combination gives us the log odds, which can then be transformed to get the actual probability ( P(Y=1) ).
+-   $X_1$,$X_2$,...,$X_k$ are the predictor variables,
 
-With logistic regression, we use **maximum likelihood estimation** to find the best-fitting coefficients, and there's a whole realm of tests and diagnostics to assess model fit, significance of predictors, and more.
+-   $\beta_0$ is the Y-intercept,
+
+-   $\beta_1$, $\beta_2$,...,$\beta_k$ are coefficients corresponding to the predictor variables, and
+
+-   $e$ is the base of natural logarithms (approximately equal to 2.71828).
+
+This can also be written as follows:
+
+$\log\left(\frac{P(Y=1)}{P(Y=0)}\right) = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_kX_k$
+
+Here, the log odds (or the logarithm of the odds) of the outcome being 1 (versus 0) is expressed as a linear combination of predictor variables.
+The right-hand side of the equation represents the log odds of the event, which can range from negative to positive infinity.
+As we plug in values for the predictors, the linear combination gives us the log odds, which can then be transformed to get the actual probability($P(Y=1)$ ).
+
+With logistic regression, we use *maximum likelihood estimation* to find the best-fitting coefficients.
 
 Unlike many machine learning algorithms, when a data scientist uses logistic regression, they are specifying this specific functional form of the relationship between the predictors and the outcome.
+With logistic regression, we are specifying that the log odds is a linear function of the predictors.
 
-**Advantages**
+[**Advantages of Logistic Regression**]{style="color:green"}
 
 -   Simple model that is easy to interpret.
 
@@ -64,9 +62,16 @@ Unlike many machine learning algorithms, when a data scientist uses logistic reg
 
 -   Short training time.
 
-**Disadvantages**
+[**Disdvantages of Logistic Regression**]{style="color:green"}
 
 -   Not a very flexible model.
     If linear assumption is wrong, could be a poor fit.
 
 -   User must manually incorporate interaction terms if they are of interest.
+
+[**Implementation of Lasso in R**]{style="color:green"}
+
+In R, we implement logistic regression with `glm()` in Base R, setting `family=binomial(link="logit")`.
+
+The code templates will do this for you.
+
