@@ -69,16 +69,16 @@ website:
           # - "How to access toolset"
           # - "How to specify scope in toolset"
           # - "How to specify learners in toolset"
-          - toolset_overview.qmd
-          - toolset_datamodel.qmd
+          # - toolset_overview.qmd
+          # - toolset_datamodel.qmd
 
       - section: "Modeling approaches"
         contents:
           - "Regression for predicting binary outcomes"
           - "Machine learning (ML) algorithms for predicting binary outcomes"
-          - methods_logistic.qmd
-          - methods_lasso.qmd
-          - methods_rf.qmd
+          # - methods_logistic.qmd
+          # - methods_lasso.qmd
+          # - methods_rf.qmd
       - section: "Evaluating and comparing predictive performance"
         contents:
           - "Prediction output from learner training"
