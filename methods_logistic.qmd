@@ -69,7 +69,7 @@ With logistic regression, we are specifying that the log odds is a linear functi
 
 -   User must manually incorporate interaction terms if they are of interest.
 
-[**Implementation of Lasso in R**]{style="color:green"}
+[**Implementation of Logistic Regression in R**]{style="color:green"}
 
 In R, we implement logistic regression with `glm()` in Base R, setting `family=binomial(link="logit")`.
 

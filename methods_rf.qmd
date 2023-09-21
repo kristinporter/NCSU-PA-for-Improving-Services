@@ -92,4 +92,5 @@ While not a comprehensive list, some of the key tuning parameters include:
 
 -   **Tuning Required**: While Random Forest can perform reasonably well with default parameters, to get the most out of the algorithm, hyperparameter tuning is often required, which can be time-consuming.
 
-
+[**Implementing Random Forest in R**]{style="color:green"}
+Implementation of the algorithm, which was developed by Leo Breiman and Adele Cutler, is done with the [randomForest]{https://cran.r-project.org/web/packages/randomForest/index.html} package. 

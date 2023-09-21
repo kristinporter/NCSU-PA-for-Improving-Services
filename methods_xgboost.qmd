@@ -9,47 +9,32 @@ Gradient Boosting algorithms, like Random Forest, are built on decision trees. H
 
 The basic idea behind gradient boosting is to build trees *sequentially* rather than *independently.* Basically, each tree is grown to correct the errors of its predecessor. First, a simple model is used to predict the target variable. The residuals (differences between the predicted values and the true values) are then computed. For binary outcomes, we actually have "pseudo-residuals" which is the difference between the observed outcome and the predicted probability of the positive class (i.e. the predicted probability that the outcome = 1). The next tree tries to predict the error made by the previous model. The predictions from this new tree are scaled by a factor (learning rate) and added to the existing model's predictions. This process is like taking a step in the direction that minimizes prediction error, hence "gradient" boosting.
 
-These steps of are repeated multiple times. Each new tree is fit to the residuals of the current combined ensemble of previous trees. As trees are added, the model becomes a weighted sum of all the trees. To prevent overfitting, gradient boosting introduces "regularization techniques." One common form is "shrinkage", where each tree's contribution is reduced by multiplying it with a small learning rate. Gradient boosting requires careful tuning of parameters such as tree depth, learning rate, and the number of trees.
+These steps of are repeated multiple times. Each new tree is fit to the residuals of the current combined ensemble of previous trees. As trees are added, the model becomes a weighted sum of all the trees. To prevent overfitting, gradient boosting introduces "regularization." As we saw in Lasso, regularization is a technique used to add some form of penalty to the model, which discourages it from fitting too closely to the noise in the training data (overfitting). One common form of regularization is "shrinkage", where each tree's contribution is reduced by multiplying it with a small learning rate. Gradient boosting requires careful tuning of parameters such as tree depth, learning rate, and the number of trees.
 
 **XGBoost (Extreme Gradient Boosting)**:
 
-XGBoost is a highly optimized implementation of gradient boosting that has gained a lot of popularity due to its performance and speed. Here are its distinctive features:
+The code templates you will use, use a particular gradient boosting algorithm called XGBoost. Here are its distinctive features:
 
-1. **Regularization**: Unlike the basic gradient boosting, XGBoost includes L1 (Lasso regression) and L2 (Ridge regression) regularization terms in its cost function, which can prevent overfitting.
+-   **Regularization**: Unlike the basic gradient boosting, XGBoost includes L1 and L2 regularization terms in its cost function to buffer against prevent overfitting. L1 regularization adds a penalty proportional to the absolute value of the model coefficients. L2 Regularization adds a penalty proportional to the square of the magnitude of the model coefficients.
 
-2. **Handling Missing Data**: XGBoost can handle missing data internally without requiring imputation.
+-   **Efficiency**: XGBoost is designed to be highly efficient. It can utilize the power of parallel processing to build trees, making it faster than many other implementations of gradient boosting.
 
-3. **Parallel Processing**: XGBoost is designed to be highly efficient. It can utilize the power of parallel processing to build trees, making it faster than many other implementations of gradient boosting.
+-   **Early stopping**: Instead of growing a tree to its maximum depth and then pruning, XGBoost uses "max_depth" to grow the tree and stops splitting when it no longer adds significant value. XGBoost can also halt the training process if the model's performance on a validation set doesn't improve after a set number of rounds, preventing potential overfitting.
 
-4. **Tree Pruning**: Instead of growing a tree to its maximum depth and then pruning, XGBoost uses "max_depth" to grow the tree and stops splitting when it no longer adds significant value.
+[**Advantages of XGBoost**]{style="color:green"}
 
-5. **Cross-validation**: XGBoost has an efficient implementation of k-fold cross-validation to optimize the number of boosting rounds.
+-   **Speed:** The XGBoost algorithm is optimized to be relatively fast for a data-driven algorithm.
 
-6. **Flexibility**: XGBoost can be used for regression, classification, ranking, and user-defined prediction tasks. It allows users to define custom optimization objectives and evaluation criteria.
+-   **Flexibility:** It can produce a more interpretable model than Random Forest. 
 
-7. **Early Stopping**: XGBoost can halt the training process if the model's performance on a validation set doesn't improve after a set number of rounds, preventing potential overfitting.
+[**Advantages of XGBoost**]{style="color:green"}
 
-In summary, gradient boosting is a powerful ensemble technique that builds trees sequentially to correct the errors of the previous trees. XGBoost is a particularly efficient and optimized implementation of this approach, offering various additional features and regularizations that make it stand out.
+-   **Tuning parameter Sensitivity:** XGBoost typically requires careful tuning of its tuning parameters to achieve the best results.
 
+-   **Memory Consumption:** XGBoost can be more memory-intensive, especially when handling large datasets. 
 
+-   **Handling Categorical Features:** While Random Forest can directly handle categorical variables, XGBoost requires them to be transformed into numerical format - creating multiple dummies, as discussed in "Data for PA: Part 2, (which is sometimes called "one-hot coding").
 
-OLD...
-First, a decision tree is fit to all the data. Next, a second tree is fit to the residuals of the first tree. This process continues for a specified number of iterations. Generally, boosted trees are each small, as they only need to explain a small portion of the residuals in order to provide some improvement. Boosting usually also involves a shrinkage parameter which controls the rate at which the booster learns.
+[**Implementation of XGBoost in R**]{style="color:green"}
 
-XGBoost is a specific implementation of a boosting algorithm using gradient boosting. It has some unique features:
-	Regularization to penalize complex models.
-	Pruning reduces tree complexity.
-	Handles sparse data well.
-	Fast algorithm due to approximation, allowing paralellization, and computational optimizations for large data sets.
-Tuning parameters
-	The same parameters are used in xgboost as in a random forest model.
-	The shrinkage parameter λ controls the learning rate.
-	The minimum loss reduction controls complexity of trees by requiring a new tree provide a minimum performance gain.
-All parameters, including the number of trees, can either be chosen using reasonable defaults, or using cross validation.
-Advantages
-	In some contexts, provides a better fit than random forest.
-	Relatively fast and parallelizable algorithm.
-	Can produce a more interpretable model than random forests
-Disadvantages
-	Can be slower than random forest.
-	More prone to overfitting than random forests.
+This method is implemented with the [XGBoost]{https://cran.r-project.org/web/packages/xgboost/xgboost.pdf} package in R. The code templates will do this for you. 
