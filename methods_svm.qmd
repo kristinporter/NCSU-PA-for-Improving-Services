@@ -1,0 +1,41 @@
+---
+title: "Support Vector Machines"
+editor: 
+  markdown: 
+    wrap: sentence
+---
+
+Support Vector Machines (SVMs) are a set of machine learning methods that are primarily used for classification, though they can also be used for regression. SVM tries to find the optimal decision boundary (or "hyperplane") that best divides a dataset into classes. 
+
+"Support Vectors" refers to the data points that lie closest to the decision boundary and are the most difficult to classify. They essentially define the position of the decision boundary. In fact, even if you were to remove all the other data points and only keep the support vectors, the position of the optimal hyperplane would not change.
+
+SVM algorithms aims to maximize the margin around the decision boundary. This margin is defined as the distance between the decision boundary and the nearest support vector from either class. A larger margin implies better generalization ability and a lower chance of overfitting.
+
+Decision boundaries may be linear (separated by a straight line in 2D, a plan in 3D or a "hyperplan" in higher dimensions) or nonlinear, which gets even more complicated. When decision boundaries are nonlinear, the algorithms map the data into a higher-dimensional space (the space with polynomial and interaction terms), where it becomes linearly separable. This is achieved through the use of "kernels." Kernels are functions that transform the data into the required form. There are various types of kernel functions such as linear, polynomial, radial basis function (RBF), and sigmoid. The choice of kernel is important and can influence the performance of the SVM. The PA code templates support two nonlinear kernels: polynomial and RBF. 
+
+Tuning of SVM involves a regularization parameter, which determines the trade-off between maximizing the margin (the width of decision boundary) and minimizing the classification error. A smaller value regularization value creates a wider margin, which might mis-classify more training data points, while larger value aims for a tighter fit to the training data. Tuning also includes degree of the polynomial terms (quadratic, cubic, etc).
+
+Traditionally, SVM is designed for classification, but SVM can be used to obtain predicted probabilities for binary outcomes. SVM returns "decision values," which are distances from the separating hyperplane. These can be translated into probabilities, by fitting a logistic to the decision values. 
+
+
+[**Advantages of SVM**]{style="color:green"}
+
+  **Effective with a large number of predictors:** SVM tends to perform well in high-dimensional spaces.
+  
+  **Efficient:** SVM tends to be memory efficient and fast in smaller data sets. 
+  
+  **Flexible:** With the option for different kernel functions, SVM is flexible to different functional forms and can incorporate interaction effects. 
+
+[**Disdvantages of SVM**]{style="color:green"}
+
+  **Sensitive:** SVM can be sensitive to choices of kernels and to values of tuning parameters. 
+  
+  **Needs extra step for predicted probabilities:** SVM does not directly provide probability estimates for classification, although R implementations will do this step for you. 
+  
+  **Computationally intensive with large data sets:** With large data files, SVM can take a lot of time to run. 
+  
+  **Lacking transparency:** SVM can be hard to interpret and explain, especially when using nonlinear kernels. The transformation carried out by these kernels doesn't have an intuitive meaning in the original feature space.
+
+[**Implementing of SVM in R**]{style="color:green"}
+
+SVM can be implemented with the `svm()` function in the `e1071` package.  

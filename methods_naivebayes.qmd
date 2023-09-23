@@ -5,17 +5,23 @@ editor:
     wrap: sentence
 ---
 
-Naive Bayes is based on the Bayes theorem from probability theory. It's called "naive" because it makes a naive assumption that each predictor in your data is independent of the others, given the outcome. This simplification often works surprisingly well in practice.
+Naive Bayes is based on the Bayes theorem from probability theory. It's called "naive" because it makes a naive assumption that each predictor in your data is independent of the others, given the outcome. While this assumption is typically false, in practice, it still allows the algorithm to work fairly well. 
 
-Naive Bayes tries to determine the likelihood of the predictors given both classes of the binary outcome (yes and no). It then uses these likelihoods and some prior knowledge about the general frequency of the outcome (an initial estimate based on the data, before considering the predictors) to make a prediction. 
+The Naive Bayes algorithm tries to determine the likelihood of *the predictors* given both classes of the binary outcome (yes and no). It then uses these likelihoods and some prior knowledge about the general frequency of the outcome (an initial estimate based on the data, before considering the predictors) to make a prediction. 
 
-The algorith checks the frequency of your predictors given the outcome. For instance, when predicting on-time high school graduation: How many students were chronically absent among students who graduated on time? And: How many students were chronically absent among students who did not graduate on time?^{Note than when certain categories have zero counts, a Laplace correction is used. It involves adding 1 to both the numerator and the denominator to avoid ending up with unrealistic zero conditional probabilities.}
+So first, the algorithm checks the frequency of your predictors given the outcome. For instance, when predicting on-time high school graduation: How many students were chronically absent among students who graduated on time? And: How many students were chronically absent among students who did not graduate on time?^{Note than when certain categories have zero counts, a Laplace correction is used. It involves adding 1 to both the numerator and the denominator to avoid ending up with unrealistic zero conditional probabilities.}
 
-For continuous predictors, one approach is to "bin" or discretize the data into categories, but this can be limiting. Therefore, the Naive Bayes algorithm relies on "kernels," which provide a way to estimate likelihoods without discretizing the data.^{Essentially, a kernel is a function that "smears" or "spreads out" the observed data points over the continuous space, allowing for a smooth estimate of the likelihood of observing a particular value. That is, instead of relying on a histogram-style blocky representation of a predictor's distribution, the data is represented using a smooth curve. Commonly used kernels are the Gaussian kernel, Epanechnikov kernel, and the Rectangular kernel, among others.}
+For continuous predictors (e.g. attendace rate), one approach is to "bin" or discretize the variable's values into categories, but this can be limiting. Therefore, the Naive Bayes algorithm relies on "kernels," which provide a way to estimate likelihoods without discretizing the data.^{Essentially, a kernel is a function that "smears" or "spreads out" the observed data points over the continuous space, allowing for a smooth estimate of the likelihood of observing a particular value. That is, instead of relying on a histogram-style blocky representation of a predictor's distribution, the data is represented using a smooth curve. Commonly used kernels are the Gaussian kernel, Epanechnikov kernel, and the Rectangular kernel, among others.}
 
-Using Bayes theorem, the Naive Bayes algorithm combines the prior with the likelihoods to produce a "posterior" probability for both outcomes: the probability of yes and no given the predictors in your predictor set. The outcome with the higher posterior probability is the algorithm's prediction if classification is the goal. Otherwise, the computed posterior probability can be directly used as the predicted probability of the outcome.
+The next step is based on Bayes Theorem, which is: 
 
-[**Advantages of Lasso**]{style="color:green"}
+\begin{equation}
+P(Y=y|X=x) = \frac{P(Y=y)P(X=x|Y=y)}/{P(X=x)} 
+\end{equation}
+
+Therefore, Naive Bayes algorithm combines the prior with the likelihoods to produce a "posterior" probability for both outcomes: the probability of yes and no given the predictors in your predictor set. The outcome with the higher posterior probability is the algorithm's prediction if classification is the goal. Otherwise, the computed posterior probability can be directly used as the predicted probability of the outcome.
+
+[**Advantages of Naive Bayes**]{style="color:green"}
 
 -   **Simplicity and speed**: Naive Bayes is computationally efficient and easy to implement. For large datasets, especially those with a high number of predictors, Naive Bayes can be faster than more complex methods.
 
@@ -36,6 +42,8 @@ Using Bayes theorem, the Naive Bayes algorithm combines the prior with the likel
 
 
 [**Implementing of Naive Bayes in R**]{style="color:green"}
+
+The Naive Bayes algorithm can be implemented using the `naiveBayes()` function in the `e1071` package. 
 
 
 

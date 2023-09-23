@@ -1,0 +1,21 @@
+---
+title: "Overview"
+editor: 
+  markdown: 
+    wrap: sentence
+---
+
+1. Benchmark
+
+2. For more measures but still pretty transparent...
+
+3. Nonlinear ...
+
+4. Interactions... 
+
+5. Variable transformations...
+
+6. Other ML algorithms, e.g. Neural Networks
+
+2. factor in decision around VI? 
+
