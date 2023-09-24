@@ -1,5 +1,5 @@
 ---
-title: "Decision trees and random forests"
+title: "Decision trees and Random Forest"
 editor: 
   markdown: 
     wrap: sentence
@@ -20,9 +20,9 @@ However, if they have a low balance but no loan, the deciding factor might be th
 Many calls could indicate dissatisfaction, making them likely to leave.
 On the left side of the tree, we see that customers with medium to high balances are further segmented based on account type.
 Those with basic accounts who have had many interactions with customer service are predicted to leave.
-However, those with premium accounts are predicted to stay.
+However, those with premium accounts are predicted to stay, without it depending on customer service interactions.
 
-With real data, the decisions made at the various nodes in a decision tree are based on a a measure of "split quality." The exact process depends on the algorithm used, but here's a general outline of how decisions are made at the nodes using the popular CART (Classification And Regression Trees) approach:
+With real data, the decisions made at the various nodes in a decision tree are based on a measure of "split quality." The exact process depends on the algorithm used, but here's a general outline of how decisions are made at the nodes using the popular CART (Classification And Regression Trees) approach:
 
 **Selection of node variables**: For each predictor, the algorithm evaluates its ability to distinguish between outcomes = 1 and outcomes = 0.
 This distinction is usually measured using impurity scores, such as Gini impurity or entropy.
@@ -34,19 +34,19 @@ If it's a continuous predictor (e.g., account balance amount), it might consider
 The threshold or category that gives the most distinct separation (least impurity) is chosen as the split.
 
 **Iterative process**: After choosing the best variable and its split, the data is divided accordingly, resulting in two child nodes.
-This process is recursively applied to each child node until a stopping criterion is reached, like a maximum tree depth or a minimum number of samples in a node.
+Then the process is recursively applied to each child node until a stopping criterion is reached - like a maximum tree depth or a minimum number of samples in a node.
 
-**Pruning** (for some DT algorithms): After the tree is fully grown, it can be pruned to remove branches that have little importance or add little predictive power.
+**Pruning** (for some DT algorithms): After the tree is "fully grown," it can be pruned to remove branches that have little importance or add little predictive power.
 This is done to simplify the model and improve its performance on unseen data.
 
 In essence, the decisions made at each node are data-driven, aiming to improve the prediction accuracy (or reduce error) of the tree.
 The tree-building process aims to find the splits that most effectively segregate the data in terms of the target outcome.
 
-### Random forests
+### Random Forest
 
-A random forest considers many different possible decision trees.
+A Random Forest considers many different possible decision trees.
 A bootstrap sample (a random sample of the units (rows), with replacement) is taken from the data, and a decision tree is constructed.
-Then, this process is repeated many times, resulting in many different possible decision trees.
+This bootstrap process is repeated many times, resulting in many different possible decision trees.
 
 When growing each tree, instead of considering all features for splitting at a node, only a random subset of the predictors is considered.
 This introduces variability and helps "de-correlate the trees," making the model more robust.
@@ -64,7 +64,7 @@ While not a comprehensive list, some of the key tuning parameters include:
     $B$=500 is the default in the code templates.
 
 -   *Number of predictors to consider at each node* ($m$).
-    One rule of thumb is $m=\sqrt(p)$ where $p$ is the total number of predictors.
+    One rule of thumb is $m=\sqrt{p}$ where $p$ is the total number of predictors.
 
 -   *Minimum node size*.
     This is the minimum number of observations that can be in a terminal node.
@@ -76,7 +76,7 @@ While not a comprehensive list, some of the key tuning parameters include:
 
 [**Advantages of Random Forest**]{style="color:green"}
 
--   **Performance**: Because Random Forest takes an ensemble approach - by aggregating across multiple trees (bagging), the algorithm reduces variance and buffers against overfitting. Because Random Forest tends to be much less prone to overfitting than individual decision trees, it is recommended over using individual decision trees. 
+-   **Performance**: Because Random Forest takes an ensemble approach - by aggregating across multiple trees (i.e., "bagging") - the algorithm reduces variance and buffers against overfitting. Because Random Forest tends to be much less prone to overfitting than individual decision trees, it is recommended over using individual decision trees. 
 
 -   **Flexibility**: The Random Forest algorithm works well for classification and regression. It also works well with categorical and continuous predictors. Also, it does not require transforming predictors values (e.g. mean centering or scaling). Moreover, it does not require the data analyst to specify a functional form of the relationship between predictors and the outcome and therefore excels over regression methods that assume linear relationships.
 
@@ -93,4 +93,5 @@ While not a comprehensive list, some of the key tuning parameters include:
 -   **Tuning Required**: While Random Forest can perform reasonably well with default parameters, to get the most out of the algorithm, hyperparameter tuning is often required, which can be time-consuming.
 
 [**Implementing Random Forest in R**]{style="color:green"}
-Implementation of the algorithm, which was developed by Leo Breiman and Adele Cutler, is done with the [randomForest]{https://cran.r-project.org/web/packages/randomForest/index.html} package. 
+
+Implementation of the algorithm, which was developed by Leo Breiman and Adele Cutler, is done with `randomForest` package. 

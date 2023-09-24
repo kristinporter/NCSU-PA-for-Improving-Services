@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predictive Analytics (PA) for Improving Services - Decision trees and Random Forest</title>
+<title>Predictive Analytics (PA) for Improving Services - Support Vector Machines</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./methods_xgboost.html" rel="next">
-<link href="./methods_lasso.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -61,8 +59,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -75,7 +71,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Modeling approaches</li><li class="breadcrumb-item"><a href="./methods_rf.html">Decision trees and Random Forest</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Predictive Analytics (PA) for Improving Services
+      </li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -335,43 +333,19 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
  <span class="menu-text">Modeling approaches</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
- <span class="menu-text">Overview</span>
+ <span class="menu-text">Regression for predicting binary outcomes</span>
   </li>
           <li class="sidebar-item">
- <span class="menu-text">Regression</span>
+ <span class="menu-text">Machine learning (ML) algorithms for predicting binary outcomes</span>
   </li>
-          <li class="sidebar-item">
- <span class="menu-text">Lasso</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Decision trees and random forests</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Boosted trees</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Naive Bayes</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Support Vector Machines</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Guidance</span>
-  </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./methods_overview.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
-  </div>
-</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./methods_logistic.html" class="sidebar-item-text sidebar-link">
@@ -386,31 +360,10 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./methods_rf.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Decision trees and Random Forest</span></a>
+  <a href="./methods_rf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Decision trees and random forests</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./methods_xgboost.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Gradient Boosting</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./methods_naivebayes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Naive Bayes</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./methods_svm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Support Vector Machines</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
- <span class="menu-text">methods.guidance.qmd</span>
-  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -550,7 +503,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Decision trees and Random Forest</h1>
+<h1 class="title">Support Vector Machines</h1>
 </div>
 
 
@@ -565,54 +518,24 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="decision-trees" class="level3">
-<h3 class="anchored" data-anchor-id="decision-trees">Decision trees</h3>
-<p>A decision tree is a simple machine learning algorithm consisting of a set of flowchart-like <strong>nodes</strong> representing decisions, which are based on a variable’s value, and <strong>branches</strong> representing the outcomes of those decisions, which lead to either a subsequent node/decision or a final prediction. We can think of a decision tree as a series of “questions” we ask the data. Based on the answers, the algorithm makes decisions or predictions.</p>
-<p>The following illustrates a very simple decision tree for predicting whether bank customers will remain with their bank throughout the next year.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/decisiontreebanking.png" class="img-fluid figure-img" style="width:6in"></p>
-</figure>
-</div>
-<p>This tree illustrates, starting on the right side, that if a customer has a low balance and a loan with the bank, they’re likely considering leaving, possibly due to financial constraints. However, if they have a low balance but no loan, the deciding factor might be their interaction with customer service. Many calls could indicate dissatisfaction, making them likely to leave. On the left side of the tree, we see that customers with medium to high balances are further segmented based on account type. Those with basic accounts who have had many interactions with customer service are predicted to leave. However, those with premium accounts are predicted to stay, without it depending on customer service interactions.</p>
-<p>With real data, the decisions made at the various nodes in a decision tree are based on a measure of “split quality.” The exact process depends on the algorithm used, but here’s a general outline of how decisions are made at the nodes using the popular CART (Classification And Regression Trees) approach:</p>
-<p><strong>Selection of node variables</strong>: For each predictor, the algorithm evaluates its ability to distinguish between outcomes = 1 and outcomes = 0. This distinction is usually measured using impurity scores, such as Gini impurity or entropy. The predictor variable that provides the best separation is selected as the node variable.</p>
-<p><strong>Determining the splits</strong>: For each potential predictor variable, the algorithm assesses every possible threshold or category. If it’s a categorical predictor (e.g., low balance: yes or no), it directly checks the separation created by this category. If it’s a continuous predictor (e.g., account balance amount), it might consider every unique value or use binning techniques to determine the best split point. The threshold or category that gives the most distinct separation (least impurity) is chosen as the split.</p>
-<p><strong>Iterative process</strong>: After choosing the best variable and its split, the data is divided accordingly, resulting in two child nodes. Then the process is recursively applied to each child node until a stopping criterion is reached - like a maximum tree depth or a minimum number of samples in a node.</p>
-<p><strong>Pruning</strong> (for some DT algorithms): After the tree is “fully grown,” it can be pruned to remove branches that have little importance or add little predictive power. This is done to simplify the model and improve its performance on unseen data.</p>
-<p>In essence, the decisions made at each node are data-driven, aiming to improve the prediction accuracy (or reduce error) of the tree. The tree-building process aims to find the splits that most effectively segregate the data in terms of the target outcome.</p>
-</section>
-<section id="random-forest" class="level3">
-<h3 class="anchored" data-anchor-id="random-forest">Random Forest</h3>
-<p>A Random Forest considers many different possible decision trees. A bootstrap sample (a random sample of the units (rows), with replacement) is taken from the data, and a decision tree is constructed. This bootstrap process is repeated many times, resulting in many different possible decision trees.</p>
-<p>When growing each tree, instead of considering all features for splitting at a node, only a random subset of the predictors is considered. This introduces variability and helps “de-correlate the trees,” making the model more robust.</p>
-<p>To aggregate results across all the trees in the forest, the algorithm takes an “ensemble” approach. For regression (including for predicting probabilities of a binary outcome), the average prediction of all the individual trees is the final prediction. For classification, the class (i.e., yes or no, 0 or 1) that gets the most votes from all the individual trees is the final prediction (majority voting).</p>
-<p>The combination of diverse trees reduces the variance (overfitting) without increasing the bias, leading to a more accurate and robust model compared to a single decision tree.</p>
-<p><em>Tuning parameters for Random Forest:</em> There are many tuning parameters for the Random Forest algorithm. While not a comprehensive list, some of the key tuning parameters include:</p>
-<ul>
-<li><p><em>Number of trees</em> (<span class="math inline">\(B\)</span>): chosen to be sufficiently large so that results are stable. <span class="math inline">\(B\)</span>=500 is the default in the code templates.</p></li>
-<li><p><em>Number of predictors to consider at each node</em> (<span class="math inline">\(m\)</span>). One rule of thumb is <span class="math inline">\(m=\sqrt{p}\)</span> where <span class="math inline">\(p\)</span> is the total number of predictors.</p></li>
-<li><p><em>Minimum node size</em>. This is the minimum number of observations that can be in a terminal node. For the code templates the default is 10.</p></li>
-<li><p><em>Maximum tree depth</em>. This limits tree complexity. The code templates do not constrain tree depth for random forests.</p></li>
-</ul>
-<p><span style="color:green"><strong>Advantages of Random Forest</strong></span></p>
-<ul>
-<li><p><strong>Performance</strong>: Because Random Forest takes an ensemble approach - by aggregating across multiple trees (i.e., “bagging”) - the algorithm reduces variance and buffers against overfitting. Because Random Forest tends to be much less prone to overfitting than individual decision trees, it is recommended over using individual decision trees.</p></li>
-<li><p><strong>Flexibility</strong>: The Random Forest algorithm works well for classification and regression. It also works well with categorical and continuous predictors. Also, it does not require transforming predictors values (e.g.&nbsp;mean centering or scaling). Moreover, it does not require the data analyst to specify a functional form of the relationship between predictors and the outcome and therefore excels over regression methods that assume linear relationships.</p></li>
-<li><p><strong>Detects interactions</strong>: The Random Forest algorithm inherently captures interactions between variables without the data scientist needing to explicitly specify them. Moreover, Random Foriest can capture not only 2-way interactions, but also 3-way or higher interactions, as well as non-linear interactions between variables, which might be missed or hard to model in traditional regression techniques.</p></li>
-<li><p><strong>Handles large data sets</strong>: The algorithm can handle large datasets efficiently. The sampling technique ensures that it can scale well with the increase in data.</p></li>
-</ul>
-<p><span style="color:green"><strong>Disadvantages of Random Forest</strong></span></p>
-<ul>
-<li><p><strong>Computationally Intensive</strong>: Training a Random Forest can be time-consuming, especially on large datasets, and depending on the number of trees.</p></li>
-<li><p><strong>Interpretability</strong>: Individual decision trees, with their hierarchical structure, can be visualized and interpreted easily. However, Random Forest, being an ensemble of multiple trees, lacks this level of interpretability. “Variable importance” methods, which we will turn to later, can give some insights, however.</p></li>
-<li><p><strong>Tuning Required</strong>: While Random Forest can perform reasonably well with default parameters, to get the most out of the algorithm, hyperparameter tuning is often required, which can be time-consuming.</p></li>
-</ul>
-<p><span style="color:green"><strong>Implementing Random Forest in R</strong></span></p>
-<p>Implementation of the algorithm, which was developed by Leo Breiman and Adele Cutler, is done with <code>randomForest</code> package.</p>
+<p>Support Vector Machines (SVMs) are a set of machine learning methods that are primarily used for classification, though they can also be used for regression. SVM tries to find the optimal decision boundary (or “hyperplane”) that best divides a dataset into classes.</p>
+<p>“Support Vectors” refers to the data points that lie closest to the decision boundary and are the most difficult to classify. They essentially define the position of the decision boundary. In fact, even if you were to remove all the other data points and only keep the support vectors, the position of the optimal hyperplane would not change.</p>
+<p>SVM algorithms aims to maximize the margin around the decision boundary. This margin is defined as the distance between the decision boundary and the nearest support vector from either class. A larger margin implies better generalization ability and a lower chance of overfitting.</p>
+<p>Decision boundaries may be linear (separated by a straight line in 2D, a plan in 3D or a “hyperplan” in higher dimensions) or nonlinear, which gets even more complicated. When decision boundaries are nonlinear, the algorithms map the data into a higher-dimensional space (the space with polynomial and interaction terms), where it becomes linearly separable. This is achieved through the use of “kernels.” Kernels are functions that transform the data into the required form. There are various types of kernel functions such as linear, polynomial, radial basis function (RBF), and sigmoid. The choice of kernel is important and can influence the performance of the SVM. The PA code templates support two nonlinear kernels: polynomial and RBF.</p>
+<p>Tuning of SVM involves a regularization parameter, which determines the trade-off between maximizing the margin (the width of decision boundary) and minimizing the classification error. A smaller value regularization value creates a wider margin, which might mis-classify more training data points, while larger value aims for a tighter fit to the training data. Tuning also includes degree of the polynomial terms (quadratic, cubic, etc).</p>
+<p>Traditionally, SVM is designed for classification, but SVM can be used to obtain predicted probabilities for binary outcomes. SVM returns “decision values,” which are distances from the separating hyperplane. These can be translated into probabilities, by fitting a logistic to the decision values.</p>
+<p><span style="color:green"><strong>Advantages of SVM</strong></span></p>
+<p><strong>Effective with a large number of predictors:</strong> SVM tends to perform well in high-dimensional spaces.</p>
+<p><strong>Efficient:</strong> SVM tends to be memory efficient and fast in smaller data sets.</p>
+<p><strong>Flexible:</strong> With the option for different kernel functions, SVM is flexible to different functional forms and can incorporate interaction effects.</p>
+<p><span style="color:green"><strong>Disdvantages of SVM</strong></span></p>
+<p><strong>Sensitive:</strong> SVM can be sensitive to choices of kernels and to values of tuning parameters.</p>
+<p><strong>Needs extra step for predicted probabilities:</strong> SVM does not directly provide probability estimates for classification, although R implementations will do this step for you.</p>
+<p><strong>Computationally intensive with large data sets:</strong> With large data files, SVM can take a lot of time to run.</p>
+<p><strong>Lacking transparency:</strong> SVM can be hard to interpret and explain, especially when using nonlinear kernels. The transformation carried out by these kernels doesn’t have an intuitive meaning in the original feature space.</p>
+<p><span style="color:green"><strong>Implementing of SVM in R</strong></span></p>
 
 
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -848,18 +771,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./methods_lasso.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lasso</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./methods_xgboost.html" class="pagination-link">
-        <span class="nav-page-text">Gradient Boosting</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 

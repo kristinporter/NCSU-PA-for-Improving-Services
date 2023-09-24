@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predictive Analytics (PA) for Improving Services - Logistic Regression</title>
+<title>Predictive Analytics (PA) for Improving Services - Logistic regression</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -343,10 +343,28 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
- <span class="menu-text">Regression for predicting binary outcomes</span>
+ <span class="menu-text">Overview</span>
   </li>
           <li class="sidebar-item">
- <span class="menu-text">Machine learning (ML) algorithms for predicting binary outcomes</span>
+ <span class="menu-text">Logistic regression</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">Lasso</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">Decision trees and random forests</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">Gradient boosting</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">Naive Bayes</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">Support vector machines</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">Guidance for using ML</span>
   </li>
       </ul>
   </li>
@@ -487,7 +505,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Logistic Regression</h1>
+<h1 class="title">Logistic regression</h1>
 </div>
 
 
@@ -504,50 +522,54 @@ ul.task-list li input[type="checkbox"] {
 
 <p>With multiple linear regression, we predict a continuous outcome based on multiple predictors. It looks like this:</p>
 <p><span class="math inline">\(Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_kX_k + \epsilon\)</span></p>
-<p>Where:</p>
+<p>where</p>
 <ul>
-<li><span class="math inline">\(Y\)</span> is the outcome variable we’re trying to predict,</li>
+<li><span class="math inline">\(Y\)</span> is the outcome variable,</li>
 <li><span class="math inline">\(X_1\)</span>,<span class="math inline">\(X_2\)</span>, …,<span class="math inline">\(X_k\)</span> are the predictor variables,</li>
-<li><span class="math inline">\(\beta_0\)</span> is the Y-intercept,</li>
-<li><span class="math inline">\(\beta_1\)</span>, <span class="math inline">\(\beta_2\)</span>, …,<span class="math inline">\(\beta_k\)</span> are coefficients corresponding to the predictor variables, and</li>
+<li><span class="math inline">\(\beta_0\)</span> is the <span class="math inline">\(Y\)</span>-intercept,</li>
+<li><span class="math inline">\(\beta_1\)</span>, <span class="math inline">\(\beta_2\)</span>,…,<span class="math inline">\(\beta_k\)</span> are coefficients corresponding to the predictor variables, and</li>
 <li><span class="math inline">\(\epsilon\)</span> is the error term.</li>
 </ul>
-<p>To estimate coefficient values <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span>, …,<span class="math inline">\(\beta_k\)</span>, we minimize the sum of squared errors across all observations.</p>
+<p>The coefficients <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span>,…,<span class="math inline">\(\beta_k\)</span> tell us the strength of the relationship between the predictors and the outcome.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p><strong>Logistic</strong> regression can be used to predict the probability of a particular category of a <strong>binary</strong> outcome.</p>
 <p>If we use a linear regression model, we can get predicted values that are outside the [0,1] range, which doesn’t make sense for probabilities. To ensure predictions stay in the [0,1] range, logistic regression uses the logistic function:</p>
 <p><span class="math inline">\(P(Y=1) = \frac{e^{\beta_0 + \beta_1X_1 + ... + \beta_kX_k}}{1 + e^{\beta_0 + \beta_1X_1 + ... + \beta_kX_k}}\)</span></p>
-<p>Where:</p>
+<p>where</p>
 <ul>
-<li><p><span class="math inline">\(P(Y=1)\)</span> is the probability of the outcome equals 1,</p></li>
+<li><p><span class="math inline">\(P(Y=1)\)</span> is the probability that the outcome equals 1,</p></li>
 <li><p><span class="math inline">\(X_1\)</span>,<span class="math inline">\(X_2\)</span>,…,<span class="math inline">\(X_k\)</span> are the predictor variables,</p></li>
-<li><p><span class="math inline">\(\beta_0\)</span> is the Y-intercept,</p></li>
+<li><p><span class="math inline">\(\beta_0\)</span> is the <span class="math inline">\(Y\)</span>-intercept,</p></li>
 <li><p><span class="math inline">\(\beta_1\)</span>, <span class="math inline">\(\beta_2\)</span>,…,<span class="math inline">\(\beta_k\)</span> are coefficients corresponding to the predictor variables, and</p></li>
 <li><p><span class="math inline">\(e\)</span> is the base of natural logarithms (approximately equal to 2.71828).</p></li>
 </ul>
 <p>This can also be written as follows:</p>
 <p><span class="math inline">\(\log\left(\frac{P(Y=1)}{P(Y=0)}\right) = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_kX_k\)</span></p>
-<p>Here, the log odds (or the logarithm of the odds) of the outcome being 1 (versus 0) is expressed as a linear combination of predictor variables. The right-hand side of the equation represents the log odds of the event, which can range from negative to positive infinity. As we plug in values for the predictors, the linear combination gives us the log odds, which can then be transformed to get the actual probability(<span class="math inline">\(P(Y=1)\)</span> ).</p>
-<p>With logistic regression, we use <em>maximum likelihood estimation</em> to find the best-fitting coefficients.</p>
-<p>Unlike many machine learning algorithms, when a data scientist uses logistic regression, they are specifying this specific functional form of the relationship between the predictors and the outcome. With logistic regression, we are specifying that the log odds is a linear function of the predictors.</p>
+<p>Here, the log odds (or the logarithm of the odds) of the outcome being 1 (versus 0) is expressed as a linear combination of predictor variables. As we plug in values for the predictors, the linear combination gives us the log odds, which can then be transformed to get the actual probabilities (<span class="math inline">\(P(Y=1)\)</span> ).<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>Unlike many machine learning algorithms, when a data scientist uses logistic regression, they are specifying the specific functional form of the relationship between the predictors and the outcome. Specifically, with logistic regression, we are specifying that the log odds is a linear function of the predictors.</p>
 <p><span style="color:green"><strong>Advantages of Logistic Regression</strong></span></p>
 <ul>
-<li><p>Simple model that is easy to interpret.</p></li>
-<li><p>No tuning parameters to tune.</p></li>
-<li><p>Incorporates statistical inference, so it is straightforward to compute uncertainty estimates.</p></li>
-<li><p>Short training time.</p></li>
+<li><p><strong>Simple:</strong> Logistic regression models are easy to interpret and explain.</p></li>
+<li><p><strong>No tuning:</strong> There are no hyperparameters to tune.</p></li>
+<li><p><strong>Fast:</strong> The models take a short time to train.</p></li>
 </ul>
 <p><span style="color:green"><strong>Disdvantages of Logistic Regression</strong></span></p>
 <ul>
-<li><p>Not a very flexible model. If linear assumption is wrong, could be a poor fit.</p></li>
-<li><p>User must manually incorporate interaction terms if they are of interest.</p></li>
+<li><p><strong>Not flexible:</strong> If the linear assumption is wrong, the model could be a poor fit.</p></li>
+<li><p><strong>Interactions must be specified:</strong> The user must manually incorporate interaction terms if they are of interest.</p></li>
 </ul>
 <p><span style="color:green"><strong>Implementation of Logistic Regression in R</strong></span></p>
-<p>In R, we implement logistic regression with <code>glm()</code> in Base R, setting <code>family=binomial(link="logit")</code>.</p>
-<p>The code templates will do this for you.</p>
+<p>In R, we implement logistic regression with <code>glm()</code> in Base R, setting <code>family=binomial(link="logit")</code>. The code templates will do this for you.</p>
 
 
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>To estimate the coefficient values, we minimize the sum of squared errors across all observations.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>With logistic regression, we use <em>maximum likelihood estimation</em> to find the best-fitting coefficients.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

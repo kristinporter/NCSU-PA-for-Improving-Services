@@ -74,11 +74,22 @@ website:
 
       - section: "Modeling approaches"
         contents:
-          - "Regression for predicting binary outcomes"
-          - "Machine learning (ML) algorithms for predicting binary outcomes"
-          - methods_logistic.qmd
-          - methods_lasso.qmd
-          - methods_rf.qmd
+          - "Overview"
+          - "Logistic regression"
+          - "Lasso"
+          - "Decision trees and random forests"
+          - "Gradient boosting"
+          - "Naive Bayes"
+          - "Support vector machines"
+          - "Guidance for using ML"
+          # - methods_overview.qmd
+          # - methods_logistic.qmd
+          # - methods_lasso.qmd
+          # - methods_rf.qmd
+          # - methods_xgboost.qmd
+          # - methods_naivebayes.qmd
+          # - methods_svm.qmd
+          # - methods_guidance.qmd
       - section: "Evaluating and comparing predictive performance"
         contents:
           - "Prediction output from learner training"

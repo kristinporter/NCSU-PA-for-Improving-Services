@@ -5,3 +5,48 @@ editor:
     wrap: sentence
 ---
 
+In this section, we focus on modeling methods.
+We begin with a short discussion about how logistic regression can be used to predict binary outcomes.
+Then, we take a quick tour through some prevalent machine learning (ML) algorithms.
+
+![](images/ML.jpg){fig-align="left" width="6in"}
+
+#### Defining machine learning
+
+Machine learning refers to methods that automate model building using iterative algorithms --- that is, a series of steps that continuously adjust for better predictive performance --- rather than relying on functional forms (specifications of the independent variables and the types of relationships between the variables and the outcome) specified by an analyst.
+
+Note that machine learning is divided into two primary categories.
+These categories are distinguished by the type of data they handle and their objectives.
+
+-   **Supervised Learning**: Here, algorithms are trained using labeled data.
+    This means every unit's set of data points includes a corresponding outcome.
+    The primary objective is to make informed predictions on previously unseen data.
+    This is our task in this class.
+    With supervised learning, there are two different tasks:
+
+    -   **Classification**: This approach is employed when the outcome is categorical.
+        The prediction might be a 'yes' or 'no', '0' or '1'.
+
+    -   **Regression**: This approach is used for continuous outcomes (not the focus of this course).
+        However, for binary outcomes, which is our primary concern, regression can estimate the likelihood of one outcome over the other (e.g., the probability of the outcome being '1').
+
+-   **Unsupervised learning:** Here, algorithms work with unlabeled data (data without an output or outcome), aiming to find hidden structures or relationships within the data.
+    A classic application is clustering, where data points are grouped based on inherent similarities, like customer segmentation.
+    Unsupervised techniques can complement supervised ones, for instance, in dimensionality reduction by clustering raw predictors.
+    However, topics related to unsupervised learning are beyond the scope of this course.
+
+#### Understanding machine learning algorithms
+
+As you will read in the pages that follow, machine learning algorithms can vary substantially in their underlying approaches.
+At the same time, some have very similar underlying approaches but vary in their details.
+Machine learning algorithms also vary in how easy they are to understand and explain - both in terms of their empirical approach and in terms of the models they produce.
+This is why many machine learning algorithms are described as "black box" modeling methods.
+
+In the pages that follow, you will concise overviews of select ML algorithms designed for predictive tasks (supervised learning).
+I don't go into a lot of details but try to provide the basic intuitions for how they work.
+If certain aspects seem complex, I'd advise concentrating on the listed advantages and disadvantages for each method.
+
+Note that the code templates implement all of the machine learning algorithms for you.
+This means you won't need to grapple with specific R packages or functions that have been developed for specific algorithms.
+However, at the end of each algorithm's summary, I provide a corresponding R package and function, in case you are curious about diving deeper.
+All of the machine learning algorithms I mention can also be implemented with `TidyModels`, and there are many tutorials available online.

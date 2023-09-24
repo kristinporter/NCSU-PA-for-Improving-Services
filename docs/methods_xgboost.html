@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predictive Analytics (PA) for Improving Services - Gradient Boosting</title>
+<title>Predictive Analytics (PA) for Improving Services - Gradient boosting</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./methods_naivebayes.html" rel="next">
+<link href="./methods_rf.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -71,9 +73,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Predictive Analytics (PA) for Improving Services
-      </li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Modeling approaches</li><li class="breadcrumb-item"><a href="./methods_xgboost.html">Gradient boosting</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -333,18 +333,81 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
  <span class="menu-text">Modeling approaches</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">Regression for predicting binary outcomes</span>
+ <span class="menu-text">Overview</span>
   </li>
           <li class="sidebar-item">
- <span class="menu-text">Machine learning (ML) algorithms for predicting binary outcomes</span>
+ <span class="menu-text">Regression</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">Lasso</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">Decision trees and random forests</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">Boosted trees</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">Naive Bayes</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">Support Vector Machines</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">Guidance</span>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_logistic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logistic Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_lasso.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lasso</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_rf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Decision trees and Random Forest</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_xgboost.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Gradient boosting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_naivebayes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Naive Bayes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_svm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support vector machines</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">methods.guidance.qmd</span>
   </li>
       </ul>
   </li>
@@ -485,7 +548,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Gradient Boosting</h1>
+<h1 class="title">Gradient boosting</h1>
 </div>
 
 
@@ -500,26 +563,27 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Gradient Boosting algorithms, like Random Forest, are built on decision trees. However, the algorithm takes a different approach for constructing trees.</p>
+<p>Gradient boosting algorithms, like Random Forest, are built on decision trees. However, gradient boosting takes a different approach for constructing trees.</p>
 <p>The basic idea behind gradient boosting is to build trees <em>sequentially</em> rather than <em>independently.</em> Basically, each tree is grown to correct the errors of its predecessor. First, a simple model is used to predict the target variable. The residuals (differences between the predicted values and the true values) are then computed. For binary outcomes, we actually have “pseudo-residuals” which is the difference between the observed outcome and the predicted probability of the positive class (i.e.&nbsp;the predicted probability that the outcome = 1). The next tree tries to predict the error made by the previous model. The predictions from this new tree are scaled by a factor (learning rate) and added to the existing model’s predictions. This process is like taking a step in the direction that minimizes prediction error, hence “gradient” boosting.</p>
 <p>These steps of are repeated multiple times. Each new tree is fit to the residuals of the current combined ensemble of previous trees. As trees are added, the model becomes a weighted sum of all the trees. To prevent overfitting, gradient boosting introduces “regularization.” As we saw in Lasso, regularization is a technique used to add some form of penalty to the model, which discourages it from fitting too closely to the noise in the training data (overfitting). One common form of regularization is “shrinkage”, where each tree’s contribution is reduced by multiplying it with a small learning rate. Gradient boosting requires careful tuning of parameters such as tree depth, learning rate, and the number of trees.</p>
 <p><strong>XGBoost (Extreme Gradient Boosting)</strong>:</p>
 <p>The code templates you will use, use a particular gradient boosting algorithm called XGBoost. Here are its distinctive features:</p>
 <ul>
-<li><p><strong>Regularization</strong>: Unlike the basic gradient boosting, XGBoost includes L1 and L2 regularization terms in its cost function to buffer against prevent overfitting. L1 regularization adds a penalty proportional to the absolute value of the model coefficients. L2 Regularization adds a penalty proportional to the square of the magnitude of the model coefficients.</p></li>
+<li><p><strong>Regularization</strong>: Unlike the basic gradient boosting, XGBoost includes L1 and L2 regularization terms in its cost function to buffer against prevent overfitting. L1 regularization adds a penalty proportional to the absolute value of the model coefficients. L2 regularization adds a penalty proportional to the square of the magnitude of the model coefficients.</p></li>
 <li><p><strong>Efficiency</strong>: XGBoost is designed to be highly efficient. It can utilize the power of parallel processing to build trees, making it faster than many other implementations of gradient boosting.</p></li>
 <li><p><strong>Early stopping</strong>: Instead of growing a tree to its maximum depth and then pruning, XGBoost uses “max_depth” to grow the tree and stops splitting when it no longer adds significant value. XGBoost can also halt the training process if the model’s performance on a validation set doesn’t improve after a set number of rounds, preventing potential overfitting.</p></li>
 </ul>
 <p><span style="color:green"><strong>Advantages of XGBoost</strong></span></p>
 <ul>
-<li><p><strong>Speed:</strong> The XGBoost algorithm is optimized to be relatively fast for a data-driven algorithm.</p></li>
-<li><p><strong>Flexibility:</strong> It can produce a more interpretable model than Random Forest.</p></li>
+<li><strong>Speed:</strong> The XGBoost algorithm is optimized to be relatively fast for a data-driven algorithm.</li>
 </ul>
+
+<!-- -   **Flexibility:** It can produce a more interpretable model than Random Forest.  -->
 <p><span style="color:green"><strong>Advantages of XGBoost</strong></span></p>
 <ul>
-<li><p><strong>Tuning parameter Sensitivity:</strong> XGBoost typically requires careful tuning of its tuning parameters to achieve the best results.</p></li>
-<li><p><strong>Memory Consumption:</strong> XGBoost can be more memory-intensive, especially when handling large datasets.</p></li>
-<li><p><strong>Handling Categorical Features:</strong> While Random Forest can directly handle categorical variables, XGBoost requires them to be transformed into numerical format - creating multiple dummies, as discussed in “Data for PA: Part 2, (which is sometimes called”one-hot coding”).</p></li>
+<li><p><strong>Tuning parameter sensitivity:</strong> XGBoost typically requires careful tuning of its tuning parameters to achieve the best results.</p></li>
+<li><p><strong>Memory consumption:</strong> XGBoost can be more memory-intensive, especially when handling large datasets.</p></li>
+<li><p><strong>Handling categorical features:</strong> While Random Forest can directly handle categorical variables, XGBoost requires them to be transformed into numerical format - creating multiple dummies, as discussed in “Data for PA: Part 2,” (which is sometimes called “one-hot coding”).</p></li>
 </ul>
 <p><span style="color:green"><strong>Implementation of XGBoost in R</strong></span></p>
 <p>This method is implemented with the [XGBoost]{https://cran.r-project.org/web/packages/xgboost/xgboost.pdf} package in R. The code templates will do this for you.</p>
@@ -760,6 +824,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./methods_rf.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Decision trees and Random Forest</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./methods_naivebayes.html" class="pagination-link">
+        <span class="nav-page-text">Naive Bayes</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
