@@ -20,11 +20,10 @@ More on this later.]
 2.  **To prioritize explainable models,** Lasso may be a good choice.
     Lasso can handle a much larger predictor set than logistic regression, including highly correlated predictors, but the method results in a model that is similar in interpretability at logistic regression.
     Naive Bayes is probably easier to explain than other ML approaches.
-    Random Forest is also easier to explain than most, but does have a lot of steps.
+    Random Forest is also easier to explain than most, but does have a lot of steps to explain (how trees are grown, then how forests are created).
     Boosted trees gets more complicated.
     SVM is probably the least transparent of the methods we have learned.
     
-**KH**: what do you mean by "steps" in random forest?
 
 3.  **If you want to your method to be open to nonlinear functional forms**, try ML algorithms that are not logistic regression or Lasso.
     Because Lasso is an extension of regression, it assumes linearity.
@@ -38,16 +37,15 @@ More on this later.]
     This is achieved by subtracting the mean and dividing by the standard deviation.
     When a variable is normalized, it has min=0 and max=1.
     This normalization is achieved by subtracting the variable's min and dividing by (max-min).
-    Here for when these transformations are valuable:
+    Here is guidance for when these transformations are valuable:
 
-**KH**: typo here, but not sure what you meant.
 
     -   Lasso can benefit from standardizing or normalizing continuous predictors to help with convergence.
     -   Methods built on decision trees (Random Forest and XGBoost) are not sensitive to the scale of the data so standardizing and normalizing are not required.
     -   SVM is sensitive to scaling. It is necessary to standardize or normalize continuous predictors.
     -   For categorical variables, turn all categories into dummies. This process is called sometimes called "one-hot coding." Some implementations require this instead of keeping the variables as categorical (`factor`).
     
-**KH**: is it worth noting that standardizing/normalizing will never hurt model performance?  But that it may hurt intepretability?
+Note that standardizing/normalizing will never hurt model performance compared to not doing so, but it may make model interpretation more challenging.
 
 6.  **"Ensemble" approaches can harness multiple ML algorithms together.** While beyond the scope of this class and not implemented in the templates, data scientists sometimes harness the strengths of multiple ML algorithms by combining them in various ways.
     Optionally, you can read more about this concept, [here](https://machinelearningmastery.com/essence-of-stacking-ensembles-for-machine-learning/), [here](https://towardsdatascience.com/stacked-ensembles-improving-model-performance-on-a-higher-level-99ffc4ea5523) and [here](https://www.kaggle.com/code/anuragbantu/stacking-ensemble-learning-beginner-s-guide).

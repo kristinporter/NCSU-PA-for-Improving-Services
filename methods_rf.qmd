@@ -86,15 +86,11 @@ While not a comprehensive list, some of the key tuning parameters include:
 
 [**Disadvantages of Random Forest**]{style="color:green"}
 
--   **Computationally Intensive**: Training a Random Forest can be time-consuming, especially on large datasets, and depending on the number of trees. 
-
-*KH*: it seems like you are saying random forests are both good and bad at big data, it says it can handle big data as an advantage, but computationally intensive as a disadvantage?
+-   **Computationally Intensive**: While Random Forest handdle large datasets, it can be very time-consuming. Computation time depends on the number of trees. 
 
 -   **Interpretability**: Individual decision trees, with their hierarchical structure, can be visualized and interpreted easily. However, Random Forest, being an ensemble of multiple trees, lacks this level of interpretability. "Variable importance" methods, which we will turn to later, can give some insights, however. 
 
 -   **Tuning Required**: While the Random Forest algorithm can perform reasonably well with default parameters, to get the most out of the algorithm, hyperparameter tuning is often required, which can be time-consuming.
-
-**KH**: what about overfitting as a disadvantage?  My understanding is that RF is particularly prone to overfitting.
 
 [**Implementing Random Forest in R**]{style="color:green"}
 
