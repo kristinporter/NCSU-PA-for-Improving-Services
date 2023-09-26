@@ -6,7 +6,7 @@ editor:
 ---
 
 Now that we have a basic understanding of some prevalent machine learning algorithms, you are probably wondering how to decide which ones to use when.
-Here is an attempt to provide some guidance:^[A note about combining the goals of predictive analytics and variable importance: Variable importance refers to the objective of measuring the predictive value (i.e. importance) of a variable in predicting the outcome - that is, the strength of the relationship betweeen predictors and the outcome.
+Here is an attempt to provide some guidance:^[A note about combining the goals of predictive analytics and variable importance: Variable importance refers to the objective of measuring the predictive value (i.e. importance) of a variable in predicting the outcome - that is, the strength of the relationship between predictors and the outcome.
 Variable importance involves many different considerations than predictive analytics.
 There are many ways to define and measure variable importance, and there are many different methods for estimating variable importance.
 Some methods are agnostic to the ML algorithm used for prediction.
@@ -15,41 +15,47 @@ We will spend a little time talking about variable importance towards the end of
 For now, I want to point out that sometimes data scientists select a particular machine learning algorithm because it allows them to simultaneously satisfy both goals of predictive analytics and variable importance.
 More on this later.]
 
-1.  **Start with a simple benchmark.** As discussed [earlier](poc_benchmark.qmd), by specifying a simple benchmark learner - a small set of predictors combined with a logistic regression model or another simple technique - we can empirically investigate whether adding more complex methods - ML algorithms - improves predictive performance.
+1.  **Start with a simple benchmark.** As discussed [earlier](poc_benchmark.qmd), by specifying a simple benchmark learner (a small set of predictors combined with a logistic regression model or another simple technique), we can empirically investigate whether adding more complex methods (ML algorithms) improves predictive performance.
 
 2.  **To prioritize explainable models,** Lasso may be a good choice.
-    Lasso can handle a much larger predictor set than logistic regression, inlcuding highly correlated predictors, but the method results in a model that is similar in interpretability at logistic regression.
+    Lasso can handle a much larger predictor set than logistic regression, including highly correlated predictors, but the method results in a model that is similar in interpretability at logistic regression.
     Naive Bayes is probably easier to explain than other ML approaches.
     Random Forest is also easier to explain than most, but does have a lot of steps.
     Boosted trees gets more complicated.
     SVM is probably the least transparent of the methods we have learned.
+    
+**KH**: what do you mean by "steps" in random forest?
 
 3.  **If you want to your method to be open to nonlinear functional forms**, try ML algorithms that are not logistic regression or Lasso.
     Because Lasso is an extension of regression, it assumes linearity.
     All of the other ML algorithms we have reviewed on the previous pages allow for nonlinear relationships between predictors and the outcome.
 
-4.  **If you want to allow for potential interactions,** try algorithms that are built on decion trees - Random Forest and XGBoost.
+4.  **If you want to allow for potential interactions,** try algorithms that are built on decision trees - Random Forest and XGBoost.
     SVM can also capture interactions with the use of the polynomial or RBF kernel.
     Logistic regression, Lasso and Naive Bayes do not capture interactions in a data-driven way, but the data scientist can pass in variables (features) that are created as interactions between two or more variables, based on subject-matter knowledge.
 
 5.  **Some modeling methods will perform better when continuous predictors are standardized or normalized.** When a variable is standardized, it has mean 0 and variance 1.
-    This is achieved by substracting the mean and dividing by the standard deviation.
+    This is achieved by subtracting the mean and dividing by the standard deviation.
     When a variable is normalized, it has min=0 and max=1.
-    This is achieved by subtracting the variable's min and dividing by (max-min).
+    This normalization is achieved by subtracting the variable's min and dividing by (max-min).
     Here for when these transformations are valuable:
 
-    -   Lasso can benefit from standardizing or normalizing continuous predictors to help with convergence.
-    -   Methods built on decision trees (Random Forest and XGBoost) are not sensitive to the scale of the data so stanardiing and normalizing are not required.
-    -   SVM is sensitive to scaling. It is necessary to standardize or normalize continuous predictors.
-    -   For categorical variables, turn all categories into dummies. This is called sometimes called "one-hot coding." Some implementations require this instead of keeping the variables as categorical (`factor`).
+**KH**: typo here, but not sure what you meant.
 
-6.  **"Ensembling" can harness multiple ML algorithms together.** While beyond the scope of this class and not implemented in the templates, data scientists sometimes harness the strengths of multiple ML algorithms by combining them in various ways.
+    -   Lasso can benefit from standardizing or normalizing continuous predictors to help with convergence.
+    -   Methods built on decision trees (Random Forest and XGBoost) are not sensitive to the scale of the data so standardizing and normalizing are not required.
+    -   SVM is sensitive to scaling. It is necessary to standardize or normalize continuous predictors.
+    -   For categorical variables, turn all categories into dummies. This process is called sometimes called "one-hot coding." Some implementations require this instead of keeping the variables as categorical (`factor`).
+    
+**KH**: is it worth noting that standardizing/normalizing will never hurt model performance?  But that it may hurt intepretability?
+
+6.  **"Ensemble" approaches can harness multiple ML algorithms together.** While beyond the scope of this class and not implemented in the templates, data scientists sometimes harness the strengths of multiple ML algorithms by combining them in various ways.
     Optionally, you can read more about this concept, [here](https://machinelearningmastery.com/essence-of-stacking-ensembles-for-machine-learning/), [here](https://towardsdatascience.com/stacked-ensembles-improving-model-performance-on-a-higher-level-99ffc4ea5523) and [here](https://www.kaggle.com/code/anuragbantu/stacking-ensemble-learning-beginner-s-guide).
     The main motivation for ensembling different algorithms is that we cannot know the underlying patterns of the data and therefore it is hard to know which ML algorithms is going to excel when or where within the data.
-    As we have seen, each has different strengths, so ensembling captures all of them.
+    As we have seen, each algorithm has different strengths, so ensembling captures all of them.
     However, ensembling certainly adds complexity and diminishes transparency!
 
-7.  **Without ensembling, try a mix of ML strategies and predictor sets.** As was discussed in the [section](poc_compare.qmd) on setting up a predictive analytics proof-of-concept (which would be good to now review), I recommend specifying learners that incrementally adding complexity.
+7.  **Without ensembling, try a mix of ML strategies and predictor sets.** As was discussed in the [section](poc_compare.qmd) on setting up a predictive analytics proof-of-concept (which would be good to now review), I recommend specifying learners that incrementally add complexity.
     One way to add complexity is to add predictors (larger predictor sets).
     The other is to match those predictor sets with increasingly complex ML algorithms.
 

@@ -7,6 +7,8 @@ editor:
 
 Lasso, which stands for "Least Absolute Shrinkage and Selection Operator," is a "penalized" form of regression.
 
+*KH*: I think this could benefit from a few more sentences. For example, what are we penalizing?
+
 In Lasso regression, the primary tuning parameter is $\lambda$ (lambda), which controls the strength of the penalization.
 
 -   When $\lambda=0$, no penalty is applied, and the resulting model will include all predictors.
@@ -16,10 +18,12 @@ In Lasso regression, the primary tuning parameter is $\lambda$ (lambda), which c
 
 -   The value of $\lambda$ can be selected with cross-validation with the training data.
 
+*KH*: have you discussed cross-validation yet?
+
 [**Advantages of Lasso**]{style="color:green"}
 
 -   **Feature selection**: One of the key advantages of Lasso regression is its ability to perform feature or variable selection by shrinking the coefficients of the least important predictors to zero.
-    This can be very helpful when you have a large number of predictors, and you suspect that many of them are irrelevant or redundant.
+    This feature of the algorithm can be very helpful when you have a large number of predictors, and you suspect that many of them are irrelevant or redundant.
 
 -   **Dealing with lots or predictors**: In situations where the number of predictors ($p$) is close to or exceeds the number of observations $n$, classical logistic regression might overfit or might not even run at all.
     Lasso can be a solution in these high-dimensional settings.
@@ -36,7 +40,9 @@ In Lasso regression, the primary tuning parameter is $\lambda$ (lambda), which c
 -   **True model:** If the true underlying model is very sparse (i.e., very few predictors truly matter), then lasso will perform very well.
     However, if a large number of predictors matter, lasso may not be stable.
 
--   **Challenged with highly correlated predictors:** With highly correlated predictors, lasso arbitrarily chooses which to include in the model. This may not matter for predictive performance but can interfere with explainability.
+-   **Challenged with highly correlated predictors:** With highly correlated predictors, lasso arbitrarily chooses which to include in the model. This arbitrary selection may not matter for predictive performance but can interfere with explainability.
+
+**KH**: not sure if it's worth mentioning somewhere that logistic regression is the only approach that gives valid confidence intervals?  Maybe not given the goal is prediction, just a thought.
 
 
 [**Implementation of Lasso in R**]{style="color:green"}
