@@ -16,16 +16,16 @@ SVM algorithms aims to maximize the margin around the decision boundary.
 This margin is defined as the distance between the decision boundary and the nearest support vector from either class.
 A larger margin implies better generalization ability and a lower chance of overfitting.
 
-Decision boundaries may be linear (separated by a straight line in 2D, a plan in 3D or a "hyperplan" in higher dimensions) or nonlinear, which gets even more complicated.
+Decision boundaries may be linear (separated by a straight line in 2D, a plan in 3D or a "hyperplane" in higher dimensions) or nonlinear, which gets even more complicated.
 When decision boundaries are nonlinear, the algorithms map the data into a higher-dimensional space (the space with polynomial and interaction terms), where it becomes linearly separable.
-This is achieved through the use of "kernels." Kernels are functions that transform the data into the required form.
+This step is achieved through the use of "kernels." Kernels are functions that transform the data into the required form.
 There are various types of kernel functions such as linear, polynomial, radial basis function (RBF), and sigmoid.
 The choice of kernel is important and can influence the performance of the SVM.
 The PA code templates support two nonlinear kernels: polynomial and RBF.
 
 Tuning of SVM involves a regularization parameter, which determines the trade-off between maximizing the margin (the width of decision boundary) and minimizing the classification error.
-A smaller value regularization value creates a wider margin, which might misclassify more training data points, while larger value aims for a tighter fit to the training data.
-Tuning also includes degree of the polynomial terms (quadratic, cubic, etc).
+A smaller regularization value creates a wider margin, which might misclassify more training data points (but might generalize better to unseen data), while larger value aims for a tighter fit to the training data.
+Tuning parameters also include degree of the polynomial terms (quadratic, cubic, etc).
 
 Traditionally, SVM is designed for classification, but SVM can be used to obtain predicted probabilities for binary outcomes.
 SVM returns "decision values," which are distances from the separating hyperplane.

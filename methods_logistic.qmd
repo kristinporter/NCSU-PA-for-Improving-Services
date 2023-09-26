@@ -6,7 +6,7 @@ editor:
 ---
 
 With multiple linear regression, we predict a continuous outcome based on multiple predictors.
-It looks like this:
+The model for multiple linear regression looks like this:
 
 $Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_kX_k + \epsilon$
 
@@ -22,7 +22,7 @@ The coefficients $\beta_0$, $\beta_1$,...,$\beta_k$ tell us the strength of the 
 
 **Logistic** regression can be used to predict the probability of a particular category of a **binary** outcome.
 
-If we use a linear regression model, we can get predicted values that are outside the \[0,1\] range, which doesn't make sense for probabilities.
+If we use a linear regression model to predict probabilities, we can get predicted values that are outside the \[0,1\] range, which doesn't make sense for probabilities.
 To ensure predictions stay in the \[0,1\] range, logistic regression uses the logistic function:
 
 $P(Y=1) = \frac{e^{\beta_0 + \beta_1X_1 + ... + \beta_kX_k}}{1 + e^{\beta_0 + \beta_1X_1 + ... + \beta_kX_k}}$
@@ -39,7 +39,7 @@ where
 
 -   $e$ is the base of natural logarithms (approximately equal to 2.71828).
 
-This can also be written as follows:
+This equation can also be written as follows:
 
 $\log\left(\frac{P(Y=1)}{P(Y=0)}\right) = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_kX_k$
 

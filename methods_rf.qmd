@@ -28,7 +28,7 @@ With real data, the decisions made at the various nodes in a decision tree are b
 This distinction is usually measured using impurity scores, such as Gini impurity or entropy.
 The predictor variable that provides the best separation is selected as the node variable.
 
-**Determining the splits**: For each potential predictor variable, the algorithm assesses every possible threshold or category.
+**Determining the splits**: For each potential predictor variable, the algorithm assesses every possible threshold or category as a potential split.
 If it's a categorical predictor (e.g., low balance: yes or no), it directly checks the separation created by this category.
 If it's a continuous predictor (e.g., account balance amount), it might consider every unique value or use binning techniques to determine the best split point.
 The threshold or category that gives the most distinct separation (least impurity) is chosen as the split.
@@ -37,7 +37,7 @@ The threshold or category that gives the most distinct separation (least impurit
 Then the process is recursively applied to each child node until a stopping criterion is reached - like a maximum tree depth or a minimum number of samples in a node.
 
 **Pruning** (for some DT algorithms): After the tree is "fully grown," it can be pruned to remove branches that have little importance or add little predictive power.
-This is done to simplify the model and improve its performance on unseen data.
+This step is done to simplify the model and improve its performance on unseen data.
 
 In essence, the decisions made at each node are data-driven, aiming to improve the prediction accuracy (or reduce error) of the tree.
 The tree-building process aims to find the splits that most effectively segregate the data in terms of the target outcome.
@@ -49,7 +49,7 @@ A bootstrap sample (a random sample of the units (rows), with replacement) is ta
 This bootstrap process is repeated many times, resulting in many different possible decision trees.
 
 When growing each tree, instead of considering all features for splitting at a node, only a random subset of the predictors is considered.
-This introduces variability and helps "de-correlate the trees," making the model more robust.
+This procedure introduces variability and helps "de-correlate the trees," making the model more robust.
 
 To aggregate results across all the trees in the forest, the algorithm takes an "ensemble" approach.
 For regression (including for predicting probabilities of a binary outcome), the average prediction of all the individual trees is the final prediction.
@@ -76,11 +76,11 @@ While not a comprehensive list, some of the key tuning parameters include:
 
 [**Advantages of Random Forest**]{style="color:green"}
 
--   **Performance**: Because Random Forest takes an ensemble approach - by aggregating across multiple trees (i.e., "bagging") - the algorithm reduces variance and buffers against overfitting. Because Random Forest tends to be much less prone to overfitting than individual decision trees, it is recommended over using individual decision trees. 
+-   **Performance**: Because Random Forest takes an ensemble approach - by aggregating across multiple trees (i.e., "bagging") - the algorithm reduces variance and buffers against overfitting. Because a Random Forest algorithm tends to be much less prone to overfitting than individual decision trees, it is recommended over using individual decision trees. 
 
--   **Flexibility**: The Random Forest algorithm works well for classification and regression. It also works well with categorical and continuous predictors. Also, it does not require transforming predictors values (e.g. mean centering or scaling). Moreover, it does not require the data analyst to specify a functional form of the relationship between predictors and the outcome and therefore excels over regression methods that assume linear relationships.
+-   **Flexibility**: The Random Forest algorithm works well for classification and regression. It also works well with categorical and continuous predictors. Also, it does not require transforming predictor values (e.g. mean centering or scaling). Moreover, it does not require the data analyst to specify a functional form of the relationship between predictors and the outcome and therefore excels over regression methods that assume linear relationships.
 
--   **Detects interactions**: The Random Forest algorithm inherently captures interactions between variables without the data scientist needing to explicitly specify them. Moreover, Random Foriest can capture not only 2-way interactions, but also 3-way or higher interactions, as well as non-linear interactions between variables, which might be missed or hard to model in traditional regression techniques.
+-   **Detects interactions**: The Random Forest algorithm inherently captures interactions between variables without the data scientist needing to explicitly specify them. Moreover, the Random Forest algorithm can capture not only 2-way interactions, but also 3-way or higher interactions, as well as non-linear interactions between variables, which might be missed or hard to model in traditional regression techniques.
 
 -   **Handles large data sets**: The algorithm can handle large datasets efficiently. The sampling technique ensures that it can scale well with the increase in data.
 
@@ -88,9 +88,13 @@ While not a comprehensive list, some of the key tuning parameters include:
 
 -   **Computationally Intensive**: Training a Random Forest can be time-consuming, especially on large datasets, and depending on the number of trees. 
 
+*KH*: it seems like you are saying random forests are both good and bad at big data, it says it can handle big data as an advantage, but computationally intensive as a disadvantage?
+
 -   **Interpretability**: Individual decision trees, with their hierarchical structure, can be visualized and interpreted easily. However, Random Forest, being an ensemble of multiple trees, lacks this level of interpretability. "Variable importance" methods, which we will turn to later, can give some insights, however. 
 
--   **Tuning Required**: While Random Forest can perform reasonably well with default parameters, to get the most out of the algorithm, hyperparameter tuning is often required, which can be time-consuming.
+-   **Tuning Required**: While the Random Forest algorithm can perform reasonably well with default parameters, to get the most out of the algorithm, hyperparameter tuning is often required, which can be time-consuming.
+
+**KH**: what about overfitting as a disadvantage?  My understanding is that RF is particularly prone to overfitting.
 
 [**Implementing Random Forest in R**]{style="color:green"}
 
