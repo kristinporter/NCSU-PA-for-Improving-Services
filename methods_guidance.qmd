@@ -43,7 +43,7 @@ More on this later.]
 **KH**: typo here, but not sure what you meant.
 
     -   Lasso can benefit from standardizing or normalizing continuous predictors to help with convergence.
-    -   Methods built on decision trees (Random Forest and XGBoost) are not sensitive to the scale of the data so stanardizing and normalizing are not required.
+    -   Methods built on decision trees (Random Forest and XGBoost) are not sensitive to the scale of the data so standardizing and normalizing are not required.
     -   SVM is sensitive to scaling. It is necessary to standardize or normalize continuous predictors.
     -   For categorical variables, turn all categories into dummies. This process is called sometimes called "one-hot coding." Some implementations require this instead of keeping the variables as categorical (`factor`).
     
