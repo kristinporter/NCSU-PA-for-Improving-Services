@@ -94,4 +94,4 @@ While not a comprehensive list, some of the key tuning parameters include:
 
 [**Implementing Random Forest in R**]{style="color:green"}
 
-Implementation of the algorithm, which was developed by Leo Breiman and Adele Cutler, is done with `randomForest` package. 
+Implementation of the Random Forest algorithm, which was developed by Leo Breiman and Adele Cutler, is done with `randomForest` package. 
