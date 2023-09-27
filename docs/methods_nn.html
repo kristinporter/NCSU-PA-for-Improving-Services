@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predictive Analytics (PA) for Improving Services - Support vector machines</title>
+<title>Predictive Analytics (PA) for Improving Services - Neural networks</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./methods_nn.html" rel="next">
-<link href="./methods_naivebayes.html" rel="prev">
+<link href="./methods_guidance.html" rel="next">
+<link href="./methods_svm.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./methods_overview.html">Modeling approaches</a></li><li class="breadcrumb-item"><a href="./methods_svm.html">Support vector machines</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./methods_overview.html">Modeling approaches</a></li><li class="breadcrumb-item"><a href="./methods_nn.html">Neural networks</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -378,13 +378,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./methods_svm.html" class="sidebar-item-text sidebar-link active">
+  <a href="./methods_svm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Support vector machines</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./methods_nn.html" class="sidebar-item-text sidebar-link">
+  <a href="./methods_nn.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Neural networks</span></a>
   </div>
 </li>
@@ -533,7 +533,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Support vector machines</h1>
+<h1 class="title">Neural networks</h1>
 </div>
 
 
@@ -548,27 +548,31 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Support Vector Machines (SVMs) are a set of machine learning methods that are primarily used for classification, though they can also be used for regression.</p>
-<p>SVM tries to find the optimal decision boundary (or “hyperplane”) that best divides a dataset into classes. “Support Vectors” refers to the data points that lie closest to the decision boundary and are the most difficult to classify. They essentially define the position of the decision boundary. In fact, even if you were to remove all the other data points and only keep the support vectors, the position of the optimal hyperplane would not change.</p>
-<p>SVM algorithms aims to maximize the margin around the decision boundary. This margin is defined as the distance between the decision boundary and the nearest support vector from either class. A larger margin implies better generalization ability and a lower chance of overfitting.</p>
-<p>Decision boundaries may be linear (separated by a straight line in 2D, a plan in 3D or a “hyperplane” in higher dimensions) or nonlinear, which gets even more complicated. When decision boundaries are nonlinear, the algorithms map the data into a higher-dimensional space (the space with polynomial and interaction terms), where it becomes linearly separable. This step is achieved through the use of “kernels.” Kernels are functions that transform the data into the required form. There are various types of kernel functions such as linear, polynomial, radial basis function (RBF), and sigmoid. The choice of kernel is important and can influence the performance of the SVM. The PA code templates support two nonlinear kernels: polynomial and RBF.</p>
-<p>Tuning of SVM involves a regularization parameter, which determines the trade-off between maximizing the margin (the width of decision boundary) and minimizing the classification error. A smaller regularization value creates a wider margin, which might misclassify more training data points (but might generalize better to unseen data), while larger value aims for a tighter fit to the training data. Tuning parameters also include degree of the polynomial terms (quadratic, cubic, etc).</p>
-<p>Traditionally, SVM is designed for classification, but SVM can be used to obtain predicted probabilities for binary outcomes. SVM returns “decision values,” which are distances from the separating hyperplane. These can be translated into probabilities, by fitting a logistic to the decision values.</p>
-<p><span style="color:green"><strong>Advantages of SVM</strong></span></p>
-<ul>
-<li><p><strong>Effective with a large number of predictors:</strong> SVM tends to perform well in high-dimensional spaces.</p></li>
-<li><p><strong>Efficient:</strong> SVM tends to be memory efficient and fast in smaller data sets.</p></li>
-<li><p><strong>Flexible:</strong> With the option for different kernel functions, SVM is flexible to different functional forms and can incorporate interaction effects.</p></li>
-</ul>
-<p><span style="color:green"><strong>Disdvantages of SVM</strong></span></p>
-<ul>
-<li><p><strong>Sensitive:</strong> SVM can be sensitive to choices of kernels and to values of tuning parameters.</p></li>
-<li><p><strong>Needs extra step for predicted probabilities:</strong> SVM does not directly provide probability estimates for classification, although R implementations will do this step for you.</p></li>
-<li><p><strong>Computationally intensive with large data sets:</strong> With large data files, SVM can take a lot of time to run.</p></li>
-<li><p><strong>Lacking transparency:</strong> SVM can be hard to interpret and explain, especially when using nonlinear kernels. The transformation carried out by these kernels doesn’t have an intuitive meaning in the original feature space.</p></li>
-</ul>
-<p><span style="color:green"><strong>Implementing of SVM in R</strong></span></p>
-<p>SVM can be implemented with the <code>svm()</code> function in the <code>e1071</code> package.</p>
+<p>Neural networks is a popular machine learning algorithm. The approach was motivated by theories about how the brain works. Neural networks are highly simplified models of the brain, however, even though they can be quite complicated.</p>
+<p>Imagine you’re trying to predict a student will graduate on time, using various predictors that include measures of attendance and academic performance. The neural network is built on multiple layers. Each layer has multiple nodes:</p>
+<ol type="1">
+<li><p><strong>Input Layer</strong>: This layer holds initial clues about the outcome. The nodes in this layer are the individual predictors.</p></li>
+<li><p><strong>Hidden Layers</strong>: Next, the neural network starts to process this information, combining the individual predictors in various ways to derive deeper insights. The nodes in this layer are functions of nodes in previous layers.</p></li>
+<li><p><strong>Output Layer</strong>: The output layer produces the final answer based on all the clues (nodes) and their processing. For binary outcomes like whether a student will graduate on time, the output layer often has a single node that outputs a value (typically between 0 and 1) representing the probability the outcome.</p></li>
+</ol>
+<p>At each layer, the neural network makes adjustments to the importance of individual and combined predictors by weighting them. The weights are adjusted during training to minimize the difference between the network’s predictions and the actual outcomes.</p>
+<p>The power of neural networks comes from their ability to identify and learn complex relationships and patterns in the data. Networks with more layers and nodes are more complex and are termed “deep neural networks,” leading to the field known as deep learning.</p>
+<p>Key tuning parameters for neural networks include the number of hidden layers, the number of nodes in each hidden layer, regularization techniques (if applied), and the number of times the algorithm iterates through the entire dataset (known as “epochs”) to refine the model parameters.</p>
+<p><span style="color:green"><strong>Advantages of neural networks</strong></span></p>
+<ol type="1">
+<li><p><strong>Good for modeling complex relationships</strong>: Neural networks, especially deep ones, can capture complex non-linear relationships.</p></li>
+<li><p><strong>Capture interactions</strong>: The method also excels at capturing interactions between features without manual creation of interaction terms.</p></li>
+<li><p><strong>High performing in a wide variety of settings.</strong>: Neural networks, particularly deep learning models, have seen significant attention in recent years due to their performance in a wide range of complex tasks.</p></li>
+</ol>
+<p><span style="color:green"><strong>Disadvantages of neural networks</strong></span></p>
+<ol type="1">
+<li><p><strong>Data hungry</strong>: Neural networks often require a large amount of data to generalize well. On smaller datasets, they can easily overfit. I’m not sure if they are a good fit for most applications you all are choosing for projects.</p></li>
+<li><p><strong>Computationally intensive</strong>: Training can be slow, requiring specialized hardware like GPUs for faster computation.</p></li>
+<li><p><strong>Not transparent</strong>: The method is hard to explain and the resulting model is hard to decipher.</p></li>
+<li><p><strong>Sensitive to hyperparameter turning</strong>: The values of tuning parameters can greatly affect performance and require tuning.</p></li>
+</ol>
+<p><span style="color:green"><strong>Implementing neural networks in R</strong></span></p>
+<p>You can use the <code>neuralnet</code> package to run neural networks in R. The code templates also allow for neural networks.</p>
 
 
 
@@ -808,13 +812,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./methods_naivebayes.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Naive Bayes</span>
+      <a href="./methods_svm.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Support vector machines</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./methods_nn.html" class="pagination-link">
-        <span class="nav-page-text">Neural networks</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./methods_guidance.html" class="pagination-link">
+        <span class="nav-page-text">Guidance for using ML</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

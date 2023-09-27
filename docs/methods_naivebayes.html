@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Modeling approaches</li><li class="breadcrumb-item"><a href="./methods_naivebayes.html">Naive Bayes</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./methods_overview.html">Modeling approaches</a></li><li class="breadcrumb-item"><a href="./methods_naivebayes.html">Naive Bayes</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -343,30 +343,6 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">Overview</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Regression</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Lasso</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Decision trees and random forests</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Boosted trees</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Naive Bayes</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Support Vector Machines</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Guidance</span>
-  </li>
-          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./methods_overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
@@ -375,7 +351,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./methods_logistic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Logistic Regression</span></a>
+ <span class="menu-text">Logistic regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -393,7 +369,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./methods_xgboost.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Gradient Boosting</span></a>
+ <span class="menu-text">Gradient boosting</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -405,12 +381,21 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./methods_svm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Support Vector Machines</span></a>
+ <span class="menu-text">Support vector machines</span></a>
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">methods.guidance.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./methods_nn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Neural networks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_guidance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guidance for using ML</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -565,10 +550,10 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Naive Bayes is based on the Bayes theorem from probability theory. It’s called “naive” because it makes a naive assumption that each predictor in your data is independent of the others, given the outcome. While this assumption is typically false, in practice, it still allows the algorithm to work fairly well.</p>
+<p>Naive Bayes is based on Bayes theorem from probability theory. It’s called “naive” because it makes a naive assumption that each predictor in your data is independent of the others, given the outcome. While this assumption is typically false, in practice, it still allows the algorithm to work fairly well.</p>
 <p>The Naive Bayes algorithm tries to determine the likelihood of <em>the predictors</em> given both classes of the binary outcome (yes and no). It then uses these likelihoods and some prior knowledge about the general frequency of the outcome (an initial estimate based on the data, before considering the predictors) to make a prediction.</p>
 <p>So first, the algorithm checks the frequency of your predictors given the outcome. For instance, when predicting on-time high school graduation, it may ask: How many students were chronically absent among students who graduated on time? And: How many students were chronically absent among students who did not graduate on time?<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>For continuous predictors (e.g.&nbsp;attendace rate), one approach is to “bin” or discretize the variable’s values into categories, but this can be limiting. Therefore, the Naive Bayes algorithm relies on “kernels,” which provide a way to estimate likelihoods without discretizing the data.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>For continuous predictors (e.g.&nbsp;attendace rate), one approach is to “bin” or discretize the variable’s values into categories, but this approach can be limiting. Therefore, the Naive Bayes algorithm relies on “kernels,” which provide a way to estimate likelihoods without discretizing the data.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p>The next step is based on Bayes Theorem, which is:</p>
 <p><span class="math display">\[\begin{equation}
 P(Y=y|X=x) = \frac{P(Y=y)P(X=x|Y=y)}{P(X=x)}
@@ -577,12 +562,12 @@ P(Y=y|X=x) = \frac{P(Y=y)P(X=x|Y=y)}{P(X=x)}
 <p><span style="color:green"><strong>Advantages of Naive Bayes</strong></span></p>
 <ul>
 <li><p><strong>Simplicity and speed</strong>: Naive Bayes is computationally efficient and easy to implement. For large datasets, especially those with a high number of predictors, Naive Bayes can be faster than more complex methods.</p></li>
-<li><p><strong>Text classification</strong>: Naive Bayes is famously effective for certain text classification tasks, like spam detection, sentiment analysis, and topic assignment. This is in part because the “naive” assumption that all features (words) are independent given the class often works surprisingly well in this context.</p></li>
+<li><p><strong>Text classification</strong>: Naive Bayes is famously effective for certain text classification tasks, like spam detection, sentiment analysis, and topic assignment. This effectiveness is in part because the “naive” assumption that all features (words) are independent given the class often works surprisingly well in this context.</p></li>
 <li><p><strong>Multiclass problems</strong>: Naive Bayes naturally extends to multiclass classification problems (e.g.&nbsp;predicting an outcome with more than two classes) without needing any special modifications.</p></li>
 </ul>
 <p><span style="color:green"><strong>Advantages of Naive Bayes</strong></span></p>
 <ul>
-<li><p><strong>Naive independence assumption</strong>: The main “naive” assumption of this method is that predictors are conditionally independent given the class. This is rarely true in real-world applications.</p></li>
+<li><p><strong>Naive independence assumption</strong>: The main “naive” assumption of this method is that predictors are conditionally independent given the class. This assumption is rarely true in real-world applications.</p></li>
 <li><p><strong>Can struggle with continuous predictors</strong>: Naive Bayes requires modifications to handle continuous predictors (e.g., using Gaussian distributions or kernel density estimation). Even with these modifications, it might not perform as well as regression models or tree-based algorithms on some continuous datasets.</p></li>
 <li><p><strong>Does not capture interactions</strong>: Because Naive Bayes treats each feature independently, it doesn’t capture interactions between predictors. Algorithms that rely on decision trees can often better handle data where interactions are critical.</p></li>
 <li><p><strong>Estimation of probabilities</strong>: While Naive Bayes can give calibrated probabilities for well-represented classes and predictors, the probability estimates can be unreliable for underrepresented classes, even with smoothing.</p></li>
@@ -836,12 +821,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./methods_xgboost.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Gradient Boosting</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Gradient boosting</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./methods_svm.html" class="pagination-link">
-        <span class="nav-page-text">Support Vector Machines</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Support vector machines</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

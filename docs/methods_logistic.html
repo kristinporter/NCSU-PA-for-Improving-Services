@@ -386,6 +386,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./methods_nn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Neural networks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./methods_guidance.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Guidance for using ML</span></a>
   </div>
@@ -544,7 +550,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>With multiple linear regression, we predict a continuous outcome based on multiple predictors. It looks like this:</p>
+<p>With multiple linear regression, we predict a continuous outcome based on multiple predictors. The model for multiple linear regression looks like this:</p>
 <p><span class="math inline">\(Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_kX_k + \epsilon\)</span></p>
 <p>where</p>
 <ul>
@@ -556,7 +562,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>The coefficients <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span>,…,<span class="math inline">\(\beta_k\)</span> tell us the strength of the relationship between the predictors and the outcome.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p><strong>Logistic</strong> regression can be used to predict the probability of a particular category of a <strong>binary</strong> outcome.</p>
-<p>If we use a linear regression model, we can get predicted values that are outside the [0,1] range, which doesn’t make sense for probabilities. To ensure predictions stay in the [0,1] range, logistic regression uses the logistic function:</p>
+<p>If we use a linear regression model to predict probabilities, we can get predicted values that are outside the [0,1] range, which doesn’t make sense for probabilities. To ensure predictions stay in the [0,1] range, logistic regression uses the logistic function:</p>
 <p><span class="math inline">\(P(Y=1) = \frac{e^{\beta_0 + \beta_1X_1 + ... + \beta_kX_k}}{1 + e^{\beta_0 + \beta_1X_1 + ... + \beta_kX_k}}\)</span></p>
 <p>where</p>
 <ul>
@@ -566,7 +572,7 @@ ul.task-list li input[type="checkbox"] {
 <li><p><span class="math inline">\(\beta_1\)</span>, <span class="math inline">\(\beta_2\)</span>,…,<span class="math inline">\(\beta_k\)</span> are coefficients corresponding to the predictor variables, and</p></li>
 <li><p><span class="math inline">\(e\)</span> is the base of natural logarithms (approximately equal to 2.71828).</p></li>
 </ul>
-<p>This can also be written as follows:</p>
+<p>This equation can also be written as follows:</p>
 <p><span class="math inline">\(\log\left(\frac{P(Y=1)}{P(Y=0)}\right) = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_kX_k\)</span></p>
 <p>Here, the log odds (or the logarithm of the odds) of the outcome being 1 (versus 0) is expressed as a linear combination of predictor variables. As we plug in values for the predictors, the linear combination gives us the log odds, which can then be transformed to get the actual probabilities (<span class="math inline">\(P(Y=1)\)</span> ).<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p>Unlike many machine learning algorithms, when a data scientist uses logistic regression, they are specifying the specific functional form of the relationship between the predictors and the outcome. Specifically, with logistic regression, we are specifying that the log odds is a linear function of the predictors.</p>

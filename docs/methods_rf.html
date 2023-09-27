@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Modeling approaches</li><li class="breadcrumb-item"><a href="./methods_rf.html">Decision trees and Random Forest</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./methods_overview.html">Modeling approaches</a></li><li class="breadcrumb-item"><a href="./methods_rf.html">Decision trees and Random Forest</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -343,30 +343,6 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">Overview</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Regression</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Lasso</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Decision trees and random forests</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Boosted trees</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Naive Bayes</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Support Vector Machines</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Guidance</span>
-  </li>
-          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./methods_overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
@@ -375,7 +351,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./methods_logistic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Logistic Regression</span></a>
+ <span class="menu-text">Logistic regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -393,7 +369,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./methods_xgboost.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Gradient Boosting</span></a>
+ <span class="menu-text">Gradient boosting</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -405,12 +381,21 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./methods_svm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Support Vector Machines</span></a>
+ <span class="menu-text">Support vector machines</span></a>
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">methods.guidance.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./methods_nn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Neural networks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_guidance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guidance for using ML</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -577,15 +562,15 @@ ul.task-list li input[type="checkbox"] {
 <p>This tree illustrates, starting on the right side, that if a customer has a low balance and a loan with the bank, they’re likely considering leaving, possibly due to financial constraints. However, if they have a low balance but no loan, the deciding factor might be their interaction with customer service. Many calls could indicate dissatisfaction, making them likely to leave. On the left side of the tree, we see that customers with medium to high balances are further segmented based on account type. Those with basic accounts who have had many interactions with customer service are predicted to leave. However, those with premium accounts are predicted to stay, without it depending on customer service interactions.</p>
 <p>With real data, the decisions made at the various nodes in a decision tree are based on a measure of “split quality.” The exact process depends on the algorithm used, but here’s a general outline of how decisions are made at the nodes using the popular CART (Classification And Regression Trees) approach:</p>
 <p><strong>Selection of node variables</strong>: For each predictor, the algorithm evaluates its ability to distinguish between outcomes = 1 and outcomes = 0. This distinction is usually measured using impurity scores, such as Gini impurity or entropy. The predictor variable that provides the best separation is selected as the node variable.</p>
-<p><strong>Determining the splits</strong>: For each potential predictor variable, the algorithm assesses every possible threshold or category. If it’s a categorical predictor (e.g., low balance: yes or no), it directly checks the separation created by this category. If it’s a continuous predictor (e.g., account balance amount), it might consider every unique value or use binning techniques to determine the best split point. The threshold or category that gives the most distinct separation (least impurity) is chosen as the split.</p>
+<p><strong>Determining the splits</strong>: For each potential predictor variable, the algorithm assesses every possible threshold or category as a potential split. If it’s a categorical predictor (e.g., low balance: yes or no), it directly checks the separation created by this category. If it’s a continuous predictor (e.g., account balance amount), it might consider every unique value or use binning techniques to determine the best split point. The threshold or category that gives the most distinct separation (least impurity) is chosen as the split.</p>
 <p><strong>Iterative process</strong>: After choosing the best variable and its split, the data is divided accordingly, resulting in two child nodes. Then the process is recursively applied to each child node until a stopping criterion is reached - like a maximum tree depth or a minimum number of samples in a node.</p>
-<p><strong>Pruning</strong> (for some DT algorithms): After the tree is “fully grown,” it can be pruned to remove branches that have little importance or add little predictive power. This is done to simplify the model and improve its performance on unseen data.</p>
+<p><strong>Pruning</strong> (for some DT algorithms): After the tree is “fully grown,” it can be pruned to remove branches that have little importance or add little predictive power. This step is done to simplify the model and improve its performance on unseen data.</p>
 <p>In essence, the decisions made at each node are data-driven, aiming to improve the prediction accuracy (or reduce error) of the tree. The tree-building process aims to find the splits that most effectively segregate the data in terms of the target outcome.</p>
 </section>
 <section id="random-forest" class="level3">
 <h3 class="anchored" data-anchor-id="random-forest">Random Forest</h3>
 <p>A Random Forest considers many different possible decision trees. A bootstrap sample (a random sample of the units (rows), with replacement) is taken from the data, and a decision tree is constructed. This bootstrap process is repeated many times, resulting in many different possible decision trees.</p>
-<p>When growing each tree, instead of considering all features for splitting at a node, only a random subset of the predictors is considered. This introduces variability and helps “de-correlate the trees,” making the model more robust.</p>
+<p>When growing each tree, instead of considering all features for splitting at a node, only a random subset of the predictors is considered. This procedure introduces variability and helps “de-correlate the trees,” making the model more robust.</p>
 <p>To aggregate results across all the trees in the forest, the algorithm takes an “ensemble” approach. For regression (including for predicting probabilities of a binary outcome), the average prediction of all the individual trees is the final prediction. For classification, the class (i.e., yes or no, 0 or 1) that gets the most votes from all the individual trees is the final prediction (majority voting).</p>
 <p>The combination of diverse trees reduces the variance (overfitting) without increasing the bias, leading to a more accurate and robust model compared to a single decision tree.</p>
 <p><em>Tuning parameters for Random Forest:</em> There are many tuning parameters for the Random Forest algorithm. While not a comprehensive list, some of the key tuning parameters include:</p>
@@ -597,19 +582,19 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p><span style="color:green"><strong>Advantages of Random Forest</strong></span></p>
 <ul>
-<li><p><strong>Performance</strong>: Because Random Forest takes an ensemble approach - by aggregating across multiple trees (i.e., “bagging”) - the algorithm reduces variance and buffers against overfitting. Because Random Forest tends to be much less prone to overfitting than individual decision trees, it is recommended over using individual decision trees.</p></li>
-<li><p><strong>Flexibility</strong>: The Random Forest algorithm works well for classification and regression. It also works well with categorical and continuous predictors. Also, it does not require transforming predictors values (e.g.&nbsp;mean centering or scaling). Moreover, it does not require the data analyst to specify a functional form of the relationship between predictors and the outcome and therefore excels over regression methods that assume linear relationships.</p></li>
-<li><p><strong>Detects interactions</strong>: The Random Forest algorithm inherently captures interactions between variables without the data scientist needing to explicitly specify them. Moreover, Random Foriest can capture not only 2-way interactions, but also 3-way or higher interactions, as well as non-linear interactions between variables, which might be missed or hard to model in traditional regression techniques.</p></li>
+<li><p><strong>Performance</strong>: Because Random Forest takes an ensemble approach - by aggregating across multiple trees (i.e., “bagging”) - the algorithm reduces variance and buffers against overfitting. Because a Random Forest algorithm tends to be much less prone to overfitting than individual decision trees, it is recommended over using individual decision trees.</p></li>
+<li><p><strong>Flexibility</strong>: The Random Forest algorithm works well for classification and regression. It also works well with categorical and continuous predictors. Also, it does not require transforming predictor values (e.g.&nbsp;mean centering or scaling). Moreover, it does not require the data analyst to specify a functional form of the relationship between predictors and the outcome and therefore excels over regression methods that assume linear relationships.</p></li>
+<li><p><strong>Detects interactions</strong>: The Random Forest algorithm inherently captures interactions between variables without the data scientist needing to explicitly specify them. Moreover, the Random Forest algorithm can capture not only 2-way interactions, but also 3-way or higher interactions, as well as non-linear interactions between variables, which might be missed or hard to model in traditional regression techniques.</p></li>
 <li><p><strong>Handles large data sets</strong>: The algorithm can handle large datasets efficiently. The sampling technique ensures that it can scale well with the increase in data.</p></li>
 </ul>
 <p><span style="color:green"><strong>Disadvantages of Random Forest</strong></span></p>
 <ul>
-<li><p><strong>Computationally Intensive</strong>: Training a Random Forest can be time-consuming, especially on large datasets, and depending on the number of trees.</p></li>
+<li><p><strong>Computationally Intensive</strong>: While Random Forest handdle large datasets, it can be very time-consuming. Computation time depends on the number of trees.</p></li>
 <li><p><strong>Interpretability</strong>: Individual decision trees, with their hierarchical structure, can be visualized and interpreted easily. However, Random Forest, being an ensemble of multiple trees, lacks this level of interpretability. “Variable importance” methods, which we will turn to later, can give some insights, however.</p></li>
-<li><p><strong>Tuning Required</strong>: While Random Forest can perform reasonably well with default parameters, to get the most out of the algorithm, hyperparameter tuning is often required, which can be time-consuming.</p></li>
+<li><p><strong>Tuning Required</strong>: While the Random Forest algorithm can perform reasonably well with default parameters, to get the most out of the algorithm, hyperparameter tuning is often required, which can be time-consuming.</p></li>
 </ul>
 <p><span style="color:green"><strong>Implementing Random Forest in R</strong></span></p>
-<p>Implementation of the algorithm, which was developed by Leo Breiman and Adele Cutler, is done with <code>randomForest</code> package.</p>
+<p>Implementation of the Random Forest algorithm, which was developed by Leo Breiman and Adele Cutler, is done with <code>randomForest</code> package.</p>
 
 
 </section>
@@ -856,7 +841,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./methods_xgboost.html" class="pagination-link">
-        <span class="nav-page-text">Gradient Boosting</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Gradient boosting</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

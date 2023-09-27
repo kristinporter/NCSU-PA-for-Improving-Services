@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Modeling approaches</li><li class="breadcrumb-item"><a href="./methods_lasso.html">Lasso</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./methods_overview.html">Modeling approaches</a></li><li class="breadcrumb-item"><a href="./methods_lasso.html">Lasso</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -343,30 +343,6 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">Overview</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Regression</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Lasso</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Decision trees and random forests</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Boosted trees</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Naive Bayes</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Support Vector Machines</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Guidance</span>
-  </li>
-          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./methods_overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
@@ -375,7 +351,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./methods_logistic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Logistic Regression</span></a>
+ <span class="menu-text">Logistic regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -393,7 +369,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./methods_xgboost.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Gradient Boosting</span></a>
+ <span class="menu-text">Gradient boosting</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -405,12 +381,21 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./methods_svm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Support Vector Machines</span></a>
+ <span class="menu-text">Support vector machines</span></a>
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">methods.guidance.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./methods_nn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Neural networks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_guidance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guidance for using ML</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -565,7 +550,9 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Lasso, which stands for “Least Absolute Shrinkage and Selection Operator,” is a “penalized” form of regression.</p>
+<p>Lasso, which stands for “Least Absolute Shrinkage and Selection Operator,” is a “penalized” form of regression. This means that it introduces a penalty to the regression model to shrink some of the regression coefficients towards zero.</p>
+<p>To illustrate, imagine you’re assembling a team for a game and each player’s skill contributes to your team’s overall performance. However, for each player you add, you need to pay a cost (like a registration fee). The Lasso penalty is akin to this cost. If a player (or a predictor in our regression context) doesn’t contribute much value, you might opt to leave them out to avoid the fee. The stronger the penalty, the more selective you’d be about who you add to your team.</p>
+<p>In the context of Lasso regression, this penalty pushes less important predictors’ coefficients towards zero, effectively excluding them from the model.</p>
 <p>In Lasso regression, the primary tuning parameter is <span class="math inline">\(\lambda\)</span> (lambda), which controls the strength of the penalization.</p>
 <ul>
 <li><p>When <span class="math inline">\(\lambda=0\)</span>, no penalty is applied, and the resulting model will include all predictors.</p></li>
@@ -574,7 +561,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p><span style="color:green"><strong>Advantages of Lasso</strong></span></p>
 <ul>
-<li><p><strong>Feature selection</strong>: One of the key advantages of Lasso regression is its ability to perform feature or variable selection by shrinking the coefficients of the least important predictors to zero. This can be very helpful when you have a large number of predictors, and you suspect that many of them are irrelevant or redundant.</p></li>
+<li><p><strong>Feature selection</strong>: One of the key advantages of Lasso regression is its ability to perform feature or variable selection by shrinking the coefficients of the least important predictors to zero. This feature of the algorithm can be very helpful when you have a large number of predictors, and you suspect that many of them are irrelevant or redundant.</p></li>
 <li><p><strong>Dealing with lots or predictors</strong>: In situations where the number of predictors (<span class="math inline">\(p\)</span>) is close to or exceeds the number of observations <span class="math inline">\(n\)</span>, classical logistic regression might overfit or might not even run at all. Lasso can be a solution in these high-dimensional settings.</p></li>
 <li><p><strong>Multicollinearity</strong>: When predictor variables are highly correlated, standard logistic regression’s estimates can be very unstable. Lasso helps to alleviate “multicollinearity” (high correlation) issues by penalizing certain coefficients and pushing them towards zero.</p></li>
 <li><p><strong>Interpretability:</strong> Because Lasso can zero out coefficients, the resulting model can be more interpretable than a model with many predictors. And Lasso is more interpretable than “black-box” machine learning algorithms.</p></li>
@@ -583,7 +570,7 @@ ul.task-list li input[type="checkbox"] {
 <p><span style="color:green"><strong>Disdvantages of Lasso</strong></span></p>
 <ul>
 <li><p><strong>True model:</strong> If the true underlying model is very sparse (i.e., very few predictors truly matter), then lasso will perform very well. However, if a large number of predictors matter, lasso may not be stable.</p></li>
-<li><p><strong>Challenged with highly correlated predictors:</strong> With highly correlated predictors, lasso arbitrarily chooses which to include in the model. This may not matter for predictive performance but can interfere with explainability.</p></li>
+<li><p><strong>Challenged with highly correlated predictors:</strong> With highly correlated predictors, lasso arbitrarily chooses which to include in the model. This arbitrary selection may not matter for predictive performance but can interfere with explainability.</p></li>
 </ul>
 <p><span style="color:green"><strong>Implementation of Lasso in R</strong></span></p>
 <p>In R, we implement lasso with <code>glmnet()</code> in the <code>glmnet</code> package. The code templates will do this for you.</p>
@@ -827,7 +814,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./methods_logistic.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Logistic Regression</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Logistic regression</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

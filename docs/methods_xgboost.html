@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Modeling approaches</li><li class="breadcrumb-item"><a href="./methods_xgboost.html">Gradient boosting</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./methods_overview.html">Modeling approaches</a></li><li class="breadcrumb-item"><a href="./methods_xgboost.html">Gradient boosting</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -341,30 +341,6 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">Overview</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Regression</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Lasso</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Decision trees and random forests</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Boosted trees</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Naive Bayes</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Support Vector Machines</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Guidance</span>
-  </li>
-          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./methods_overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
@@ -373,7 +349,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./methods_logistic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Logistic Regression</span></a>
+ <span class="menu-text">Logistic regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -407,8 +383,17 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">methods.guidance.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./methods_nn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Neural networks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_guidance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guidance for using ML</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -563,13 +548,13 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Gradient boosting algorithms, like Random Forest, are built on decision trees. However, gradient boosting takes a different approach for constructing trees.</p>
-<p>The basic idea behind gradient boosting is to build trees <em>sequentially</em> rather than <em>independently.</em> Basically, each tree is grown to correct the errors of its predecessor. First, a simple model is used to predict the target variable. The residuals (differences between the predicted values and the true values) are then computed. For binary outcomes, we actually have “pseudo-residuals” which is the difference between the observed outcome and the predicted probability of the positive class (i.e.&nbsp;the predicted probability that the outcome = 1). The next tree tries to predict the error made by the previous model. The predictions from this new tree are scaled by a factor (learning rate) and added to the existing model’s predictions. This process is like taking a step in the direction that minimizes prediction error, hence “gradient” boosting.</p>
+<p>Gradient boosting algorithms, like Random Forest, are built on decision trees. However, gradient boosting takes a different approach for constructing trees than the Random Forest algorithm.</p>
+<p>The basic idea behind gradient boosting is to build trees <em>sequentially</em> rather than <em>independently.</em> Basically, each tree is grown to correct the errors of its predecessor. First, a simple model is used to predict the target variable. The residuals (differences between the predicted values and the true values) are then computed. For binary outcomes, we actually have “pseudo-residuals”, which are the differences between the observed outcome and the predicted probability of the positive class (i.e.&nbsp;the predicted probability that the outcome = 1). The next tree tries to predict the error made by the previous model. The predictions from this new tree are scaled by a factor (learning rate) and added to the existing model’s predictions. This process is like taking a step in the direction that minimizes prediction error, hence “gradient” boosting.</p>
 <p>These steps of are repeated multiple times. Each new tree is fit to the residuals of the current combined ensemble of previous trees. As trees are added, the model becomes a weighted sum of all the trees. To prevent overfitting, gradient boosting introduces “regularization.” As we saw in Lasso, regularization is a technique used to add some form of penalty to the model, which discourages it from fitting too closely to the noise in the training data (overfitting). One common form of regularization is “shrinkage”, where each tree’s contribution is reduced by multiplying it with a small learning rate. Gradient boosting requires careful tuning of parameters such as tree depth, learning rate, and the number of trees.</p>
 <p><strong>XGBoost (Extreme Gradient Boosting)</strong>:</p>
 <p>The code templates you will use, use a particular gradient boosting algorithm called XGBoost. Here are its distinctive features:</p>
 <ul>
-<li><p><strong>Regularization</strong>: Unlike the basic gradient boosting, XGBoost includes L1 and L2 regularization terms in its cost function to buffer against prevent overfitting. L1 regularization adds a penalty proportional to the absolute value of the model coefficients. L2 regularization adds a penalty proportional to the square of the magnitude of the model coefficients.</p></li>
+<li><p><strong>Regularization</strong>: Unlike the basic gradient boosting, XGBoost includes L1 and L2 regularization terms in its cost function to buffer against overfitting. L1 regularization adds a penalty proportional to the absolute value (magnitude) of the model coefficients. L2 regularization adds a penalty proportional to the square of the model coefficients.</p></li>
 <li><p><strong>Efficiency</strong>: XGBoost is designed to be highly efficient. It can utilize the power of parallel processing to build trees, making it faster than many other implementations of gradient boosting.</p></li>
 <li><p><strong>Early stopping</strong>: Instead of growing a tree to its maximum depth and then pruning, XGBoost uses “max_depth” to grow the tree and stops splitting when it no longer adds significant value. XGBoost can also halt the training process if the model’s performance on a validation set doesn’t improve after a set number of rounds, preventing potential overfitting.</p></li>
 </ul>
@@ -577,13 +562,11 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><strong>Speed:</strong> The XGBoost algorithm is optimized to be relatively fast for a data-driven algorithm.</li>
 </ul>
-
-<!-- -   **Flexibility:** It can produce a more interpretable model than Random Forest.  -->
-<p><span style="color:green"><strong>Advantages of XGBoost</strong></span></p>
+<p><span style="color:green"><strong>Disadvantages of XGBoost</strong></span></p>
 <ul>
 <li><p><strong>Tuning parameter sensitivity:</strong> XGBoost typically requires careful tuning of its tuning parameters to achieve the best results.</p></li>
-<li><p><strong>Memory consumption:</strong> XGBoost can be more memory-intensive, especially when handling large datasets.</p></li>
-<li><p><strong>Handling categorical features:</strong> While Random Forest can directly handle categorical variables, XGBoost requires them to be transformed into numerical format - creating multiple dummies, as discussed in “Data for PA: Part 2,” (which is sometimes called “one-hot coding”).</p></li>
+<li><p><strong>Memory consumption:</strong> XGBoost can be memory-intensive, especially when handling large datasets.</p></li>
+<li><p><strong>Handling categorical features:</strong> While the Random Forest algorithm can directly handle categorical variables, XGBoost requires them to be transformed into a numerical format - creating multiple dummies, as discussed in “Data for PA: Part 2,” (which is sometimes called “one-hot coding”).</p></li>
 </ul>
 <p><span style="color:green"><strong>Implementation of XGBoost in R</strong></span></p>
 <p>This method is implemented with the [XGBoost]{https://cran.r-project.org/web/packages/xgboost/xgboost.pdf} package in R. The code templates will do this for you.</p>

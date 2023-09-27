@@ -67,14 +67,6 @@ website:
 
       - section: "Modeling approaches"
         contents:
-        # - "Overview"
-        # - "Logistic regression"
-        # - "Lasso"
-        # - "Decision trees and random forests"
-        # - "Gradient boosting"
-        # - "Naive Bayes"
-        # - "Support vector machines"
-        # - "Guidance for using ML"
           - methods_overview.qmd
           - methods_logistic.qmd
           - methods_lasso.qmd
@@ -82,6 +74,7 @@ website:
           - methods_xgboost.qmd
           - methods_naivebayes.qmd
           - methods_svm.qmd
+          - methods_nn.qmd
           - methods_guidance.qmd
       - section: "Evaluating and comparing predictive performance"
         contents:
