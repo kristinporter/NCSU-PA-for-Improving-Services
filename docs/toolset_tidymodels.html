@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predictive Analytics (PA) for Improving Services - Overview of PA templates</title>
+<title>Predictive Analytics (PA) for Improving Services - Harnessing the tidymodels package</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./toolset_datamodel.html" rel="next">
-<link href="./data2_changesovertime.html" rel="prev">
+<link href="./methods_overview.html" rel="next">
+<link href="./toolset_firstlook.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -74,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./toolset_overview.html">Introduction to the PA Toolset</a></li><li class="breadcrumb-item"><a href="./toolset_overview.html">Overview of PA templates</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./toolset_overview.html">Introduction to the PA Toolset</a></li><li class="breadcrumb-item"><a href="./toolset_tidymodels.html">Harnessing the <code>tidymodels</code> package</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -339,7 +339,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./toolset_overview.html" class="sidebar-item-text sidebar-link active">
+  <a href="./toolset_overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview of PA templates</span></a>
   </div>
 </li>
@@ -353,6 +353,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="./toolset_firstlook.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Orientation to server with code templates</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./toolset_tidymodels.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Harnessing the <code>tidymodels</code> package</span></a>
   </div>
 </li>
       </ul>
@@ -559,7 +565,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Overview of PA templates</h1>
+<h1 class="title">Harnessing the <code>tidymodels</code> package</h1>
 </div>
 
 
@@ -574,30 +580,14 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>This section provides an orientation to the code templates for implementing the PA proof-of-concept framework. These templates were developed by colleagues at MDRC and edited by me. Here are some notes about these templates:</p>
-<ul>
-<li><p>They can be accessed at: https://patools.sprouthub.io. You will log in with the provided username and password. This will take you to your personal work space in R Studio, where you can upload data, edit R notebooks, run analyses and download results.</p></li>
-<li><p>The templates are organized into three primary R notebooks:</p>
-<ul>
-<li><p>01_Learner_Specification.Rmd</p></li>
-<li><p>02_Learner_Training_and_Validation.Rmd</p></li>
-<li><p>03_Learner_Testing.Rmd</p></li>
-</ul></li>
-</ul>
-<p>If you are new to the concept of R notebooks, these are dynamic documents with a <code>.Rmd</code> extension that offer a seamless way to blend both analytics and narrative. R notebooks contain:</p>
-<ol type="1">
-<li><strong>Text Content</strong>:
-<ul>
-<li>The text elements are written using “markdown language,” a lightweight markup language with plain-text-formatting syntax. It makes the document easily readable in almost any text editor. However, if you’re not well-acquainted with markdown, R Studio’s “visual” mode can come in handy. This interface simplifies the editing experience, rendering a user-friendly environment akin to conventional word processors, minimizing the need to juggle through markdown syntaxes.</li>
-</ul></li>
-<li><strong>Code Chunks</strong>:
-<ul>
-<li><p>R notebooks are compartmentalized into distinct sections called “chunks,” each capable of executing R code independently. This modularity facilitates iterative development and debugging, as you can focus on and run one chunk at a time. When you’re ready to compile the entire notebook, the “knit” function transforms the <code>.Rmd</code> file into a cohesive document in formats like PDF, HTML, or DOCX. Our templates are preset to render PDFs for uniformity and ease of sharing.</p></li>
-<li><p>One of the advantageous features of R notebooks is the flexibility in displaying code. You can choose to showcase the code alongside its output, hide the code to present only the results, or even conceal both to keep the report neat, depending on your audience’s preference and the context of the presentation.</p></li>
-</ul></li>
-</ol>
-<p>In essence, R notebooks epitomize the integration of data analysis and reporting. You can write, execute, and test R code in isolated chunks, ensuring each segment is accurate and efficient before proceeding. Concurrently, the narrative, including explanations, interpretations, and visualizations, can be weaved in between these chunks. This interleaving of code and commentary fosters a comprehensive, reproducible, and easily interpretable analysis, culminating in a well-organized, professional report.</p>
-<p>The R notebook templates listed above are designed to be “user-friendly” in that they do not include lengthy chunks of complicated code. Rather, they call other R scripts that contain multiple functions and work in the background.</p>
+<p>For implementing much of the predictive analytics workflow, we make use of the <code>tidymodels</code> package.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="images/tidymodels_screenshot.png" class="img-fluid figure-img" style="width:8in"></p>
+</figure>
+</div>
+<p>This all happens in the background. That is, you will not see calls to <code>tidymodels</code> because that is happening in the scripts within in the <code>R</code> folder. If you are curious to learn more about <code>tidymodels</code> and how to use related functions directly, there are many tutorials available online.</p>
+<p>I will note that <code>tidymodels</code> often takes a different approach to predictive analytics than what I am teaching in this course. For example, while I am recommending doing data preparation as a separate, initial step, <code>tidymodels</code> has built in <code>recipes</code> for doing some data preparation as part of model training procedures. We ignore those features that do not apply to our framework. We instead harness the strengths of <code>tidymodels</code> and make it work for our framework. A key strength of <code>tidymodels</code> is that it standardizes output across a wide range of machine learning packages.</p>
 
 
 
@@ -837,13 +827,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./data2_changesovertime.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Changes in data over time</span>
+      <a href="./toolset_firstlook.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Orientation to server with code templates</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./toolset_datamodel.html" class="pagination-link">
-        <span class="nav-page-text">Data model for the code templates</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./methods_overview.html" class="pagination-link">
+        <span class="nav-page-text">Overview</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

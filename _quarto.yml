@@ -62,8 +62,10 @@ website:
           # - "How to access toolset"
           # - "How to specify scope in toolset"
           # - "How to specify learners in toolset"
-          # - toolset_overview.qmd
-          # - toolset_datamodel.qmd
+          - toolset_overview.qmd
+          - toolset_datamodel.qmd
+          - toolset_firstlook.qmd
+          - toolset_tidymodels.qmd
 
       - section: "Modeling approaches"
         contents:
