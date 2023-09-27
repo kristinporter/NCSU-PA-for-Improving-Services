@@ -5,7 +5,7 @@ editor:
     wrap: sentence
 ---
 
-With multiple linear regression, we predict a continuous outcome based on multiple predictors.
+For some starting context: With multiple **linear** regression, we predict a **continuous** outcome based on multiple predictors.
 The model for multiple linear regression looks like this:
 
 $Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_kX_k + \epsilon$
