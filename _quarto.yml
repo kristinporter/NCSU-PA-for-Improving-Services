@@ -14,7 +14,7 @@ website:
     foreground: dark
     style: "docked"
     search: true
-    collapse-level: 1
+#    collapse-level: 1
     pinned: false
     contents:
       - index.qmd
@@ -56,7 +56,7 @@ website:
           - data2_EDA.qmd
           - data2_extract.qmd
           - data2_changesovertime.qmd
-      - section: "Introduction to the PA Toolset"
+      - section: "Introduction to the PA Templates"
         contents:
           - toolset_overview.qmd
           - toolset_datamodel.qmd
