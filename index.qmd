@@ -6,4 +6,8 @@ author:
     email: kristin.porter@keporterconsulting.com
 ---
 
+<meta http-equiv='cache-control' content='no-cache'> 
+<meta http-equiv='expires' content='0'> 
+<meta http-equiv='pragma' content='no-cache'>
+
 ![](images/shutterstock_improvement.png){fig-align="left" width="9in"}

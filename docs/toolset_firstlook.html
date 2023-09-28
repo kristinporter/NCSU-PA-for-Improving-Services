@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Kristin E. Porter, PhD">
-<meta name="dcterms.date" content="2023-08-21">
 
-<title>Predictive Analytics (PA) for Improving Services - Predictive Analytics for Improving Services</title>
+<title>Predictive Analytics (PA) for Improving Services - Orientation to server with code templates</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./materials.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -75,7 +72,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Predictive Analytics for Improving Services</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Predictive Analytics (PA) for Improving Services
+      </li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -102,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Predictive Analytics for Improving Services</span></a>
   </div>
 </li>
@@ -357,26 +356,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Predictive Analytics for Improving Services</h1>
+<h1 class="title">Orientation to server with code templates</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Kristin E. Porter, PhD </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">August 21, 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -384,12 +371,41 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">
-<meta http-equiv="pragma" content="no-cache">
+<p>When you first log in to https://patools.sprouthub.io, you should see R Studio. It should look like this:</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><img src="images/shutterstock_improvement.png" class="img-fluid figure-img" style="width:9in"></p>
+<p><img src="images/sprouthub_screenshot_first.png" class="img-fluid figure-img" style="width:6in"></p>
+</figure>
+</div>
+<p>Notice the lower right quadrant in the above screenshot is showing “files.” Zooming in, we see:</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="images/sprouthub_files_screenshot_1.png" class="img-fluid figure-img" style="width:6in"></p>
+</figure>
+</div>
+<p>Click on the <code>CDIPAtools</code> folder. Then you should see the following:</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="images/sprouthub_files_screenshot_2.png" class="img-fluid figure-img" style="width:6in"></p>
+</figure>
+</div>
+<p>Click on CDIPATools.Rproj. This will open the project. It will ask you if you want to save your workspace. You never need to save your workspace. Click “no.” You should still have the same view of the files. Next, open the <code>Notebooks</code> folder.</p>
+<p>This is where you will find all of the notebook templates. For each of the three notebooks, you will see the .Rmd and .pdf versions (the markdown script and “knit” or compiled document.) You will also see an .Rmd file called “Directions_for_Setup_All_Notebooks.Rmd,” which provides information about the “setup” sections across all the other analytic notebooks. You have the option to reference this if you are curious.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="images/sprouthub_files_notebooks.png" class="img-fluid figure-img" style="width:6in"></p>
+</figure>
+</div>
+<p>We will come back to this folder, but first, let’s look at a couple of other folders. If you go pack to the main <code>CDIPAtools</code> folder, you can open the <code>data-r-objects</code> folder. You will see two subfolders: <code>inputs</code> and <code>outputs</code>. You will upload your data files to the <code>inputs</code> folder. That is, it is to this folders that you will upload your training data, testing data, training metadata and testing metadata. Remember, this is your own workspace, so you will not see other students’ data files here. However, you will see files that I have created for illustration. You can just leave these alone and add your own files. The notebooks will write files to the <code>output</code> folder, but you probably will never need to access them. The notebooks will access and summarize the output files for you.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="images/sprouthub_files_datarobjects.png" class="img-fluid figure-img" style="width:6in"></p>
+</figure>
+</div>
+<p>Finally, if you again go back to the <code>CDIPAtools</code> folder, you can then click on the <code>R</code> folder. You do not need to access any of the scripts in this folder. However, if you are curious and would like to look “under the hood,” you can explore these scripts. The R notebook templates are calling these scripts, which hold functions for implementing the predictive analytics workflow. You will see the notebooks loading these scripts in the setup chunks.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="images/sprouthub_files_R.png" class="img-fluid figure-img" style="width:6in"></p>
 </figure>
 </div>
 
@@ -629,15 +645,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./materials.html" class="pagination-link">
-        <span class="nav-page-text">Overview</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 
