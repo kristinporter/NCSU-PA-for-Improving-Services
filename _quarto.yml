@@ -12,7 +12,7 @@ website:
   sidebar:
     background: light
     foreground: dark
-    style: "floating"
+    style: "docked"
 #    search: true
 #    collapse-level: 1
 #    pinned: false
