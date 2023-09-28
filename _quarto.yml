@@ -58,15 +58,10 @@ website:
           - data2_changesovertime.qmd
       - section: "Introduction to the PA Toolset"
         contents:
-          # - "Overview"
-          # - "How to access toolset"
-          # - "How to specify scope in toolset"
-          # - "How to specify learners in toolset"
           - toolset_overview.qmd
           - toolset_datamodel.qmd
           - toolset_firstlook.qmd
           - toolset_tidymodels.qmd
-
       - section: "Modeling approaches"
         contents:
           - methods_overview.qmd
