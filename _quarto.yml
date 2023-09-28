@@ -13,9 +13,9 @@ website:
     background: light
     foreground: dark
     style: "docked"
-#    search: true
-#    collapse-level: 1
-#    pinned: false
+    search: true
+    collapse-level: 1
+    pinned: false
     contents:
       - index.qmd
       - materials.qmd
