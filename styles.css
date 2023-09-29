@@ -1,1 +1,8 @@
 /* css styles */
+
+pre.custom-code {
+    background-color: lightgray;
+    color: red;  /* Change 'red' to the desired text color */
+    padding: 10px;
+    border-radius: 5px;
+}
