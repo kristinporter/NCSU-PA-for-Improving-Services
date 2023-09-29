@@ -1,6 +1,9 @@
 project:
   type: website
   output-dir: docs
+  render:
+    - "*.qmd"
+    - "!internal/"
 
 bibliography: references.bib
 csl: apa-6th-edition.csl
@@ -75,6 +78,7 @@ website:
           - methods_guidance.qmd
       - section: "Evaluating and comparing predictive performance"
         contents:
+          - perform_output.qmd
           - "Prediction output from learner training"
           - "Metrics for evaluating predictive performance"
           - "Visualiziations of predictive performance"

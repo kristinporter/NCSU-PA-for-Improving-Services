@@ -803,5 +803,12 @@
     "title": "Harnessing the tidymodels package",
     "section": "",
     "text": "For implementing much of the predictive analytics workflow, we make use of the tidymodels package.\n\n\n\n\n\nThis all happens in the background. That is, you will not see calls to tidymodels because that is happening in the scripts within in the R folder. If you are curious to learn more about tidymodels and how to use related functions directly, there are many tutorials available online.\nI will note that tidymodels often takes a different approach to predictive analytics than what I am teaching in this course. For example, while I am recommending doing data preparation as a separate, initial step, tidymodels has built in recipes for doing some data preparation as part of model training procedures. We ignore those features that do not apply to our framework. We instead harness the strengths of tidymodels and make it work for our framework. A key strength of tidymodels is that it standardizes output across a wide range of machine learning packages.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "perform_output.html",
+    "href": "perform_output.html",
+    "title": "Output from learner training",
+    "section": "",
+    "text": "```r\n\n\n# running model results all learners in learnerSpec (all specified in 01_Learner_Specification.Rmd)\nlearnersResults &lt;- train_learners(\n  learnerSpec = learnerSpec,\n  recipes = recipes,\n  mainRecipes = mainRecipes\n)\n\n # this returns cross-validated means and SE for AUC-PR and AUC-ROC\nmodelResults &lt;- learnersResults$modelResults\n # this is predicted probabilities, from when obs are in validation set\npredProbs    &lt;- learnersResults$predProbs \n\n\n\n```\n\n\n\n\n      student_id              learnerName  .pred_yes\n1              1           glm_predSet_bm 0.19666440\n8000           1           glm_predSet_ms 0.09658994\n15999          1         lasso_predSet_ms 0.08760455\n23998          1 random_forest_predSet_ms 0.17969438\n\n\n\n\n\n Back to top"
   }
 ]

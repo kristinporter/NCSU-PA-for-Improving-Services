@@ -2,3 +2,44 @@
 title: "Output from learner training"
 ---
 
+```{r echo=FALSE}
+# function to extract code chunks from notebooks
+extract_chunk <- function(file, label) {
+  lines <- readLines(file)
+  inside_chunk <- FALSE
+  chunk_lines <- c()
+
+  for (line in lines) {
+    if (grepl(sprintf("```\\{r %s", label), line)) {
+      inside_chunk <- TRUE
+      next
+    }
+
+    if (inside_chunk && grepl("```", line)) {
+      break
+    }
+
+    if (inside_chunk) {
+      chunk_lines <- c(chunk_lines, line)
+    }
+  }
+
+  # You can also print the lines to the console instead of writing to a file
+  writeLines(chunk_lines, sprintf("%s.R", label))
+}
+```
+
+```{r print_trainLearners, echo=FALSE}
+extract_chunk("datasets/02_Learner_Training_and_Validation.Rmd", "trainLearners")
+code_lines <- readLines("trainLearners.R")
+# Print the lines as a formatted code block
+cat("```r\n")
+cat(code_lines, sep = "\n")
+cat("\n```\n")
+```
+
+```{r echo=FALSE}
+allLearnersResults <- readRDS("~/Library/CloudStorage/OneDrive-K.E.PorterConsultingLLC/Git/NCSU-PA-for-Improving-Services/datasets/allLearnersResults.rds")
+predProbs <- allLearnersResults$predProbs 
+predProbs[which(predProbs$student_id==1),c("student_id","learnerName",".pred_yes")]
+```
