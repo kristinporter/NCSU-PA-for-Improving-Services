@@ -60,26 +60,33 @@ predProbs <- allLearnersResults$predProbs
 predProbs[which(predProbs$student_id==1),c("student_id","learnerName",".pred_yes","dropout")]
 ```
 
-The numbers to the left (1, 8000, 15999, 23998) are the row numbers in the data.frame `predProbs`. We can see that we conducted training for four different learners. These four different learners were combinations of two predictor sets ("bm" and "ms") and three modeling approaches ("glm", "lasso" and "random_forest"). The column `.pred_yes` tells us the probability that the outcome is equal to `1`. While not displayed, `predProbs` also contains `pred_no`, the probability that the outcome is equal to `0`. Finally, we also see the actual, observed outcome (`dropout`) for this student.
+The numbers to the left (1, 8000, 15999, 23998) are the row numbers in the data.frame `predProbs` that correspond to the student with `student_id` = '1'. By examining the entries for `learnerName`, we can see that we conducted training for four different learners. These four different learners were combinations of two predictor sets ("bm" and "ms") and three modeling approaches ("glm", "lasso" and "random_forest"). The column `.pred_yes` tells us the probability that the outcome is equal to '1'. While not displayed, `predProbs` also contains `pred_no`, the probability that the outcome is equal to '0'. Finally, we also see the actual, observed outcome (`dropout`) for this student.
 
-The predicted probabilities were estimated through the $v$-fold cross-validation procedure. Recall from the earlier section on cross-validation, that each observation takes a turn in a validation fold. After a learner was trained on the $v-1$ other folds, the resulting model was applied to the validation fold, producing a predicted probability for each observation in the validation fold.
+The predicted probabilities listed for `.pred_yes` were estimated through the $v$-fold cross-validation procedure. Recall from the earlier section on cross-validation, that each observation takes a turn in a validation fold. After a learner was trained on the $v-1$ other folds, the resulting model was applied to the validation fold, producing a predicted probability for each observation in the validation fold.
 
 ## Summarizing the predicted probabilities
 
-```{r plotpredProbs, warning=FALSE, message=FALSE}
+A helpful first step for understanding the validation results is to examine the distributions of the predicted probabilities. The following set of plots shows the distribution for each learner. The code chunk named "plotpredProbs" in `02_Learner_Training_and_Validation` will create these plots for you. 
+
+As expected since most students do not drop out, the predicted probabilites tend to cluster around low values. Also, note that some learners produce greater variability than others. 
+
+```{r plotpredProbs, warning=FALSE, message=FALSE, echo=FALSE}
 source("datasets/plots.R")
 source("datasets/learner_training_helpers.R")
 source("datasets/performance_metrics.R")
-
+library(tidyverse)
+library(ggpubr)
+modelResults <- allLearnersResults$learnersMetrics
+predProbs    <- allLearnersResults$predProbs 
 #learnersMetrics <- convert_metrics_wide(modelResults)
 #learnersResults$learnersMetrics <- learnersMetrics
 probsGraphs <- NULL
-learnerNames <- unique(learnersMetrics$learnerName)
+learnerNames <- unique(modelResults$learnerName)
 for(i in 1:length(learnerNames))
 {
   probsGraphs[[i]] <- 
     pred_prob_graph(
-      predProbs = learnersResults$predProbs,
+      predProbs = predProbs,
       learnerName = learnerNames[i]
     )
 }

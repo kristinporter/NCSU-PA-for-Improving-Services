@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predictive Analytics (PA) for Improving Services - Learner training &amp; validation with code templates</title>
+<title>Predictive Analytics (PA) for Improving Services - The confusion matrix</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +30,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./OptionalPAvsInfStat.html" rel="next">
-<link href="./methods_guidance.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -110,7 +74,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./perform_output.html">Evaluating and comparing predictive performance</a></li><li class="breadcrumb-item"><a href="./perform_output.html">Learner training &amp; validation with code templates</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Predictive Analytics (PA) for Improving Services
+      </li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -466,16 +432,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
  <span class="menu-text">Evaluating and comparing predictive performance</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./perform_output.html" class="sidebar-item-text sidebar-link active">
+  <a href="./perform_output.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Learner training &amp; validation with code templates</span></a>
   </div>
 </li>
@@ -607,7 +573,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Learner training &amp; validation with code templates</h1>
+<h1 class="title">The confusion matrix</h1>
 </div>
 
 
@@ -622,47 +588,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="learner_training_and_validation" class="level2">
-<h2 class="anchored" data-anchor-id="learner_training_and_validation">02_Learner_Training_and_Validation</h2>
-<p>All learners are trained in the following code chunk in <code>02_Learner_Training_and_Validation.Rmd</code>. The user does not need to enter or edit any code within the chunk. Specifications that were entered in <code>01_Learner_Specification.Rmd</code> are loaded in the chunk that precedes this one and passed into the <code>train_learners()</code> function.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># running model results all learners in learnerSpec (all specified in 01_Learner_Specification.Rmd)</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>learnersResults <span class="ot">&lt;-</span> <span class="fu">train_learners</span>(</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">learnerSpec =</span> learnerSpec,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">recipes =</span> recipes,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">mainRecipes =</span> mainRecipes</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a> <span class="co"># this returns cross-validated means and SE for AUC-PR and AUC-ROC</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>modelResults <span class="ot">&lt;-</span> learnersResults<span class="sc">$</span>modelResults</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a> <span class="co"># this is predicted probabilities, from when obs are in validation set</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>predProbs    <span class="ot">&lt;-</span> learnersResults<span class="sc">$</span>predProbs </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>As commented in the above chunk, the code returns information about couple of performance metrics abbreviated as AUC-PR and AUC-ROC. AUC-PR is the area under the curve (AUC) for a precision recall (PR) curve. AUC-ROC is the area under the curve (AUC) for a receiver operating characteristic (ROC) curve. We will return to explanations of these in a bit.</p>
-<p>First, let’s focus on the other information that is returned in the above code chunk - the predicted probabilities. For each observation (unit or row) in our data and for each learner, the code returns a predicted probability of the outcome. The predicted probability was estimated by the model corresponding to the learner.</p>
-<p>For example, imagine we are predicting whether a student will drop out of high school. Then, for a single student, we get the following information.</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>      student_id              learnerName  .pred_yes dropout
-1              1           glm_predSet_bm 0.19666440       0
-8000           1           glm_predSet_ms 0.09658994       0
-15999          1         lasso_predSet_ms 0.08760455       0
-23998          1 random_forest_predSet_ms 0.17969438       0</code></pre>
+<p>Many of the most helpful and intuitive metrics of learner/model performance depend on converting predicted probabilities into predicted binary classifications (or ‘0’ or ‘1’ predictions of the outcome). To do this, we first need to specify a <strong>threshold</strong> so that predicted probabilities above or beyond the threshold indicate that the outcome equals ‘1’ (or ‘yes’)? For example, we may specify a threshold of 0.5. Then, turning back to our example on the previous page, any student with a predicted probability greater than or equal to 0.5 is considered “predicted to drop-out,” while any student with a predicted probability less than 0.5 is considered “not predicted to drop-out.”</p>
+<p>If we specify a threshold, then we can convert each predicted probability into a predicted classification. We can then compare that predicted classification to the actual, observed classification (e.g.&nbsp;whether or not a student actually dropped out.) We can summarize the comparisons in 2x2 matrix called a <strong>confusion matrix:</strong></p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="images/confusion_matrix_define.png" class="img-fluid figure-img" style="width:8in"></p>
+</figure>
 </div>
-</div>
-<p>The numbers to the left (1, 8000, 15999, 23998) are the row numbers in the data.frame <code>predProbs</code> that correspond to the student with <code>student_id</code> = ‘1’. By examining the entries for <code>learnerName</code>, we can see that we conducted training for four different learners. These four different learners were combinations of two predictor sets (“bm” and “ms”) and three modeling approaches (“glm”, “lasso” and “random_forest”). The column <code>.pred_yes</code> tells us the probability that the outcome is equal to ‘1’. While not displayed, <code>predProbs</code> also contains <code>pred_no</code>, the probability that the outcome is equal to ‘0’. Finally, we also see the actual, observed outcome (<code>dropout</code>) for this student.</p>
-<p>The predicted probabilities listed for <code>.pred_yes</code> were estimated through the <span class="math inline">\(v\)</span>-fold cross-validation procedure. Recall from the earlier section on cross-validation, that each observation takes a turn in a validation fold. After a learner was trained on the <span class="math inline">\(v-1\)</span> other folds, the resulting model was applied to the validation fold, producing a predicted probability for each observation in the validation fold.</p>
-</section>
-<section id="summarizing-the-predicted-probabilities" class="level2">
-<h2 class="anchored" data-anchor-id="summarizing-the-predicted-probabilities">Summarizing the predicted probabilities</h2>
-<p>A helpful first step for understanding the validation results is to examine the distributions of the predicted probabilities. The following set of plots shows the distribution for each learner. The code chunk named “plotpredProbs” in <code>02_Learner_Training_and_Validation</code> will create these plots for you.</p>
-<p>As expected since most students do not drop out, the predicted probabilites tend to cluster around low values. Also, note that some learners produce greater variability than others.</p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="perform_output_files/figure-html/plotpredProbs-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
+<p>Within a confusion matrix, observations are categorized into one of the following cells:</p>
+<ul>
+<li><p><strong>True positives (TP):</strong> the predicted classification (or “class”) is ‘1’ (‘yes’) and the true classification is ‘1’.</p></li>
+<li><p><strong>False positives (FP):</strong> the predicted classification (or “class”) is ‘1’ (‘yes’) but the true classification is ‘0’.</p></li>
+<li><p><strong>False negatives (FN):</strong> the predicted classification (or “class”) is ‘0’ (‘no’) but the true classification is ‘1’.</p></li>
+<li><p><strong>True negatives (TN):</strong> the predicted classification (or “class”) is ‘0’ (‘no’) and the true classification is ‘0’.</p></li>
+</ul>
+<p>For totals, we have:</p>
+<ul>
+<li><p><strong>Observed positives (OP):</strong> the number of observed (true) positives (the number observations for which the outcome is observed to be ‘1’.</p></li>
+<li><p><strong>Observed negatives (ON):</strong> the number of observed (true) negatives (the number observations for which the outcome is observed to be ‘0’.</p></li>
+<li><p><strong>Predicted positives (PP):</strong> the number of predicted positives (the number observations for which the outcome is predicted to be ‘1’.</p></li>
+<li><p><strong>Predicted negatives (PN):</strong> the number of predicted negatives (the number observations for which the outcome is predicted to be ‘0’.</p></li>
+</ul>
+<p>Finally, we can also summarize these categories into many different rates:</p>
+<p><em>Rates based on total true, observed number (OP or ON):</em></p>
+<ul>
+<li><strong>True positive rate (TPR):</strong> the proportion of observed positives that were correctly predicted as positive. The TPR is also known as <strong>sensitivity</strong> or <strong>recall.</strong></li>
+</ul>
+<span class="math display">\[\begin{equation}
+TPR = \frac{TP}{TP + FN} = \frac{TP}{OP}
+\end{equation}\]</span>
+<ul>
+<li><strong>True negative rate (TNR):</strong> the proportion of observed negatives that were correctly predicted as negative. The TNR is also known as <strong>specificity</strong>.</li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+TNR = \frac{TN}{TN + FP} = \frac{TN}{ON}
+\end{equation}\]</span></p>
+<ul>
+<li><strong>False positive rate (FPR):</strong> the proportion of observed negatives that were incorrectly predicted as positive. Note that specificity is equal to 1-FPR.</li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+FPR = \frac{FP}{TN + FP} = \frac{FP}{ON}
+\end{equation}\]</span></p>
+<ul>
+<li><strong>False negative rate (FNR):</strong> the proportion of observed positives that were incorrectly predicted as negative.</li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+FNR = \frac{FN}{TP + FN} = \frac{FN}{OP}
+\end{equation}\]</span></p>
+<p><em>Rates based on total predicted number (PP or PN):</em></p>
+<ul>
+<li><strong>Positive predicted value:</strong>: the proportion of predicted positives that were correctly predicted as positive. The PPV is also known as <strong>precision</strong>.</li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+PPV = \frac{TP}{TP + FP} = \frac{TP}{PP}
+\end{equation}\]</span></p>
+<ul>
+<li><strong>Negative predicted value:</strong>: the proportion of predicted negatives that were correctly predicted as positive.</li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+NPV = \frac{TN}{TN + FN} = \frac{TN}{PN}
+\end{equation}\]</span></p>
+<ul>
+<li><strong>False discovery rate:</strong> is proportion of predicted positives that are false positives. The FDR is equal to 1-precision.</li>
+</ul>
+<p><span class="math display">\[\begin{equation}
+FDR = \frac{FP}{FP + TP} = \frac{FP}{PP}
+\end{equation}\]</span></p>
 
 
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -898,18 +891,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./methods_guidance.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Guidance for using ML</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./OptionalPAvsInfStat.html" class="pagination-link">
-        <span class="nav-page-text">Predictive Analytics vs.&nbsp;Inferential Statistics</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 

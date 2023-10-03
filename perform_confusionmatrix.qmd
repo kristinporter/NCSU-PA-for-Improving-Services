@@ -4,3 +4,77 @@ html:
   css: styles.css
 ---
 
+Many of the most helpful and intuitive metrics of learner/model performance depend on converting predicted probabilities into predicted binary classifications (or '0' or '1' predictions of the outcome). To do this, we first need to specify a **threshold** so that predicted probabilities above or beyond the threshold indicate that the outcome equals '1' (or 'yes')? For example, we may specify a threshold of 0.5. Then, turning back to our example on the previous page, any student with a predicted probability greater than or equal to 0.5 is considered "predicted to drop-out," while any student with a predicted probability less than 0.5 is considered "not predicted to drop-out."
+
+If we specify a threshold, then we can convert each predicted probability into a predicted classification. We can then compare that predicted classification to the actual, observed classification (e.g. whether or not a student actually dropped out.) We can summarize the comparisons in 2x2 matrix called a **confusion matrix:**
+
+![](images/confusion_matrix_define.png){fig-align="left" width="8in"}
+
+Within a confusion matrix, observations are categorized into one of the following cells:
+
+-   **True positives (TP):** the predicted classification (or "class") is '1' ('yes') and the true classification is '1'.
+
+-   **False positives (FP):** the predicted classification (or "class") is '1' ('yes') but the true classification is '0'.
+
+-   **False negatives (FN):** the predicted classification (or "class") is '0' ('no') but the true classification is '1'.
+
+-   **True negatives (TN):** the predicted classification (or "class") is '0' ('no') and the true classification is '0'.
+
+For totals, we have:
+
+-   **Observed positives (OP):** the number of observed (true) positives (the number observations for which the outcome is observed to be '1'.
+
+-   **Observed negatives (ON):** the number of observed (true) negatives (the number observations for which the outcome is observed to be '0'.
+
+-   **Predicted positives (PP):** the number of predicted positives (the number observations for which the outcome is predicted to be '1'.
+
+-   **Predicted negatives (PN):** the number of predicted negatives (the number observations for which the outcome is predicted to be '0'.
+
+Finally, we can also summarize these categories into many different rates:
+
+*Rates based on total true, observed number (OP or ON):*
+
+-   **True positive rate (TPR):** the proportion of observed positives that were correctly predicted as positive. The TPR is also known as **sensitivity** or **recall.**
+
+```{=tex}
+\begin{equation}
+TPR = \frac{TP}{TP + FN} = \frac{TP}{OP}
+\end{equation}
+```
+-   **True negative rate (TNR):** the proportion of observed negatives that were correctly predicted as negative. The TNR is also known as **specificity**.
+
+\begin{equation}
+TNR = \frac{TN}{TN + FP} = \frac{TN}{ON}
+\end{equation}
+
+-   **False positive rate (FPR):** the proportion of observed negatives that were incorrectly predicted as positive. Note that specificity is equal to 1-FPR.
+
+\begin{equation}
+FPR = \frac{FP}{TN + FP} = \frac{FP}{ON}
+\end{equation}
+
+-   **False negative rate (FNR):** the proportion of observed positives that were incorrectly predicted as negative.
+
+\begin{equation}
+FNR = \frac{FN}{TP + FN} = \frac{FN}{OP}
+\end{equation}
+
+*Rates based on total predicted number (PP or PN):*
+
+-   **Positive predicted value:**: the proportion of predicted positives that were correctly predicted as positive. The PPV is also known as **precision**.
+
+\begin{equation}
+PPV = \frac{TP}{TP + FP} = \frac{TP}{PP}
+\end{equation}
+
+-   **Negative predicted value:**: the proportion of predicted negatives that were correctly predicted as positive.
+
+\begin{equation}
+NPV = \frac{TN}{TN + FN} = \frac{TN}{PN}
+\end{equation}
+
+-   **False discovery rate:** is proportion of predicted positives that are false positives. The FDR is equal to 1-precision.
+
+\begin{equation}
+FDR = \frac{FP}{FP + TP} = \frac{FP}{PP}
+\end{equation}
