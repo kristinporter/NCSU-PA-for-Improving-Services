@@ -1,0 +1,85 @@
+---
+title: "Prioritizing metrics that align with goals"
+html:
+  css: styles.css
+---
+
+Which metrics should you prioritize? This depends on the goal for how predictions will be used to guide decision-making.
+
+### Goal 1: Maximizing detection of positive cases
+
+-   **Metric:** True positive rate (sensitivity/recall)
+-   **Advice:** Focus on this when it's critical to identify as many positive cases as possible, even at the risk of increasing false positives.
+-   **Example:**
+    -   **Scenario:** Cancer detection where missing a positive case can be fatal.
+    -   **Model Comparison:** Model A has a recall of 95%, while Model B has a recall of 89%. If maximizing recall is the sole focus, Model A is preferable.
+-   **Limitation/trade-off:** Prioritizing a model with a high true positive rate (sensitivity/recall) could lead to more false positives, meaning patients without cancer could be mistakenly diagnosed, leading to unnecessary stress, tests, and treatments.
+
+
+### Goal 2: Minimizing false positives
+
+-   **Metric:** True negative rate (specificity) or false positive rate (1 - specificity)
+-   **Advice:** Important when the cost or risk of false positives is high and it is crucial to accurately identify negative cases.
+-   **Example:**
+    -   **Scenario:** Loan approval where false positives mean approving loans for individuals likely to default.
+    -   **Model Comparison:** Model A has a specificity of 90%, while Model B has a specificity of 95%. In this case, Model B might be preferred to minimize the risk of loan defaults.
+    
+-   **Limitation/trade-off:** Increasing specificity could lead to more false negatives, where creditworthy applicants are denied loans, leading to loss of business opportunities. The company might become overly conservative in granting loans, impacting its competitiveness and profit margins.
+
+### Goal 3: Balanced performance for both classes
+
+-   **Metric:** F1-score. The F1-score is the harmonic mean of precision and recall:
+
+```{=tex}
+\begin{equation}
+F_1 = 2\frac{precision*recall}{precision + recall} = 2\frac{PPV * TPR}{PPV + TPR}
+\end{equation}
+```
+Imagine we have a very rare outcomes we are trying to predict (e.g. a rare form of cancer that occurs in less than 1% of the population). Note that if we predict '0' for the whole sample, we have precision = 0, and our recall for the positive class is also 0. Accuracy in this case would be over 99% though! The F1 score = 0 in this case, so we know our model us useless.
+
+-   **Advice:** Focus on the F1 score when you need a balance between identifying positive cases and minimizing false positives, especially for imbalanced datasets.
+-   **Example:**
+    -   **Scenario:** Spam email detection where both missing spam and misclassifying non-spam are problematic.
+    -   **Model Comparison:** Model A has an F1-score of 0.85, while Model B has an F1-score of 0.80. Model A may be preferred for a balanced performance.
+    
+-   **Limitation/trade-off:** Even with a balanced F1-score, there might still be a notable number of false positives and false negatives. Some spam might get through, and some legitimate emails might be marked as spam.
+It’s a balance, but not a complete elimination of errors.
+
+### Goal 4: Overall accuracy
+
+-   **Metric:** Accuracy
+-   **Advice:** Consider this when you need a general measure of performance and *the classes are fairly balanced.*
+-   **Example:**
+    -   **Scenario:** Image classification with multiple balanced classes.
+    -   **Model Comparison:** Model A has an accuracy of 92%, while Model B has an accuracy of 89%. Model A might be preferred for higher overall accuracy.
+-   **Limitation/trade-off:** Overall accuracy does not provide insights into class-specific performance. A model might still have poor performance on individual classes but show high overall accuracy, especially in multi-class scenarios. The metric can be also be highly misleading for imbalanced datasets.
+
+### Goal 5: Model's ability to rank predictions
+
+-   **Metric:** AUC-ROC
+-   **Advice:** Valuable in scenarios where it's not just about classifying instances but also ranking them according to the predicted confidence.
+-   **Example:**
+    -   **Scenario:** Predicting customer churn where ranking customers by churn risk is essential for targeted interventions.
+    -   **Model Comparison:** Model A has an AUC-ROC of 0.75, while Model B has an AUC-ROC of 0.82. Model B might be preferred for its better ranking ability.
+-   **Limitation/trade-off:** Two models with the same AUC-ROC can have different precision and recall values.
+It does not take into account the distribution shift and class imbalance.
+
+### Goal 6: Precision in top-K predictions
+
+-   **Metric:** Precision at $K$
+-   **Advice:** Focus on this when the top few (precisely defined by $K$) predictions are more critical than the overall precision, commonly in recommendation systems.
+-   **Example:**
+    -   **Scenario:** E-commerce product recommendation where the top 10 product recommendations should be as relevant as possible.
+    -   **Model Comparison:** Model A has a Precision\@10 of 0.8, while Model B has a Precision\@10 of 0.9. Model B would likely provide more relevant top-10 recommendations.
+-   **Limitation/trade-off:** Focusing on top-K precision could lead to models that are optimized for only a small subset of data, neglecting overall model performance. It might result in a narrower, less diverse set of recommendations, potentially impacting user experience.
+
+### Goal 7: You are not sure yet
+
+-   **Metric:** AUC-ROC
+-   **Advice:** Focus on this when you don't yet know what thresholds will be applied for decision-making. The AUC-ROC captures the trade-offs between sensitivity (recall) and 1-specificity across all possible thresholds.
+-   **Example:**
+    -   **Scenario:** High school early warning system aiming to find which students are most at-risk of not graduating on time.
+    -   **Model Comparison:** Model A has an AUC-ROC of 0.75, while Model B has an AUC-ROC of 0.82. Model B might be preferred for its better performance across all possible thresholds.
+-   **Limitation/trade-off:** Two models with the same AUC-ROC can have different precision and recall values.
+It does not take into account the distribution shift and class imbalance. It will be important to provide validation metrics based on a chosen threshold when decided. 
+

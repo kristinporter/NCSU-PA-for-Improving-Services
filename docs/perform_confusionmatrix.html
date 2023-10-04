@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predictive Analytics (PA) for Improving Services - The confusion matrix</title>
+<title>Predictive Analytics (PA) for Improving Services - The confusion matrix and threshold-variant metrics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./perform_thresholdinvariant.html" rel="next">
+<link href="./perform_output.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -74,9 +76,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Predictive Analytics (PA) for Improving Services
-      </li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./perform_output.html">Evaluating and comparing predictive performance</a></li><li class="breadcrumb-item"><a href="./perform_confusionmatrix.html">The confusion matrix and threshold-variant metrics</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -432,13 +432,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
  <span class="menu-text">Evaluating and comparing predictive performance</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./perform_output.html" class="sidebar-item-text sidebar-link">
@@ -446,17 +446,29 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">Prediction output from learner training</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./perform_confusionmatrix.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">The confusion matrix and threshold-variant metrics</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Metrics for evaluating predictive performance</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./perform_thresholdinvariant.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Threshold-invariant metrics</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Visualiziations of predictive performance</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./perform_goals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prioritizing metrics that align with goals</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Guidance for selecting metrics</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./perform_selectthreshold.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Selecting a threshold</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -573,7 +585,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The confusion matrix</h1>
+<h1 class="title">The confusion matrix and threshold-variant metrics</h1>
 </div>
 
 
@@ -588,8 +600,8 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Many of the most helpful and intuitive metrics of learner/model performance depend on converting predicted probabilities into predicted binary classifications (or ‘0’ or ‘1’ predictions of the outcome). To do this, we first need to specify a <strong>threshold</strong> so that predicted probabilities above or beyond the threshold indicate that the outcome equals ‘1’ (or ‘yes’)? For example, we may specify a threshold of 0.5. Then, turning back to our example on the previous page, any student with a predicted probability greater than or equal to 0.5 is considered “predicted to drop-out,” while any student with a predicted probability less than 0.5 is considered “not predicted to drop-out.”</p>
-<p>If we specify a threshold, then we can convert each predicted probability into a predicted classification. We can then compare that predicted classification to the actual, observed classification (e.g.&nbsp;whether or not a student actually dropped out.) We can summarize the comparisons in 2x2 matrix called a <strong>confusion matrix:</strong></p>
+<p>Many of the most helpful and intuitive metrics of learner/model performance depend on converting predicted probabilities into predicted binary classifications (or ‘0’ or ‘1’ predictions of the outcome). To do this, we first need to specify a <strong>threshold</strong> so that predicted probabilities above or beyond the threshold indicate that the outcome equals ‘1’ (or ‘yes’). For example, we may specify a threshold of 0.5. Then, turning back to our example on the previous page, any student with a predicted probability greater than or equal to 0.5 is considered “predicted to drop-out,” while any student with a predicted probability less than 0.5 is considered “not predicted to drop-out.”</p>
+<p>Later, we will discuss how to pick a threshold. For now, once we have picked a threshold, we can then compare each resulting predicted classification to the actual, observed classification (e.g.&nbsp;whether or not a student actually dropped out.) We can summarize the comparisons in 2x2 matrix called a <strong>confusion matrix:</strong></p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
 <p><img src="images/confusion_matrix_define.png" class="img-fluid figure-img" style="width:8in"></p>
@@ -609,8 +621,9 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Predicted positives (PP):</strong> the number of predicted positives (the number observations for which the outcome is predicted to be ‘1’.</p></li>
 <li><p><strong>Predicted negatives (PN):</strong> the number of predicted negatives (the number observations for which the outcome is predicted to be ‘0’.</p></li>
 </ul>
-<p>Finally, we can also summarize these categories into many different rates:</p>
-<p><em>Rates based on total true, observed number (OP or ON):</em></p>
+<p><br>
+Finally, we can also summarize these categories into many different rates. Below is a list of various rates that may be helpful. In a later page, we will discuss how to pick different metrics to align with goals for the project.</p>
+<p><u><em>Rates based on total true, observed number of one classification (OP or ON):</em></u></p>
 <ul>
 <li><strong>True positive rate (TPR):</strong> the proportion of observed positives that were correctly predicted as positive. The TPR is also known as <strong>sensitivity</strong> or <strong>recall.</strong></li>
 </ul>
@@ -620,40 +633,47 @@ TPR = \frac{TP}{TP + FN} = \frac{TP}{OP}
 <ul>
 <li><strong>True negative rate (TNR):</strong> the proportion of observed negatives that were correctly predicted as negative. The TNR is also known as <strong>specificity</strong>.</li>
 </ul>
-<p><span class="math display">\[\begin{equation}
+<span class="math display">\[\begin{equation}
 TNR = \frac{TN}{TN + FP} = \frac{TN}{ON}
-\end{equation}\]</span></p>
+\end{equation}\]</span>
 <ul>
 <li><strong>False positive rate (FPR):</strong> the proportion of observed negatives that were incorrectly predicted as positive. Note that specificity is equal to 1-FPR.</li>
 </ul>
-<p><span class="math display">\[\begin{equation}
+<span class="math display">\[\begin{equation}
 FPR = \frac{FP}{TN + FP} = \frac{FP}{ON}
-\end{equation}\]</span></p>
+\end{equation}\]</span>
 <ul>
 <li><strong>False negative rate (FNR):</strong> the proportion of observed positives that were incorrectly predicted as negative.</li>
 </ul>
-<p><span class="math display">\[\begin{equation}
+<span class="math display">\[\begin{equation}
 FNR = \frac{FN}{TP + FN} = \frac{FN}{OP}
-\end{equation}\]</span></p>
-<p><em>Rates based on total predicted number (PP or PN):</em></p>
+\end{equation}\]</span>
+<p><u><em>Rates based on total predicted number of one classification (PP or PN):</em></u></p>
 <ul>
 <li><strong>Positive predicted value:</strong>: the proportion of predicted positives that were correctly predicted as positive. The PPV is also known as <strong>precision</strong>.</li>
 </ul>
-<p><span class="math display">\[\begin{equation}
+<span class="math display">\[\begin{equation}
 PPV = \frac{TP}{TP + FP} = \frac{TP}{PP}
-\end{equation}\]</span></p>
+\end{equation}\]</span>
 <ul>
 <li><strong>Negative predicted value:</strong>: the proportion of predicted negatives that were correctly predicted as positive.</li>
 </ul>
-<p><span class="math display">\[\begin{equation}
+<span class="math display">\[\begin{equation}
 NPV = \frac{TN}{TN + FN} = \frac{TN}{PN}
-\end{equation}\]</span></p>
+\end{equation}\]</span>
 <ul>
 <li><strong>False discovery rate:</strong> is proportion of predicted positives that are false positives. The FDR is equal to 1-precision.</li>
 </ul>
-<p><span class="math display">\[\begin{equation}
+<span class="math display">\[\begin{equation}
 FDR = \frac{FP}{FP + TP} = \frac{FP}{PP}
-\end{equation}\]</span></p>
+\end{equation}\]</span>
+<p><u><em>Rate based on total sample size (total number of predictions):</em></u></p>
+<ul>
+<li><strong>Accuracy:</strong> is proportion of all observations (units) that were correctly classified.</li>
+</ul>
+<span class="math display">\[\begin{equation}
+FDR = \frac{TP + TN}{TP + FP + TP + TN}
+\end{equation}\]</span>
 
 
 
@@ -891,6 +911,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./perform_output.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Learner training &amp; validation with code templates</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./perform_thresholdinvariant.html" class="pagination-link">
+        <span class="nav-page-text">Threshold-invariant metrics</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

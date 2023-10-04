@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predictive Analytics (PA) for Improving Services - Data model for the code templates</title>
+<title>Predictive Analytics (PA) for Improving Services - Prioritizing metrics that align with goals</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./toolset_firstlook.html" rel="next">
-<link href="./toolset_overview.html" rel="prev">
+<link href="./perform_selectthreshold.html" rel="next">
+<link href="./perform_thresholdinvariant.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -62,6 +62,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -74,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./toolset_overview.html">Introduction to the PA Templates</a></li><li class="breadcrumb-item"><a href="./toolset_datamodel.html">Data model for the code templates</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./perform_output.html">Evaluating and comparing predictive performance</a></li><li class="breadcrumb-item"><a href="./perform_goals.html">Prioritizing metrics that align with goals</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -330,13 +332,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
  <span class="menu-text">Introduction to the PA Templates</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./toolset_overview.html" class="sidebar-item-text sidebar-link">
@@ -345,7 +347,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./toolset_datamodel.html" class="sidebar-item-text sidebar-link active">
+  <a href="./toolset_datamodel.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data model for the code templates</span></a>
   </div>
 </li>
@@ -430,13 +432,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
  <span class="menu-text">Evaluating and comparing predictive performance</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./perform_output.html" class="sidebar-item-text sidebar-link">
@@ -457,7 +459,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./perform_goals.html" class="sidebar-item-text sidebar-link">
+  <a href="./perform_goals.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Prioritizing metrics that align with goals</span></a>
   </div>
 </li>
@@ -583,7 +585,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data model for the code templates</h1>
+<h1 class="title">Prioritizing metrics that align with goals</h1>
 </div>
 
 
@@ -598,85 +600,103 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="data-model-for-training-validation-and-testing-data" class="level3">
-<h3 class="anchored" data-anchor-id="data-model-for-training-validation-and-testing-data">Data model for training, validation and testing data</h3>
-<p>The code templates rely on data sets that follow a particular “data model,” or format. The following provides some required specifications for the data model:</p>
-<ol type="1">
-<li><p>Each row corresponds to the unit of analysis. For example:</p>
+<p>Which metrics should you prioritize? This depends on the goal for how predictions will be used to guide decision-making.</p>
+<section id="goal-1-maximizing-detection-of-positive-cases" class="level3">
+<h3 class="anchored" data-anchor-id="goal-1-maximizing-detection-of-positive-cases">Goal 1: Maximizing detection of positive cases</h3>
 <ul>
-<li><p>If you are predicting students’ probabilities of graduating on time, each row corresponds to a unique student.</p></li>
-<li><p>If you are predicting a community’s probability of being impacted by devistating flooding, each row corresponds to a community.</p></li>
-<li><p>If you are predicting a customer’s probability of signing up for an offer, then each row corresponds to a customer by promotion (i.e.&nbsp;if the customer is marketed multiple promotions, then they may have a row for each promotion). In this case, the unit is not customer, it is “customer/promotion.”</p></li>
-</ul></li>
-<li><p>Each unit of analysis appears in only one row. There should be no repeated rows for the same unit. That is, if there are variables with repeated measures over time, the data should be arranged in “wide format” rather than “long format.” For example, imagine your unit of analysis is indiviual, but your data has multiple records for each in, each corresponding to a job - with variables for wage and length of time at the job. In this case, the data need to be rearranged so that each record has variables such as “wage1,” “wage2,” etc. and “lengthjob1,” “lengthjob2,” etc.</p></li>
-<li><p>The columns should contain:</p>
+<li><strong>Metric:</strong> True positive rate (sensitivity/recall)</li>
+<li><strong>Advice:</strong> Focus on this when it’s critical to identify as many positive cases as possible, even at the risk of increasing false positives.</li>
+<li><strong>Example:</strong>
 <ul>
-<li><p><em>A unique identification number or code (ID).</em> This can be of class<code>numeric</code> or <code>character</code>.</p></li>
-<li><p><em>Outcome(s) of interest.</em> This should be a binary variable with class <code>factor</code>. The variable should take values of 0 or 1. There should be no missing values.</p></li>
-<li><p><em>Pre-processed potential predictors.</em> These should be either <code>numeric</code> or <code>factor</code> variables. There should be no missing values. That is, this data set does not include raw variables with missingness but rather new versions of the variables that address missingness according to the guidance [here.](data2_missingpredictors.qmd)</p></li>
-<li><p><em>Variables to be used for assessing equity.</em> For example, you would include variables such as race, gender, or any other variables for which you want to compare model performance or estimate measures of bias. These measures should all be categorical and have class <code>factor</code>. Missingness of these variables should be handled with the same approach as used for predictors.</p></li>
-<li><p><em>Variables needed for stratification.</em> For example, if cross-validation will be stratified by a location variable, make sure that variable is included. It should be categorical and have class <code>factor</code>. Missingness should be handled with the same approach as used for predictors.</p></li>
+<li><strong>Scenario:</strong> Cancer detection where missing a positive case can be fatal.</li>
+<li><strong>Model Comparison:</strong> Model A has a recall of 95%, while Model B has a recall of 89%. If maximizing recall is the sole focus, Model A is preferable.</li>
 </ul></li>
-<li><p>Across the different data sets used for training, validating and testing, the columns should be identical.</p></li>
-</ol>
-<p>Here is a mini example of a training data file that aligns with the data model:</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>  ID SchoolA SchoolB GradOnTime Math.Proficient Math.AboveProficient
-1  1       1       0          1               0                    0
-2  2       1       0          0               1                    1
-3  3       0       1          1               0                    0
-4  4       0       1          0               0                    1
-5  5       0       1          1               1                    0
-  Math.Missing Chronic.Absent Race
-1            0              0    1
-2            0              0    2
-3            1              0    3
-4            0              0    2
-5            0              1    1</code></pre>
-</div>
-</div>
+<li><strong>Limitation/trade-off:</strong> Prioritizing a model with a high true positive rate (sensitivity/recall) could lead to more false positives, meaning patients without cancer could be mistakenly diagnosed, leading to unnecessary stress, tests, and treatments.</li>
+</ul>
 </section>
-<section id="data-model-for-meta-data" class="level3">
-<h3 class="anchored" data-anchor-id="data-model-for-meta-data">Data model for meta data</h3>
-<p>Having a meta data file is also recommended. A meta data file is a machine readable codebook, which summarizes your data. A meta data file for the training/validation data is valuable for (1) documenting and describing the data being fed into predictive analytics steps and (2) in some cases, selecting variables based on information in the meta data rather than having to type them all in. A meta data file for the testing data is valuable for comparing the variable distributions to those in the training data. Here are specifications for the meta data files:</p>
-<ol type="1">
-<li><p>Each row corresponds to variable.</p></li>
-<li><p>Columns may include but are not limited to the following:</p>
+<section id="goal-2-minimizing-false-positives" class="level3">
+<h3 class="anchored" data-anchor-id="goal-2-minimizing-false-positives">Goal 2: Minimizing false positives</h3>
 <ul>
-<li><p><em>Variable type</em>. E.g., “ID”, “outcome”, “predictor”, “protectedAttribute”, etc.</p></li>
-<li><p><em>Summary statistics</em>. E.g., min, max, mean, median, percentiles (e.g.&nbsp;5, 25, 75, 95)</p></li>
-<li><p><em>Data source</em>. If your data results from integrating multiple data sources, you might want to include a column that indicates the source of each variable.</p></li>
-<li><p><em>Time point</em>. If variables in your data are entered or integrated into your data at different time points, you can indicate that here. This provides a nice check to make sure variables are available for your prediction time point. If you are repeating predictive analytics at multiple time points, this will column may be essential.</p></li>
-<li><p><em>Labels</em>. You may want to include a column that provides a short description of each variable.</p></li>
-<li><p><em>Other information.</em> You may want to include other information that is helpful to document or that will help you specify predictor sets. For example, perhaps your data includes a set of variables that all come from three different various assessments. Perhaps you want to add variables from one of the assessments to a predictor set and then add variables from the other two assessments to a larger predictor set to see the predictive value they add. Rather than typing the assessment variables into your R notebook, you could use the meta data file to grab all the variables that correspond to each kind of assessment.</p></li>
+<li><strong>Metric:</strong> True negative rate (specificity) or false positive rate (1 - specificity)</li>
+<li><strong>Advice:</strong> Important when the cost or risk of false positives is high and it is crucial to accurately identify negative cases.</li>
+<li><strong>Example:</strong>
+<ul>
+<li><strong>Scenario:</strong> Loan approval where false positives mean approving loans for individuals likely to default.</li>
+<li><strong>Model Comparison:</strong> Model A has a specificity of 90%, while Model B has a specificity of 95%. In this case, Model B might be preferred to minimize the risk of loan defaults.</li>
 </ul></li>
-</ol>
-<p>Here is a mini example of a meta data file that aligns with the data model. I have included just a few example summary statistics to keep the example short.</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>               varName      varType min max median mean  source timepoint
-1                   ID           ID   1   5      3  0.4 studRec      &lt;NA&gt;
-2              SchoolA    predictor   0   1      0  0.4 studRec     S1end
-3              SchoolB    predictor   0   1      1  0.6 studRec     S1end
-4           GradOnTime      outcome   0   1      1  0.6 studRec     S1end
-5      Math.Proficient    predictor   0   1      0  0.4 studRec     S1end
-6 Math.AboveProficient    predictor   0   1      0  0.4 studRec     S1end
-7         Math.Missing    predictor   0   1      0  0.2 studRec     S1end
-8       Chronic.Absent    predictor   0   1      0  0.2 studRec     S2end
-9                 Race equityAttrib   1   3      2   NA studRec   S1start
-                                             label
-1                                               ID
-2                                 Attends School A
-3                                 Attends School B
-4                                Graduated on time
-5 Proficient but not above on fall state math test
-6               Proficient on fall state math test
-7            Missing score on fall state math test
-8           Whether chronically absent across year
-9            Self-reported race on enrollment form</code></pre>
-</div>
-</div>
+<li><strong>Limitation/trade-off:</strong> Increasing specificity could lead to more false negatives, where creditworthy applicants are denied loans, leading to loss of business opportunities. The company might become overly conservative in granting loans, impacting its competitiveness and profit margins.</li>
+</ul>
+</section>
+<section id="goal-3-balanced-performance-for-both-classes" class="level3">
+<h3 class="anchored" data-anchor-id="goal-3-balanced-performance-for-both-classes">Goal 3: Balanced performance for both classes</h3>
+<ul>
+<li><strong>Metric:</strong> F1-score. The F1-score is the harmonic mean of precision and recall:</li>
+</ul>
+<span class="math display">\[\begin{equation}
+F_1 = 2\frac{precision*recall}{precision + recall} = 2\frac{PPV * TPR}{PPV + TPR}
+\end{equation}\]</span>
+<p>Imagine we have a very rare outcomes we are trying to predict (e.g.&nbsp;a rare form of cancer that occurs in less than 1% of the population). Note that if we predict ‘0’ for the whole sample, we have precision = 0, and our recall for the positive class is also 0. Accuracy in this case would be over 99% though! The F1 score = 0 in this case, so we know our model us useless.</p>
+<ul>
+<li><strong>Advice:</strong> Focus on the F1 score when you need a balance between identifying positive cases and minimizing false positives, especially for imbalanced datasets.</li>
+<li><strong>Example:</strong>
+<ul>
+<li><strong>Scenario:</strong> Spam email detection where both missing spam and misclassifying non-spam are problematic.</li>
+<li><strong>Model Comparison:</strong> Model A has an F1-score of 0.85, while Model B has an F1-score of 0.80. Model A may be preferred for a balanced performance.</li>
+</ul></li>
+<li><strong>Limitation/trade-off:</strong> Even with a balanced F1-score, there might still be a notable number of false positives and false negatives. Some spam might get through, and some legitimate emails might be marked as spam. It’s a balance, but not a complete elimination of errors.</li>
+</ul>
+</section>
+<section id="goal-4-overall-accuracy" class="level3">
+<h3 class="anchored" data-anchor-id="goal-4-overall-accuracy">Goal 4: Overall accuracy</h3>
+<ul>
+<li><strong>Metric:</strong> Accuracy</li>
+<li><strong>Advice:</strong> Consider this when you need a general measure of performance and <em>the classes are fairly balanced.</em></li>
+<li><strong>Example:</strong>
+<ul>
+<li><strong>Scenario:</strong> Image classification with multiple balanced classes.</li>
+<li><strong>Model Comparison:</strong> Model A has an accuracy of 92%, while Model B has an accuracy of 89%. Model A might be preferred for higher overall accuracy.</li>
+</ul></li>
+<li><strong>Limitation/trade-off:</strong> Overall accuracy does not provide insights into class-specific performance. A model might still have poor performance on individual classes but show high overall accuracy, especially in multi-class scenarios. The metric can be also be highly misleading for imbalanced datasets.</li>
+</ul>
+</section>
+<section id="goal-5-models-ability-to-rank-predictions" class="level3">
+<h3 class="anchored" data-anchor-id="goal-5-models-ability-to-rank-predictions">Goal 5: Model’s ability to rank predictions</h3>
+<ul>
+<li><strong>Metric:</strong> AUC-ROC</li>
+<li><strong>Advice:</strong> Valuable in scenarios where it’s not just about classifying instances but also ranking them according to the predicted confidence.</li>
+<li><strong>Example:</strong>
+<ul>
+<li><strong>Scenario:</strong> Predicting customer churn where ranking customers by churn risk is essential for targeted interventions.</li>
+<li><strong>Model Comparison:</strong> Model A has an AUC-ROC of 0.75, while Model B has an AUC-ROC of 0.82. Model B might be preferred for its better ranking ability.</li>
+</ul></li>
+<li><strong>Limitation/trade-off:</strong> Two models with the same AUC-ROC can have different precision and recall values. It does not take into account the distribution shift and class imbalance.</li>
+</ul>
+</section>
+<section id="goal-6-precision-in-top-k-predictions" class="level3">
+<h3 class="anchored" data-anchor-id="goal-6-precision-in-top-k-predictions">Goal 6: Precision in top-K predictions</h3>
+<ul>
+<li><strong>Metric:</strong> Precision at <span class="math inline">\(K\)</span></li>
+<li><strong>Advice:</strong> Focus on this when the top few (precisely defined by <span class="math inline">\(K\)</span>) predictions are more critical than the overall precision, commonly in recommendation systems.</li>
+<li><strong>Example:</strong>
+<ul>
+<li><strong>Scenario:</strong> E-commerce product recommendation where the top 10 product recommendations should be as relevant as possible.</li>
+<li><strong>Model Comparison:</strong> Model A has a Precision@10 of 0.8, while Model B has a Precision@10 of 0.9. Model B would likely provide more relevant top-10 recommendations.</li>
+</ul></li>
+<li><strong>Limitation/trade-off:</strong> Focusing on top-K precision could lead to models that are optimized for only a small subset of data, neglecting overall model performance. It might result in a narrower, less diverse set of recommendations, potentially impacting user experience.</li>
+</ul>
+</section>
+<section id="goal-7-you-are-not-sure-yet" class="level3">
+<h3 class="anchored" data-anchor-id="goal-7-you-are-not-sure-yet">Goal 7: You are not sure yet</h3>
+<ul>
+<li><strong>Metric:</strong> AUC-ROC</li>
+<li><strong>Advice:</strong> Focus on this when you don’t yet know what thresholds will be applied for decision-making. The AUC-ROC captures the trade-offs between sensitivity (recall) and 1-specificity across all possible thresholds.</li>
+<li><strong>Example:</strong>
+<ul>
+<li><strong>Scenario:</strong> High school early warning system aiming to find which students are most at-risk of not graduating on time.</li>
+<li><strong>Model Comparison:</strong> Model A has an AUC-ROC of 0.75, while Model B has an AUC-ROC of 0.82. Model B might be preferred for its better performance across all possible thresholds.</li>
+</ul></li>
+<li><strong>Limitation/trade-off:</strong> Two models with the same AUC-ROC can have different precision and recall values. It does not take into account the distribution shift and class imbalance. It will be important to provide validation metrics based on a chosen threshold when decided.</li>
+</ul>
 
 
 </section>
@@ -917,13 +937,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./toolset_overview.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Overview of PA templates</span>
+      <a href="./perform_thresholdinvariant.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Threshold-invariant metrics</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./toolset_firstlook.html" class="pagination-link">
-        <span class="nav-page-text">Orientation to server with code templates</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./perform_selectthreshold.html" class="pagination-link">
+        <span class="nav-page-text">Selecting a threshold</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

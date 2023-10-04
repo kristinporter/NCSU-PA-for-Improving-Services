@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predictive Analytics (PA) for Improving Services - Data model for the code templates</title>
+<title>Predictive Analytics (PA) for Improving Services - Threshold-invariant metrics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./toolset_firstlook.html" rel="next">
-<link href="./toolset_overview.html" rel="prev">
+<link href="./perform_goals.html" rel="next">
+<link href="./perform_confusionmatrix.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -62,6 +96,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -74,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./toolset_overview.html">Introduction to the PA Templates</a></li><li class="breadcrumb-item"><a href="./toolset_datamodel.html">Data model for the code templates</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./perform_output.html">Evaluating and comparing predictive performance</a></li><li class="breadcrumb-item"><a href="./perform_thresholdinvariant.html">Threshold-invariant metrics</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -330,13 +366,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
  <span class="menu-text">Introduction to the PA Templates</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./toolset_overview.html" class="sidebar-item-text sidebar-link">
@@ -345,7 +381,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./toolset_datamodel.html" class="sidebar-item-text sidebar-link active">
+  <a href="./toolset_datamodel.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data model for the code templates</span></a>
   </div>
 </li>
@@ -430,13 +466,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
  <span class="menu-text">Evaluating and comparing predictive performance</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./perform_output.html" class="sidebar-item-text sidebar-link">
@@ -451,7 +487,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./perform_thresholdinvariant.html" class="sidebar-item-text sidebar-link">
+  <a href="./perform_thresholdinvariant.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Threshold-invariant metrics</span></a>
   </div>
 </li>
@@ -583,7 +619,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data model for the code templates</h1>
+<h1 class="title">Threshold-invariant metrics</h1>
 </div>
 
 
@@ -598,84 +634,64 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="data-model-for-training-validation-and-testing-data" class="level3">
-<h3 class="anchored" data-anchor-id="data-model-for-training-validation-and-testing-data">Data model for training, validation and testing data</h3>
-<p>The code templates rely on data sets that follow a particular “data model,” or format. The following provides some required specifications for the data model:</p>
-<ol type="1">
-<li><p>Each row corresponds to the unit of analysis. For example:</p>
-<ul>
-<li><p>If you are predicting students’ probabilities of graduating on time, each row corresponds to a unique student.</p></li>
-<li><p>If you are predicting a community’s probability of being impacted by devistating flooding, each row corresponds to a community.</p></li>
-<li><p>If you are predicting a customer’s probability of signing up for an offer, then each row corresponds to a customer by promotion (i.e.&nbsp;if the customer is marketed multiple promotions, then they may have a row for each promotion). In this case, the unit is not customer, it is “customer/promotion.”</p></li>
-</ul></li>
-<li><p>Each unit of analysis appears in only one row. There should be no repeated rows for the same unit. That is, if there are variables with repeated measures over time, the data should be arranged in “wide format” rather than “long format.” For example, imagine your unit of analysis is indiviual, but your data has multiple records for each in, each corresponding to a job - with variables for wage and length of time at the job. In this case, the data need to be rearranged so that each record has variables such as “wage1,” “wage2,” etc. and “lengthjob1,” “lengthjob2,” etc.</p></li>
-<li><p>The columns should contain:</p>
-<ul>
-<li><p><em>A unique identification number or code (ID).</em> This can be of class<code>numeric</code> or <code>character</code>.</p></li>
-<li><p><em>Outcome(s) of interest.</em> This should be a binary variable with class <code>factor</code>. The variable should take values of 0 or 1. There should be no missing values.</p></li>
-<li><p><em>Pre-processed potential predictors.</em> These should be either <code>numeric</code> or <code>factor</code> variables. There should be no missing values. That is, this data set does not include raw variables with missingness but rather new versions of the variables that address missingness according to the guidance [here.](data2_missingpredictors.qmd)</p></li>
-<li><p><em>Variables to be used for assessing equity.</em> For example, you would include variables such as race, gender, or any other variables for which you want to compare model performance or estimate measures of bias. These measures should all be categorical and have class <code>factor</code>. Missingness of these variables should be handled with the same approach as used for predictors.</p></li>
-<li><p><em>Variables needed for stratification.</em> For example, if cross-validation will be stratified by a location variable, make sure that variable is included. It should be categorical and have class <code>factor</code>. Missingness should be handled with the same approach as used for predictors.</p></li>
-</ul></li>
-<li><p>Across the different data sets used for training, validating and testing, the columns should be identical.</p></li>
-</ol>
-<p>Here is a mini example of a training data file that aligns with the data model:</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>  ID SchoolA SchoolB GradOnTime Math.Proficient Math.AboveProficient
-1  1       1       0          1               0                    0
-2  2       1       0          0               1                    1
-3  3       0       1          1               0                    0
-4  4       0       1          0               0                    1
-5  5       0       1          1               1                    0
-  Math.Missing Chronic.Absent Race
-1            0              0    1
-2            0              0    2
-3            1              0    3
-4            0              0    2
-5            0              1    1</code></pre>
-</div>
+<p>For some performance metrics, we do not need to specify a threshold. Here we summarize two “threshold-invariant” metrics: the AUC-ROC and AUC-PR. Remember that this code chunk from <code>02_Training_and_Validation.Rmd</code> (repeated below) also returns these metrics. For these metrics, each is computed for each validation fold during the <span class="math inline">\(v\)</span>-fold cross-validation procedure. Then the metrics are averaged across all <span class="math inline">\(v\)</span> validation folds.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># running model results all learners in learnerSpec (all specified in 01_Learner_Specification.Rmd)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>learnersResults <span class="ot">&lt;-</span> <span class="fu">train_learners</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">learnerSpec =</span> learnerSpec,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">recipes =</span> recipes,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">mainRecipes =</span> mainRecipes</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a> <span class="co"># this returns cross-validated means and SE for AUC-PR and AUC-ROC</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>modelResults <span class="ot">&lt;-</span> learnersResults<span class="sc">$</span>modelResults</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a> <span class="co"># this is predicted probabilities, from when obs are in validation set</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>predProbs    <span class="ot">&lt;-</span> learnersResults<span class="sc">$</span>predProbs </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="auc-roc" class="level2">
+<h2 class="anchored" data-anchor-id="auc-roc">AUC-ROC</h2>
+<p>AUC-ROC is the area under the curve (AUC) for a receiver operating characteristic (ROC) curve. The higher the value, the better the model is at making predictions.</p>
+<p>An ROC curve plots FPR (1-specificity) on the <span class="math inline">\(x\)</span>-axis against the TPR (sensitivity/recall) on the <span class="math inline">\(y\)</span>-axis, <em>as the threshold changes.</em> The first point in the bottom left corner of the ROC curve corresponds to the TPR and FPR at a threshold of 1. Next, imagine we change the threshold to 0.95. Then all units with a predicted value above 0.95 will be classified as ‘1’, and all units with a predicted value below 0.95 will be classified as ‘0’. At this threshold, most of the units we classify as ‘1’ will be observed positives, so we expect a high true positive rate and a low false positive rate. As we decrease the threshold, we will classify more and more units as ‘1’, which increases the false positive rate (numerator increases) and decreases the true positive rate (denominator increases). A good model has a <em>high true positive rate</em> and a <em>low false positive rate</em>, so points farther to the left and farther up are markers of a good model.</p>
+<p>We usually compare a model’s curve to a line that goes straight up the diagonal from 0 to 1. This line corresponds to the performance of a random classifier. A random classifier picks the class of each unit using a random coin flip, without any information about the unit. Ideally, a trained model informed by the patterns in the data performs much better than a random classifier.</p>
+<p>The AUC-ROC measures how well predictions are ranked, rather than their absolute values. Therefore, the measure is helpful when you want to target a service, marketing campaign, intervention, etc. to those most or least likely to have a positive outcome.</p>
+<p>In the case of <strong>imbalanced data</strong>, when one of the categories is very rare, ROC curves can give misleading results and be overly optimistic of model performance. As a rule of thumb, if your data has 10% or less of units in one category, you may have imbalanced data. In this case, AUC of precision recall curve, discussed next, may be a better metric. For more information about imbalanced data, see our short explainer attached in the reference folder on the subject, and why ROC curves may not perform well in that setting.</p>
+<p>This code chunk in <code>02_Learner_Training_and_Validation.Rmd</code> plots ROC curves for each specified learner.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># running model results all learners in learnerSpec (all specified in 01_Learner_Specification.Rmd)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>learnersResults <span class="ot">&lt;-</span> <span class="fu">train_learners</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">learnerSpec =</span> learnerSpec,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">recipes =</span> recipes,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">mainRecipes =</span> mainRecipes</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a> <span class="co"># this returns cross-validated means and SE for AUC-PR and AUC-ROC</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>modelResults <span class="ot">&lt;-</span> learnersResults<span class="sc">$</span>modelResults</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a> <span class="co"># this is predicted probabilities, from when obs are in validation set</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>predProbs    <span class="ot">&lt;-</span> learnersResults<span class="sc">$</span>predProbs </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="images/AUC_ROC.png" class="img-fluid figure-img" style="width:8in"></p>
+</figure>
 </div>
 </section>
-<section id="data-model-for-meta-data" class="level3">
-<h3 class="anchored" data-anchor-id="data-model-for-meta-data">Data model for meta data</h3>
-<p>Having a meta data file is also recommended. A meta data file is a machine readable codebook, which summarizes your data. A meta data file for the training/validation data is valuable for (1) documenting and describing the data being fed into predictive analytics steps and (2) in some cases, selecting variables based on information in the meta data rather than having to type them all in. A meta data file for the testing data is valuable for comparing the variable distributions to those in the training data. Here are specifications for the meta data files:</p>
-<ol type="1">
-<li><p>Each row corresponds to variable.</p></li>
-<li><p>Columns may include but are not limited to the following:</p>
-<ul>
-<li><p><em>Variable type</em>. E.g., “ID”, “outcome”, “predictor”, “protectedAttribute”, etc.</p></li>
-<li><p><em>Summary statistics</em>. E.g., min, max, mean, median, percentiles (e.g.&nbsp;5, 25, 75, 95)</p></li>
-<li><p><em>Data source</em>. If your data results from integrating multiple data sources, you might want to include a column that indicates the source of each variable.</p></li>
-<li><p><em>Time point</em>. If variables in your data are entered or integrated into your data at different time points, you can indicate that here. This provides a nice check to make sure variables are available for your prediction time point. If you are repeating predictive analytics at multiple time points, this will column may be essential.</p></li>
-<li><p><em>Labels</em>. You may want to include a column that provides a short description of each variable.</p></li>
-<li><p><em>Other information.</em> You may want to include other information that is helpful to document or that will help you specify predictor sets. For example, perhaps your data includes a set of variables that all come from three different various assessments. Perhaps you want to add variables from one of the assessments to a predictor set and then add variables from the other two assessments to a larger predictor set to see the predictive value they add. Rather than typing the assessment variables into your R notebook, you could use the meta data file to grab all the variables that correspond to each kind of assessment.</p></li>
-</ul></li>
-</ol>
-<p>Here is a mini example of a meta data file that aligns with the data model. I have included just a few example summary statistics to keep the example short.</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>               varName      varType min max median mean  source timepoint
-1                   ID           ID   1   5      3  0.4 studRec      &lt;NA&gt;
-2              SchoolA    predictor   0   1      0  0.4 studRec     S1end
-3              SchoolB    predictor   0   1      1  0.6 studRec     S1end
-4           GradOnTime      outcome   0   1      1  0.6 studRec     S1end
-5      Math.Proficient    predictor   0   1      0  0.4 studRec     S1end
-6 Math.AboveProficient    predictor   0   1      0  0.4 studRec     S1end
-7         Math.Missing    predictor   0   1      0  0.2 studRec     S1end
-8       Chronic.Absent    predictor   0   1      0  0.2 studRec     S2end
-9                 Race equityAttrib   1   3      2   NA studRec   S1start
-                                             label
-1                                               ID
-2                                 Attends School A
-3                                 Attends School B
-4                                Graduated on time
-5 Proficient but not above on fall state math test
-6               Proficient on fall state math test
-7            Missing score on fall state math test
-8           Whether chronically absent across year
-9            Self-reported race on enrollment form</code></pre>
-</div>
+<section id="auc-pr" class="level2">
+<h2 class="anchored" data-anchor-id="auc-pr">AUC-PR</h2>
+<p>AUC-PR is area under the curve (AUC) for a precision recall (PR) curve. For the PR curve, the true positive rate (sensitivity/recall) is on the <span class="math inline">\(x\)</span>-axis and the positive predicted value (precision) is on the <span class="math inline">\(y\)</span>-axis. Like in AUC ROC as well, the precision and recall are plotted <em>as the threshold changes</em>.</p>
+<p>AUC-PR is a valuable metric when there is class, the positive class is of particular interest, and both types of classification errors (false positives and false negatives) carry significant consequences. Because AUC-PR does not account for true negatives, it is often preferred over AUC-ROC when outcome classes are imbalanced. With a rare outcome, the FPR tends to remain low due to a large number of observed negatives. Recall that FPR = FP/(TN + FP). A larger number of observed negative values within the imbalanced data would imply a large denominator (because TN would be large) and hence, we would see a low false positive <em>rate</em> even as the <strong>number</strong> of false positives increases. Thus, AUC-ROC can be a less informative and at times overly optimistic metric for imbalanced data.</p>
+<p>AUC PR, on the other hand, is a trade-off between <em>precision</em> (TP/(TP + FP)) and <em>recall/sensitivity</em> (TP/(TP + FN)). <em>Precision</em> is solely based on predicted positive values (TP and FP) and is unaffected if there is a large number of observed negatives. If there are few false positives, then there will be both a low false positive rate (smaller numerator for FPR) and high precision (smaller denominator for precision). If there are few false negatives, then there will be both a low false negative rate (smaller numerator for FNR) and a high recall (smaller denominator for recall). Therefore, a high AUC PR score is good because it implies low false positive and false negative rates (just like a high AUC ROC score).</p>
+<p>This code chunk in <code>02_Learner_Training_and_Validation.Rmd</code> plots PR curves for each specified learner.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># running model results all learners in learnerSpec (all specified in 01_Learner_Specification.Rmd)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>learnersResults <span class="ot">&lt;-</span> <span class="fu">train_learners</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">learnerSpec =</span> learnerSpec,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">recipes =</span> recipes,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">mainRecipes =</span> mainRecipes</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a> <span class="co"># this returns cross-validated means and SE for AUC-PR and AUC-ROC</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>modelResults <span class="ot">&lt;-</span> learnersResults<span class="sc">$</span>modelResults</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a> <span class="co"># this is predicted probabilities, from when obs are in validation set</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>predProbs    <span class="ot">&lt;-</span> learnersResults<span class="sc">$</span>predProbs </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="images/AUC_PR.png" class="img-fluid figure-img" style="width:8in"></p>
+</figure>
 </div>
 
 
@@ -917,13 +933,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./toolset_overview.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Overview of PA templates</span>
+      <a href="./perform_confusionmatrix.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">The confusion matrix and threshold-variant metrics</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./toolset_firstlook.html" class="pagination-link">
-        <span class="nav-page-text">Orientation to server with code templates</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./perform_goals.html" class="pagination-link">
+        <span class="nav-page-text">Prioritizing metrics that align with goals</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

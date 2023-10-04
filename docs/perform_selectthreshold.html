@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predictive Analytics (PA) for Improving Services - Data model for the code templates</title>
+<title>Predictive Analytics (PA) for Improving Services - Selecting a threshold</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./toolset_firstlook.html" rel="next">
-<link href="./toolset_overview.html" rel="prev">
+<link href="./OptionalPAvsInfStat.html" rel="next">
+<link href="./perform_goals.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -74,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./toolset_overview.html">Introduction to the PA Templates</a></li><li class="breadcrumb-item"><a href="./toolset_datamodel.html">Data model for the code templates</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./perform_output.html">Evaluating and comparing predictive performance</a></li><li class="breadcrumb-item"><a href="./perform_selectthreshold.html">Selecting a threshold</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -330,13 +330,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
  <span class="menu-text">Introduction to the PA Templates</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./toolset_overview.html" class="sidebar-item-text sidebar-link">
@@ -345,7 +345,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./toolset_datamodel.html" class="sidebar-item-text sidebar-link active">
+  <a href="./toolset_datamodel.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data model for the code templates</span></a>
   </div>
 </li>
@@ -430,13 +430,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
  <span class="menu-text">Evaluating and comparing predictive performance</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./perform_output.html" class="sidebar-item-text sidebar-link">
@@ -463,7 +463,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./perform_selectthreshold.html" class="sidebar-item-text sidebar-link">
+  <a href="./perform_selectthreshold.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Selecting a threshold</span></a>
   </div>
 </li>
@@ -583,7 +583,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data model for the code templates</h1>
+<h1 class="title">Selecting a threshold</h1>
 </div>
 
 
@@ -598,85 +598,27 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="data-model-for-training-validation-and-testing-data" class="level3">
-<h3 class="anchored" data-anchor-id="data-model-for-training-validation-and-testing-data">Data model for training, validation and testing data</h3>
-<p>The code templates rely on data sets that follow a particular “data model,” or format. The following provides some required specifications for the data model:</p>
-<ol type="1">
-<li><p>Each row corresponds to the unit of analysis. For example:</p>
-<ul>
-<li><p>If you are predicting students’ probabilities of graduating on time, each row corresponds to a unique student.</p></li>
-<li><p>If you are predicting a community’s probability of being impacted by devistating flooding, each row corresponds to a community.</p></li>
-<li><p>If you are predicting a customer’s probability of signing up for an offer, then each row corresponds to a customer by promotion (i.e.&nbsp;if the customer is marketed multiple promotions, then they may have a row for each promotion). In this case, the unit is not customer, it is “customer/promotion.”</p></li>
-</ul></li>
-<li><p>Each unit of analysis appears in only one row. There should be no repeated rows for the same unit. That is, if there are variables with repeated measures over time, the data should be arranged in “wide format” rather than “long format.” For example, imagine your unit of analysis is indiviual, but your data has multiple records for each in, each corresponding to a job - with variables for wage and length of time at the job. In this case, the data need to be rearranged so that each record has variables such as “wage1,” “wage2,” etc. and “lengthjob1,” “lengthjob2,” etc.</p></li>
-<li><p>The columns should contain:</p>
-<ul>
-<li><p><em>A unique identification number or code (ID).</em> This can be of class<code>numeric</code> or <code>character</code>.</p></li>
-<li><p><em>Outcome(s) of interest.</em> This should be a binary variable with class <code>factor</code>. The variable should take values of 0 or 1. There should be no missing values.</p></li>
-<li><p><em>Pre-processed potential predictors.</em> These should be either <code>numeric</code> or <code>factor</code> variables. There should be no missing values. That is, this data set does not include raw variables with missingness but rather new versions of the variables that address missingness according to the guidance [here.](data2_missingpredictors.qmd)</p></li>
-<li><p><em>Variables to be used for assessing equity.</em> For example, you would include variables such as race, gender, or any other variables for which you want to compare model performance or estimate measures of bias. These measures should all be categorical and have class <code>factor</code>. Missingness of these variables should be handled with the same approach as used for predictors.</p></li>
-<li><p><em>Variables needed for stratification.</em> For example, if cross-validation will be stratified by a location variable, make sure that variable is included. It should be categorical and have class <code>factor</code>. Missingness should be handled with the same approach as used for predictors.</p></li>
-</ul></li>
-<li><p>Across the different data sets used for training, validating and testing, the columns should be identical.</p></li>
-</ol>
-<p>Here is a mini example of a training data file that aligns with the data model:</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>  ID SchoolA SchoolB GradOnTime Math.Proficient Math.AboveProficient
-1  1       1       0          1               0                    0
-2  2       1       0          0               1                    1
-3  3       0       1          1               0                    0
-4  4       0       1          0               0                    1
-5  5       0       1          1               1                    0
-  Math.Missing Chronic.Absent Race
-1            0              0    1
-2            0              0    2
-3            1              0    3
-4            0              0    2
-5            0              1    1</code></pre>
-</div>
-</div>
+<p>Selecting a threshold that translates predicted probabilities into predicted classifications requires consideration of how results will be used in decision-making, as well as information about the distribution of the results. The following provides some different approaches.</p>
+<section id="specify-a-fixed-value-for-the-threshold." class="level3">
+<h3 class="anchored" data-anchor-id="specify-a-fixed-value-for-the-threshold.">1. Specify a fixed value for the threshold.</h3>
+<p>Specifying a value, such as 0.5, to distinguish between the classes is straightforward and may be most useful in some contexts. For example, in a marketing campaign where the target audience is balanced between interested and not interested groups, a 0.5 threshold could be used to classify customers who are likely to respond to the campaign. Note that it is important to examine the distribution of the predicted probabilities before deciding on a threshold. If the predicted probabilities are clustered primarily below 0.5, for instance, then a threshold of 0.5 will result in few units being classified as positive (‘1’ or ‘yes’ on the binary outcome). Context also matters of course. For example, when classifying cancer, even if a patient has a 0.3 probability of having cancer, you would classify them to be 1.</p>
 </section>
-<section id="data-model-for-meta-data" class="level3">
-<h3 class="anchored" data-anchor-id="data-model-for-meta-data">Data model for meta data</h3>
-<p>Having a meta data file is also recommended. A meta data file is a machine readable codebook, which summarizes your data. A meta data file for the training/validation data is valuable for (1) documenting and describing the data being fed into predictive analytics steps and (2) in some cases, selecting variables based on information in the meta data rather than having to type them all in. A meta data file for the testing data is valuable for comparing the variable distributions to those in the training data. Here are specifications for the meta data files:</p>
-<ol type="1">
-<li><p>Each row corresponds to variable.</p></li>
-<li><p>Columns may include but are not limited to the following:</p>
-<ul>
-<li><p><em>Variable type</em>. E.g., “ID”, “outcome”, “predictor”, “protectedAttribute”, etc.</p></li>
-<li><p><em>Summary statistics</em>. E.g., min, max, mean, median, percentiles (e.g.&nbsp;5, 25, 75, 95)</p></li>
-<li><p><em>Data source</em>. If your data results from integrating multiple data sources, you might want to include a column that indicates the source of each variable.</p></li>
-<li><p><em>Time point</em>. If variables in your data are entered or integrated into your data at different time points, you can indicate that here. This provides a nice check to make sure variables are available for your prediction time point. If you are repeating predictive analytics at multiple time points, this will column may be essential.</p></li>
-<li><p><em>Labels</em>. You may want to include a column that provides a short description of each variable.</p></li>
-<li><p><em>Other information.</em> You may want to include other information that is helpful to document or that will help you specify predictor sets. For example, perhaps your data includes a set of variables that all come from three different various assessments. Perhaps you want to add variables from one of the assessments to a predictor set and then add variables from the other two assessments to a larger predictor set to see the predictive value they add. Rather than typing the assessment variables into your R notebook, you could use the meta data file to grab all the variables that correspond to each kind of assessment.</p></li>
-</ul></li>
-</ol>
-<p>Here is a mini example of a meta data file that aligns with the data model. I have included just a few example summary statistics to keep the example short.</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>               varName      varType min max median mean  source timepoint
-1                   ID           ID   1   5      3  0.4 studRec      &lt;NA&gt;
-2              SchoolA    predictor   0   1      0  0.4 studRec     S1end
-3              SchoolB    predictor   0   1      1  0.6 studRec     S1end
-4           GradOnTime      outcome   0   1      1  0.6 studRec     S1end
-5      Math.Proficient    predictor   0   1      0  0.4 studRec     S1end
-6 Math.AboveProficient    predictor   0   1      0  0.4 studRec     S1end
-7         Math.Missing    predictor   0   1      0  0.2 studRec     S1end
-8       Chronic.Absent    predictor   0   1      0  0.2 studRec     S2end
-9                 Race equityAttrib   1   3      2   NA studRec   S1start
-                                             label
-1                                               ID
-2                                 Attends School A
-3                                 Attends School B
-4                                Graduated on time
-5 Proficient but not above on fall state math test
-6               Proficient on fall state math test
-7            Missing score on fall state math test
-8           Whether chronically absent across year
-9            Self-reported race on enrollment form</code></pre>
-</div>
-</div>
+<section id="match-the-predicted-proportion-to-the-observed-proportion." class="level3">
+<h3 class="anchored" data-anchor-id="match-the-predicted-proportion-to-the-observed-proportion.">2. Match the predicted proportion to the observed proportion.</h3>
+<p>Here, the threshold is set such that the proportion of predicted positive cases is equal to the observed proportion in the dataset. It involves sorting predicted probabilities and selecting a threshold that aligns the predicted and observed ratios. This can be more adaptive than a fixed threshold, especially for imbalanced datasets. However, it doesn’t directly consider the costs associated with different types of errors. This approach is often used when maintaining the natural class distribution in predictions is a priority. For example, in credit scoring, if 20% of the applicants historically default, setting a threshold to classify the riskiest 20% of new applicants as “high risk” for default.</p>
+</section>
+<section id="set-the-threshold-equal-to-the-the-median-of-predicted-probabilities" class="level3">
+<h3 class="anchored" data-anchor-id="set-the-threshold-equal-to-the-the-median-of-predicted-probabilities">3. Set the threshold equal to the the median of predicted probabilities:</h3>
+<p>This assumes that the distribution of probabilities is symmetric and aids in ensuring a balance in classification. While helping in certain scenarios to balance classifications, it’s not suitable for highley skewed or multi-modal distributions of predicted probabilities. For example, imagine a service wants to predict which current subscribers are less likely to renew their subscriptions so they can decide who to offer special renewal incentives. Given a symmetric distribution of predicted probabilities for renewal, the median threshold can be applied so that the incentive program is neither too broad (which could be costly and less effective) nor too narrow (missing out on potential non-renewals).</p>
+</section>
+<section id="find-a-threshold-that-targets-resource-constraints" class="level3">
+<h3 class="anchored" data-anchor-id="find-a-threshold-that-targets-resource-constraints">4. Find a threshold that targets resource constraints</h3>
+<p>It may be helpful to find a threshold that takes resource constraints into account. For instance, if resources are available to intervene with only 100 individuals, you can find the threshold to identify the top 100 most at-risk individuals. This makes the model operationally relevant.</p>
+</section>
+<section id="target-a-desired-positive-rate" class="level3">
+<h3 class="anchored" data-anchor-id="target-a-desired-positive-rate">5. Target a desired positive rate</h3>
+<p>In cases like rare disease detection, a high true positive rate is critical, even if it increases false positives. For example, in medical diagnostics for a rare disease, setting a threshold to ensure at least 95% of actual cases are identified, even if it results in more false positives, to ensure maximum detection of the disease. Of course, the trade-off of finding the threshold that ensures a high detection rate of positive cases can also lead to increased false alarms.</p>
+<p>Code chunks in <code>02_Learning_Training_and_Validation.Rmd</code> compute many (but not all) of these threshold targets. We will go over this in class.</p>
 
 
 </section>
@@ -917,13 +859,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./toolset_overview.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Overview of PA templates</span>
+      <a href="./perform_goals.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prioritizing metrics that align with goals</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./toolset_firstlook.html" class="pagination-link">
-        <span class="nav-page-text">Orientation to server with code templates</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./OptionalPAvsInfStat.html" class="pagination-link">
+        <span class="nav-page-text">Predictive Analytics vs.&nbsp;Inferential Statistics</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

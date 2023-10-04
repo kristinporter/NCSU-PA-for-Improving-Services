@@ -79,11 +79,10 @@ website:
       - section: "Evaluating and comparing predictive performance"
         contents:
           - perform_output.qmd
-          - "Prediction output from learner training"
-          - "Metrics for evaluating predictive performance"
-          - "Visualiziations of predictive performance"
-          - "Guidance for selecting metrics"
-        # - performance_metrics_PLACEHOLDER.qmd
+          - perform_confusionmatrix.qmd
+          - perform_thresholdinvariant.qmd
+          - perform_goals.qmd
+          - perform_selectthreshold.qmd
       - section: "Evaluating and comparing bias"
         contents:
           - "Sources of bias"

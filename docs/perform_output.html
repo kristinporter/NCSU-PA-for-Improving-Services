@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./OptionalPAvsInfStat.html" rel="next">
+<link href="./perform_confusionmatrix.html" rel="next">
 <link href="./methods_guidance.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -480,17 +480,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">Prediction output from learner training</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./perform_confusionmatrix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The confusion matrix and threshold-variant metrics</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Metrics for evaluating predictive performance</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./perform_thresholdinvariant.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Threshold-invariant metrics</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Visualiziations of predictive performance</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./perform_goals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prioritizing metrics that align with goals</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Guidance for selecting metrics</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./perform_selectthreshold.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Selecting a threshold</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -624,7 +636,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="learner_training_and_validation" class="level2">
 <h2 class="anchored" data-anchor-id="learner_training_and_validation">02_Learner_Training_and_Validation</h2>
-<p>All learners are trained in the following code chunk in <code>02_Learner_Training_and_Validation.Rmd</code>. The user does not need to enter or edit any code within the chunk. Specifications that were entered in <code>01_Learner_Specification.Rmd</code> are loaded in the chunk that precedes this one and passed into the <code>train_learners()</code> function.</p>
+<p>After making all specifications for your PA proof-of-concept in <code>01_Learner_Specification.Rmd</code>, all the learners you defined are trained in <code>02_Learner_Training_and_Validation.Rmd</code>. This happens in the code chunk replicated below. The user does not need to enter or edit any code within the chunk. Specifications that were entered in <code>01_Learner_Specification.Rmd</code> are loaded in the chunk that precedes this one and are passed into the <code>train_learners()</code> function.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># running model results all learners in learnerSpec (all specified in 01_Learner_Specification.Rmd)</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>learnersResults <span class="ot">&lt;-</span> <span class="fu">train_learners</span>(</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">learnerSpec =</span> learnerSpec,</span>
@@ -637,8 +649,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a> <span class="co"># this is predicted probabilities, from when obs are in validation set</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>predProbs    <span class="ot">&lt;-</span> learnersResults<span class="sc">$</span>predProbs </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>As commented in the above chunk, the code returns information about couple of performance metrics abbreviated as AUC-PR and AUC-ROC. AUC-PR is the area under the curve (AUC) for a precision recall (PR) curve. AUC-ROC is the area under the curve (AUC) for a receiver operating characteristic (ROC) curve. We will return to explanations of these in a bit.</p>
-<p>First, let’s focus on the other information that is returned in the above code chunk - the predicted probabilities. For each observation (unit or row) in our data and for each learner, the code returns a predicted probability of the outcome. The predicted probability was estimated by the model corresponding to the learner.</p>
-<p>For example, imagine we are predicting whether a student will drop out of high school. Then, for a single student, we get the following information.</p>
+<p>First, let’s focus on the other information that is returned in the above code chunk - the predicted probabilities. For each observation (unit or row) in our dataset used for training and valiation and for each learner, the code returns a predicted probability of the outcome.</p>
+<p>For example, imagine we are predicting whether a student will drop out of high school. Then, for each student, we get the following information, displayed for just one student.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>      student_id              learnerName  .pred_yes dropout
@@ -648,7 +660,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 23998          1 random_forest_predSet_ms 0.17969438       0</code></pre>
 </div>
 </div>
-<p>The numbers to the left (1, 8000, 15999, 23998) are the row numbers in the data.frame <code>predProbs</code> that correspond to the student with <code>student_id</code> = ‘1’. By examining the entries for <code>learnerName</code>, we can see that we conducted training for four different learners. These four different learners were combinations of two predictor sets (“bm” and “ms”) and three modeling approaches (“glm”, “lasso” and “random_forest”). The column <code>.pred_yes</code> tells us the probability that the outcome is equal to ‘1’. While not displayed, <code>predProbs</code> also contains <code>pred_no</code>, the probability that the outcome is equal to ‘0’. Finally, we also see the actual, observed outcome (<code>dropout</code>) for this student.</p>
+<p>The numbers to the left (1, 8000, 15999, 23998) are the row numbers in the data.frame <code>predProbs</code> that correspond to the student with <code>student_id</code> = ‘1’. By examining the entries for <code>learnerName</code>, we can see that we conducted training for four different learners. These four different learners were combinations of two predictor sets (“bm” and “ms”) and three modeling approaches (“glm”, “lasso” and “random_forest”). Note that the predSet suffix of ’_bm’ signifies the “benchmark” predictor set. The suffix of ’_ms’ was chosen by the user for a second predictor set; it is not following any particular convention. The column <code>.pred_yes</code> tells us the probability that the outcome is equal to ‘1’. (While not displayed, <code>predProbs</code> also contains <code>pred_no</code>, the probability that the outcome is equal to ‘0’.) Finally, we also see the actual, observed outcome (<code>dropout</code>) for this student. The <code>predProbs</code> dataframe also includes all the other measures in the training/validation data; they are just not displayed here.</p>
 <p>The predicted probabilities listed for <code>.pred_yes</code> were estimated through the <span class="math inline">\(v\)</span>-fold cross-validation procedure. Recall from the earlier section on cross-validation, that each observation takes a turn in a validation fold. After a learner was trained on the <span class="math inline">\(v-1\)</span> other folds, the resulting model was applied to the validation fold, producing a predicted probability for each observation in the validation fold.</p>
 </section>
 <section id="summarizing-the-predicted-probabilities" class="level2">
@@ -658,6 +670,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="perform_output_files/figure-html/plotpredProbs-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Next, the notebook plots overlapping distributions of predicted probabilities for when the observed outcome = ‘1’ and when the observed outcome = ‘0’. This illustrates how well each learner is able to separate out the predictive probabilities for the different classifications.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="perform_output_files/figure-html/plotpredProbsTruth-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 
@@ -905,8 +923,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./OptionalPAvsInfStat.html" class="pagination-link">
-        <span class="nav-page-text">Predictive Analytics vs.&nbsp;Inferential Statistics</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./perform_confusionmatrix.html" class="pagination-link">
+        <span class="nav-page-text">The confusion matrix and threshold-variant metrics</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
