@@ -2,6 +2,8 @@
 title: "Selecting a threshold"
 ---
 
+![](images/threshold.jpg){fig-align="left" width="5in"}
+
 Selecting a threshold that translates predicted probabilities into predicted classifications requires consideration of how results will be used in decision-making, as well as information about the distribution of the results. The following provides some different approaches. 
 
 ### 1. Specify a fixed value for the threshold.

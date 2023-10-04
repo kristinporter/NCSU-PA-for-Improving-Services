@@ -4,6 +4,7 @@ html:
   css: styles.css
 ---
 
+![](images/barbells.jpg){fig-align="left" width="4in"}
 
 ## 02_Learner_Training_and_Validation
 
