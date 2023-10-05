@@ -600,8 +600,8 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Many of the most helpful and intuitive metrics of learner/model performance depend on converting predicted probabilities into predicted binary classifications (or ‘0’ or ‘1’ predictions of the outcome). To do this, we first need to specify a <strong>threshold</strong> so that predicted probabilities above or beyond the threshold indicate that the outcome equals ‘1’ (or ‘yes’). For example, we may specify a threshold of 0.5. Then, turning back to our example on the previous page, any student with a predicted probability greater than or equal to 0.5 is considered “predicted to drop-out,” while any student with a predicted probability less than 0.5 is considered “not predicted to drop-out.”</p>
-<p>Later, we will discuss how to pick a threshold. For now, once we have picked a threshold, we can then compare each resulting predicted classification to the actual, observed classification (e.g.&nbsp;whether or not a student actually dropped out.) We can summarize the comparisons in 2x2 matrix called a <strong>confusion matrix:</strong></p>
+<p>Many of the most helpful and intuitive metrics of learner/model performance depend on converting predicted probabilities into predicted binary classifications (or ‘0’ or ‘1’ predictions of the outcome). To do this, we first need to specify a <strong>threshold</strong>. After selecting a threshold, predicted probabilities above the threshold indicate that the predicted outcome equals ‘1’ (or ‘yes’), and predicted probabilities below the threshold indicate that the predicted outcome equals ‘0’ (or ‘no’). For example, we may specify a threshold of 0.5. Then, turning back to our example on the previous page, any student with a predicted probability greater than or equal to 0.5 is considered “predicted to drop-out,” while any student with a predicted probability less than 0.5 is considered “not predicted to drop-out.”</p>
+<p>Later, we will discuss how to pick a threshold. For now, once we have picked a threshold, we can then compare each resulting predicted classification (i.e.&nbsp;predicted outcome) to the actual, true, observed classification (e.g.&nbsp;whether or not a student actually dropped out.) Sometimes We can summarize the comparisons in 2x2 matrix called a <strong>confusion matrix:</strong></p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
 <p><img src="images/confusion_matrix_define.png" class="img-fluid figure-img" style="width:8in"></p>
@@ -614,15 +614,15 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>False negatives (FN):</strong> the predicted classification (or “class”) is ‘0’ (‘no’) but the true classification is ‘1’.</p></li>
 <li><p><strong>True negatives (TN):</strong> the predicted classification (or “class”) is ‘0’ (‘no’) and the true classification is ‘0’.</p></li>
 </ul>
-<p>For totals, we have:</p>
+<p>Note that for “true positives” and “false positives”, the predicted and observed classification match, while in “false positives” and “false negatives” we make a prediction that does not match the true classification.</p>
+<p>We also calculate the following totals:</p>
 <ul>
-<li><p><strong>Observed positives (OP):</strong> the number of observed (true) positives (the number observations for which the outcome is observed to be ‘1’.</p></li>
-<li><p><strong>Observed negatives (ON):</strong> the number of observed (true) negatives (the number observations for which the outcome is observed to be ‘0’.</p></li>
-<li><p><strong>Predicted positives (PP):</strong> the number of predicted positives (the number observations for which the outcome is predicted to be ‘1’.</p></li>
-<li><p><strong>Predicted negatives (PN):</strong> the number of predicted negatives (the number observations for which the outcome is predicted to be ‘0’.</p></li>
+<li><p><strong>Observed positives (OP):</strong> the number of observed (true) positives (the number of observations for which the outcome is observed to be ‘1’).</p></li>
+<li><p><strong>Observed negatives (ON):</strong> the number of observed (true) negatives (the number of observations for which the outcome is observed to be ‘0’).</p></li>
+<li><p><strong>Predicted positives (PP):</strong> the number of predicted positives (the number of observations for which the outcome is predicted to be ‘1’).</p></li>
+<li><p><strong>Predicted negatives (PN):</strong> the number of predicted negatives (the number of observations for which the outcome is predicted to be ‘0’).</p></li>
 </ul>
-<p><br>
-Finally, we can also summarize these categories into many different rates. Below is a list of various rates that may be helpful. In a later page, we will discuss how to pick different metrics to align with goals for the project.</p>
+<p>Finally, we can also summarize these categories into many different rates. Below is a list of various rates that may be helpful. In a later page, we will discuss how to pick different metrics to align with goals for the project.</p>
 <p><u><em>Rates based on total true, observed number of one classification (OP or ON):</em></u></p>
 <ul>
 <li><strong>True positive rate (TPR):</strong> the proportion of observed positives that were correctly predicted as positive. The TPR is also known as <strong>sensitivity</strong> or <strong>recall.</strong></li>
@@ -650,13 +650,14 @@ FNR = \frac{FN}{TP + FN} = \frac{FN}{OP}
 \end{equation}\]</span>
 <p><u><em>Rates based on total predicted number of one classification (PP or PN):</em></u></p>
 <ul>
-<li><strong>Positive predicted value:</strong>: the proportion of predicted positives that were correctly predicted as positive. The PPV is also known as <strong>precision</strong>.</li>
+<li><strong>Positive predictive value:</strong>: the proportion of predicted positives that were true observed positives. The PPV is also known as <strong>precision</strong>.</li>
 </ul>
+<p><strong>KH</strong>: I found this definition a little confusing, but not sure if I improved it.</p>
 <span class="math display">\[\begin{equation}
 PPV = \frac{TP}{TP + FP} = \frac{TP}{PP}
 \end{equation}\]</span>
 <ul>
-<li><strong>Negative predicted value:</strong>: the proportion of predicted negatives that were correctly predicted as positive.</li>
+<li><strong>Negative predictive value:</strong>: the proportion of predicted negatives that were true observed negatives.</li>
 </ul>
 <span class="math display">\[\begin{equation}
 NPV = \frac{TN}{TN + FN} = \frac{TN}{PN}
@@ -674,6 +675,7 @@ FDR = \frac{FP}{FP + TP} = \frac{FP}{PP}
 <span class="math display">\[\begin{equation}
 FDR = \frac{TP + TN}{TP + FP + TP + TN}
 \end{equation}\]</span>
+<p>A note on accuracy: Accuracy is highly sensitive to the true probability of success. Imagine a scenario where 95% of people are truly successful. You create an algorithm or model that predicts every single person will succeed. Your model will be 95% accurate! Thus, you should be careful when using accuracy as a performance metric.</p>
 
 
 
