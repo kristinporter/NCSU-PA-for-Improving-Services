@@ -2,9 +2,11 @@
 title: "The confusion matrix and threshold-variant metrics"
 ---
 
-Many of the most helpful and intuitive metrics of learner/model performance depend on converting predicted probabilities into predicted binary classifications (or '0' or '1' predictions of the outcome). To do this, we first need to specify a **threshold** so that predicted probabilities above or beyond the threshold indicate that the outcome equals '1' (or 'yes'). For example, we may specify a threshold of 0.5. Then, turning back to our example on the previous page, any student with a predicted probability greater than or equal to 0.5 is considered "predicted to drop-out," while any student with a predicted probability less than 0.5 is considered "not predicted to drop-out."
+Many of the most helpful and intuitive metrics of learner/model performance depend on converting predicted probabilities into predicted binary classifications (or '0' or '1' predictions of the outcome). To do this, we first need to specify a **threshold**. After selecting a threshold, predicted probabilities above the threshold indicate that the predicted outcome equals '1' (or 'yes'), and predicted probabilities below the threshold indicate that the predicted outcome equals '0' (or 'no'). For example, we may specify a threshold of 0.5. Then, turning back to our example on the previous page, any student with a predicted probability greater than or equal to 0.5 is considered "predicted to drop-out," while any student with a predicted probability less than 0.5 is considered "not predicted to drop-out."
 
-Later, we will discuss how to pick a threshold. For now, once we have picked a threshold, we can then compare each resulting predicted classification to the actual, observed classification (e.g. whether or not a student actually dropped out.) We can summarize the comparisons in 2x2 matrix called a **confusion matrix:**
+Later, we will discuss how to pick a threshold. For now, once we have picked a threshold, we can then compare each resulting predicted outcome to the actual, true, observed outcome (e.g. whether or not a student actually dropped out.) Sometimes We can summarize the comparisons in 2x2 matrix called a **confusion matrix:**
+
+**KH**: you switch back and forth between "predicted classification" and "predicted outcome".  I would probably stick with outcome, or at least clarify that those are the same!  You also switch between "observed" and "true" but I think you explain that slightly better, but it still wouldn't hurt to be more consistent on that.
 
 ![](images/confusion_matrix_define.png){fig-align="left" width="8in"}
 
@@ -18,17 +20,19 @@ Within a confusion matrix, observations are categorized into one of the followin
 
 -   **True negatives (TN):** the predicted classification (or "class") is '0' ('no') and the true classification is '0'.
 
-For totals, we have:
+Note that for "true positives" and "false positives", the predicted and observed classification match, while in "false positives" and "false negatives" we make a prediction that does not match the true classification.
 
--   **Observed positives (OP):** the number of observed (true) positives (the number observations for which the outcome is observed to be '1'.
+We also calculate the following totals:
 
--   **Observed negatives (ON):** the number of observed (true) negatives (the number observations for which the outcome is observed to be '0'.
+-   **Observed positives (OP):** the number of observed (true) positives (the number of observations for which the outcome is observed to be '1').
 
--   **Predicted positives (PP):** the number of predicted positives (the number observations for which the outcome is predicted to be '1'.
+-   **Observed negatives (ON):** the number of observed (true) negatives (the number of observations for which the outcome is observed to be '0').
 
--   **Predicted negatives (PN):** the number of predicted negatives (the number observations for which the outcome is predicted to be '0'.
+-   **Predicted positives (PP):** the number of predicted positives (the number of observations for which the outcome is predicted to be '1').
 
-\
+-   **Predicted negatives (PN):** the number of predicted negatives (the number of observations for which the outcome is predicted to be '0').
+
+
 Finally, we can also summarize these categories into many different rates. Below is a list of various rates that may be helpful. In a later page, we will discuss how to pick different metrics to align with goals for the project. 
 
 <u>*Rates based on total true, observed number of one classification (OP or ON):*</u>
@@ -63,14 +67,16 @@ FNR = \frac{FN}{TP + FN} = \frac{FN}{OP}
 ```
 <u>*Rates based on total predicted number of one classification (PP or PN):*</u>
 
--   **Positive predicted value:**: the proportion of predicted positives that were correctly predicted as positive. The PPV is also known as **precision**.
+-   **Positive predictive value:**: the proportion of predicted positives that were true observed positives. The PPV is also known as **precision**.
+
+**KH**: I found this definition a little confusing, but not sure if I improved it.
 
 ```{=tex}
 \begin{equation}
 PPV = \frac{TP}{TP + FP} = \frac{TP}{PP}
 \end{equation}
 ```
--   **Negative predicted value:**: the proportion of predicted negatives that were correctly predicted as positive.
+-   **Negative predictive value:**: the proportion of predicted negatives that were true observed negatives.
 
 ```{=tex}
 \begin{equation}
@@ -93,3 +99,9 @@ FDR = \frac{FP}{FP + TP} = \frac{FP}{PP}
 FDR = \frac{TP + TN}{TP + FP + TP + TN} 
 \end{equation}
 ```
+
+A note on accuracy: Accuracy is highly sensitive to the true probability of success.
+Imagine a scenario where 95% of people are truly successful.
+You create an "algorithm" that predicts every single person will succeed.
+Your "algorithm" will be 95% accurate!
+Thus, you should be careful when using accuracy as a performance metric.

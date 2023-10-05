@@ -8,7 +8,7 @@ html:
 
 ## 02_Learner_Training_and_Validation
 
-After making all specifications for your PA proof-of-concept in `01_Learner_Specification.Rmd`, all the learners you defined are trained in `02_Learner_Training_and_Validation.Rmd`. This happens in the code chunk replicated below. The user does not need to enter or edit any code within the chunk. Specifications that were entered in `01_Learner_Specification.Rmd` are loaded in the chunk that precedes this one and are passed into the `train_learners()` function.
+After making all specifications for your PA proof-of-concept in `01_Learner_Specification.Rmd`, all the learners you defined are trained in `02_Learner_Training_and_Validation.Rmd`. This training happens in the code chunk replicated below. The user does not need to enter or edit any code within the chunk. Specifications that were entered in `01_Learner_Specification.Rmd` are loaded in the chunk that precedes this one and are passed into the `train_learners()` function.
 
 ```{r print_trainLearners, results='asis', echo=FALSE}
 source("datasets/extract_chunk.R")
@@ -24,9 +24,9 @@ cat("\n```\n")
 #cat('\n</pre>\n')
 ```
 
-As commented in the above chunk, the code returns information about couple of performance metrics abbreviated as AUC-PR and AUC-ROC. AUC-PR is the area under the curve (AUC) for a precision recall (PR) curve. AUC-ROC is the area under the curve (AUC) for a receiver operating characteristic (ROC) curve. We will return to explanations of these in a bit.
+As commented in the above chunk, the code returns information about a couple of performance metrics abbreviated as AUC-PR and AUC-ROC. AUC-PR is the area under the curve (AUC) for a precision recall (PR) curve. AUC-ROC is the area under the curve (AUC) for a receiver operating characteristic (ROC) curve. We will return to explanations of these in a bit.
 
-First, let's focus on the other information that is returned in the above code chunk - the predicted probabilities. For each observation (unit or row) in our dataset used for training and valiation and for each learner, the code returns a predicted probability of the outcome.
+First, let's focus on the other information that is returned in the above code chunk - the predicted probabilities. For each observation (unit or row) in our dataset used for training or validation, each learner produces a predicted probability of the outcome. The code returns these predicted probabilities for each observation for each learner.
 
 For example, imagine we are predicting whether a student will drop out of high school. Then, for each student, we get the following information, displayed for just one student.
 
@@ -44,7 +44,7 @@ The predicted probabilities listed for `.pred_yes` were estimated through the $v
 
 A helpful first step for understanding the validation results is to examine the distributions of the predicted probabilities. The following set of plots shows the distribution for each learner. The code chunk named "plotpredProbs" in `02_Learner_Training_and_Validation` will create these plots for you. 
 
-As expected since most students do not drop out, the predicted probabilites tend to cluster around low values. Also, note that some learners produce greater variability than others. 
+As expected, because most students do not drop out, the predicted probabilities tend to cluster around low values. Also, note that some learners produce greater variability than others. 
 
 ```{r plotpredProbs, warning=FALSE, message=FALSE, echo=FALSE}
 source("datasets/plots.R")
@@ -69,7 +69,7 @@ for(i in 1:length(learnerNames))
 ggarrange(plotlist = probsGraphs)
 ```
 
-Next, the notebook plots overlapping distributions of predicted probabilities for when the observed outcome = '1' and when the observed outcome = '0'. This illustrates how well each learner is able to separate out the predictive probabilities for the different classifications. 
+Next, the notebook plots overlapping distributions of predicted probabilities for when the observed outcome = '1' and when the observed outcome = '0'. This plot illustrates how well each learner is able to separate out the predicted probabilities for the different classifications. 
 
 ```{r plotpredProbsTruth, warning=FALSE, message=FALSE, echo=FALSE}
 learnerSpec <- readRDS("~/Library/CloudStorage/OneDrive-K.E.PorterConsultingLLC/Git/NCSU-PA-for-Improving-Services/datasets/learnerSpec.rds")
