@@ -28,8 +28,6 @@ We usually compare a model's curve to a line that goes straight up the diagonal 
 
 The AUC-ROC measures how well predictions are ranked, rather than their absolute values. Therefore, the measure is helpful when you want to target a service, marketing campaign, intervention, etc. to those most or least likely to have a positive outcome.
 
-**KH**: not sure someone who is unfamiliar with ROC curves will understand the paragraph above about ranks.
-
 In the case of **imbalanced data**, when one of the categories is very rare, ROC curves can give misleading results and be overly optimistic of model performance. As a rule of thumb, if your data has 10% or less of units in one category, you may have imbalanced data. In this case, AUC of precision recall curve, discussed next, may be a better metric. For more information about imbalanced data, see our short explainer attached in the reference folder on the subject, and why ROC curves may not perform well in that setting.
 
 This code chunk in `02_Learner_Training_and_Validation.Rmd` plots ROC curves for each specified learner.
@@ -53,9 +51,7 @@ cat("\n```\n")
 
 AUC-PR is area under the curve (AUC) for a precision recall (PR) curve. For the PR curve, the true positive rate (sensitivity/recall) is on the $x$-axis and the positive predicted value (precision) is on the $y$-axis. Like in AUC ROC as well, the precision and recall are plotted *as the threshold changes*.
 
-**KH**: there's a typo below, but not sure what the correct version is: "AUC-PR is a valuable metric when there is class"
-
-AUC-PR is a valuable metric when there is class, the positive class is of particular interest, and both types of classification errors (false positives and false negatives) carry significant consequences. Because AUC-PR does not account for true negatives, it is often preferred over AUC-ROC when outcome classes are imbalanced. With a rare outcome, the FPR tends to remain low due to a large number of observed negatives. Recall that FPR = FP/(TN + FP). A larger number of observed negative values within the imbalanced data would imply a large denominator (because TN would be large) and hence, we would see a low false positive *rate* even as the **number** of false positives increases. Thus, AUC-ROC can be a less informative and at times overly optimistic metric for imbalanced data.
+AUC-PR is a valuable metric when there is class imbalance, the positive class is of particular interest, and both types of classification errors (false positives and false negatives) carry significant consequences. Because AUC-PR does not account for true negatives, it is often preferred over AUC-ROC when outcome classes are imbalanced. With a rare outcome, the FPR tends to remain low due to a large number of observed negatives. Recall that FPR = FP/(TN + FP). A larger number of observed negative values within the imbalanced data would imply a large denominator (because TN would be large) and hence, we would see a low false positive *rate* even as the **number** of false positives increases. Thus, AUC-ROC can be a less informative and at times overly optimistic metric for imbalanced data.
 
 AUC PR, on the other hand, is a trade-off between *precision* (TP/(TP + FP)) and *recall/sensitivity* (TP/(TP + FN)). *Precision* is solely based on predicted positive values (TP and FP) and is unaffected if there is a large number of observed negatives. If there are few false positives, then there will be both a low false positive rate (smaller numerator for FPR) and high precision (smaller denominator for precision). If there are few false negatives, then there will be both a low false negative rate (smaller numerator for FNR) and a high recall (smaller denominator for recall). Therefore, a high AUC PR score is good because it implies low false positive and false negative rates (just like a high AUC ROC score).
 

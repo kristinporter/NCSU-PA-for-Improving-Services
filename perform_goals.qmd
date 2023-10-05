@@ -57,14 +57,12 @@ Choosing the F1-score provides some balance, but not a complete elimination of e
 ### Goal 5: Model's ability to rank predictions
 
 -   **Metric:** AUC-ROC
--   **Advice:** Valuable in scenarios where it's not just about classifying instances but also ranking them according to the predicted confidence.
+-   **Advice:** Valuable in scenarios where it's not just about classifying instances but also ranking them.
 -   **Example:**
     -   **Scenario:** Predicting customer churn where ranking customers by churn risk is essential for targeted interventions.
     -   **Model Comparison:** Model A has an AUC-ROC of 0.75, while Model B has an AUC-ROC of 0.82. Model B might be preferred for its better ranking ability.
--   **Limitation/trade-off:** Two models with the same AUC-ROC can have different precision and recall values.
-It does not take into account the distribution shift and class imbalance.
+-   **Limitation/trade-off:** Two models with the same AUC-ROC can have different trade-offs between identifying positives correctly and avoiding false alarms. For example, Model A might have higher precision (fewer false positives) but lower recall (more false negatives), while Model B has higher recall and lower precision, yet both could have the same AUC-ROC. AUC-ROC can also be misleading in the presence of class imbalance because it evaluates the model's ability to distinguish between classes, without accounting for their proportions.
 
-**KH**: what do you mean by distribution shift?
 
 ### Goal 6: Precision in top-K predictions
 

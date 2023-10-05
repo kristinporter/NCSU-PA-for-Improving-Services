@@ -4,9 +4,7 @@ title: "The confusion matrix and threshold-variant metrics"
 
 Many of the most helpful and intuitive metrics of learner/model performance depend on converting predicted probabilities into predicted binary classifications (or '0' or '1' predictions of the outcome). To do this, we first need to specify a **threshold**. After selecting a threshold, predicted probabilities above the threshold indicate that the predicted outcome equals '1' (or 'yes'), and predicted probabilities below the threshold indicate that the predicted outcome equals '0' (or 'no'). For example, we may specify a threshold of 0.5. Then, turning back to our example on the previous page, any student with a predicted probability greater than or equal to 0.5 is considered "predicted to drop-out," while any student with a predicted probability less than 0.5 is considered "not predicted to drop-out."
 
-Later, we will discuss how to pick a threshold. For now, once we have picked a threshold, we can then compare each resulting predicted outcome to the actual, true, observed outcome (e.g. whether or not a student actually dropped out.) Sometimes We can summarize the comparisons in 2x2 matrix called a **confusion matrix:**
-
-**KH**: you switch back and forth between "predicted classification" and "predicted outcome".  I would probably stick with outcome, or at least clarify that those are the same!  You also switch between "observed" and "true" but I think you explain that slightly better, but it still wouldn't hurt to be more consistent on that.
+Later, we will discuss how to pick a threshold. For now, once we have picked a threshold, we can then compare each resulting predicted classification (i.e. predicted outcome) to the actual, true, observed classification (e.g. whether or not a student actually dropped out.) Sometimes We can summarize the comparisons in 2x2 matrix called a **confusion matrix:**
 
 ![](images/confusion_matrix_define.png){fig-align="left" width="8in"}
 
@@ -102,6 +100,6 @@ FDR = \frac{TP + TN}{TP + FP + TP + TN}
 
 A note on accuracy: Accuracy is highly sensitive to the true probability of success.
 Imagine a scenario where 95% of people are truly successful.
-You create an "algorithm" that predicts every single person will succeed.
-Your "algorithm" will be 95% accurate!
+You create an algorithm or model that predicts every single person will succeed.
+Your model will be 95% accurate!
 Thus, you should be careful when using accuracy as a performance metric.
