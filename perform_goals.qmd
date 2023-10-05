@@ -4,7 +4,7 @@ html:
   css: styles.css
 ---
 
-Which metrics should you prioritize? This depends on the goal for how predictions will be used to guide decision-making.
+Which metrics should you prioritize? This choice depends on the goal for how predictions will be used to guide decision-making.
 
 ### Goal 1: Maximizing detection of positive cases
 
@@ -35,7 +35,7 @@ Which metrics should you prioritize? This depends on the goal for how prediction
 F_1 = 2\frac{precision*recall}{precision + recall} = 2\frac{PPV * TPR}{PPV + TPR}
 \end{equation}
 ```
-Imagine we have a very rare outcomes we are trying to predict (e.g. a rare form of cancer that occurs in less than 1% of the population). Note that if we predict '0' for the whole sample, we have precision = 0, and our recall for the positive class is also 0. Accuracy in this case would be over 99% though! The F1 score = 0 in this case, so we know our model us useless.
+Imagine we have a very rare outcome we are trying to predict (e.g. a rare form of cancer that occurs in less than 1% of the population). Note that if we predict '0' for the whole sample, we have precision = 0, and our recall for the positive class is also 0. Accuracy in this case would be over 99% though! The F1 score = 0 in this case, so we know our model us useless.
 
 -   **Advice:** Focus on the F1 score when you need a balance between identifying positive cases and minimizing false positives, especially for imbalanced datasets.
 -   **Example:**
@@ -43,7 +43,7 @@ Imagine we have a very rare outcomes we are trying to predict (e.g. a rare form 
     -   **Model Comparison:** Model A has an F1-score of 0.85, while Model B has an F1-score of 0.80. Model A may be preferred for a balanced performance.
     
 -   **Limitation/trade-off:** Even with a balanced F1-score, there might still be a notable number of false positives and false negatives. Some spam might get through, and some legitimate emails might be marked as spam.
-It’s a balance, but not a complete elimination of errors.
+Choosing the F1-score provides some balance, but not a complete elimination of errors.
 
 ### Goal 4: Overall accuracy
 
@@ -63,6 +63,8 @@ It’s a balance, but not a complete elimination of errors.
     -   **Model Comparison:** Model A has an AUC-ROC of 0.75, while Model B has an AUC-ROC of 0.82. Model B might be preferred for its better ranking ability.
 -   **Limitation/trade-off:** Two models with the same AUC-ROC can have different precision and recall values.
 It does not take into account the distribution shift and class imbalance.
+
+**KH**: what do you mean by distribution shift?
 
 ### Goal 6: Precision in top-K predictions
 
