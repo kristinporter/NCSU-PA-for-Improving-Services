@@ -65,9 +65,7 @@ FNR = \frac{FN}{TP + FN} = \frac{FN}{OP}
 ```
 <u>*Rates based on total predicted number of one classification (PP or PN):*</u>
 
--   **Positive predictive value:**: the proportion of predicted positives that were true observed positives. The PPV is also known as **precision**.
-
-**KH**: I found this definition a little confusing, but not sure if I improved it.
+-   **Positive predictive value:** the proportion of predicted positives that were true observed positives. The PPV is also known as **precision**.
 
 ```{=tex}
 \begin{equation}
