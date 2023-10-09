@@ -1,0 +1,21 @@
+---
+title: "Sources of bias"
+html:
+  css: styles.css
+---
+
+Earlier, we discussed a wide range of [ethical considerations](paforimprovingss_ethics.qmd) that pertain to predictive analytics. Some of these considerations are related to bias, or fairness, of predictive models and how their results are used. This is an enormous, complex and extremely important topic. In this section, we provide an overview of key concepts.
+
+We begin with a discussion of the potential *sources* of bias in predictive analytics. The development and use of predictive analytics involves several steps, each of which present different sources of bias:
+
+-   [**Step 1: Estimating predicted probabilities of the outcome.**]{style="color:blue"}
+
+-   [**Step 2: Translating results into recommendations for action.**]{style="color:blue"}
+
+-   [**Step 3: Implementing decisions based on recommendations.**]{style="color:blue"}
+
+The following pages discuss how bias may be introduced in each of these steps. To illustrate, we will use an example from the criminal justice system, when the consequences of bias are significant for the lives of people affected. In particular, we will focus on the pretrial period. Across the country, release and detention decisions for defendants in the pretrial period are increasingly guided by algorithmic risk assessments. These assessments rely on data to estimate defendants' risk of failing to appear for a court date or of being charged with new criminal activity if released pending trial. A risk assessment is generally used by a judicial body to help determine whether a defendant will be released while waiting for a case to be resolved, and if so, under what conditions. The content is this section is summarized from @PorterRedcrossMiratrix2020.
+
+As we discuss the potential sources of bias in pretrial assessment, we'll focus on bias that can affect Black defendants for simplicity, although any of the ideas could be applied to other demographic subgroups.
+
+![](images/ferriswheel.jpg){width="7in"}

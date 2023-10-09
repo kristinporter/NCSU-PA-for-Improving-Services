@@ -85,6 +85,7 @@ website:
           - perform_selectthreshold.qmd
       - section: "Evaluating and comparing bias"
         contents:
+          - fairness_intro.qmd
           - "Sources of bias"
           - "Metrics for assessing bias"
           - "Visualizations for assessing bias"
