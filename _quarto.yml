@@ -85,11 +85,13 @@ website:
           - perform_selectthreshold.qmd
       - section: "Evaluating and comparing bias"
         contents:
-          - fairness_intro.qmd
-          - "Sources of bias"
-          - "Metrics for assessing bias"
-          - "Visualizations for assessing bias"
-          - "Guidance for selecting the metrics"
+          - bias_intro.qmd
+          - bias_modeling.qmd
+          - bias_use.qmd
+          - bias_define.qmd
+          - bias_context.qmd
+          - bias_toolset.qmd
+          - "Bias in the templates"
           - "Addressing bias"
       - section: "Selecting and validating a learner"
         contents:

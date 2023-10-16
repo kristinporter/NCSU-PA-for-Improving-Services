@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predictive Analytics (PA) for Improving Services - Sources of bias</title>
+<title>Predictive Analytics (PA) for Improving Services - Defining bias</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -49,8 +49,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./bias_modeling.html" rel="next">
-<link href="./perform_selectthreshold.html" rel="prev">
+<link href="./bias_context.html" rel="next">
+<link href="./bias_use.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -93,7 +93,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bias_intro.html">Evaluating and comparing bias</a></li><li class="breadcrumb-item"><a href="./bias_intro.html">Sources of bias</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bias_intro.html">Evaluating and comparing bias</a></li><li class="breadcrumb-item"><a href="./bias_define.html">Defining bias</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -499,7 +499,7 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bias_intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="./bias_intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sources of bias</span></a>
   </div>
 </li>
@@ -517,7 +517,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bias_define.html" class="sidebar-item-text sidebar-link">
+  <a href="./bias_define.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Defining bias</span></a>
   </div>
 </li>
@@ -629,7 +629,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Sources of bias</h1>
+<h1 class="title">Defining bias</h1>
 </div>
 
 
@@ -644,25 +644,48 @@ div.csl-indent {
 
 </header>
 
-<p>Earlier, we discussed a wide range of <a href="./paforimprovingss_ethics.html">ethical considerations</a> that pertain to predictive analytics. Some of these considerations are related to bias, or fairness, of predictive models and how their results are used. This is an enormous, complex and extremely important topic. In this section, we provide an overview of key concepts.</p>
-<p>We begin with a discussion of the potential <em>sources</em> of bias in predictive analytics. The development and use of predictive analytics to improve services involves several steps. Each step presents different sources of bias:</p>
-<ul>
-<li><p><span style="color:blue"><strong>Step 1: Estimating predicted probabilities of the outcome.</strong></span></p></li>
-<li><p><span style="color:blue"><strong>Step 2: Translating results into recommendations for action.</strong></span></p></li>
-<li><p><span style="color:blue"><strong>Step 3: Implementing decisions based on recommendations.</strong></span></p></li>
-</ul>
-<p>The following pages discuss how bias may be introduced in each of these steps. To illustrate, we will use an example from the criminal justice system, when the consequences of bias are significant for the lives of people affected. In particular, we will focus on the pretrial period. Across the country, release and detention decisions for defendants in the pretrial period are increasingly guided by algorithmic risk assessments. These assessments rely on data to estimate defendants’ risks of failing to appear for a court date or of being charged with new criminal activity if released pending trial. The results are generally used by a judicial body to help determine whether a defendant will be released while waiting for a case to be resolved, and if so, under what conditions. The content is this section is summarized from <span class="citation" data-cites="PorterRedcrossMiratrix2020">Porter, Redcross, &amp; Miratrix (<a href="#ref-PorterRedcrossMiratrix2020" role="doc-biblioref">2020</a>)</span>.</p>
-<p>As we discuss the potential sources of bias in pretrial assessment, we’ll focus on bias that can affect Black defendants for simplicity, although any of the ideas could be applied to other demographic subgroups.</p>
-<p><img src="images/ferriswheel.jpg" class="img-fluid" style="width:7in"></p>
+<p>There are different ways to define bias, or the desired goal: fairness. Different stakeholders may put more priority on different definitions of fairness. The literature on the bias/fairness of predictive models is vast and it lacks consensus on the best definitions or measures. (It also lacks consistency in the names assigned to different concepts and measures.) It is important to focus on the questions various stakeholders (the court, the public, the defendants) would want answered to assess fairness.</p>
+<p>Consider the questions below. Each question illustrates a different notion or definition of fairness, and each question maps to a different way of measuring bias empirically. As above, for ease of presentation these questions focus on race, but the same questions can be asked for other demographic groups for which it is important to assess bias/fairness. As will be discussed below, it is not possible to satisfy all definitions of bias simultaneously. Also, some ways of defining and measuring fairness have limitations.</p>
+<ol type="1">
+<li><span style="color:blue"><strong>For a particular risk score is there the same chance of failure (of failure to appear, new criminal activity, or other adverse outcomes) in all racial groups during the pretrial period (or during a fixed period)?</strong></span></li>
+</ol>
+<p>In other words, do risk scores mean the same thing regardless of race? The statistical concept that answers this question is usually referred to as <strong>calibration</strong> or <strong>predictive parity</strong>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Here, “failure” rates are computed for each risk score and subgroup of interest. Subgroup failure rates are then compared within risk scores.</p>
+<p>Note that this question about fairness focuses on the risk scores (for example, scores that might range from 1 to 6) and not defendants’ risk categories (for example, high risk or not), and the categories are what help judges decide whether or not to detain a person. Moving from a risk score to a risk category can result in very different conclusions about whether or not a risk assessment is fair. Therefore, when gauging the bias of a risk assessment, it is important to look not only at bias in the assessment but also at bias in the recommendations for how to use the results of the assessment.</p>
+<p>It is also important to note that if the outcome itself is measured with bias, then perceived differences between two subgroups with the same risk score could be due to that bias. For example, if Black people are more likely to be arrested for the same behavior (for example, drug possession) then this appraisal is corrupt.</p>
+<ol start="2" type="1">
+<li><span style="color:blue"><strong>Among those who would not fail if released, is the percentage assigned a particular risk score the same across all racial groups? This statistical concept has been referred to as predictive parity or error rate balance (among other terms).</strong></span></li>
+</ol>
+<p>This definition, while desirable for complete fairness, introduces some challenges. To achieve this type of fairness, a risk-assessment tool would need to treat people differently on the basis of race, which may not be ethical or even constitutional. <em>Moreover, optimizing a model for this form of fairness makes it mathematically impossible to also achieve predictive parity, the first form of fairness discussed above.</em> (For example, see <span class="citation" data-cites="CorbettDaviesetal2017">Corbett-Davies, Pierson, Feller, Goel, &amp; Huq (<a href="#ref-CorbettDaviesetal2017" role="doc-biblioref">2017</a>)</span> and <span class="citation" data-cites="Chouldechova2017">Chouldechova (<a href="#ref-Chouldechova2017" role="doc-biblioref">2017</a>)</span>.)</p>
+<ol start="4" type="1">
+<li><span style="color:blue"><strong>Do all racial groups have the same distribution of risk scores?</strong></span></li>
+</ol>
+<p>It is understandable that stakeholders would want to know the answer to this question. However, it is impossible to untangle the extent to which different distributions of risk scores are due to bias — for example, from different arrest rates due to differential policing strategies or racism — or reflect actually differential rates of prior criminal activity and behavior that in turn are due to socioeconomic factors correlated with race.</p>
+<ol start="5" type="1">
+<li><span style="color:blue"><strong>Do the risk scores produced by a risk assessment discriminate between failures and nonfailures equally well across all racial groups?</strong></span></li>
+</ol>
+<p>There are several measures that approach this form of fairness question, such as relative rates of predictive accuracy, false positive rates, false negative rates, F1 scores (which combine both false positive and false negative rates), and area under the curve (AUC) measures. Unfortunately, these measures also are susceptible to the tensions between (1) and (2), above, and furthermore can be hard to interpret if the true distribution of risk is different for the different groups. Some of these measures (in particular the AUC) do avoid requiring a specification of a decision threshold for categorizing low and high risk, which can avoid some biases introduced by establishing such thresholds. Not specifying thresholds, however, could conceal biases that would arise when the risk tool was used in practice, as these tools are linked to an eventual hard threshold of detention or not.</p>
+<p>Note: the text on this page is taken from <span class="citation" data-cites="PorterRedcrossMiratrix2020">Porter, Redcross, &amp; Miratrix (<a href="#ref-PorterRedcrossMiratrix2020" role="doc-biblioref">2020</a>)</span>.</p>
+
 
 
 
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list">
+<div id="ref-Chouldechova2017" class="csl-entry" role="listitem">
+Chouldechova, A. (2017). Fair prediction with disparate impact: A study of bias in recidivism prediction instruments. <em>Big Data</em>, 153–163. Retrieved from <a href="https://arxiv.org/abs/1703.00056">https://arxiv.org/abs/1703.00056</a>
+</div>
+<div id="ref-CorbettDaviesetal2017" class="csl-entry" role="listitem">
+Corbett-Davies, Pierson, S. E., Feller, A., Goel, S., &amp; Huq, A. (2017). Algorithmic decision making and the cost of fairness. <em>Proceedings of the 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</em>. Retrieved from <a href="https://arxiv.org/pdf/1701.08230.pdf">https://arxiv.org/pdf/1701.08230.pdf</a>
+</div>
 <div id="ref-PorterRedcrossMiratrix2020" class="csl-entry" role="listitem">
 Porter, K. E., Redcross, C., &amp; Miratrix, L. (2020). <em>Balancing promise and caution in pretrial risk assessments</em>.
 </div>
-</div></section></div></main> <!-- /main -->
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>The terminology for different types of bias is not consistent in the literature and other terms have been used as well.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -898,13 +921,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./perform_selectthreshold.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Selecting a threshold</span>
+      <a href="./bias_use.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Bias in how predicted probabilities are used</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./bias_modeling.html" class="pagination-link">
-        <span class="nav-page-text">Bias in predicting probabilities</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./bias_context.html" class="pagination-link">
+        <span class="nav-page-text">Context matters</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

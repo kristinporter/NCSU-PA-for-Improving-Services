@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predictive Analytics (PA) for Improving Services - Sources of bias</title>
+<title>Predictive Analytics (PA) for Improving Services - Context matters</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,8 +30,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./bias_modeling.html" rel="next">
-<link href="./perform_selectthreshold.html" rel="prev">
+<link href="./bias_toolset.html" rel="next">
+<link href="./bias_define.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -93,7 +74,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bias_intro.html">Evaluating and comparing bias</a></li><li class="breadcrumb-item"><a href="./bias_intro.html">Sources of bias</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bias_intro.html">Evaluating and comparing bias</a></li><li class="breadcrumb-item"><a href="./bias_context.html">Context matters</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -499,7 +480,7 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bias_intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="./bias_intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sources of bias</span></a>
   </div>
 </li>
@@ -523,7 +504,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bias_context.html" class="sidebar-item-text sidebar-link">
+  <a href="./bias_context.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Context matters</span></a>
   </div>
 </li>
@@ -629,7 +610,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Sources of bias</h1>
+<h1 class="title">Context matters</h1>
 </div>
 
 
@@ -644,25 +625,17 @@ div.csl-indent {
 
 </header>
 
-<p>Earlier, we discussed a wide range of <a href="./paforimprovingss_ethics.html">ethical considerations</a> that pertain to predictive analytics. Some of these considerations are related to bias, or fairness, of predictive models and how their results are used. This is an enormous, complex and extremely important topic. In this section, we provide an overview of key concepts.</p>
-<p>We begin with a discussion of the potential <em>sources</em> of bias in predictive analytics. The development and use of predictive analytics to improve services involves several steps. Each step presents different sources of bias:</p>
-<ul>
-<li><p><span style="color:blue"><strong>Step 1: Estimating predicted probabilities of the outcome.</strong></span></p></li>
-<li><p><span style="color:blue"><strong>Step 2: Translating results into recommendations for action.</strong></span></p></li>
-<li><p><span style="color:blue"><strong>Step 3: Implementing decisions based on recommendations.</strong></span></p></li>
-</ul>
-<p>The following pages discuss how bias may be introduced in each of these steps. To illustrate, we will use an example from the criminal justice system, when the consequences of bias are significant for the lives of people affected. In particular, we will focus on the pretrial period. Across the country, release and detention decisions for defendants in the pretrial period are increasingly guided by algorithmic risk assessments. These assessments rely on data to estimate defendants’ risks of failing to appear for a court date or of being charged with new criminal activity if released pending trial. The results are generally used by a judicial body to help determine whether a defendant will be released while waiting for a case to be resolved, and if so, under what conditions. The content is this section is summarized from <span class="citation" data-cites="PorterRedcrossMiratrix2020">Porter, Redcross, &amp; Miratrix (<a href="#ref-PorterRedcrossMiratrix2020" role="doc-biblioref">2020</a>)</span>.</p>
-<p>As we discuss the potential sources of bias in pretrial assessment, we’ll focus on bias that can affect Black defendants for simplicity, although any of the ideas could be applied to other demographic subgroups.</p>
-<p><img src="images/ferriswheel.jpg" class="img-fluid" style="width:7in"></p>
+<p>We have just examined an example from the criminal justice system, where the consequences of decisions influenced by predictive analytics are both punitive and significant. Detaining defendants during the pretrial period separates them from their families and communities, stigmatizes them, and often results in job loss, among other negative impacts.</p>
+<p>However, predictive analytics also play a pivotal role in service decisions where the consequences are largely beneficial. For instance, students identified as having a high risk of not completing high school on time may receive additional tutoring, counseling, or parental outreach. Families estimated to be at high risk of homelessness may be granted housing assistance, job training, and social supports. In the financial sector, clients at high risk of credit default could be provided with financial counseling to enhance their creditworthiness.</p>
+<p>When predictive analytics identifies individuals or groups to receive extra help, bias may be measured and considered differently compared to punitive contexts. In scenarios where analytics are used for assistance, a bias that leads to over-identification can result in more people receiving help. While this may lead to resource strain, the immediate ethical implications aren’t as severe as those in punitive contexts. Here, the main concern is under-identification bias, where some individuals or groups who need help are overlooked.</p>
+<p>To measure this, statistical tests that focus on the rates of false negatives among different subpopulations can be useful. We would look for disparities in the likelihood of being identified as ‘at risk’ and thereby eligible for additional support among different racial, gender, socioeconomic, or geographic groups. Special attention should be given to marginalized or vulnerable populations to ensure they are not systematically deprived of necessary assistance due to biases in predictive models.</p>
+<p>Bias might be weighed by considering both the immediate and long-term impacts on individuals and communities. In the assistive context, the ethical stakes, while still high, are somewhat alleviated by the benevolent intention behind the intervention. The focus then shifts to ensuring the equitable allocation of resources and opportunities to mitigate potential harm from under-identification. But also, while interventions may be <em>designed</em> to be beneficial, there still may be negative consequences as well, such as burden placed on individuals by extra “services” and stigma that may arise for those designated for extra services.</p>
+<p>Broader ethical considerations must always remain centered as well. As a review, see the earlier section on “<a href="paforimprovingss_ethics">What are the ethical considerations of using PA to improve services?</a>”.</p>
+<p>Note that <a href="http://www.datasciencepublicpolicy.org/our-work/tools-guides/aequitas/">Aequitas</a>, an open source bias toolkit is a helpful resource for auditing predictive models, is a valuable resource. It takes context into account, including whether decisions based on results are “punitive” or “assistive.” Optionally, you can read their paper, linked at their website.</p>
 
 
 
-
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list">
-<div id="ref-PorterRedcrossMiratrix2020" class="csl-entry" role="listitem">
-Porter, K. E., Redcross, C., &amp; Miratrix, L. (2020). <em>Balancing promise and caution in pretrial risk assessments</em>.
-</div>
-</div></section></div></main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -898,13 +871,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./perform_selectthreshold.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Selecting a threshold</span>
+      <a href="./bias_define.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Defining bias</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./bias_modeling.html" class="pagination-link">
-        <span class="nav-page-text">Bias in predicting probabilities</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./bias_toolset.html" class="pagination-link">
+        <span class="nav-page-text">Assessing bias in the code templates</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
