@@ -92,9 +92,18 @@ cat("\n```\n")
 
 ```
 
-![](images/head_equityResults.png){width="7in"}
+![](images/head_equityResults.png){width="9in"}
 
-And then the next code chunk (`fairnessDiffExploration`) helps the user output from the previous chunk so that differential metrics can be assessed. 
+And then the next code chunk (`fairnessDiffExploration`) helps the user output from the previous chunk so that differential metrics can be assessed. The user specifies which learner(s) to narrow results to (`learnerSelect`), which attribute(s) (`equityVarsSelect`) and which thresholds (`thresholdsSelect`).
+
+```{r print_fairnessDiffExploration, results='asis', echo=FALSE}
+extract_chunk("datasets/02_Learner_Training_and_Validation.Rmd", "fairnessDiffExploration")
+code_lines <- readLines("fairnessDiffExploration.R")
+# Print the lines as a formatted code block
+cat("```r\n")
+cat(code_lines, sep = "\n")
+cat("\n```\n")
+```
  
 Finally, it's crucial to remember that, like any statistical estimate, performance metric estimates carry inherent statistical uncertainty. Consequently, observed differences among various groups (e.g., different races) might result from noise attributed to sampling variability. Hence, determining the statistical significance of these differences is essential to validate the observations. The final code chunk in Step 4 of `02_Learner_Training.Rmd` provides p-values for the null hypothesis that the metrics are the same for all categories of the selected attribute. 
 

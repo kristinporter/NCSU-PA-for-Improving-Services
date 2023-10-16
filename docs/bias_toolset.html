@@ -744,23 +744,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">equityVars =</span> learnerSpec<span class="sc">$</span>equityVars,</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcomeName =</span> learnerSpec<span class="sc">$</span>outcomeName</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="images/head_equityResults.png" class="img-fluid" style="width:7in"></p>
-<p>And then the next code chunk (<code>fairnessDiffExploration</code>) helps the user output from the previous chunk so that differential metrics can be assessed.</p>
-<p>Finally, it’s crucial to remember that, like any statistical estimate, performance metric estimates carry inherent statistical uncertainty. Consequently, observed differences among various groups (e.g., different races) might result from noise attributed to sampling variability. Hence, determining the statistical significance of these differences is essential to validate the observations. The final code chunk in Step 4 of <code>02_Learner_Training.Rmd</code> provides p-values for the null hypothesis that the metrics are the same for all categories of the selected attribute.</p>
-<p>Currently, this chunk only carries out statistical tests for three metrics: fnr, fpr, or fdr.</p>
+<p><img src="images/head_equityResults.png" class="img-fluid" style="width:9in"></p>
+<p>And then the next code chunk (<code>fairnessDiffExploration</code>) helps the user output from the previous chunk so that differential metrics can be assessed. The user specifies which learner(s) to narrow results to (<code>learnerSelect</code>), which attribute(s) (<code>equityVarsSelect</code>) and which thresholds (<code>thresholdsSelect</code>).</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#-------------------------#</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>learnersSelect   <span class="ot">&lt;-</span> learnersSelect</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>equityVarsSelect <span class="ot">&lt;-</span> equityVarsSelect</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>thresholdsSelect <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>learnersSelect   <span class="ot">&lt;-</span> <span class="st">"glm_predSet_ms"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>equityVarsSelect <span class="ot">&lt;-</span> <span class="st">"race_SS_i"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>thresholdsSelect <span class="ot">&lt;-</span> selectedThresholds</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#-------------------------#</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>equityTests <span class="ot">&lt;-</span> <span class="fu">calc_equity_tests_all</span>(</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  learnersSelect,</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  equityVarsSelect,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  thresholdsSelect</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">round_table</span>(equityTests))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>equityResultsSubset <span class="ot">&lt;-</span> equityResults <span class="sc">%&gt;%</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(learnerName <span class="sc">%in%</span> learnersSelect) <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(equityVar <span class="sc">%in%</span> equityVarsSelect) <span class="sc">%&gt;%</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(threshold <span class="sc">%in%</span> thresholdsSelect)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>equityResultsSubsetRound <span class="ot">&lt;-</span> <span class="fu">round_table</span>(equityResultsSubset) <span class="sc">%&gt;%</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">learner =</span> learnerName, <span class="at">var =</span> equityVar, <span class="at">cat =</span> category, <span class="at">thres =</span> threshold)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(equityResultsSubsetRound)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Finally, it’s crucial to remember that, like any statistical estimate, performance metric estimates carry inherent statistical uncertainty. Consequently, observed differences among various groups (e.g., different races) might result from noise attributed to sampling variability. Hence, determining the statistical significance of these differences is essential to validate the observations. The final code chunk in Step 4 of <code>02_Learner_Training.Rmd</code> provides p-values for the null hypothesis that the metrics are the same for all categories of the selected attribute.</p>
+<p>Currently, this chunk only carries out statistical tests for three metrics: fnr, fpr, or fdr.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#-------------------------#</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>learnersSelect   <span class="ot">&lt;-</span> learnersSelect</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>equityVarsSelect <span class="ot">&lt;-</span> equityVarsSelect</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>thresholdsSelect <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#-------------------------#</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>equityTests <span class="ot">&lt;-</span> <span class="fu">calc_equity_tests_all</span>(</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  learnersSelect,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  equityVarsSelect,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  thresholdsSelect</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">round_table</span>(equityTests))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The output from this chunk looks like this:</p>
 <p><img src="images/equityTests.png" class="img-fluid" style="width:7in"></p>
 
