@@ -499,7 +499,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bias_define.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Defining bias</span></a>
+ <span class="menu-text">Getting specific about empirically defining bias</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -515,11 +515,11 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">Bias in the templates</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Addressing bias</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./bias_address.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Addressing bias</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -625,24 +625,14 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Here, we highlight three potential sources of bias in the first step of developing and using predictive analytics: estimating the predicted probabilities of the outcome of interest.</p>
-<section id="bias-in-the-data" class="level3">
-<h3 class="anchored" data-anchor-id="bias-in-the-data">Bias in the data</h3>
-<p>In the administrative data used to develop and validate pretrial assessments, some data elements are very likely to be inherently biased. A key challenge is that <strong>crime data does not exist</strong>. Data only captures contacts with police and decisions made after that. Therefore, to the extent that police activity and subsequent steps in the CJ are biased, the data is biased.</p>
-<p>Consider measures of criminal activity, for example. One factor leading to recorded criminal activity is the likelihood of getting arrested. This likelihood can vary by race even when the true level of criminal activity is constant. For example, individuals who live in areas with elevated amounts of policing will tend to have more arrests than individuals with the same criminal behavior who live in areas with less policing. The level of policing in neighborhoods is often correlated with race. Therefore, White and Black populations with the same actual prevalence of criminal behavior will be arrested at different rates for such behavior.</p>
-<p><img src="images/pretrial_biasindata.png" class="img-fluid" style="width:7in"></p>
-<p>The resulting bias in the data affects both the risk factors used as predictors in a risk assessment tool and the outcomes predicted by a risk assessment tool – such as failure to appear or new criminal activity during the pretrial period. An assessment that depends on risk factors that are biased may perpetuate this bias because it could score a Black defendant as at higher risk than a White defendant with the same true level of risk.</p>
-<p>With respect to outcomes, particularly the outcome of new criminal activity, Black defendants awaiting trial and living in highly policed areas may be more likely to be picked up for similar offenses than White defendants awaiting trial in other areas. Therefore, even if the risk factors in a risk assessment are not biased, the evaluation of the risk assessment could suggest bias, as a larger proportion of Black defendants with the same risk score could have new arrests than did similar White defendants.</p>
-</section>
-<section id="bias-in-modeling" class="level3">
-<h3 class="anchored" data-anchor-id="bias-in-modeling">Bias in modeling</h3>
-<p>Even if the risk factors and outcomes involved in a risk assessment are all measured without bias, the underlying model of a risk assessment could still potentially introduce bias. This situation can occur if the relationships between the risk factors and the outcome are different for different racial groups. Take, for example, a condition where pending charge predicts an outcome better for White defendants than Black ones (perhaps because the level of the pending charge among White people signals&nbsp;involvement in a relatively more serious crime level than pending charge among Black people – due to potential bias towards Blacks in the assignment of charges). If a model is then fit to all the data, which would average the two trends, pending charge for Black people would predict a higher risk score than the truth.</p>
-<p><img src="images/pretrial_biasinmodel.png" class="img-fluid" style="width:7in"> ### Bias in censoring</p>
-<p>A third source of potential bias in the first step of risk assessment – estimating the risk score – is potential bias from what we call “differential censoring.” The idea here is that predictive models are generally fit to only those defendants not detained while awaiting trial because they are the only ones with complete data. For those who are detained, we don’t know if they would have failed to appear or been involved in NCA if they had been released. But the resulting risk assessment tool that is developed will be applied to both groups. This missing information challenge can cause multiple problems. First, if the people who are detained are systematically different from the people who are not detained, the final models may not generalize: the models may not accurately predict risk for those people who were detained. If detention patterns differ by racial group, bias may be introduced by fitting models using different subsets of the racial groups.</p>
-<p><img src="images/pretrial_biasincensoring.png" class="img-fluid" style="width:7in"></p>
+<p>As mentioned in the introduction to this section, bias may also be introduced <em>after</em> modeling. That is, steps that decision-makers take to translate predicted probabilities into action can also introduce bias.</p>
+<ol type="1">
+<li><p><strong>Bias introduced when selecting thresholds.</strong> As discussed in the previous section (<a href="https://kristinporter.github.io/NCSU-PA-for-Improving-Services/perform_confusionmatrix.html">Evaluating and comparing learner performance)</a>, predicted probabilities are often converted into predicted classifications in order to prioritize units for intervention. Even if the initial, predicted probabilities are unbiased, bias may be introduced when a threshold is selected - if the distribution of risk scores within the resulting groups differs by race. For example, if detention is recommended for pretrial risk scores of about a specified threshold, there could be bias if the proportion those above the threshold is different for Black defendants than it is for White defendants.</p></li>
+<li><p><strong>Bias introduced by relying on factors that override risk-assessment scores.</strong> Guidelines for pretrial detention decisions typically incorporate information other than results from a risk assessment (for example, some jurisdictions may automatically “bump up” the effective risk score of a defendant if the arrest involves a violent crime). Bias may be introduced if this other information is both not additionally predictive of an outcome (beyond the baseline data used) and occurs differentially across groups. For example, if a particular targeted charge is more common among Black defendants than among White defendants, but that charge does not predict failure to appear beyond the baseline prediction, then a “bump-up” based on that charge may introduce bias that does not exist in the underlying risk-assessment algorithm. A similar issue could readily occur in other contexts as well if decision-makers combine other information with predicted analytics results to guide recommendations about differential services.</p></li>
+<li><p><strong>Bias in implementation.</strong> Finally, bias can be introduced in terms of how predictive analytics results are used in decision-making. For example, one source of bias in the pretrial process is differential decision-making by judges (and others who make detention decisions): Judges (or other stakeholders) may impose harsher release conditions on one group than another, even when they receive the same release recommendation for similar cases and contexts. One purpose of predictive analytics is to <em>ameliorate</em> such biases, but this potential for bias in implementation of predictive analytics underscores the need to assess the bias of the fully implemented system as well as predictive tools themselves.</p></li>
+</ol>
 
 
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -886,7 +876,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./bias_define.html" class="pagination-link">
-        <span class="nav-page-text">Defining bias</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Getting specific about empirically defining bias</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

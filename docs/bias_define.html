@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predictive Analytics (PA) for Improving Services - Defining bias</title>
+<title>Predictive Analytics (PA) for Improving Services - Getting specific about empirically defining bias</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,7 +93,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bias_intro.html">Evaluating and comparing bias</a></li><li class="breadcrumb-item"><a href="./bias_define.html">Defining bias</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bias_intro.html">Evaluating and comparing bias</a></li><li class="breadcrumb-item"><a href="./bias_define.html">Getting specific about empirically defining bias</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -506,7 +506,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bias_modeling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Bias in predicting probabilities</span></a>
+ <span class="menu-text">Bias in estimating predicting probabilities</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -518,7 +518,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bias_define.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Defining bias</span></a>
+ <span class="menu-text">Getting specific about empirically defining bias</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -534,11 +534,11 @@ div.csl-indent {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">Bias in the templates</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Addressing bias</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./bias_address.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Addressing bias</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -629,7 +629,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Defining bias</h1>
+<h1 class="title">Getting specific about empirically defining bias</h1>
 </div>
 
 
@@ -644,8 +644,8 @@ div.csl-indent {
 
 </header>
 
-<p>There are different ways to define bias, or the desired goal: fairness. Different stakeholders may put more priority on different definitions of fairness. The literature on the bias/fairness of predictive models is vast and it lacks consensus on the best definitions or measures. (It also lacks consistency in the names assigned to different concepts and measures.) It is important to focus on the questions various stakeholders (the court, the public, the defendants) would want answered to assess fairness.</p>
-<p>Consider the questions below. Each question illustrates a different notion or definition of fairness, and each question maps to a different way of measuring bias empirically. As above, for ease of presentation these questions focus on race, but the same questions can be asked for other demographic groups for which it is important to assess bias/fairness. As will be discussed below, it is not possible to satisfy all definitions of bias simultaneously. Also, some ways of defining and measuring fairness have limitations.</p>
+<p>There are different ways to define bias, or the desired goal: fairness. Different stakeholders may put more priority on different definitions of fairness. The literature on the bias/fairness of predictive models is vast and it lacks consensus on the best definitions or measures. (It also lacks consistency in the names assigned to different concepts and measures.) It is important to focus on the questions various stakeholders would want answered to assess fairness.</p>
+<p>Sticking with our example about pretrial risk assessment, consider the questions below. Each question illustrates a different notion or definition of fairness in this context, and each question maps to a different way of measuring bias empirically. As above, for ease of presentation these questions focus on race, but the same questions can be asked for other demographic groups for which it is important to assess bias/fairness. As will be discussed below, <em>it is not possible to satisfy all definitions of bias simultaneously.</em> Also, some ways of defining and measuring fairness have limitations.</p>
 <ol type="1">
 <li><span style="color:blue"><strong>For a particular risk score is there the same chance of failure (of failure to appear, new criminal activity, or other adverse outcomes) in all racial groups during the pretrial period (or during a fixed period)?</strong></span></li>
 </ol>
@@ -664,7 +664,7 @@ div.csl-indent {
 <li><span style="color:blue"><strong>Do the risk scores produced by a risk assessment discriminate between failures and nonfailures equally well across all racial groups?</strong></span></li>
 </ol>
 <p>There are several measures that approach this form of fairness question, such as relative rates of predictive accuracy, false positive rates, false negative rates, F1 scores (which combine both false positive and false negative rates), and area under the curve (AUC) measures. Unfortunately, these measures also are susceptible to the tensions between (1) and (2), above, and furthermore can be hard to interpret if the true distribution of risk is different for the different groups. Some of these measures (in particular the AUC) do avoid requiring a specification of a decision threshold for categorizing low and high risk, which can avoid some biases introduced by establishing such thresholds. Not specifying thresholds, however, could conceal biases that would arise when the risk tool was used in practice, as these tools are linked to an eventual hard threshold of detention or not.</p>
-<p>Note: the text on this page is taken from <span class="citation" data-cites="PorterRedcrossMiratrix2020">Porter, Redcross, &amp; Miratrix (<a href="#ref-PorterRedcrossMiratrix2020" role="doc-biblioref">2020</a>)</span>.</p>
+<p>Note: the text on this page is largely taken from <span class="citation" data-cites="PorterRedcrossMiratrix2020">Porter, Redcross, &amp; Miratrix (<a href="#ref-PorterRedcrossMiratrix2020" role="doc-biblioref">2020</a>)</span>.</p>
 
 
 

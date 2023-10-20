@@ -521,7 +521,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bias_modeling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Bias in predicting probabilities</span></a>
+ <span class="menu-text">Bias in estimating predicting probabilities</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -533,7 +533,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bias_define.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Defining bias</span></a>
+ <span class="menu-text">Getting specific about empirically defining bias</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -659,7 +659,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Step 4 in 02_Learner_Training_and_Validation.Rmd guides users in comparing bias across learners. The first chunk in this section (plotpredProbsFairness1), which is displayed below, plots distributions of predicted probabilities by category (e.g.&nbsp;by race). The user can specify for which attribute (<code>equityVarSelect</code>) which learners (<code>learnersSelect</code>) these plots should be displayed. The code can be repeated to view the plots for another attribute.</p>
+<p>Step 4 in <code>02_Learner_Training_and_Validation.Rmd</code> guides users in comparing bias across learners. The first chunk in this section (plotpredProbsFairness1), which is displayed below, plots distributions of predicted probabilities by category (e.g.&nbsp;by race). The user can specify for which attribute (<code>equityVarSelect</code>) and for which learners (<code>learnersSelect</code>) these plots should be displayed. The code can be repeated to view the plots for another attribute.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#-------------------------#</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>equityVarSelect <span class="ot">&lt;-</span> <span class="st">"gender_SS"</span> <span class="co"># limit to one</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>learnerNamesSelect <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"glm_predSet_bm"</span>,<span class="st">"glm_predSet_ms"</span>) <span class="co"># multiple allowed</span></span>
@@ -686,9 +686,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>As previously mentioned, while presenting stakeholders with the distributions of predicted likelihoods for various groups is crucial, disentangling the degree to which divergent distributions of risk scores are attributable to bias is challenging. In this context, different distributions of predicted probabilities of dropout for students of different races might be a manifestation of bias stemming from racial discrimination within the educational environment. However, they could also be explained by disparate trends in academic performance and student behavior, which are often rooted in socioeconomic factors that are correlated with race.</p>
 <p>The next code chunk (<code>thresEquityPlot1</code>), displayed below, allows the user to compare threshold-based performance metrics across categories for (i) a single specified attribute (<code>equityVarSelect</code>), (ii) a specified learner (<code>learnerNameSelect</code>), and (iii) up to four different thresholds (<code>selectedThresholds</code>, which was specified above in the chunk titled <code>thresRange</code>).</p>
-<p>The choices for metrics (passed in to <code>metricType</code>) are: - true positive rate (tpr) or count (tpc) - false positive rate (fpr) or count (fpc) - true negateive rate (tnr) or count (tnc) - false negative rate (fnr) or count (fnc)</p>
+<p>The choices for metrics (passed in to <code>metricType</code>) are:</p>
+<ul>
+<li><p>true positive rate (tpr) or count (tpc)</p></li>
+<li><p>false positive rate (fpr) or count (fpc)</p></li>
+<li><p>true negateive rate (tnr) or count (tnc)</p></li>
+<li><p>false negative rate (fnr) or count (fnc)</p></li>
+</ul>
 <p>The user can simultaneously view the all of the above rates by specifying “rate” for <code>metricType</code> or simultaneously view all of the above counts above by specifying “count” for <code>metricType</code>.</p>
-<p>The user can specify positive predictive value (ppv), or precision, for the “false discover rate” (fdr). The false discovery rate is the number of false positives over the number of predicted positives. The false discovery rate is generally considered less strict than the false positive rate. We may be willing to accept more false positives when the learner has a large number of predicted positives, while the false positive rate does not take into account the number of predicted positives. We ask: Among people who were not offered services, what are the chances they actually needed services given their race? If we have parity, it means that among people who were not offered services, the chances that a white or Black person needed the services is equal. This metric may be easier to achieve equity on if Black and white people have different rates of needing services.</p>
+<p>The user can specify positive predictive value (ppv), or precision, for the “false discovery rate” (fdr). Recall that the false discovery rate is the number of false positives over the number of predicted positives. The false discovery rate is generally considered less strict than the false positive rate. We may be willing to accept more false positives when the learner has a large number of predicted positives, while the false positive rate does not take into account the number of predicted positives. We ask: Among people who were not offered services, what are the chances they actually needed services given their race? If we have parity, it means that among people who were not offered services, the chances that a white or Black person needed the services is equal. This metric may be easier to achieve equity on if Black and White people have different rates of needing services.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#-------------------------#</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>equityVarSelect    <span class="ot">&lt;-</span> <span class="st">"race_SS"</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>learnerNameSelect  <span class="ot">&lt;-</span> <span class="st">"glm_predSet_ms"</span></span>

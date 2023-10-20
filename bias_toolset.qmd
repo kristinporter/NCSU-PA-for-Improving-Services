@@ -4,7 +4,7 @@ html:
   css: styles.css
 ---
 
-Step 4 in 02_Learner_Training_and_Validation.Rmd guides users in comparing bias across learners. The first chunk in this section (plotpredProbsFairness1), which is displayed below, plots distributions of predicted probabilities by category (e.g. by race). The user can specify for which attribute (`equityVarSelect`) which learners (`learnersSelect`) these plots should be displayed. The code can be repeated to view the plots for another attribute.
+Step 4 in `02_Learner_Training_and_Validation.Rmd` guides users in comparing bias across learners. The first chunk in this section (plotpredProbsFairness1), which is displayed below, plots distributions of predicted probabilities by category (e.g. by race). The user can specify for which attribute (`equityVarSelect`) and for which learners (`learnersSelect`) these plots should be displayed. The code can be repeated to view the plots for another attribute.
 
 ```{r print_plotpredProbsFairness1, results='asis', echo=FALSE}
 source("datasets/extract_chunk.R")
@@ -53,14 +53,18 @@ As previously mentioned, while presenting stakeholders with the distributions of
 The next code chunk (`thresEquityPlot1`), displayed below, allows the user to compare threshold-based performance metrics across categories for (i) a single specified attribute (`equityVarSelect`), (ii) a specified learner (`learnerNameSelect`), and (iii) up to four different thresholds (`selectedThresholds`, which was specified above in the chunk titled `thresRange`).
 
 The choices for metrics (passed in to `metricType`) are:
-- true positive rate (tpr) or count (tpc)
-- false positive rate (fpr) or count (fpc)
-- true negateive rate (tnr) or count (tnc)
-- false negative rate (fnr) or count (fnc)
+
+-   true positive rate (tpr) or count (tpc)
+
+-   false positive rate (fpr) or count (fpc)
+
+-   true negateive rate (tnr) or count (tnc)
+
+-   false negative rate (fnr) or count (fnc)
 
 The user can simultaneously view the all of the above rates by specifying "rate" for `metricType` or simultaneously view all of the above counts above by specifying "count" for `metricType`.
 
-The user can specify positive predictive value (ppv), or precision, for the "false discover rate" (fdr). The false discovery rate is the number of false positives over the number of predicted positives. The false discovery rate is generally considered less strict than the false positive rate. We may be willing to accept more false positives when the learner has a large number of predicted positives, while the false positive rate does not take into account the number of predicted positives. We ask: Among people who were not offered services, what are the chances they actually needed services given their race? If we have parity, it means that among people who were not offered services, the chances that a white or Black person needed the services is equal. This metric may be easier to achieve equity on if Black and white people have different rates of needing services.
+The user can specify positive predictive value (ppv), or precision, for the "false discovery rate" (fdr). Recall that the false discovery rate is the number of false positives over the number of predicted positives. The false discovery rate is generally considered less strict than the false positive rate. We may be willing to accept more false positives when the learner has a large number of predicted positives, while the false positive rate does not take into account the number of predicted positives. We ask: Among people who were not offered services, what are the chances they actually needed services given their race? If we have parity, it means that among people who were not offered services, the chances that a white or Black person needed the services is equal. This metric may be easier to achieve equity on if Black and White people have different rates of needing services.
 
 ```{r print_thresEquityPlot1, results='asis', echo=FALSE}
 extract_chunk("datasets/02_Learner_Training_and_Validation.Rmd", "thresEquityPlot1")
@@ -72,7 +76,7 @@ cat("\n```\n")
 
 ```
 
-This code chunk will return the following plot when "fdr" is specified for `metricType`. 
+This code chunk will return the following plot when "fdr" is specified for `metricType`.
 
 ![](images/fdr_by_race.png){width="7in"}
 
@@ -104,10 +108,10 @@ cat("```r\n")
 cat(code_lines, sep = "\n")
 cat("\n```\n")
 ```
- 
-Finally, it's crucial to remember that, like any statistical estimate, performance metric estimates carry inherent statistical uncertainty. Consequently, observed differences among various groups (e.g., different races) might result from noise attributed to sampling variability. Hence, determining the statistical significance of these differences is essential to validate the observations. The final code chunk in Step 4 of `02_Learner_Training.Rmd` provides p-values for the null hypothesis that the metrics are the same for all categories of the selected attribute. 
 
-Currently, this chunk only carries out statistical tests for three metrics: fnr, fpr, or fdr. 
+Finally, it's crucial to remember that, like any statistical estimate, performance metric estimates carry inherent statistical uncertainty. Consequently, observed differences among various groups (e.g., different races) might result from noise attributed to sampling variability. Hence, determining the statistical significance of these differences is essential to validate the observations. The final code chunk in Step 4 of `02_Learner_Training.Rmd` provides p-values for the null hypothesis that the metrics are the same for all categories of the selected attribute.
+
+Currently, this chunk only carries out statistical tests for three metrics: fnr, fpr, or fdr.
 
 ```{r print_fairnessTests, results='asis', echo=FALSE}
 extract_chunk("datasets/02_Learner_Training_and_Validation.Rmd", "fairnessTests")
@@ -117,6 +121,7 @@ cat("```r\n")
 cat(code_lines, sep = "\n")
 cat("\n```\n")
 ```
-The output from this chunk looks like this: 
+
+The output from this chunk looks like this:
 
 ![](images/equityTests.png){width="7in"}
