@@ -92,10 +92,6 @@ website:
           - bias_context.qmd
           - bias_toolset.qmd
           - bias_address.qmd
-      - section: "Selecting and validating a learner"
-        contents:
-          - "Considerations for selecting a learner"
-          - "Validating a learner"
       - section: "Understanding and communicating results"
         contents:
           - "Results at the individual level"
