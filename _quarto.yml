@@ -85,13 +85,13 @@ website:
           - perform_selectthreshold.qmd
       - section: "Evaluating and comparing bias"
         contents:
-          - "bias_intro.qmd"
-          - "bias_modeling.qmd"
-          - "bias_use.qmd"
-          - "bias_define.qmd"
-          - "bias_context.qmd"
-          - "bias_toolset.qmd"
-          - "bias_address.qmd"
+          - bias_intro.qmd
+          - bias_modeling.qmd
+          - bias_use.qmd
+          - bias_define.qmd
+          - bias_context.qmd
+          - bias_toolset.qmd
+          - bias_address.qmd
       - section: "Understanding and communicating results"
         contents:
           - "Results at the individual level"
