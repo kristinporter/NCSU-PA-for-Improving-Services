@@ -8,7 +8,7 @@ There are different ways to define bias, or the desired goal: fairness. Differen
 
 Sticking with our example about pretrial risk assessment, consider the questions below. Each question illustrates a different notion or definition of fairness in this context, and each question maps to a different way of measuring bias empirically. As above, for ease of presentation these questions focus on race, but the same questions can be asked for other demographic groups for which it is important to assess bias/fairness. As will be discussed below, *it is not possible to satisfy all definitions of bias simultaneously.* Also, some ways of defining and measuring fairness have limitations.
 
-1.  [**For a particular risk score is there the same chance of failure (of failure to appear, new criminal activity, or other adverse outcomes) in all racial groups during the pretrial period (or during a fixed period)?**]{style="color:blue"}
+1.  [**For a particular risk score, is there the same chance of failure (of failure to appear, new criminal activity, or other adverse outcomes) in all racial groups during the pretrial period (or during a fixed period)?**]{style="color:blue"}
 
 In other words, do risk scores mean the same thing regardless of race? The statistical concept that answers this question is usually referred to as **calibration** or **predictive parity**.[^1] Here, "failure" rates are computed for each risk score and subgroup of interest. Subgroup failure rates are then compared within risk scores.
 
@@ -18,16 +18,22 @@ Note that this question about fairness focuses on the risk scores (for example, 
 
 It is also important to note that if the outcome itself is measured with bias, then perceived differences between two subgroups with the same risk score could be due to that bias. For example, if Black people are more likely to be arrested for the same behavior (for example, drug possession) then this appraisal is corrupt.
 
+**KH**: what appraisal are you talking about?
+
 2.  [**Among those who would not fail if released, is the percentage assigned a particular risk score the same across all racial groups? This statistical concept has been referred to as predictive parity or error rate balance (among other terms).**]{style="color:blue"}
+
+**KH**: both the first and second questions you define as predictive parity.
 
 This definition, while desirable for complete fairness, introduces some challenges. To achieve this type of fairness, a risk-assessment tool would need to treat people differently on the basis of race, which may not be ethical or even constitutional. *Moreover, optimizing a model for this form of fairness makes it mathematically impossible to also achieve predictive parity, the first form of fairness discussed above.* (For example, see @CorbettDaviesetal2017 and @Chouldechova2017.)
 
 4.  [**Do all racial groups have the same distribution of risk scores?**]{style="color:blue"}
 
-It is understandable that stakeholders would want to know the answer to this question. However, it is impossible to untangle the extent to which different distributions of risk scores are due to bias --- for example, from different arrest rates due to differential policing strategies or racism --- or reflect actually differential rates of prior criminal activity and behavior that in turn are due to socioeconomic factors correlated with race.
+It is understandable that stakeholders would want to know the answer to this question. However, it is impossible to untangle the extent to which different distributions of risk scores are due to bias, or actual differences in underlying distributions across races.  Bias would arise from different arrest rates due to differential policing strategies or racism.  Alternatively, different underlying distributions could occur if there are differential rates of prior criminal activity and behavior that in turn are due to socioeconomic factors correlated with race.
 
 5.  [**Do the risk scores produced by a risk assessment discriminate between failures and nonfailures equally well across all racial groups?**]{style="color:blue"}
 
-There are several measures that approach this form of fairness question, such as relative rates of predictive accuracy, false positive rates, false negative rates, F1 scores (which combine both false positive and false negative rates), and area under the curve (AUC) measures. Unfortunately, these measures also are susceptible to the tensions between (1) and (2), above, and furthermore can be hard to interpret if the true distribution of risk is different for the different groups. Some of these measures (in particular the AUC) do avoid requiring a specification of a decision threshold for categorizing low and high risk, which can avoid some biases introduced by establishing such thresholds. Not specifying thresholds, however, could conceal biases that would arise when the risk tool was used in practice, as these tools are linked to an eventual hard threshold of detention or not.
+**KH**: I worry that the word "discriminate" here has connotations that are non-statistical and thus potentially confusing?
+
+There are several measures that approach this form of fairness question, such as relative rates of predictive accuracy, false positive rates, false negative rates, F1 scores (which combine both false positive and false negative rates), and area under the curve (AUC) measures. Unfortunately, these measures also are susceptible to the tensions between (1) and (2), above, and furthermore can be hard to interpret if the true distribution of risk is different for the different groups. Some of these measures (in particular the AUC) do not require a specification of a decision threshold for categorizing low and high risk, which can avoid some biases introduced by establishing such thresholds. Not specifying thresholds, however, could conceal biases that would arise when the risk tool was used in practice, as these tools are linked to an eventual hard threshold of detention or not.
 
 Note: the text on this page is largely taken from @PorterRedcrossMiratrix2020.
