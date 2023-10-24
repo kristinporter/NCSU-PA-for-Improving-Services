@@ -64,9 +64,7 @@ The choices for metrics (passed in to `metricType`) are:
 
 The user can simultaneously view all of the above rates by specifying "rate" for `metricType` or simultaneously view all of the above counts by specifying "count" for `metricType`.
 
-The user can specify positive predictive value (ppv), or precision, for the "false discovery rate" (fdr). Recall that the false discovery rate is the number of false positives over the number of predicted positives. The false discovery rate is generally considered less strict than the false positive rate. We may be willing to accept more false positives when the learner has a large number of predicted positives, while the false positive rate does not take into account the number of predicted positives. We ask: Among people who were not offered services, what are the chances they actually needed services given their race? If we have parity, it means that among people who were not offered services, the chances that a white or Black person needed the services is equal. This metric may be easier to achieve equity on if Black and White people have different rates of needing services.
-
-**KH:** in the first sentence of the paragraph above I'm not sure if the "for" should be "or".
+The user can specify positive predictive value (ppv), or precision, or the "false discovery rate" (fdr). Recall that the false discovery rate is the number of false positives over the number of predicted positives. The false discovery rate is generally considered less strict than the false positive rate. We may be willing to accept more false positives when the learner has a large number of predicted positives, while the false positive rate does not take into account the number of predicted positives. We ask: Among people who were not offered services, what are the chances they actually needed services given their race? If we have parity, it means that among people who were not offered services, the chances that a white or Black person needed the services is equal. This metric may be easier to achieve equity on if Black and White people have different rates of needing services.
 
 ```{r print_thresEquityPlot1, results='asis', echo=FALSE}
 extract_chunk("datasets/02_Learner_Training_and_Validation.Rmd", "thresEquityPlot1")
@@ -100,9 +98,7 @@ cat("\n```\n")
 
 ![](images/head_equityResults.png){width="9in"}
 
-And then the next code chunk (`fairnessDiffExploration`) helps the user output from the previous chunk so that differential metrics can be assessed. The user specifies which learner(s) to narrow results to (`learnerSelect`), which attribute(s) (`equityVarsSelect`) and which thresholds (`thresholdsSelect`).
-
-**KH**: not sure what you mean by "helps the user output"
+And then the next code chunk (`fairnessDiffExploration`) helps the user view output from the previous chunk so that differential metrics can be assessed. The user specifies which learner(s) to narrow results to (`learnerSelect`), which attribute(s) (`equityVarsSelect`) and which thresholds (`thresholdsSelect`).
 
 ```{r print_fairnessDiffExploration, results='asis', echo=FALSE}
 extract_chunk("datasets/02_Learner_Training_and_Validation.Rmd", "fairnessDiffExploration")

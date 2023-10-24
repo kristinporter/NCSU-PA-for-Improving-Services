@@ -487,7 +487,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bias_modeling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Bias in predicting probabilities</span></a>
+ <span class="menu-text">Bias in estimating predicting probabilities</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -525,29 +525,12 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
- <span class="menu-text">Selecting and validating a learner</span></a>
+ <span class="menu-text">Understanding and communicating results</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
- <span class="menu-text">Considerations for selecting a learner</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Validating a learner</span>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
- <span class="menu-text">Understanding and communicating results</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
  <span class="menu-text">Results at the individual level</span>
   </li>
@@ -564,13 +547,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
  <span class="menu-text">Deploying predictive analytics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
  <span class="menu-text">Deciding whether PA should be deployed</span>
   </li>
@@ -584,13 +567,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
  <span class="menu-text">Additional optional material</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./OptionalPAvsInfStat.html" class="sidebar-item-text sidebar-link">
@@ -627,7 +610,7 @@ ul.task-list li input[type="checkbox"] {
 
 <p>As mentioned in the introduction to this section, bias may also be introduced <em>after</em> modeling. That is, steps that decision-makers take to translate predicted probabilities into action can also introduce bias.</p>
 <ol type="1">
-<li><p><strong>Bias introduced when selecting thresholds.</strong> As discussed in the previous section (<a href="https://kristinporter.github.io/NCSU-PA-for-Improving-Services/perform_confusionmatrix.html">Evaluating and comparing learner performance)</a>, predicted probabilities are often converted into predicted classifications in order to prioritize units for intervention. Even if the initial, predicted probabilities are unbiased, bias may be introduced when a threshold is selected - if the distribution of risk scores within the resulting groups differs by race. For example, if detention is recommended for pretrial risk scores of about a specified threshold, there could be bias if the proportion those above the threshold is different for Black defendants than it is for White defendants.</p></li>
+<li><p><strong>Bias introduced when selecting thresholds.</strong> As discussed in the previous section (<a href="https://kristinporter.github.io/NCSU-PA-for-Improving-Services/perform_confusionmatrix.html">Evaluating and comparing learner performance)</a>, predicted probabilities are often converted into predicted classifications in order to prioritize units for intervention. Even if the initial, predicted probabilities are unbiased, bias may be introduced when a threshold is selected. In particular, bias can occur if the distribution of risk scores within the resulting groups differs by race. For example, if detention is recommended for pretrial risk scores above a specified threshold, there could be bias if the proportion of those above the threshold is different for Black defendants than it is for White defendants.</p></li>
 <li><p><strong>Bias introduced by relying on factors that override risk-assessment scores.</strong> Guidelines for pretrial detention decisions typically incorporate information other than results from a risk assessment (for example, some jurisdictions may automatically “bump up” the effective risk score of a defendant if the arrest involves a violent crime). Bias may be introduced if this other information is both not additionally predictive of an outcome (beyond the baseline data used) and occurs differentially across groups. For example, if a particular targeted charge is more common among Black defendants than among White defendants, but that charge does not predict failure to appear beyond the baseline prediction, then a “bump-up” based on that charge may introduce bias that does not exist in the underlying risk-assessment algorithm. A similar issue could readily occur in other contexts as well if decision-makers combine other information with predicted analytics results to guide recommendations about differential services.</p></li>
 <li><p><strong>Bias in implementation.</strong> Finally, bias can be introduced in terms of how predictive analytics results are used in decision-making. For example, one source of bias in the pretrial process is differential decision-making by judges (and others who make detention decisions): Judges (or other stakeholders) may impose harsher release conditions on one group than another, even when they receive the same release recommendation for similar cases and contexts. One purpose of predictive analytics is to <em>ameliorate</em> such biases, but this potential for bias in implementation of predictive analytics underscores the need to assess the bias of the fully implemented system as well as predictive tools themselves.</p></li>
 </ol>
@@ -871,7 +854,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./bias_modeling.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Bias in predicting probabilities</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Bias in estimating predicting probabilities</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

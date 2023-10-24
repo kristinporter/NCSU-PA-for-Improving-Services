@@ -506,7 +506,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bias_modeling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Bias in predicting probabilities</span></a>
+ <span class="menu-text">Bias in estimating predicting probabilities</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -544,29 +544,12 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
- <span class="menu-text">Selecting and validating a learner</span></a>
+ <span class="menu-text">Understanding and communicating results</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
- <span class="menu-text">Considerations for selecting a learner</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">Validating a learner</span>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
- <span class="menu-text">Understanding and communicating results</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
  <span class="menu-text">Results at the individual level</span>
   </li>
@@ -583,13 +566,13 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
  <span class="menu-text">Deploying predictive analytics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
  <span class="menu-text">Deciding whether PA should be deployed</span>
   </li>
@@ -603,13 +586,13 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
  <span class="menu-text">Additional optional material</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./OptionalPAvsInfStat.html" class="sidebar-item-text sidebar-link">
@@ -644,14 +627,15 @@ div.csl-indent {
 
 </header>
 
-<p>Earlier, we discussed a wide range of <a href="./paforimprovingss_ethics.html">ethical considerations</a> that pertain to predictive analytics. Some of these considerations are related to bias, or fairness, of predictive models and how their results are used. This is an enormous, complex and extremely important topic. In this section, we provide an overview of key concepts.</p>
-<p>We begin with a discussion of the potential <em>sources</em> of bias in predictive analytics. The development and use of predictive analytics to improve services involves several steps. Each step presents different sources of bias:</p>
+<p>Earlier, we discussed a wide range of <a href="./paforimprovingss_ethics.html">ethical considerations</a> that pertain to predictive analytics. Some of these considerations are related to bias, or fairness, of predictive models and how their results are used. This is an enormous, complex and extremely important topic.</p>
+<p>Broadly, in the context of predictive analytics, bias refers to systematic errors or inaccurate predictions, often stemming from historical inequalities, flawed data sources, or model assumptions, which can result in unfair or discriminatory outcomes for certain groups. However, as you will read in this section, there are many different ways to define and measure bias. We will get more specific in a bit.</p>
+<p>In this section, we provide an overview of key concepts. We begin with a discussion of the potential <em>sources</em> of bias in predictive analytics. The development and use of predictive analytics to improve services involves several steps. Each step presents different sources of bias:</p>
 <ul>
 <li><p><span style="color:blue"><strong>Step 1: Estimating predicted probabilities of the outcome.</strong></span></p></li>
 <li><p><span style="color:blue"><strong>Step 2: Translating results into recommendations for action.</strong></span></p></li>
 <li><p><span style="color:blue"><strong>Step 3: Implementing decisions based on recommendations.</strong></span></p></li>
 </ul>
-<p>The following pages discuss how bias may be introduced in each of these steps. To illustrate, we will use an example from the criminal justice system, when the consequences of bias are significant for the lives of people affected. In particular, we will focus on the pretrial period. Across the country, release and detention decisions for defendants in the pretrial period are increasingly guided by algorithmic risk assessments. These assessments rely on data to estimate defendants’ risks of failing to appear for a court date or of being charged with new criminal activity if released pending trial. The results are generally used by a judicial body to help determine whether a defendant will be released while waiting for a case to be resolved, and if so, under what conditions. The content is this section is summarized from <span class="citation" data-cites="PorterRedcrossMiratrix2020">Porter, Redcross, &amp; Miratrix (<a href="#ref-PorterRedcrossMiratrix2020" role="doc-biblioref">2020</a>)</span>.</p>
+<p>The following pages discuss how bias may be introduced in each of these steps. To illustrate, we will use an example from the criminal justice system, when the consequences of bias are substantial for the lives of people affected. In particular, we will focus on the pretrial period. Across the country, release and detention decisions for defendants in the pretrial period are increasingly guided by algorithmic risk assessments. These assessments rely on data to estimate defendants’ risks of negative outcomes if they are released pending trial. Negative outcomes include failing to appear for a court date, or being charged with new criminal activity. The algorithm’s results are generally used by a judicial body to help determine whether a defendant will be released while waiting for a case to be resolved, and if so, under what conditions. The content is this section is summarized from <span class="citation" data-cites="PorterRedcrossMiratrix2020">Porter, Redcross, &amp; Miratrix (<a href="#ref-PorterRedcrossMiratrix2020" role="doc-biblioref">2020</a>)</span>.</p>
 <p>As we discuss the potential sources of bias in pretrial assessment, we’ll focus on bias that can affect Black defendants for simplicity, although any of the ideas could be applied to other demographic subgroups.</p>
 <p><img src="images/ferriswheel.jpg" class="img-fluid" style="width:7in"></p>
 
@@ -904,7 +888,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./bias_modeling.html" class="pagination-link">
-        <span class="nav-page-text">Bias in predicting probabilities</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Bias in estimating predicting probabilities</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
