@@ -94,15 +94,13 @@ website:
           - bias_address.qmd
       - section: "Understanding and communicating results"
         contents:
-          - "Results at the individual level"
-          - "Results at the aggregate level"
-          - "What can we say about which predictors matter most?"
-          - "Reviewing limitations and ethical considerations"
+          - results_describe.qmd
+          - results_distrib.qmd
+          - results_groups.qmd
+          - results_VI.qmd
       - section: "Deploying predictive analytics"
         contents:
-          - "Deciding whether PA should be deployed"
-          - "Approaches for deployment"
-          - "Monitoring performance and fairness over time"
+          - deployment.qmd
 
       - section: "Additional optional material"
         contents:
