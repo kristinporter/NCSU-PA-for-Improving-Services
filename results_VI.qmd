@@ -9,14 +9,13 @@ Related to the previous question is: What are the most important
 predictors in my model? However, compared to the previous question about
 understanding who has low or high predicted probabilities, this question
 more specifically points to the model. The question takes us into a wide
-variety of methods focused on "variable importance."
+variety of methods focused on "variable importance" (VI).
 
 ### The value of variable importance
 
-Variable importance is helpful for understanding and explaining a
-predictive model. Variable importance methods also answer a set of
-related questions. Sometimes these related questions are what is most of
-interest.
+VI is helpful for understanding and explaining a predictive model. VI
+methods also answer a set of related questions. Sometimes these related
+questions are what is most of interest.
 
 The following chart provides some comparisons and contrasts of the types
 of questions answered by predictive analytics vs. variable importance:
@@ -25,7 +24,7 @@ of questions answered by predictive analytics vs. variable importance:
 
 ### Variable importance methods
 
-There are a wide-range of methods for estimating variable importance.
+There are a wide-range of methods for estimating VI.
 
 These methods may be "model-specific" or "model-agnostic."
 
@@ -36,8 +35,7 @@ These methods may be "model-specific" or "model-agnostic."
     modeling approach
 
 \
-Variable importance methods may also be "model-driven" or
-"parameter-driven."
+VI methods may also be "model-driven" or "parameter-driven."
 
 -   Model-driven methods start with a predictive model and work to
     understand the predictive power of the predictors in the model.

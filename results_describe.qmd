@@ -15,8 +15,8 @@ data, you will decide whether to deploy your model. We will discuss
 deployment a little later.
 
 First, there are some valuable questions you may ask to better
-understand your results and your model. Answers to these questions can
-help with decsion-making aimed at improving services, and they can help
+understand your test results (on new, held-out data) and your final, selected model. Answers to these questions can
+help with decision-making aimed at improving services, and they can help
 with explaining your model to stakeholders.
 
 1.    How are predicted probabilities distributed across and within groups? 
