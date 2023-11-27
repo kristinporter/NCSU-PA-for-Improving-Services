@@ -3,7 +3,7 @@ title: "Predictive Analytics for Improving Services"
 date: August 21, 2023
 author:
   - name: Kristin E. Porter, PhD
-    email: kristin.porter@keporterconsulting.com
+    email: keporte2@ncsu.edu
 ---
 
 <meta http-equiv='cache-control' content='no-cache'> 
