@@ -3,7 +3,6 @@ project:
   output-dir: docs
   render:
     - "*.qmd"
-    - "!internal/"
 
 bibliography: references.bib
 csl: apa-6th-edition.csl
