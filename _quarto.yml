@@ -2,47 +2,7 @@ project:
   type: website
   output-dir: docs
   render:
- #   - "*.qmd"
-  - index.qmd
-  - materials.qmd
-  - paforimprovingss_define.qmd
-  - paforimprovingss_learn.qmd
-  - paforimprovingss_limitations.qmd
-  - paforimprovingss_ethics.qmd
-  - paforimprovingss_context.qmd
-  - scoping_ex.qmd
-  - scoping_usefindings.qmd
-  - scoping_what.qmd
-  - scoping_who.qmd
-  - scoping_when.qmd
-  - poc_importance.qmd
-  - poc_learners.qmd
-  - poc_benchmark.qmd
-  - poc_compare.qmd
-  - data_overfitting.qmd
-  - data_split.qmd
-  - data_identify.qmd
-  - data_test.qmd
-  - data_trainvalidate.qmd
-  - data_splitconsiderations.qmd
-  - data2_overview.qmd
-  - data2_whymissing.qmd
-  - data2_missingpredictors.qmd
-  - data2_missingoutcomes.qmd
-  - data2_EDA.qmd
-  - data2_extract.qmd
-  - data2_changesovertime.qmd
-  - methods_overview.qmd
-  - methods_logistic.qmd
-  - methods_lasso.qmd
-  - methods_rf.qmd
-  - methods_xgboost.qmd
-  - methods_naivebayes.qmd
-  - methods_svm.qmd
-  - methods_nn.qmd
-  - methods_guidance.qmd
-  - OptionalPAvsInfStat.qmd
-
+    - "*.qmd"
 
 bibliography: references.bib
 csl: apa-6th-edition.csl
@@ -98,12 +58,12 @@ website:
           - data2_EDA.qmd
           - data2_extract.qmd
           - data2_changesovertime.qmd
-      # - section: "Introduction to the PA Templates"
-      #   contents:
-      #     - toolset_overview.qmd
-      #     - toolset_datamodel.qmd
-      #     - toolset_firstlook.qmd
-      #     - toolset_tidymodels.qmd
+      - section: "Introduction to the PA Templates"
+        contents:
+          - toolset_overview.qmd
+          - toolset_datamodel.qmd
+          - toolset_firstlook.qmd
+          - toolset_tidymodels.qmd
       - section: "Modeling approaches"
         contents:
           - methods_overview.qmd
@@ -115,31 +75,31 @@ website:
           - methods_svm.qmd
           - methods_nn.qmd
           - methods_guidance.qmd
-      # - section: "Evaluating and comparing predictive performance"
-      #   contents:
-      #     - perform_output.qmd
-      #     - perform_confusionmatrix.qmd
-      #     - perform_thresholdinvariant.qmd
-      #     - perform_goals.qmd
-      #     - perform_selectthreshold.qmd
-      # - section: "Evaluating and comparing bias"
-      #   contents:
-      #     - bias_intro.qmd
-      #     - bias_modeling.qmd
-      #     - bias_use.qmd
-      #     - bias_define.qmd
-      #     - bias_context.qmd
-      #     - bias_toolset.qmd
-      #     - bias_address.qmd
-      # - section: "Understanding and communicating results"
-      #   contents:
-      #     - results_describe.qmd
-      #     - results_distrib.qmd
-      #     - results_groups.qmd
-      #     - results_VI.qmd
-      # - section: "Deploying predictive analytics"
-      #   contents:
-      #     - deployment.qmd
+      - section: "Evaluating and comparing predictive performance"
+        contents:
+          - perform_output.qmd
+          - perform_confusionmatrix.qmd
+          - perform_thresholdinvariant.qmd
+          - perform_goals.qmd
+          - perform_selectthreshold.qmd
+      - section: "Evaluating and comparing bias"
+        contents:
+          - bias_intro.qmd
+          - bias_modeling.qmd
+          - bias_use.qmd
+          - bias_define.qmd
+          - bias_context.qmd
+          - bias_toolset.qmd
+          - bias_address.qmd
+      - section: "Understanding and communicating results"
+        contents:
+          - results_describe.qmd
+          - results_distrib.qmd
+          - results_groups.qmd
+          - results_VI.qmd
+      - section: "Deploying predictive analytics"
+        contents:
+          - deployment.qmd
 
       - section: "Additional optional material"
         contents:
