@@ -1,0 +1,532 @@
+---
+title: "Learner Training and Validation"
+output:
+  pdf_document:
+always_allow_html: true
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+See `Directions_for_SetUp_All_Notebooks.Rmd/.pdf` for explanations of
+setup specifications.\
+See `Directions_02_Learner_Training_and_Validation.Rmd/.pdf` for
+guidance for using the rest of this notebook.\
+Code between lines of `#---#` may need user edits. Otherwise, no edits
+are needed.
+
+# Setup
+
+```{r Setup, warning=FALSE, message=FALSE}
+#-------------------------#
+dataInputPath  <- "data-r-objects/inputs"
+dataOutputPath <- "data-r-objects/outputs"               
+#-------------------------#
+
+seed <- 2022
+
+knitr::opts_chunk$set(
+  cache = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 8,
+  fig.height = 7
+)
+
+show_details <- TRUE
+
+# sourcing helper scripts
+source(here::here("R", "packages.R"))
+source(here::here("R", "learner_training.R"))
+source(here::here("R", "learner_training_helpers.R"))
+source(here::here("R", "equity_metrics.R"))
+source(here::here("R", "performance_metrics.R"))
+source(here::here("R", "plots.R"))
+
+# loading output from previous notebook
+learnerSpec <- readRDS(file = here::here(dataOutputPath, "learnerSpec.rds"))
+recipes <- readRDS(file = here::here(dataOutputPath, "recipes.rds"))
+mainRecipes <- readRDS(file = here::here(dataOutputPath, "recipe_main.rds"))
+```
+
+# Step 1: Run learner training and validation with cross-validation
+
+The code chunk below trains all of the learners. It computes mean
+cross-validated estimates for AUC ROC and AUC PR. It computes additional
+metrics using predicted likelihoods return across all validation folds.
+
+Note that this may take a few minutes for a few learners to over an hour
+for more learners. It is suggested that testing is first done with just
+a few learners.
+
+```{r trainLearners, cache = TRUE, warning = FALSE, message = FALSE}
+# running model results all learners in learnerSpec (all specified in 01_Learner_Specification.Rmd)
+learnersResults <- train_learners(
+  learnerSpec = learnerSpec,
+  recipes = recipes,
+  mainRecipes = mainRecipes
+)
+
+ # this returns cross-validated means and SE for AUC-PR and AUC-ROC
+modelResults <- learnersResults$modelResults
+ # this is predicted probabilities, from when obs are in validation set
+predProbs    <- learnersResults$predProbs 
+```
+
+# Step 2: Review distributions of predicted likelihoods
+
+The following code chuck creates a histogram of the predicted
+probabilities for each learner.
+
+```{r plotpredProbs, warning=FALSE, message=FALSE}
+learnersMetrics <- convert_metrics_wide(modelResults)
+learnersResults$learnersMetrics <- learnersMetrics
+probsGraphs <- NULL
+learnerNames <- unique(learnersMetrics$learnerName)
+for(i in 1:length(learnerNames))
+{
+  probsGraphs[[i]] <- 
+    pred_prob_graph(
+      predProbs = learnersResults$predProbs,
+      learnerName = learnerNames[i]
+    )
+}
+ggarrange(plotlist = probsGraphs)
+```
+
+Next, we show how well each learner is able to separate out the
+predictive probabilities when the observed outcome = 1 and when the
+observed outcome = 0. For these plots, we use the same function as
+above, but add an additional parameter `groundTruth = TRUE`.
+
+```{r plotpredProbsTruth}
+probsGraphs <- NULL
+for(i in 1:length(learnerNames))
+{
+  probsGraphs[[i]] <- 
+    pred_prob_graph(
+      predProbs = learnersResults$predProbs,
+      learnerName = learnerNames[i],
+      splitCategory = learnerSpec$outcomeName
+    )
+}
+ggarrange(plotlist = probsGraphs)
+```
+
+# Step 3: Compare learners' predictive performance
+
+### Performance metrics based on predicted probabilities (threshold invariant metrics)
+
+**ROC curves**
+
+```{r plotROCCurves}
+ggplot(learnersResults$rocResults,
+    aes(x = 1 - specificity, y = sensitivity)) +
+    geom_path(aes(color = ML, linetype = predSet)) +
+    geom_abline(color = 'black') +
+    coord_equal() +
+    theme_bw() +
+    ggtitle('ROC Curve')
+```
+
+**PR curves**
+
+```{r plotPRCurves}
+ggplot(learnersResults$prResults,
+    aes(x = recall, y = precision)) +
+    geom_path(aes(color = ML, linetype = predSet)) +
+    geom_hline(yintercept = learnerSpec$positiveProportion, color = "black") +
+    geom_text(data = data.frame(x = 0.25, 
+                                y = learnerSpec$positiveProportion), 
+              aes(x,y), 
+              label = "No skills classifier", 
+              vjust = 1,
+              size = 3) +
+    coord_equal() +
+    theme_bw() +
+    ggtitle('Precision-Recall Curve')
+```
+
+### Performance metrics based on classifications (threshold-based metrics or confusion matrix metrics)
+
+The following code chunk computes the following metrics for thresholds
+sequenced from 0 to 1 by intervals of 0.05. These are computed from the
+predicted likelihoods estimated across all validation folds.
+
+-   tpr: true positive rate, tpc: true positive count
+
+-   tnr: true negative rate, tnc: true negative count
+
+-   fpr: false positive rate, fpc: false positive count
+
+-   fnr: false negative rate, fnc: false negative count
+
+-   ppv: positive predictive value (precision)
+
+-   pp: predicted positives
+
+-   pn: predicted negatives
+
+-   op: observed (true) positives
+
+-   on: observed (true) negatives
+
+```{r learnerMetricsThresBackground, cache = TRUE}
+learnerMetricsThres <- conf_metrics_thres_learner(
+    predProbs = learnersResults$predProbs,
+    outcomeName = learnerSpec$outcomeName,
+    thresSeq = seq(0.0, 1.00, 0.05) # No need to change unless more want metrics computed for more thresholds
+) 
+```
+
+Using the above results (`learnerMetricsThres`), we can take a few
+approaches to extract helpful information.
+
+**(A) View metrics for user-specified and distribution-based
+thresholds**
+
+The following code chunk presents all threshold-based performance
+metrics for the following thresholds for a *single, user-specified
+learner*:
+
+-   User-specified (for example, 0.5)
+
+-   The threshold approximately equal to the median of the predicted
+    probabilities. Note this threshold may not be helpful for situations
+    in which the distribution of predicted probabilities is highly
+    skewed or bimodal. Also note our code computes metrics from 0 to 1
+    in increments of 0.05, so here we presents metrics for the threshold
+    increment closest to and less than the computed threshold. For
+    example, if the median = 0.12, then we present results for the
+    threshold of 0.10.
+
+-   The threshold at which the predicted proportion of observations with
+    a positive outcome (outcome =1) matches the observed proportion of
+    observations with a positive outcome. For example, if the outcome =
+    1 for 30% of the observations, then we find the threshold at which
+    30% of the observations are predited to be 1.
+
+```{r learnerThresPresent}
+#-------------------------#
+learnerNameSelect <- "glm_predSet_ms"
+thresSelect <- 0.25 # user-specified
+#-------------------------#
+
+predProbsSelect <- learnersResults$predProbs %>%
+  dplyr::filter(learnerName %in% learnerNameSelect)
+thresValues <- predProbsSelect %>% 
+  dplyr::summarise(
+    selected_thres = thresSelect,
+    median_thres = round(median(.pred_yes), 2),
+    positive_proportion_thres = round(quantile(.pred_yes, probs = (max(.pred_yes) - learnerSpec$positiveProportion)),2)
+  )
+#print(thresValues)
+
+learnerRows <- learnerMetricsThres %>%
+  filter(learnerName == learnerNameSelect)
+
+# threshold set at thresSelect
+learnerMetricsThresSelect <- learnerRows[
+  c(which(learnerRows$threshold == thresSelect),
+    which.min(abs(learnerRows$threshold - thresValues$median_thres)),
+    which.min(abs(learnerRows$threshold - thresValues$positive_proportion_thres))),
+]
+
+learnerMetricsThresSelect
+```
+
+**(B) View metrics for criteria-based thresholds:**
+
+Here we can find a threshold based on a criteria, for example, related
+to a resource constraint or rate of intervention.
+
+-   Example 1: A program only has enough funds to intervene for 1000
+    individuals. Then, we can find the threshold such that there are
+    1000 true positive counts.
+
+-   Example 2: For treatment of a rare cancer, we want to ensure a true
+    positive rate of at least 90%.
+
+```{r thresPicker1}
+#-------------------------#
+# learner name
+learnerNameSelect <- "glm_predSet_bm"
+# name of metric to use as criteria
+# options: tpr, tpc, tnr, tnc, fpr, fpc, fnr, fnc, pp, pn
+metricName <- "pn" # Example 1
+# metricName <- "tpr" # Example 2
+# selection criteria for metric
+metricNumber <- 1000 # Example 1
+# metricNumber <- 0.9 # Example 2
+# whether we want to consider only options below or
+# above the metric number, e.g. predicted positives BELOW 100
+below <- TRUE
+#-------------------------#
+
+thres1 <- pick_threshold(
+  learnerMetricsThres,
+  learnerNameSelect = learnerNameSelect,
+  metricName = metricName,
+  metricNumber = metricNumber,
+  below = below
+)
+print(thres1)
+```
+
+This is the threshold among those for which metrics were computed (0 to
+1 by increments of 0.05) that achieves the target criteria. The targeted
+metric may be lower or higher. The next chunk displays the full set of
+metrics at this threshold for the selected learner.
+
+```{r thresSummary1}
+thres1Row <- learnerMetricsThres %>%
+  filter(learnerName == learnerNameSelect, threshold == thres1)
+
+thres1Row
+```
+
+**(C) View a narrowed set of metrics for multiple learners (and create a
+nice plot)**
+
+Here the user can specify (i) multiple learners, (ii) multiple
+thresholds, and then (iii) metrics with the choices of
+
+-   "rate" for tpr, fpr, tnr, fnr
+
+-   "count" for tpc, fpc, tnc, fnc
+
+-   any single measure covered by "rate" or "count", or ppv (for
+    precision) or fdr (false discovery rate)
+
+```{r thresRange}
+#-------------------------#
+# learner for comparison - Default set at selected Learners
+selectedLearnersNames <- c("glm_predSet_bm","glm_predSet_ms")
+# thresholds for evaluation
+selectedThresholds <- c(0.20, 0.25, 0.30) 
+# Metric options: count or rate
+metricType <- "rate"
+#-------------------------#
+
+if(metricType == "count")
+{ selectedMetrics = c("tnc", "fnc", "fpc", "tpc")
+} else if(metricType == "rate")
+{ selectedMetrics = c("tnr", "fnr", "fpr", "tpr")
+}
+
+learnerMetricsThresLong <-
+  learnerMetricsThres %>%
+  dplyr::filter(learnerName %in% selectedLearnersNames) %>%
+  dplyr::mutate(thresholdC = as.character(threshold)) %>%
+  dplyr::filter(thresholdC %in% as.character(selectedThresholds)) %>%
+  dplyr::select(learnerName, threshold,!!selectedMetrics) %>%
+  tidyr::pivot_longer(-c(learnerName, threshold),
+                      names_to = "metricType",
+                      values_to = "value" ) %>%
+  dplyr::mutate(threshold = as.factor(threshold))
+
+print(learnerMetricsThresLong)
+```
+
+Then the next chunk compares these metrics visually for up to 4
+learners. You may need to edit `selectedLearnersNames` to limit the
+number of learners to just 4.
+
+```{r thresRangePlot}
+# THIS PLOT ONLY WORKS FOR COMPARING UP TO 4 LEARNERS. 
+#-------------------------#
+# Insert description of your predictive negative and positive in that order
+# For e.g. c("Predicted as \n NOT graduating", "Predicted as \n graduating")
+# Note: \n stands for new line
+outcomeDescription <- c("Predicted as \n NOT dropping out", "Predicted as \n dropping out")
+# Insert the title of the graph
+graphTitle <- "Learner performance on training data"
+#-------------------------#
+
+p <- conf_mat_bar_plot(plotData = learnerMetricsThresLong,
+                       metricType = metricType,
+                       outcomeDescription = outcomeDescription,
+                       graphTitle = graphTitle)
+
+print(p)
+```
+
+# Step 4: Compare learners' bias and fairness
+
+### Distributions of predicted likelihoods by characteristic
+
+For each learner specified, we show the distributions of predicted
+probabilities by category of a specified characteristic.
+
+```{r plotpredProbsFairness1}
+#-------------------------#
+equityVarSelect <- "gender_SS" # limit to one
+learnerNamesSelect <- c("glm_predSet_bm","glm_predSet_ms") # multiple allowed
+#-------------------------#
+
+probsGraphs <- NULL
+for(i in 1:length(learnerNamesSelect))
+{
+  probsGraphs[[i]] <- 
+    pred_prob_graph(
+      predProbs = learnersResults$predProbs,
+      learnerName = learnerNamesSelect[i],
+      splitCategory = equityVarSelect
+    )
+}
+ggarrange(plotlist = probsGraphs)
+```
+
+#### Threshold-based metrics by categories of a characteristic for a selected learner
+
+In the next chunk, we compare threshold-based performance metrics for a
+(i) a specified characteristic, (ii) a specified learner, and (iii) up
+to four thresholds. The metrics displayed are narrowed to "counts" or
+"rates" as described above. The user also narrows the metric with the
+choices of
+
+-   "rate" for tpr, fpr, tnr, fnr
+
+-   "count" for tpc, fpc, tnc, fnc
+
+-   any single measure covered by "rate" or "count", or ppv (for
+    precision) or fdr (false discovery rate)
+
+```{r thresEquityPlot1}
+#-------------------------#
+equityVarSelect    <- "race_SS"
+learnerNameSelect  <- "glm_predSet_ms"
+outcomeDescription <- c("Predicted as \n NOT dropping out", "Predicted as \n dropping out")
+# Insert the title of the graph
+graphTitle         <- "Learner fairness from cross-validation"
+metricType         <- "fdr" 
+#-------------------------#
+
+selectedMetrics <- get_selectedMetrics(metricType)
+
+# subset down to just that learner
+learnerPredProbs <- learnersResults$predProbs %>%
+  filter(learnerName == learnerNameSelect)
+
+learnerMetricsThresEquity <- conf_metrics_thres_learner(
+    predProbs = learnerPredProbs,
+    outcomeName = learnerSpec$outcomeName,
+    thresSeq = seq(0.0, 1.00, 0.05), # Do not change. Fixed by Notebook.
+    equityVar = equityVarSelect 
+)
+
+learnerMetricsThresEquityLong <-
+  learnerMetricsThresEquity %>%
+  dplyr::mutate(thresholdC = as.character(threshold)) %>%
+  dplyr::filter(threshold %in% as.character(selectedThresholds)) %>%
+  dplyr::select(learnerName, threshold, all_of(equityVarSelect), !!selectedMetrics) %>%
+  tidyr::pivot_longer(-c(learnerName, threshold, all_of(equityVarSelect)),
+                         names_to = "metricType",
+                         values_to = "value" ) %>%
+  dplyr::mutate(threshold = as.factor(threshold))
+
+p <- conf_mat_bar_plot(plotData = learnerMetricsThresEquityLong,
+                       equityVar = equityVarSelect,
+                       metricType = metricType,
+                       outcomeDescription = outcomeDescription,
+                       graphTitle = graphTitle)
+
+print(p)
+```
+
+#### Threshold-based metrics for all characteristics, all learners and all metrics, for selected thresholds.
+
+Here, we select a limited number of thresholds, but look at all
+threshold-based metrics, comparing categories of all characteristics
+specified in `01_Learner_Specification.Rmd` for all learners. It's not
+recommended to print these results due to large size. The next chunk
+helps the user narrow to specific comparisons.
+
+```{r thresSelect}
+#-------------------------#
+thresholdsSelect <- selectedThresholds # default is same as selected above, or this can be edited to specify a different set of thresholds
+#-------------------------#
+
+equityResults <- calc_equity_metrics_all(
+  predProbs = learnersResults$predProbs,
+  learnerNames = learnerNames,
+  thresholdsSelect = thresholdsSelect,
+  equityVars = learnerSpec$equityVars,
+  outcomeName = learnerSpec$outcomeName
+)
+
+```
+
+With the following chunk, there is the option to narrow the learners,
+characteristics or thresholds among the sets specified above.
+
+```{r fairnessDiffExploration, warning = FALSE, message = FALSE}
+#-------------------------#
+learnersSelect   <- "glm_predSet_ms"
+equityVarsSelect <- "race_SS_i"
+thresholdsSelect <- selectedThresholds
+#-------------------------#
+
+equityResultsSubset <- equityResults %>%
+  filter(learnerName %in% learnersSelect) %>%
+  filter(equityVar %in% equityVarsSelect) %>%
+  filter(threshold %in% thresholdsSelect)
+
+equityResultsSubsetRound <- round_table(equityResultsSubset) %>%
+    rename(learner = learnerName, var = equityVar, cat = category, thres = threshold)
+
+print(equityResultsSubsetRound)
+```
+
+For binary characteristics we are assessing for fairness, we can use a t
+test (two-sample proportion test) to determine whether there is a
+statistically significant difference when comparing the fnr, fpr, or fdr
+two class categories. For example, if `pVal_fp < 0.05`, then specified
+learner has a statistically significant difference between the two
+classes. Note that a value of `NaN` or `NA` denotes that a class had 0
+values). For characteristics with multiple categories, we instead use
+ANOVA to generate p-values.
+
+```{r fairnessTests, warning = FALSE, message = FALSE}
+#-------------------------#
+learnersSelect   <- learnersSelect
+equityVarsSelect <- equityVarsSelect
+thresholdsSelect <- 0.3
+#-------------------------#
+
+equityTests <- calc_equity_tests_all(
+  learnersSelect,
+  equityVarsSelect,
+  thresholdsSelect
+)
+
+print(round_table(equityTests))
+```
+
+# Final learner selection
+
+After evaluating all of the information above, the final step is to
+select
+
+-   typically, a single, best learner for testing a model that would
+    have the goal of being deployed.
+-   in some cases for research only, a small number of models to
+    demonstrate comparative performance in a test set.
+
+The selected learner(s) will be stored and carried over to the next
+testing step/markdown, `03_01_Learner_Testing.Rmd`.
+
+```{r saveSelectedLearners}
+#-------------------------#
+learnerNamesValidate <- c("glm_predSet_ms")
+selectedThresholds <- 0.25
+#-------------------------#
+
+# save out just subset of train results of focused learners
+trainResultsValidate <- filter_results(learnersResults, learnerNamesValidate)
+
+# save thresholds that we picked for the our preferred learner
+trainResultsValidate$selectedThresholds <- selectedThresholds
+
+saveRDS(trainResultsValidate, file = here::here(dataOutputPath, "validateLearnersResultsTitantic.rds"))
+```

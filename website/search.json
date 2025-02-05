@@ -1,0 +1,128 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Predictive Analytics for Improving Social Services",
+    "section": "",
+    "text": "Preface\nInsert overview of these training materials here."
+  },
+  {
+    "objectID": "codeofethics.html",
+    "href": "codeofethics.html",
+    "title": "Code of ethics",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "paforimprovingss_what.html",
+    "href": "paforimprovingss_what.html",
+    "title": "1  What is it?",
+    "section": "",
+    "text": "Include links to external literature for broader landscape."
+  },
+  {
+    "objectID": "paforimprovingss_learn.html",
+    "href": "paforimprovingss_learn.html",
+    "title": "2  What can we learn from predictive analytics?",
+    "section": "",
+    "text": "This section will describe the insights that can be learned from PA when used to improve social services.\nProvide links to MDRC publications and external examples."
+  },
+  {
+    "objectID": "paforimprovingss_limitations.html#section",
+    "href": "paforimprovingss_limitations.html#section",
+    "title": "3  What are the limitations?",
+    "section": "3.1 ",
+    "text": "3.1"
+  },
+  {
+    "objectID": "paforimprovingss_context.html#section",
+    "href": "paforimprovingss_context.html#section",
+    "title": "4  Is PA right for your context?",
+    "section": "4.1 ",
+    "text": "4.1"
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "paforimprovingss_define.html",
+    "href": "paforimprovingss_define.html",
+    "title": "1  What is predictive analytics?",
+    "section": "",
+    "text": "This section will define predictive analytics and how it can be used to improve social services.\nWe can include links to external literature for broader landscape."
+  },
+  {
+    "objectID": "codeofethics_why.html",
+    "href": "codeofethics_why.html",
+    "title": "1  Why create a code of ethics before starting PA?",
+    "section": "",
+    "text": "2 This is a test."
+  },
+  {
+    "objectID": "codeofethics_ex.html",
+    "href": "codeofethics_ex.html",
+    "title": "2  Code of ethics",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "HowcanPAbeused.html",
+    "href": "HowcanPAbeused.html",
+    "title": "1  What is predictive analytics?",
+    "section": "",
+    "text": "2 How can findings be used?\n\n\n3 Ethical considerations\n\n\n4 Limitations"
+  },
+  {
+    "objectID": "HowcanPAbeused.html#how-can-findings-be-used",
+    "href": "HowcanPAbeused.html#how-can-findings-be-used",
+    "title": "1  How can predictive analytics be used to improve social services?",
+    "section": "How can findings be used?",
+    "text": "How can findings be used?"
+  },
+  {
+    "objectID": "HowcanPAbeused.html#ethical-considerations",
+    "href": "HowcanPAbeused.html#ethical-considerations",
+    "title": "1  How can predictive analytics be used to improve social services?",
+    "section": "Ethical considerations",
+    "text": "Ethical considerations"
+  },
+  {
+    "objectID": "HowcanPAbeused.html#limitations",
+    "href": "HowcanPAbeused.html#limitations",
+    "title": "1  How can predictive analytics be used to improve social services?",
+    "section": "Limitations",
+    "text": "Limitations"
+  },
+  {
+    "objectID": "HowcanPAbeused.html#what-is-predictive-analytics",
+    "href": "HowcanPAbeused.html#what-is-predictive-analytics",
+    "title": "1  How can predictive analytics be used to improve social services?",
+    "section": "What is predictive analytics?",
+    "text": "What is predictive analytics?"
+  },
+  {
+    "objectID": "paforimprovingss_ethics.html",
+    "href": "paforimprovingss_ethics.html",
+    "title": "4  What are the ethical considerations?",
+    "section": "",
+    "text": "This section will discuss big picture ethical considerations and discuss creating a code of ethics. We can note that we will return to ethical considerations throughout."
+  },
+  {
+    "objectID": "paforimprovingss_context.html",
+    "href": "paforimprovingss_context.html",
+    "title": "5  Is predictive analytics a good fit for your context?",
+    "section": "",
+    "text": "Considerations:\n\nHow will findings be communicated and used, and by whom?\nData availability, quality and systems.\nCapacity re communication, analytics, change management."
+  }
+]

@@ -1,0 +1,25 @@
+---
+title: "Understanding PA results"
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+As you know, ultimately, after working through the entire PA workflow,
+you will have a single predicted probability of the outcome for each
+observation in your testing data, which was estimated with your final,
+selected model/learner.
+
+Based on the performance of the model/learner in your held-out testing
+data, you will decide whether to deploy your model. We will discuss
+deployment a little later.
+
+First, there are some valuable questions you may ask to better
+understand your test results (on new, held-out data) and your final, selected model. Answers to these questions can
+help with decision-making aimed at improving services, and they can help
+with explaining your model to stakeholders.
+
+1.    How are predicted probabilities distributed across and within groups? 
+2.    Who has low or high predicted probabilities of the outcome?
+3.    What are the most important predictors in my model?
+

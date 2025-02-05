@@ -1,0 +1,127 @@
+---
+title: "Assessing bias in the code templates"
+html:
+  css: styles.css
+---
+
+Step 4 in `02_Learner_Training_and_Validation.Rmd` guides users in comparing bias across learners. The first chunk in this section (plotpredProbsFairness1), which is displayed below, plots distributions of predicted probabilities by a chosen category (e.g. by race). The user can specify for which attribute (`equityVarSelect`) and for which learners (`learnersSelect`) these plots should be displayed. The code can be repeated to view the plots for another attribute.
+
+```{r print_plotpredProbsFairness1, results='asis', echo=FALSE}
+source("datasets/extract_chunk.R")
+extract_chunk("datasets/02_Learner_Training_and_Validation.Rmd", "plotpredProbsFairness1")
+code_lines <- readLines("plotpredProbsFairness1.R")
+# Print the lines as a formatted code block
+cat("```r\n")
+cat(code_lines, sep = "\n")
+cat("\n```\n")
+
+```
+
+```{r plotpredProbsbyRace, warning=FALSE, message=FALSE, echo=FALSE}
+source("datasets/plots.R")
+source("datasets/learner_training_helpers.R")
+source("datasets/performance_metrics.R")
+library(tidyverse)
+library(ggpubr)
+#-------------------------#
+equityVarSelect <- "gender_SS" # limit to one
+learnerNamesSelect <- c("glm_predSet_bm","glm_predSet_ms") # multiple allowed
+#-------------------------#
+allLearnersResults <- readRDS("~/Library/CloudStorage/OneDrive-K.E.PorterConsultingLLC/Git/NCSU-PA-for-Improving-Services/datasets/allLearnersResults.rds")
+modelResults <- allLearnersResults$learnersMetrics
+predProbs    <- allLearnersResults$predProbs 
+#learnersMetrics <- convert_metrics_wide(modelResults)
+#learnersResults$learnersMetrics <- learnersMetrics
+probsGraphs <- NULL
+learnerNames <- unique(modelResults$learnerName)
+
+for(i in 1:length(learnerNamesSelect))
+{
+  probsGraphs[[i]] <- 
+    pred_prob_graph(
+      predProbs = predProbs,
+      learnerName = learnerNamesSelect[i],
+      splitCategory = equityVarSelect
+    )
+}
+ggarrange(plotlist = probsGraphs)
+ggarrange(plotlist = probsGraphs)
+```
+
+As previously mentioned, while presenting stakeholders with the distributions of predicted likelihoods for various groups is crucial, disentangling the degree to which divergent distributions of risk scores are attributable to bias is challenging. In this context, different distributions of predicted probabilities of dropout for students of different races might be a manifestation of bias stemming from racial discrimination within the educational environment. However, they could also be explained by disparate trends in academic performance and student behavior, which are often rooted in socioeconomic factors that are correlated with race.
+
+The next code chunk (`thresEquityPlot1`), displayed below, allows the user to compare threshold-based performance metrics across categories for (i) a single specified attribute (`equityVarSelect`), (ii) a specified learner (`learnerNameSelect`), and (iii) up to four different thresholds (`selectedThresholds`, which was specified above in the chunk titled `thresRange`).
+
+The choices for metrics (passed in to `metricType`) are:
+
+-   true positive rate (tpr) or count (tpc)
+
+-   false positive rate (fpr) or count (fpc)
+
+-   true negative rate (tnr) or count (tnc)
+
+-   false negative rate (fnr) or count (fnc)
+
+The user can simultaneously view all of the above rates by specifying "rate" for `metricType` or simultaneously view all of the above counts by specifying "count" for `metricType`.
+
+The user can specify positive predictive value (ppv), or precision, or the "false discovery rate" (fdr). Recall that the false discovery rate is the number of false positives over the number of predicted positives. The false discovery rate is generally considered less strict than the false positive rate. We may be willing to accept more false positives when the learner has a large number of predicted positives, while the false positive rate does not take into account the number of predicted positives. We ask: Among people who were not offered services, what are the chances they actually needed services given their race? If we have parity, it means that among people who were not offered services, the chances that a white or Black person needed the services is equal. This metric may be easier to achieve equity on if Black and White people have different rates of needing services.
+
+```{r print_thresEquityPlot1, results='asis', echo=FALSE}
+extract_chunk("datasets/02_Learner_Training_and_Validation.Rmd", "thresEquityPlot1")
+code_lines <- readLines("thresEquityPlot1.R")
+# Print the lines as a formatted code block
+cat("```r\n")
+cat(code_lines, sep = "\n")
+cat("\n```\n")
+
+```
+
+This code chunk will return the following plot when "fdr" is specified for `metricType`.
+
+![](images/fdr_by_race.png){width="7in"}
+
+The same code chunk will return the following plot when "rate" is specified for `metricType`.
+
+![](images/cmrates_by_race.png){width="7in"}
+
+The next code chunk (`thresSelect`) computes a more comprehensive set of performance metrics - for all possible combinations of (1) category of each selected equity attribute; (2) learner; (3) a set of thresholds specified by the user. The code chunk is displayed below, followed by a subset of the data.frame that is returned.
+
+```{r print_thresSelect, results='asis', echo=FALSE}
+extract_chunk("datasets/02_Learner_Training_and_Validation.Rmd", "thresSelect")
+code_lines <- readLines("thresSelect.R")
+# Print the lines as a formatted code block
+cat("```r\n")
+cat(code_lines, sep = "\n")
+cat("\n```\n")
+
+```
+
+![](images/head_equityResults.png){width="9in"}
+
+And then the next code chunk (`fairnessDiffExploration`) helps the user view output from the previous chunk so that differential metrics can be assessed. The user specifies which learner(s) to narrow results to (`learnerSelect`), which attribute(s) (`equityVarsSelect`) and which thresholds (`thresholdsSelect`).
+
+```{r print_fairnessDiffExploration, results='asis', echo=FALSE}
+extract_chunk("datasets/02_Learner_Training_and_Validation.Rmd", "fairnessDiffExploration")
+code_lines <- readLines("fairnessDiffExploration.R")
+# Print the lines as a formatted code block
+cat("```r\n")
+cat(code_lines, sep = "\n")
+cat("\n```\n")
+```
+
+Finally, it's crucial to remember that, like any statistical estimate, performance metric estimates carry inherent statistical uncertainty. Consequently, observed differences among various groups (e.g., different races) might result from noise attributed to sampling variability. Hence, determining the statistical significance of these differences is essential to validate the observations. The final code chunk in Step 4 of `02_Learner_Training.Rmd` provides p-values for the null hypothesis that the metrics are the same for all categories of the selected attribute.
+
+Currently, this chunk only carries out statistical tests for three metrics: fnr, fpr, or fdr.
+
+```{r print_fairnessTests, results='asis', echo=FALSE}
+extract_chunk("datasets/02_Learner_Training_and_Validation.Rmd", "fairnessTests")
+code_lines <- readLines("fairnessTests.R")
+# Print the lines as a formatted code block
+cat("```r\n")
+cat(code_lines, sep = "\n")
+cat("\n```\n")
+```
+
+The output from this chunk looks like this:
+
+![](images/equityTests.png){width="7in"}

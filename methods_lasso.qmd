@@ -1,0 +1,55 @@
+---
+title: "Lasso"
+editor: 
+  markdown: 
+    wrap: sentence
+---
+
+Lasso, which stands for "Least Absolute Shrinkage and Selection Operator," is a "penalized" form of regression.
+This means that it introduces a penalty to the regression model to shrink some of the regression coefficients towards zero.
+
+To illustrate, imagine you're assembling a team for a game and each player's skill contributes to your team's overall performance.
+However, for each player you add, you need to pay a cost (like a registration fee).
+The Lasso penalty is akin to this cost.
+If a player (or a predictor in our regression context) doesn't contribute much value, you might opt to leave them out to avoid the fee.
+The stronger the penalty, the more selective you'd be about who you add to your team.
+
+In the context of Lasso regression, this penalty pushes less important predictors' coefficients towards zero, effectively excluding them from the model.
+
+In Lasso regression, the primary tuning parameter is $\lambda$ (lambda), which controls the strength of the penalization.
+
+-   When $\lambda=0$, no penalty is applied, and the resulting model will include all predictors.
+
+-   As $\lambda$ increases, the penalization effect becomes stronger, and more coefficients are shrunk towards zero.
+    For a sufficiently large value of $\lambda$, all coefficients may become exactly zero.
+
+-   The value of $\lambda$ can be selected with cross-validation with the training data.
+
+[**Advantages of Lasso**]{style="color:green"}
+
+-   **Feature selection**: One of the key advantages of Lasso regression is its ability to perform feature or variable selection by shrinking the coefficients of the least important predictors to zero.
+    This feature of the algorithm can be very helpful when you have a large number of predictors, and you suspect that many of them are irrelevant or redundant.
+
+-   **Dealing with lots or predictors**: In situations where the number of predictors ($p$) is close to or exceeds the number of observations $n$, classical logistic regression might overfit or might not even run at all.
+    Lasso can be a solution in these high-dimensional settings.
+
+-   **Multicollinearity**: When predictor variables are highly correlated, standard logistic regression's estimates can be very unstable.
+    Lasso helps to alleviate "multicollinearity" (high correlation) issues by penalizing certain coefficients and pushing them towards zero.
+
+-   **Interpretability:** Because Lasso can zero out coefficients, the resulting model can be more interpretable than a model with many predictors.
+    And Lasso is more interpretable than "black-box" machine learning algorithms.
+
+-   **Model Performance**: If there's a concern about overfitting due to a large number of predictors, Lasso can provide a more generalized model that might perform better on out-of-sample data compared to a non-regularized logistic regression.
+
+[**Disdvantages of Lasso**]{style="color:green"}
+
+-   **True model:** If the true underlying model is very sparse (i.e., very few predictors truly matter), then lasso will perform very well.
+    However, if a large number of predictors matter, lasso may not be stable.
+
+-   **Challenged with highly correlated predictors:** With highly correlated predictors, lasso arbitrarily chooses which to include in the model.
+    This arbitrary selection may not matter for predictive performance but can interfere with explainability.
+
+[**Implementation of Lasso in R**]{style="color:green"}
+
+In R, we implement lasso with `glmnet()` in the `glmnet` package.
+The code templates will do this for you.

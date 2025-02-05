@@ -1,0 +1,22 @@
+
+ .tocify .tocify-header {
+    position: fixed;
+    top: 50px;
+    left: 150px;
+    width: 500px;
+    height: 200px;
+}
+.book .book-summary {
+  width: 350px;
+  position:absolute;
+  top:0;
+  left:-150px;
+}
+
+.book.with-summary .book-header.fixed {
+  left: 350px;
+}
+
+.book.with-summary .book-body {
+  left: 350px;
+}

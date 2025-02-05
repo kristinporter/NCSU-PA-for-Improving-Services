@@ -1,0 +1,17 @@
+---
+title: "Designating data for testing"
+---
+
+![](images/testutc.jpg){fig-align="center" width="5in"}
+
+Once we have identified the appropriate data for all steps (train, validate, test) of our PA proof-of-concept workflow, we want to work backwards. So first, we want to split off a subset that will be used for testing. Some notes about designating the testing data:
+
+-   The test data will not be analyzed until we have completed learner training and validation and have selected our "best" model. We should set it aside and not touch it until we have made a final learner selection.
+
+-   In the case that the goal of predictive analytics is to make predictions for \*future\* service recipients, then ideally, we want our test data set to include individuals (or other units) that are forward in time, compared to the data we will use for training and validation. This provides the best check of how well our "best" model generalizes not only to different data, but also to the future.
+
+-   Ideally, we would want data as close in time as possible to when we would deploy a predictive model. This might be tricky. For example, if our proof-of-concept is assessing possible deployment for predicting high school drop out risk of 10th graders in the 2024-2025 school year, then the best test data may be *the most recent cohort of 10th graders for whom we know graduation status*. This would be students who graduated in 2023 and were therefore 10th graders in the 2020-2021 academic year.
+
+-   In some cases, we might be making predictions for a new location (e.g. for a new site, office, store). Then, we might designate testing data that is from a different location than data we will use for training and validation.
+
+**Ultimately, for an honest assessment of our selected, "best" model, we want to conduct testing in a test data set that best mimics how the predictive model would be deployed.**

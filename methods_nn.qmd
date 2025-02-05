@@ -1,0 +1,45 @@
+---
+title: "Neural networks"
+editor: 
+  markdown: 
+    wrap: sentence
+---
+
+A neural network is a popular machine learning algorithm. The approach was motivated by theories about how the brain works. Neural networks are highly simplified models of the brain. Even though they are a simplification of how the brain works, they can still be quite complicated. 
+
+Imagine you're trying to predict a student will graduate on time, using various predictors that include measures of attendance and academic performance. The neural network is built on multiple layers, with each layer having multiple nodes.
+
+1. **Input Layer**: This layer holds initial clues about the outcome. The nodes in this layer are the individual predictors. 
+
+2. **Hidden Layers**: Next, the neural network starts to process this information, combining the individual predictors in various ways to derive deeper insights. The nodes in this layer are functions of nodes in previous layers. 
+
+3. **Output Layer**: The output layer produces the final answer based on all the clues (nodes) and their processing. For binary outcomes like whether a student will graduate on time, the output layer often has a single node that outputs a value (typically between 0 and 1) representing the probability of the outcome being 1.
+
+At each layer, the neural network makes adjustments to the importance of individual and combined predictors by weighting them. The weights are adjusted during training to minimize the difference between the network's predictions and the actual outcomes. 
+
+The power of neural networks comes from their ability to identify and learn complex relationships and patterns in the data. Networks with more layers and nodes are more complex and are termed "deep neural networks," leading to the field known as deep learning.
+
+Key tuning parameters for neural networks include the number of hidden layers, the number of nodes in each hidden layer, regularization techniques (if applied), and the number of times during the training step the algorithm iterates through the entire dataset (known as "epochs") to refine the model parameters.
+
+[**Advantages of neural networks**]{style="color:green"}
+
+1. **Good for modeling complex relationships**: Neural networks, especially deep ones, can capture complex non-linear relationships. 
+
+2. **Capture interactions**: The method also excels at capturing interactions between features without manual creation of interaction terms.
+
+3. **High performing in a wide variety of settings.**: Neural networks, particularly deep learning models, have seen significant attention in recent years due to their performance in a wide range of complex tasks.
+
+
+[**Disadvantages of neural networks**]{style="color:green"}
+
+1. **Data hungry**: Neural networks often require a large amount of data to generalize well. On smaller datasets, they can easily overfit. I'm not sure if they are a good fit for most applications you all are choosing for projects. 
+
+2. **Computationally intensive**: Training can be slow, requiring specialized hardware like GPUs for faster computation.
+
+3. **Not transparent**: The method is hard to explain and the resulting model is hard to decipher. 
+
+4. **Sensitive to hyperparameter turning**: The values of tuning parameters can greatly affect performance and require tuning.
+
+[**Implementing neural networks in R**]{style="color:green"}
+
+You can use the `neuralnet` package to run neural networks in R. The code templates also allow for neural networks.  

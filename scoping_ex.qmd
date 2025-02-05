@@ -1,0 +1,33 @@
+---
+Title: A motivating example
+---
+
+### A motivating example
+
+Let's begin with an example. This example is inspired by a project I was involved in, but I have made several modifications for illustration purposes. The project was in collaboration with a state agency overseeing the federal assistance program, Temporary Assistance for Needy Families (TANF). TANF's primary goal is to empower families towards self-sufficiency by providing essential resources and services. Within this framework, state agencies administering the program extend a range of supportive services. These services are designed to assist families in overcoming obstacles to employment and self-reliance. Their approach revolves around tailoring assistance to the specific circumstances and needs of each family, ensuring a targeted response to diverse challenges and varying levels of need among households.
+
+![](images\familygeneric.jpg){fig-align="center" width="4.5in"}
+
+#### **The agency came to the data science team with the following questions:**
+
+1.  With a data-driven tool, could caseworkers better understand which clients were more at risk of not reaching key program outcomes? In particular, among those who were required to find employment, could they obtain reliable information about who was least likely to find employment? Note that the current practice for identifying clients who were most at-risk relied on caseworkers reviewing measures they thought were important (e.g. of previous employment history) and making a subjective decision based on their professional expertise. They wondered if predictive analytics would provide an improvement in terms of accuracy and fairness. 
+
+2.  Could we develop reliable risk scores that combine and weigh multiple risk factors into a single easy-to-understand number that can be incorporated into decision-making?
+
+3.  Could trends in risk scores across the population of TANF clients provide new insights for program improvement and resource allocation?
+
+#### **How do we scope a project that helps them achieve their goals?**
+
+Next, we will use this example to talk about **project scoping.** That is, we need to specify the following:
+
+-   How would information about clients' risks of adverse outcomes be used?
+
+-   What, *exactly*, are we trying to predict?
+
+-   For whom would we be making predictions?
+
+-   When would we be making the predictions?
+
+-   When specifying what, when and for whom we are making predictions - what data are available? What do the data allow? 
+
+Answering these questions allows us to move forward in planning a **potential** predictive analytics project. That is what I mean by scoping - what potential project could there be? But importantly, the next step is to investigate that potential - to see if we can **reliably, clearly and fairly** make **useful and actionable** predictions. I refer to this next step as the "proof-of-concept," which we will turn to in the next main section.

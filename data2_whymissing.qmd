@@ -1,0 +1,36 @@
+---
+title: "Overview of missing data"
+---
+
+It is rare for data to be complete for all observations and all variables. Missing data is a challenge for just about any data analysis. In R, missing data often looks like what we see in the following example. Here, missing information is indicated by `NA.` Missing information may be indicated in other ways too (e.g. a specific numeric value outside a variable's range, or " "). These cases would need to be translated to R's convention of using `NA` during data cleaning.
+
+In the toy data set below, we see a missing value for the 3rd student's math score and corresponding proficiency level. We also see a missing value for whether the 5th student graduated on time.
+
+```{r echo=FALSE}
+# Creating a mini data frame with missing values
+toydata <- data.frame(
+  ID = c(1, 2, 3, 4, 5),
+  School = c("A","A","B","B","B"),
+  MathScore = c(40,60,NA,80,60),
+  MathProficiency = c(1, 2, NA, 3, 2),
+  GradOnTime = c(1,0,1,0,NA)
+)
+
+print(toydata)
+```
+
+Across many types of data, information may be missing for a variety reasons, including:
+
+1.  **Non-Response**: When individuals respond to a questionnaire, fill out an application, etc., some may choose not to answer certain questions due to the sensitivity of the topic, lack of knowledge, or other reasons. This can lead to missing values.
+
+2.  **Data Entry Errors**: Mistakes made during data entry can result in missing values. Data entry errors - due to typos, misinterpretation of handwriting, or glitches - can also lead to nonsensical information, which may need to be converted to missing.
+
+3.  **Technical Issues**: Technical problems such as software crashes, network failures, or sensor malfunctions can lead to missing data points, particularly in real-time data collection scenarios.
+
+4.  **Privacy and Confidentiality Concerns**: In some cases, data might be intentionally omitted or masked to protect individuals' privacy or sensitive information. For instance, certain personal identifiers might be removed from the dataset.
+
+5.  **Skip Patterns**: In surveys or questionnaires, skip patterns are used where respondents are directed to skip certain questions based on their previous responses. This can lead to missing values for respondents who don't meet the criteria for certain questions.
+
+6.  **Data Collection Costs**: Collecting certain types of data can be expensive and time-consuming. As a result, researchers might prioritize certain data points over others, leading to missing values in less prioritized areas.
+
+7.  **Data Migration or Integration**: When merging data from different sources or migrating data to a new system, compatibility issues might result in missing values or discrepancies.
