@@ -58,12 +58,6 @@ website:
           - data2_EDA.qmd
           - data2_extract.qmd
           - data2_changesovertime.qmd
-      - section: "Introduction to the PA Templates"
-        contents:
-          - toolset_overview.qmd
-          - toolset_datamodel.qmd
-          - toolset_firstlook.qmd
-          - toolset_tidymodels.qmd
       - section: "Modeling approaches"
         contents:
           - methods_overview.qmd
