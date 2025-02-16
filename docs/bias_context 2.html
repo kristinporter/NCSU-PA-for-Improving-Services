@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Class attendance and participation norms – Predictive Analytics (PA) for Improving Services</title>
+<title>Context matters – Predictive Analytics (PA) for Improving Services</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./bias_address.html" rel="next">
+<link href="./bias_define.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -79,9 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Predictive Analytics (PA) for Improving Services
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bias_intro.html">Evaluating and comparing bias</a></li><li class="breadcrumb-item"><a href="./bias_context.html">Context matters</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -411,6 +411,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./perform_output.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Learner training &amp; validation with code templates</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./perform_confusionmatrix.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">The confusion matrix and threshold-variant metrics</span></a>
   </div>
@@ -437,13 +443,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
  <span class="menu-text">Evaluating and comparing bias</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bias_intro.html" class="sidebar-item-text sidebar-link">
@@ -470,10 +476,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bias_context.html" class="sidebar-item-text sidebar-link">
+  <a href="./bias_context.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Context matters</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+ <span class="menu-text">bias_toolset.qmd</span>
+  </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bias_address.html" class="sidebar-item-text sidebar-link">
@@ -560,9 +569,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bias_intro.html">Evaluating and comparing bias</a></li><li class="breadcrumb-item"><a href="./bias_context.html">Context matters</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Class attendance and participation norms</h1>
+<h1 class="title">Context matters</h1>
 </div>
 
 
@@ -579,6 +588,13 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>We have just examined the issues of algorithmic bias in one setting from the criminal justice system, where the consequences of decisions influenced by predictive analytics are both punitive and significant. Detaining defendants during the pretrial period can lead to individuals being separated from their families and communities, stigmatization, and job loss, among other negative impacts.</p>
+<p>However, predictive analytics also plays a pivotal role in service decisions where the consequences are largely beneficial. For instance, students identified as having a high risk of not completing high school on time may receive additional tutoring, counseling, or parental outreach. Families estimated to be at high risk of homelessness may be granted housing assistance, job training, and social supports. In the financial sector, clients at high risk of credit default could be provided with financial counseling to enhance their credit worthiness.</p>
+<p>When predictive analytics identifies individuals or groups to receive extra help, bias may be measured and considered differently compared to punitive contexts. In scenarios where analytics are used for assistance, a bias that leads to over-identification can result in more people receiving help. While this pattern may lead to resource strain, the immediate ethical implications aren’t as severe as those in punitive contexts. Here, the main concern is under-identification bias, where some individuals or groups who need help are overlooked.</p>
+<p>To measure whether over or under-identification may be occurring, statistical tests that focus on the rates of false negatives among different subpopulations can be useful. We would look for disparities in the likelihood of being identified as ‘at risk’ and thereby eligible for additional support among different racial, gender, socioeconomic, or geographic groups. Special attention should be given to marginalized or vulnerable populations to ensure they are not systematically deprived of necessary assistance due to biases in predictive models.</p>
+<p>Bias might be weighed by considering both the immediate and long-term impacts on individuals and communities. In the assistive context, the ethical stakes, while still high, are somewhat alleviated by the benevolent intention behind the intervention. The focus then shifts to ensuring the equitable allocation of resources and opportunities to mitigate potential harm from under-identification. But also, while interventions may be <em>designed</em> to be beneficial, there still may be negative consequences as well, such as burden placed on individuals by extra “services” and stigma that may arise for those designated for extra services.</p>
+<p>Broader ethical considerations must always remain centered as well. As a review, see the earlier section on “<a href="paforimprovingss_ethics">What are the ethical considerations of using PA to improve services?</a>”.</p>
+<p>Note that <a href="http://www.datasciencepublicpolicy.org/our-work/tools-guides/aequitas/">Aequitas</a>, an open source bias toolkit, is a helpful resource for auditing predictive models. It takes context into account, including whether decisions based on results are “punitive” or “assistive.” Optionally, you can read their paper, linked at their website.</p>
 
 
 
@@ -1003,6 +1019,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./bias_define.html" class="pagination-link" aria-label="Getting specific about empirically defining bias">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Getting specific about empirically defining bias</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./bias_address.html" class="pagination-link" aria-label="Addressing bias">
+        <span class="nav-page-text">Addressing bias</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

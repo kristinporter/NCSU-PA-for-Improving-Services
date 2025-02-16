@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Class attendance and participation norms – Predictive Analytics (PA) for Improving Services</title>
+<title>Sources of bias – Predictive Analytics (PA) for Improving Services</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,6 +50,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./bias_modeling.html" rel="next">
+<link href="./perform_selectthreshold.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -79,9 +101,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Predictive Analytics (PA) for Improving Services
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bias_intro.html">Evaluating and comparing bias</a></li><li class="breadcrumb-item"><a href="./bias_intro.html">Sources of bias</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -411,6 +431,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./perform_output.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Learner training &amp; validation with code templates</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./perform_confusionmatrix.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">The confusion matrix and threshold-variant metrics</span></a>
   </div>
@@ -437,16 +463,16 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
  <span class="menu-text">Evaluating and comparing bias</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bias_intro.html" class="sidebar-item-text sidebar-link">
+  <a href="./bias_intro.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Sources of bias</span></a>
   </div>
 </li>
@@ -474,6 +500,9 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Context matters</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+ <span class="menu-text">bias_toolset.qmd</span>
+  </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bias_address.html" class="sidebar-item-text sidebar-link">
@@ -560,9 +589,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bias_intro.html">Evaluating and comparing bias</a></li><li class="breadcrumb-item"><a href="./bias_intro.html">Sources of bias</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Class attendance and participation norms</h1>
+<h1 class="title">Sources of bias</h1>
 </div>
 
 
@@ -579,10 +608,26 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>Earlier, we discussed a wide range of <a href="./paforimprovingss_ethics.html">ethical considerations</a> that pertain to predictive analytics. Some of these considerations are related to bias, or fairness, of predictive models and how their results are used. This is an enormous, complex and extremely important topic.</p>
+<p>Broadly, in the context of predictive analytics, bias refers to systematic errors or inaccurate predictions, often stemming from historical inequalities, flawed data sources, or model assumptions, which can result in unfair or discriminatory outcomes for certain groups. However, as you will read in this section, there are many different ways to define and measure bias. We will get more specific in a bit.</p>
+<p>In this section, we provide an overview of key concepts. We begin with a discussion of the potential <em>sources</em> of bias in predictive analytics. The development and use of predictive analytics to improve services involves several steps. Each step presents different sources of bias:</p>
+<ul>
+<li><p><span style="color:blue"><strong>Step 1: Estimating predicted probabilities of the outcome.</strong></span></p></li>
+<li><p><span style="color:blue"><strong>Step 2: Translating results into recommendations for action.</strong></span></p></li>
+<li><p><span style="color:blue"><strong>Step 3: Implementing decisions based on recommendations.</strong></span></p></li>
+</ul>
+<p>The following pages discuss how bias may be introduced in each of these steps. To illustrate, we will use an example from the criminal justice system, when the consequences of bias are substantial for the lives of people affected. In particular, we will focus on the pretrial period. Across the country, release and detention decisions for defendants in the pretrial period are increasingly guided by algorithmic risk assessments. These assessments rely on data to estimate defendants’ risks of negative outcomes if they are released pending trial. Negative outcomes include failing to appear for a court date, or being charged with new criminal activity. The algorithm’s results are generally used by a judicial body to help determine whether a defendant will be released while waiting for a case to be resolved, and if so, under what conditions. The content is this section is summarized from <span class="citation" data-cites="PorterRedcrossMiratrix2020">Porter, Redcross, &amp; Miratrix (<a href="#ref-PorterRedcrossMiratrix2020" role="doc-biblioref">2020</a>)</span>.</p>
+<p>As we discuss the potential sources of bias in pretrial assessment, we’ll focus on bias that can affect Black defendants for simplicity, although any of the ideas could be applied to other demographic subgroups.</p>
+<p><img src="images/ferriswheel.jpg" class="img-fluid" style="width:7in"></p>
 
 
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-PorterRedcrossMiratrix2020" class="csl-entry" role="listitem">
+Porter, K. E., Redcross, C., &amp; Miratrix, L. (2020). <em>Balancing promise and caution in pretrial risk assessments</em>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1003,6 +1048,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./perform_selectthreshold.html" class="pagination-link" aria-label="Selecting a threshold">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Selecting a threshold</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./bias_modeling.html" class="pagination-link" aria-label="Bias in estimating predicting probabilities">
+        <span class="nav-page-text">Bias in estimating predicting probabilities</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

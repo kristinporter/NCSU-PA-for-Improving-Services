@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Class attendance and participation norms – Predictive Analytics (PA) for Improving Services</title>
+<title>Bias in estimating predicting probabilities – Predictive Analytics (PA) for Improving Services</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./bias_use.html" rel="next">
+<link href="./bias_intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -79,9 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Predictive Analytics (PA) for Improving Services
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bias_intro.html">Evaluating and comparing bias</a></li><li class="breadcrumb-item"><a href="./bias_modeling.html">Bias in estimating predicting probabilities</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -411,6 +411,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./perform_output.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Learner training &amp; validation with code templates</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./perform_confusionmatrix.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">The confusion matrix and threshold-variant metrics</span></a>
   </div>
@@ -437,13 +443,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
  <span class="menu-text">Evaluating and comparing bias</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bias_intro.html" class="sidebar-item-text sidebar-link">
@@ -452,7 +458,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bias_modeling.html" class="sidebar-item-text sidebar-link">
+  <a href="./bias_modeling.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Bias in estimating predicting probabilities</span></a>
   </div>
 </li>
@@ -474,6 +480,9 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Context matters</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+ <span class="menu-text">bias_toolset.qmd</span>
+  </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bias_address.html" class="sidebar-item-text sidebar-link">
@@ -560,9 +569,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bias_intro.html">Evaluating and comparing bias</a></li><li class="breadcrumb-item"><a href="./bias_modeling.html">Bias in estimating predicting probabilities</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Class attendance and participation norms</h1>
+<h1 class="title">Bias in estimating predicting probabilities</h1>
 </div>
 
 
@@ -579,8 +588,29 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>Here, we highlight three potential sources of bias in the first step of developing and using predictive analytics: estimating the predicted probabilities of the outcome of interest.</p>
+<section id="bias-in-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="bias-in-the-data">Bias in the data</h3>
+<p>In the administrative data used to develop and validate pretrial assessments, some data elements are very likely to be inherently biased. A key challenge is that <strong>crime data does not exist</strong>. <em>Data only captures contacts with police and decisions made after that.</em> Therefore, to the extent that police activity and subsequent steps in the criminal justice system are biased, the data are biased.</p>
+<p>Consider measures of criminal activity, for example. One factor leading to recorded criminal activity is the likelihood of getting arrested. This likelihood can vary by race even when the true level of criminal activity is constant. For example, individuals who live in areas with elevated amounts of policing will tend to have more arrests than individuals with the same criminal behavior who live in areas with less policing. The level of policing in neighborhoods is often correlated with race. Therefore, White and Black populations with the same actual prevalence of criminal behavior will be arrested at different rates for such behavior.</p>
+<p><img src="images/pretrial_biasindata.png" class="img-fluid" style="width:7in"></p>
+<p>The resulting bias in the data affects both the risk factors used as predictors in a risk assessment tool and the outcomes predicted by a risk assessment tool – such as failure to appear for court or new criminal activity during the pretrial period. An assessment that depends on risk factors that are biased may perpetuate this bias because it could score a Black defendant as at higher risk than a White defendant with the same true level of risk.</p>
+<p>With respect to outcomes, particularly the outcome of new criminal activity, Black defendants awaiting trial and living in highly policed areas may be more likely to be picked up for similar offenses than White defendants awaiting trial in other areas. Therefore, even if the predictors in a risk assessment are not biased, the evaluation of the risk assessment could suggest bias, as a larger proportion of Black defendants with the same risk score could have new arrests than did similar White defendants.</p>
+</section>
+<section id="bias-in-modeling" class="level3">
+<h3 class="anchored" data-anchor-id="bias-in-modeling">Bias in modeling</h3>
+<p>Even if the risk factors and outcomes involved in a risk assessment are all measured without bias, the underlying model of a risk assessment could still potentially introduce bias. This situation can occur if the relationships between the risk factors and the outcome are different for different racial groups. Take, for example, a condition where pending charge predicts an outcome better for White defendants than Black ones (perhaps because the level of the pending charge among White people signals&nbsp;involvement in a relatively more serious crime level than pending charge among Black people – due to potential bias towards Blacks in the assignment of charges). If a model is then fit to all the data, which would average the two trends, pending charge for Black people would predict a higher risk score than the truth.</p>
+<p><img src="images/pretrial_biasinmodel.png" class="img-fluid" style="width:7in"></p>
+</section>
+<section id="bias-in-censoring" class="level3">
+<h3 class="anchored" data-anchor-id="bias-in-censoring">Bias in censoring</h3>
+<p>A third source of bias in the initial phase of risk assessment—calculating the risk score—stems from “differential censoring.” This term refers to the challenge arising when predictive models are typically developed using data from defendants who were not detained pre-trial. These individuals have complete data sets, unlike their detained counterparts, for whom we lack data on whether they would have failed to appear in court or been involved in new criminal activity if released.</p>
+<p>The problem intensifies when the risk assessment tools, designed from the non-detained population, are applied universally—to both those who we be detained and not. This application can lead to inaccuracies if those detained exhibit systematic differences from those not detained, leading to models that do not effectively predict the risk levels of the detained population.</p>
+<p>Furthermore, if detention trends vary by race, developing models from different racial subsets due to differential censoring can introduce bias. In essence, as illustrated in the picture below, a lack of complete data for detained individuals and potential systematic differences between detained and non-detained populations can undermine the accuracy and fairness of the resulting risk assessment models.</p>
+<p><img src="images/pretrial_biascensor.png" class="img-fluid" style="width:7in"></p>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1003,6 +1033,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./bias_intro.html" class="pagination-link" aria-label="Sources of bias">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Sources of bias</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./bias_use.html" class="pagination-link" aria-label="Bias in how predicted probabilities are used">
+        <span class="nav-page-text">Bias in how predicted probabilities are used</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
