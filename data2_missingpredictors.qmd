@@ -1,0 +1,85 @@
+---
+title: "Handling missing data - predictors"
+---
+
+Here we focus on how to handle missingness in variables that are potential predictors of our outcome of interest. Some implementations of machine learning algorithms have a built-in way to handle missing data. Others either will not run if fed data with missing values or will drop observations with any missing values. We will address missing values *before* using any modeling functions in R so that the approach will not vary across modeling approaches. Addressing missing data consistently allows us to make a fair comparison of differnt models' performances.
+
+![](images/jigsaw.jpg){fig-align="left" width="5in"}\
+
+There are many different methods for managing missing data. They typically involve "filling in" - or "imputing" - missing data points with plausible values. Imputation can be a valuable approach to consider, and it is discussed below. But I would argue that imputation should not be the primary strategy for predictive analytics, at least in settings in which careful data preparation is being done.[^1] Instead, we should recognize that **missingness may be informative.** Therefore, it is valuable to capture the missingness in our modeling.
+
+[^1]: In some settings, that rely on frequent streams of big data for example or that have very minimal missing values, data preparation may need to be fully automated and imputation may be preferred.
+
+### Capturing information in missingness
+
+The idea here is pretty simple. Data may be missing for reasons that are related to the outcome we are trying to predict.
+
+For example, when predicting whether a student will graduate on time, their standardized math score and the resulting proficiency level are potentially valuable predictors. In our toy example, the math score is on a scale from 0 to 100. The proficiency level takes on the following values: 1 indicates the student scored "below proficient"; 2 indicates the student scored as "proficient;" and 3 indicates the student scored "above proficient." Students who have missing values for these variables may not have taken the test. Perhaps they were absent on the day of the test and again on the day of the make-up. It is possible some of these students tend to be absent more often than the average student. Therefore, missingness on a math test may tell us something about a student's level of absenteeism. Or, perhaps some students are exempt from the test because they are on a different math track. In this case, the missingness could tell us something about their math level.
+
+We may not know why students are missing data for the math test variables. But...
+
+-   It is quite possible that students with missing data are systematically different from those with entered data; therefore imputation based on entered data would likely be biased. And...
+
+-   Students with missing data may be less or more likely to graduate on time. Therefore, we want to allow for missingness to be predictive of the outcome of interest.
+
+To capture the missingness information in our modeling, we can take the following approaches
+
+1.  **For categorical variables, we add a category for the missingness.**
+
+    -   Note if our raw variable (before accounting for missingness) is an "ordered" categorical variable, for which the categories have a clear and meaningful order or scale, then adding a category for missingness means that our newly formatted variable is an "unordered" categorical variable. In R, a `factor` (a class of an R object or of a column in a data frame) is used to represent categorical variables. By default, a factor treats values as unordered categorical variables, although factors can also be ordered.
+
+    -   Equivalently, we can create a set of dummies (binary variables with values 0 or 1) indicating whether an observation belongs to each category or not. This is my recommendation. Note, when we create a set of dummies, we must leave one category out, as a reference category. For some modeling approaches, including all possible categories can create unstable estimation. So for example, to deal with missingness in the math proficiency variable, we might create a set of three dummies indicating: (1) proficient, (2) above proficient, or (3) missing proficiency information - leaving out the 4th category of below proficiency.
+
+Below, we see how this looks in a revised R data frame, creating the dummies based on the raw variable `MathProficiency`:
+
+```{r echo=FALSE}
+
+# Creating a mini data frame with missing values
+toydata <- data.frame(
+  ID = c(1, 2, 3, 4, 5),
+  School = c("A","A","B","B","B"),
+  MathProficiency = c(1, 2, NA, 3, 2),
+  Math.Proficient = c(0,1,0,0,1),
+  Math.AboveProficient = c(0,1,0,1,0),
+  Math.Missing = c(0,0,1,0,0)
+)
+
+print(toydata)
+```
+
+A couple of notes:
+
+-   If we have a small category, we will want to combine it with another category. For example, if there are just a few missing values, we might create a factor variable or a set of binary variables such that one category is "proficient"; another is "above proficient"; and the other is "either below proficient or missing proficiency information."
+
+-   If missingness is a very large category, this may indicate a problem with the reliability of the variable. Variables with large amounts of missing data should perhaps be eliminated from analyses - but this is an issue to discuss with those who have expertise with the data systems and data entry process.
+
+\
+
+2.  **For continuous variables, we can create a new, transformed categorical variable.** That is, if our data only contained the math test score, to address missingness, we can turn it into a variable that captures different levels and missingness as above. Converting continuous variables into categorical variables may be desirable for extracting predictive information as well. For example, whether a student scored at a proficient level or not may be more predictive than their raw score.
+
+\
+
+3.  **For continuous variables, we can also do a combination of imputation and creating a dummy to capture missingness.** This method, "dummy variable adjustment" [@CohenCohen1985] is illustrated below. Here we impute the missing math scores with the mean of the nonmissing math scores, and we create a dummy variable that is 1 for observations with imputed values and 0 otherwise.
+
+```{r echo=FALSE}
+
+    # Creating a mini data frame with missing values
+    toydata <- data.frame(
+      ID = c(1, 2, 3, 4, 5),
+      School = c("A","A","B","B","B"),
+      MathScore = c(40,60,NA,80,60),
+      Impute.MathScore = c(40,60,60,80,60),
+      Miss.MathScore = c(0,0,1,0,0)
+    )
+
+    print(toydata)
+```
+
+When we use this "dummy variable adjsutment," we must include both the new variable with imputed values and the new dummy in our modeling. There has been a considerable amount of criticism focused on this approach in the literature. For example, @Jones1996 and @Allison2002 show that, generally in studies using observational data, this approach leads to biased estimates of the coefficients in the regression model. However, our primary objective with predictive analytics is not to have interpretable coefficients in our models. Our primary objective is to achieve "good" predictions.
+
+
+### A bit more about imputation...
+
+Some imputation methods may be straightforward and acceptable, especially when redundant information exists in other variables. For instance, if gender data is absent but titles such as Mr., Ms. and Mx. are present, these titles may provide a decent guess for inferring missing gender values.
+
+However, imputation often presents a more complex challenge. Many data scientists invest considerable effort to identify plausible values for imputation. This is an active area of statistical research. A popular approach is to derive imputed values by modeling them, drawing information from the entire dataset. Another strategy, known as "multiple imputation," involves *repeatedly* modeling the missing values, which produces several complete datasets. This repetition considers both sampling uncertainty and modeling (or specification) uncertainty of imputed values, as discussed in sources like @GellmanJill2007. Results from analyzing these multiple datasets can be combined in various ways. While multiple imputation methods decrease bias in the imputed values, they do not entirely eliminate it.

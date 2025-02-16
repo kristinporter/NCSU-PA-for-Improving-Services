@@ -1,0 +1,8 @@
+---
+title: "Changes in data over time"
+---
+
+![](images/calendar.jpg){fig-align="left" width="5in"}\
+
+Keep in mind that data quality, missingness and distributions can change over time. If the changes are substantial, this can interfere with model performance over time. For example, if a predictor has more or less missingness in later years compared to missingness in earlier years, this could suggest that there some new dynamic at play - e.g., a change in how the variable is understood by those providing or entering data, a change in clients' willingness to provide information, or a change in data integration processes. Therefore, the missingness has different meaning over time and consequently perhaps different predictive value. Exploration of trends over time could guide data scientists decisions about whether to exclude some variables from their predictor sets. 
+

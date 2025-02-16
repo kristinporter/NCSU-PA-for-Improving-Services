@@ -1,0 +1,8 @@
+---
+title: Issue log
+---
+
+-   Formatting of references weird - how to capitalize where needed?
+-   
+
+### 

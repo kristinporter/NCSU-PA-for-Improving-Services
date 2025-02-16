@@ -1,0 +1,23 @@
+---
+title: "Data workflow"
+---
+
+Here we will define the learner workflow for a PA proof-of-concept. This involves the following three steps:
+
+```{mermaid}
+flowchart LR
+  A(Training) --> B(Validating)
+  B --> C(Testing)
+  
+  
+```
+
+\
+
+1.  **Training:** Uses data with known outcomes to apply a modeling approach (e.g., regression or a machine learning algorithm) in order to build (i.e., estimate, fit, train) a model of the relationship between predictors and the outcome of interest.
+
+2.  **Validating:** uses *new* data with known outcomes (data not used for training) to apply all trained learners/models. The predictions from the trained learners/models are compared to the known outcomes so that metrics of model performance and fairness are computed. This validation can be repeated in multiple validation data sets. Looking across all results, the "best" model is selected. Criteria for a model being selected as "best" vary by context. To determine the "best" learner/model, the team will weigh different definitions and metrics of predictive performance and of fairness. We will take a deep dive into these metrics soon. The team may also weight the simplicity and transparency of the learner, as well as variability across multiple validations.
+
+3.  **Testing:** uses *new, set aside* data with known outcomes (data not used for training or validation) to apply the "best" model. The predictions from the best model are compared to the known outcomes to report on predictive performance and fairness to stakeholders and to make a decision about whether the learner/model should be deployed for use.
+
+In the following pages, we will go over how to implement these concepts, but first we will discuss considerations for selecting data that would be used across the full workflow.

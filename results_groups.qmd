@@ -1,0 +1,31 @@
+---
+title: "Who has low or high predicted probabilities?"
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+It can also be valuable to flip the question about distribution of
+predicted probabilities. That is, in addition to asking how predicted
+probabilities are distributed within and across groups, we can look at
+what groups are most or least represented within categories of predicted
+probabilities.
+
+For example, we might ask: Who has a high predicted risk of dropping out
+of high school (e.g., those with predicted probabilities greater than
+75%)? If we find that many of the students who are high-risk have high
+absenteeism or low scores on reading tests, this may suggest areas of
+focus for designing interventions to help these students. Note, at the
+same time, we need to be careful not to assume that student
+characteristics that are prevalent among high-risk students do not
+indicate a causal relationship.
+
+Again, data visualizations may helpful. Here is an example of a "mosaic
+plot," which allows us to look at multiple characteristics at the same
+time. This was created for the Titantic data set on Kaggle. It was
+produced to understand who actually died or survived, but the same plot
+could be created for those predicted to die or survive. And a similar
+plot could be created to look at students predicted to have high risk of
+dropping out or not.
+
+![](images/predprobDataViz.png){fig-align="center" width="8in"}
