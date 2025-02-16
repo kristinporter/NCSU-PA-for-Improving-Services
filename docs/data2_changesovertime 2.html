@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Assessment and grading – Predictive Analytics (PA) for Improving Services</title>
+<title>Changes in data over time – Predictive Analytics (PA) for Improving Services</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./methods_overview.html" rel="next">
+<link href="./data2_extract.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -79,9 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Predictive Analytics (PA) for Improving Services
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data2_overview.html">Data for PA: PART 2</a></li><li class="breadcrumb-item"><a href="./data2_changesovertime.html">Changes in data over time</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -284,13 +284,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Data for PA: PART 2</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data2_overview.html" class="sidebar-item-text sidebar-link">
@@ -329,7 +329,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data2_changesovertime.html" class="sidebar-item-text sidebar-link">
+  <a href="./data2_changesovertime.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Changes in data over time</span></a>
   </div>
 </li>
@@ -411,6 +411,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./perform_output.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Learner training &amp; validation with code templates</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./perform_confusionmatrix.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">The confusion matrix and threshold-variant metrics</span></a>
   </div>
@@ -474,6 +480,9 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Context matters</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+ <span class="menu-text">bias_toolset.qmd</span>
+  </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bias_address.html" class="sidebar-item-text sidebar-link">
@@ -560,9 +569,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data2_overview.html">Data for PA: PART 2</a></li><li class="breadcrumb-item"><a href="./data2_changesovertime.html">Changes in data over time</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Assessment and grading</h1>
+<h1 class="title">Changes in data over time</h1>
 </div>
 
 
@@ -579,6 +588,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p><img src="images/calendar.jpg" class="img-fluid quarto-figure quarto-figure-left" style="width:5in"><br>
+</p>
+<p>Keep in mind that data quality, missingness and distributions can change over time. If the changes are substantial, this can interfere with model performance over time. For example, if a predictor has more or less missingness in later years compared to missingness in earlier years, this could suggest that there some new dynamic at play - e.g., a change in how the variable is understood by those providing or entering data, a change in clients’ willingness to provide information, or a change in data integration processes. Therefore, the missingness has different meaning over time and consequently perhaps different predictive value. Exploration of trends over time could guide data scientists decisions about whether to exclude some variables from their predictor sets.</p>
 
 
 
@@ -1003,6 +1015,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./data2_extract.html" class="pagination-link" aria-label="Extracting predictive value">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Extracting predictive value</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./methods_overview.html" class="pagination-link" aria-label="Overview">
+        <span class="nav-page-text">Overview</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
