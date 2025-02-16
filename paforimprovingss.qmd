@@ -1,5 +1,0 @@
----
-title: What is predictive analytics for improving services? 
----
-
-![](images/shutterstock_wondering.png)
