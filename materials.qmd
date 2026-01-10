@@ -6,7 +6,7 @@ These materials are designed to help you understand the main topics we'll cover 
 
 ### How to use these materials
 
-The class is organized into the sections listed in the left panel of this page. Clicking the arrow to the right of each main section title will show the sub-sections. Generally, we will cover one or two main sections per class. Some sections are currently empty, but will be added as the class progresses. 
+The class is roughtly organized into the sections listed in the left panel of this page. Clicking the arrow to the right of each main section title will show the sub-sections. Generally, we will cover one or two main sections per class. Some sections are currently empty, but will be added as the class progresses. 
 
 The materials consist of text, links (to articles, blog posts, videos, etc.), and snippets of the code we will use for analyses. Please note:
 
@@ -20,4 +20,4 @@ The materials consist of text, links (to articles, blog posts, videos, etc.), an
 
 These course materials were put together by me, Kristin Porter. All errors and omissions are mine. But I have also had lots of help - many sections draw on and even copy valuable text written by Zarni Htet at MDRC and Kristen Hunter at the University of South Wales, Sydney. The framework presented in this class was developed at [MDRC](www.mdrc.org), a nonprofit social policy research organization where I was employed for 16 years. Kristen Hunter also provided very helpful review of all these materials.
 
-This is the first time I have taught this course, and I would not be surprised if there are problems. I very much welcome any and all feedback and questions at any time.
+I very much welcome any and all feedback and questions at any time.

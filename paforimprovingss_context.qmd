@@ -6,7 +6,7 @@ title: Is predictive analytics a good fit for your context?
 
 Before embarking on a PA project, it is valuable to assess whether it is the right approach at the right time for the setting. Here are a some key considerations to determine if PA is a good fit.
 
-#### Will PA provide new and actionable information? 
+## Will PA provide new and actionable information? 
 
 -   Do we anticipate that the PA findings will provide information that is more reliable, more frequent or easier to understand than current information available?
 
@@ -15,7 +15,7 @@ Before embarking on a PA project, it is valuable to assess whether it is the rig
 -   How frequently do PA findings need to be updated?
 
 
-#### Are there plans and buy-in for acting on insights that come out of PA? 
+## Are there plans and buy-in for acting on insights that come out of PA? 
 
 -   Is there sufficient leadership and commitment from the institution?
 
@@ -27,7 +27,7 @@ Before embarking on a PA project, it is valuable to assess whether it is the rig
 
 -   Are there structural or process factors that impede or foster the use predictive analytics (such as dedicated data teams) or the use of results (such as dashboard systems)?
 
-#### Data quality and systems
+## Data quality and systems
 
 -   Are there sufficient data that are readily accessible?
 
@@ -35,7 +35,7 @@ Before embarking on a PA project, it is valuable to assess whether it is the rig
 
 -   Is there sufficient capacity for investigating and deploying PA with existing analytic systems, software and staffing?
 
-#### Potential risks
+## Potential risks
 
 -    Has their been sufficient investigation into identifying potential risks?
 

@@ -16,7 +16,7 @@ website:
     foreground: dark
     style: "docked"
     search: true
-    collapse-level: 1
+    collapse-level: 2
     pinned: false
     contents:
       - index.qmd

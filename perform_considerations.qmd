@@ -1,4 +1,0 @@
----
-title: "Metrics considerations for validation vs. testing"
----
-

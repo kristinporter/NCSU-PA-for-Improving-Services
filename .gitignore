@@ -5,3 +5,5 @@
 /.quarto/
 course_description.qmd
 docs/
+
+**/*.quarto_ipynb

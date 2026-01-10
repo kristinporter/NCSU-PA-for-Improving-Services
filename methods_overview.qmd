@@ -11,7 +11,7 @@ Then, we take a quick tour through some prevalent machine learning (ML) algorith
 
 ![](images/ML.jpg){fig-align="left" width="6in"}
 
-#### Defining machine learning
+## Defining machine learning
 
 Machine learning refers to models that use iterative algorithms --- that is, a series of steps that continuously adjust for better predictive performance --- rather than relying on functional forms (specifications of the independent variables and the types of relationships between the variables and the outcome) specified by an analyst.
 
@@ -42,7 +42,7 @@ A model is trained to predict whether future images contain a cat or dog.
 In unsupervised learning, the algorithm is given the series of images, but is given no information about what is contained in the picture.
 The algorithm clusters the images in two groups, with the goal of producing one cluster of cats and one cluster of dogs, but the two groups are not characterized or labelled.
 
-#### Understanding machine learning algorithms
+## Understanding machine learning algorithms
 
 As you will read in the pages that follow, machine learning algorithms can vary substantially in their underlying approaches.
 At the same time, some have very similar underlying approaches but vary in their details.
