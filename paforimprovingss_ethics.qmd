@@ -37,7 +37,7 @@ Predictive analytics projects involve complex decision-making processes that can
 
 2.  **Code of Ethics**: Establish a clear and comprehensive code of ethics specifically tailored to the predictive analytics project. This code should outline the ethical principles and guidelines that guide the entire project lifecycle, promoting responsible data use, transparency, and fairness. This is a good opportunity to bring in multiple stakeholders to co-develop a code of ethics that represents different concerns.
 
-3.  **Transparency in Model Development and Validation**: Make model validation transparent by sharing the process and, if possible, the code used to develop the predictive models. Transparent model developement validation allows stakeholders to understand the model's strengths and limitations, fostering trust in the project's outcomes.
+3.  **Transparency in Model Development and Validation**: Make model validation transparent by sharing the process and, if possible, the code used to develop the predictive models. Transparent model development and validation allows stakeholders to understand the model's strengths and limitations, fostering trust in the project's outcomes.
 
 4.  **Regulatory Frameworks**: Teams should be well-versed in relevant regulations and laws that may apply to their data and context, such as the General Data Protection Regulation (GDPR) or similar data protection laws. These frameworks dictate how personal data should be collected, processed, and protected, ensuring that predictive analytics projects comply with legal requirements.
 

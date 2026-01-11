@@ -10,7 +10,7 @@ This targeting can facilitate effective service delivery at an efficient cost.
 
 ### Some examples of using predictive analytics to improve [social services]{.underline}:
 
-During my time at [MDRC](www.mdrc.org), the nonprofit research organization from which the framework for these materials originated, my colleagues and I explored and applied predictive analytics in various ways:
+During my time at [MDRC](https://www.mdrc.org), the nonprofit research organization from which the framework for these materials originated, my colleagues and I explored and applied predictive analytics in various ways:
 
 -   **Predicting K-12 academic outcomes:** School districts often utilize "early warning systems" (EWS) that rely on student-level data. These systems help identify students who might be at risk of not achieving important educational milestones, such as timely graduation or passing state exams. For instance, the probability of not graduating high school is often gauged using the ABC indicators, which stand for attendance, behavior, and course performance. This indicator system represents a simpler form of predictive analytics. However, as schools increasingly collect richer, data sets with frequent data updates of many student measures, including daily attendance, exam scores, and course marks, there has been opportunity to compute more accurate, frequent and nuanced predictions of student risk.
 
@@ -48,8 +48,3 @@ I do not have first-hand experience in using or reviewing predictive analytics t
 
 -   [How predictive analytics can improve customer experience](https://cxindex.com/company/blog/how-predictive-analytics-can-improve-customer-experience/)
 
-[**Questions for discussion:**]{style="color:green"}
-
--   [What examples do you find interesting for using predictive analytics to improve services? Why?]{style="color:green"}
--   [What promise do you see in the examples you read about or know about?]{style="color:green"}
--   [What concerns do you have?]{style="color:green"}
