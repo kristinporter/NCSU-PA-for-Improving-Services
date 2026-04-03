@@ -89,6 +89,8 @@ website:
           - results_distrib.qmd
           - results_groups.qmd
           - results_VI.qmd
+          - results_action.qmd
+          - results_limitations.qmd
       - section: "Deploying predictive analytics"
         contents:
           - deployment.qmd

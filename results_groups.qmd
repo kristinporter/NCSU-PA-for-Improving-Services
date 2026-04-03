@@ -1,31 +1,63 @@
 ---
 title: "Who has low or high predicted probabilities?"
-editor: 
-  markdown: 
+editor:
+  markdown:
     wrap: 72
 ---
 
-It can also be valuable to flip the question about distribution of
-predicted probabilities. That is, in addition to asking how predicted
-probabilities are distributed within and across groups, we can look at
-what groups are most or least represented within categories of predicted
-probabilities.
+The previous page asked how predicted probabilities are distributed
+within and across groups. This page flips the question: instead of
+looking at *where* probabilities fall, we look at *who* ends up with
+low or high predicted probabilities.
 
-For example, we might ask: Who has a high predicted risk of dropping out
-of high school (e.g., those with predicted probabilities greater than
-75%)? If we find that many of the students who are high-risk have high
-absenteeism or low scores on reading tests, this may suggest areas of
-focus for designing interventions to help these students. Note, at the
-same time, we need to be careful not to assume that student
-characteristics that are prevalent among high-risk students do not
-indicate a causal relationship.
+In other words --- what do high-risk individuals tend to have in common?
+And how does that differ from low-risk individuals?
 
-Again, data visualizations may helpful. Here is an example of a "mosaic
-plot," which allows us to look at multiple characteristics at the same
-time. This was created for the Titantic data set on Kaggle. It was
-produced to understand who actually died or survived, but the same plot
-could be created for those predicted to die or survive. And a similar
-plot could be created to look at students predicted to have high risk of
-dropping out or not.
+This kind of analysis is valuable for two reasons:
+
+-   **Program design**: If high-risk students share certain
+    characteristics --- like high absenteeism or low reading scores ---
+    this can point toward what kinds of interventions might help them
+    most.
+-   **Communication**: Showing stakeholders *who* is flagged as
+    high-risk makes abstract predicted probabilities more concrete and
+    interpretable.
+
+## Looking at characteristics within risk groups
+
+One useful approach is to examine how individual characteristics are
+distributed across risk groups. The plot below illustrates this for the
+school dropout example, showing how absenteeism levels vary among
+students in each predicted risk category.
 
 ![](images/predprobDataViz.png){fig-align="center" width="8in"}
+
+Students with high predicted dropout risk have much higher rates of
+absenteeism compared to low-risk students. Patterns like this help
+program staff understand who is being flagged and why --- and can point
+toward areas for intervention design.
+
+**An important caution:** Finding that a characteristic is common among
+high-risk students does not mean that characteristic *causes* the
+outcome. Absenteeism may be strongly associated with dropout risk, but
+many factors contribute to a student's situation, and correlation is not
+causation. This distinction matters when communicating findings to
+stakeholders, who may be tempted to treat these patterns as direct
+levers to pull. Frame your results carefully: these are associations
+observed in your data, not causal claims.
+
+## Considering multiple characteristics at once
+
+The approach above works well for examining one characteristic at a
+time. When you want to explore several characteristics simultaneously,
+additional visualization strategies --- such as mosaic plots or faceted
+bar charts --- can help surface more complex patterns. The key is to
+choose a visualization that your audience can read intuitively, and to
+guide them through what they are seeing rather than leaving the chart to
+speak for itself.
+
+When communicating these results, focus on patterns that are most
+actionable for the program. Highlight where high-risk students are
+concentrated, and use the findings to prompt productive questions about
+program design --- not to make deterministic claims about any individual
+student.

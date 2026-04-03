@@ -1,0 +1,67 @@
+---
+title: "Communicating limitations honestly"
+editor:
+  markdown:
+    wrap: 72
+---
+
+Presenting PA results responsibly means being as clear about what your
+model *cannot* do as about what it can. Stakeholders who receive your
+findings --- whether program directors, caseworkers, policymakers, or
+the public --- deserve an honest account of the model's limitations.
+This page outlines the most important ones to communicate.
+
+## Predictions are probabilistic, not certain
+
+A predicted probability of 0.75 means the model estimates a 75% chance
+of the outcome --- not that the outcome will definitely occur. A student
+with a 0.75 predicted probability of dropping out may graduate; a
+student with a 0.20 probability may not. Individual predictions carry
+uncertainty, and that uncertainty should be part of how results are
+communicated.
+
+This matters especially when predictions are used to inform decisions
+about specific individuals. Stakeholders should understand that a high
+predicted probability is a signal worth paying attention to --- not a
+verdict.
+
+## The model reflects historical patterns
+
+Your model was trained on historical data, which means it has learned
+patterns from the past. If those historical patterns reflect inequities
+--- for example, if certain groups have systematically received fewer
+resources or faced harsher consequences --- the model may reproduce
+those patterns in its predictions. This is one reason why bias
+evaluation is a critical part of the PA workflow, as covered in the
+previous section.
+
+It also means the model may not perform equally well for all subgroups,
+particularly those that were underrepresented in the training data.
+
+## The model applies to a specific context
+
+A model trained on data from one set of schools, communities, or program
+sites may not generalize well to different contexts. If your model is
+applied to a new population or a different time period, its performance
+should be reassessed rather than assumed to be unchanged.
+
+## Model performance can degrade over time
+
+Even within the same context, a model trained on older data may become
+less accurate over time as circumstances change --- student populations
+shift, programs evolve, and economic conditions fluctuate. This is one
+reason why ongoing monitoring after deployment is important, as
+discussed in the next section.
+
+## The model is a tool, not a decision-maker
+
+Perhaps most importantly: a predictive model is one input into a
+decision, not the decision itself. It should complement --- not replace
+--- professional judgment, knowledge of individual circumstances, and
+consideration of ethical implications. Stakeholders should be clear on
+what the model is authorized to inform and what decisions remain with
+people.
+
+Communicating these limitations is not a sign of weakness in your work
+--- it is a sign of rigor and integrity. A stakeholder who understands
+what the model cannot do is better positioned to use it well.

@@ -1,0 +1,75 @@
+---
+title: "Using results to inform decisions"
+editor:
+  markdown:
+    wrap: 72
+---
+
+Understanding your PA results is only valuable if it leads to better
+decisions. This page bridges the gap between analysis and action ---
+drawing on the results you have explored in the previous pages to think
+about how to put them to use.
+
+## Allocating resources across sites
+
+Distribution plots like the ones shown in the previous pages are
+especially useful for resource allocation decisions. When you can see
+which sites have the highest concentrations of high-risk individuals ---
+and how large those sites are --- you have a concrete basis for
+prioritizing where to direct limited resources.
+
+For example, if one school has a large share of students with predicted
+dropout probabilities above 0.75, while another has very few, a program
+director might reasonably target additional support to the first school
+first. The key is that this decision is now grounded in systematic
+evidence rather than intuition alone.
+
+When making these recommendations, be transparent about the threshold
+values driving the categorization. The choice of where to draw the line
+between "high risk" and "moderate risk" directly affects which sites and
+individuals get prioritized. This is worth surfacing explicitly in
+stakeholder conversations.
+
+## Thinking about intervention design
+
+Variable importance results and group-level analyses can inform thinking
+about *what kinds* of interventions might be most effective. If
+absenteeism is the strongest predictor of dropout risk and is highly
+prevalent among high-risk students, this may point toward interventions
+focused on attendance --- rather than, say, academic tutoring alone.
+
+However, this reasoning requires care. As emphasized earlier, VI and
+group-level associations reflect correlations in your data, not causal
+relationships. The fact that absenteeism is associated with dropout risk
+does not mean that reducing absenteeism will reduce dropout rates ---
+other factors may be driving both. Use these findings to generate
+hypotheses and focus program attention, not to draw firm conclusions
+about what will work.
+
+Ideally, PA results are interpreted alongside the contextual knowledge
+of practitioners who understand the population. They may recognize
+patterns in the data that make sense given their experience --- or flag
+findings that seem off and warrant further investigation.
+
+## Connecting predictions to decisions about individuals
+
+In some public services contexts, PA results are used not just for
+population-level resource allocation but to inform decisions about
+specific individuals --- for example, which students to reach out to, or
+which families to prioritize for case manager contact.
+
+When results are used this way, a few additional considerations apply:
+
+-   **Predicted probabilities are not decisions.** A high predicted
+    probability flags someone as potentially needing attention --- it
+    does not determine what should happen next. Professional judgment
+    remains essential.
+-   **Consider the full range of risk.** High-risk individuals are the
+    most obvious targets for intervention, but those in the moderate-risk
+    range may also benefit significantly, and in some cases may be more
+    responsive to intervention than those at the highest risk.
+-   **Be thoughtful about how predictions are communicated to frontline
+    staff.** Caseworkers and program staff will interact with the people
+    these predictions describe. How predictions are framed --- and what
+    staff are told to do with them --- matters for both effectiveness and
+    equity.

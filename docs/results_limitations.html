@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>scoping_ex – Predictive Analytics (PA) for Improving Services</title>
+<title>Communicating limitations honestly – Predictive Analytics (PA) for Improving Services</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./scoping_usefindings.html" rel="next">
-<link href="./paforimprovingss_context.html" rel="prev">
+<link href="./deployment.html" rel="next">
+<link href="./results_action.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -83,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./scoping_ex.html">Scoping a PA project</a></li><li class="breadcrumb-item"><a href="./scoping_ex.html">A motivating example</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results_describe.html">Understanding and communicating results</a></li><li class="breadcrumb-item"><a href="./results_limitations.html">Communicating limitations honestly</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -172,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./scoping_ex.html" class="sidebar-item-text sidebar-link active">
+  <a href="./scoping_ex.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A motivating example</span></a>
   </div>
 </li>
@@ -525,7 +525,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./results_limitations.html" class="sidebar-item-text sidebar-link">
+  <a href="./results_limitations.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Communicating limitations honestly</span></a>
   </div>
 </li>
@@ -572,39 +572,50 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./scoping_ex.html">Scoping a PA project</a></li><li class="breadcrumb-item"><a href="./scoping_ex.html">A motivating example</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
 
-
-
-
-<section id="a-motivating-example" class="level3">
-<h3 class="anchored" data-anchor-id="a-motivating-example">A motivating example</h3>
-<p>Let’s begin with an example. This example is inspired by a project I was involved in, but I have made several modifications for illustration purposes. The project was in collaboration with a state agency overseeing the federal assistance program, Temporary Assistance for Needy Families (TANF). TANF’s primary goal is to empower families towards self-sufficiency by providing essential resources and services. Within this framework, state agencies administering the program extend a range of supportive services. These services are designed to assist families in overcoming obstacles to employment and self-reliance. Their approach revolves around tailoring assistance to the specific circumstances and needs of each family, ensuring a targeted response to diverse challenges and varying levels of need among households.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images\familygeneric.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:4.5in"></p>
-</figure>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results_describe.html">Understanding and communicating results</a></li><li class="breadcrumb-item"><a href="./results_limitations.html">Communicating limitations honestly</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Communicating limitations honestly</h1>
 </div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Presenting PA results responsibly means being as clear about what your model <em>cannot</em> do as about what it can. Stakeholders who receive your findings — whether program directors, caseworkers, policymakers, or the public — deserve an honest account of the model’s limitations. This page outlines the most important ones to communicate.</p>
+<section id="predictions-are-probabilistic-not-certain" class="level2">
+<h2 class="anchored" data-anchor-id="predictions-are-probabilistic-not-certain">Predictions are probabilistic, not certain</h2>
+<p>A predicted probability of 0.75 means the model estimates a 75% chance of the outcome — not that the outcome will definitely occur. A student with a 0.75 predicted probability of dropping out may graduate; a student with a 0.20 probability may not. Individual predictions carry uncertainty, and that uncertainty should be part of how results are communicated.</p>
+<p>This matters especially when predictions are used to inform decisions about specific individuals. Stakeholders should understand that a high predicted probability is a signal worth paying attention to — not a verdict.</p>
 </section>
-<section id="the-agency-came-to-the-data-science-team-with-the-following-questions" class="level3">
-<h3 class="anchored" data-anchor-id="the-agency-came-to-the-data-science-team-with-the-following-questions"><strong>The agency came to the data science team with the following questions:</strong></h3>
-<ol type="1">
-<li><p>With a data-driven tool, could caseworkers better understand which clients were more at risk of not reaching key program outcomes? In particular, among those who were required to find employment, could they obtain reliable information about who was least likely to find employment? Note that the current practice for identifying clients who were most at-risk relied on caseworkers reviewing measures they thought were important (e.g.&nbsp;of previous employment history) and making a subjective decision based on their professional expertise. They wondered if predictive analytics would provide an improvement in terms of accuracy and fairness.</p></li>
-<li><p>Could we develop reliable risk scores that combine and weigh multiple risk factors into a single easy-to-understand number that can be incorporated into decision-making?</p></li>
-<li><p>Could trends in risk scores across the population of TANF clients provide new insights for program improvement and resource allocation?</p></li>
-</ol>
+<section id="the-model-reflects-historical-patterns" class="level2">
+<h2 class="anchored" data-anchor-id="the-model-reflects-historical-patterns">The model reflects historical patterns</h2>
+<p>Your model was trained on historical data, which means it has learned patterns from the past. If those historical patterns reflect inequities — for example, if certain groups have systematically received fewer resources or faced harsher consequences — the model may reproduce those patterns in its predictions. This is one reason why bias evaluation is a critical part of the PA workflow, as covered in the previous section.</p>
+<p>It also means the model may not perform equally well for all subgroups, particularly those that were underrepresented in the training data.</p>
 </section>
-<section id="how-do-we-scope-a-project-that-helps-them-achieve-their-goals" class="level3">
-<h3 class="anchored" data-anchor-id="how-do-we-scope-a-project-that-helps-them-achieve-their-goals"><strong>How do we scope a project that helps them achieve their goals?</strong></h3>
-<p>Next, we will use this example to talk about <strong>project scoping.</strong> That is, we need to specify the following:</p>
-<ul>
-<li><p>How would information about clients’ risks of adverse outcomes be used?</p></li>
-<li><p>What, <em>exactly</em>, are we trying to predict?</p></li>
-<li><p>For whom would we be making predictions?</p></li>
-<li><p>When would we be making the predictions?</p></li>
-<li><p>When specifying what, when and for whom we are making predictions - what data are available? What do the data allow?</p></li>
-</ul>
-<p>Answering these questions allows us to move forward in planning a <strong>potential</strong> predictive analytics project. That is what I mean by scoping - what potential project could there be? But importantly, the next step is to investigate that potential - to see if we can <strong>reliably, clearly and fairly</strong> make <strong>useful and actionable</strong> predictions. I refer to this next step as the “proof-of-concept,” which we will turn to in the next main section.</p>
+<section id="the-model-applies-to-a-specific-context" class="level2">
+<h2 class="anchored" data-anchor-id="the-model-applies-to-a-specific-context">The model applies to a specific context</h2>
+<p>A model trained on data from one set of schools, communities, or program sites may not generalize well to different contexts. If your model is applied to a new population or a different time period, its performance should be reassessed rather than assumed to be unchanged.</p>
+</section>
+<section id="model-performance-can-degrade-over-time" class="level2">
+<h2 class="anchored" data-anchor-id="model-performance-can-degrade-over-time">Model performance can degrade over time</h2>
+<p>Even within the same context, a model trained on older data may become less accurate over time as circumstances change — student populations shift, programs evolve, and economic conditions fluctuate. This is one reason why ongoing monitoring after deployment is important, as discussed in the next section.</p>
+</section>
+<section id="the-model-is-a-tool-not-a-decision-maker" class="level2">
+<h2 class="anchored" data-anchor-id="the-model-is-a-tool-not-a-decision-maker">The model is a tool, not a decision-maker</h2>
+<p>Perhaps most importantly: a predictive model is one input into a decision, not the decision itself. It should complement — not replace — professional judgment, knowledge of individual circumstances, and consideration of ethical implications. Stakeholders should be clear on what the model is authorized to inform and what decisions remain with people.</p>
+<p>Communicating these limitations is not a sign of weakness in your work — it is a sign of rigor and integrity. A stakeholder who understands what the model cannot do is better positioned to use it well.</p>
 
 
 </section>
@@ -1012,13 +1023,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./paforimprovingss_context.html" class="pagination-link" aria-label="Is predictive analytics a good fit for your context?">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Is predictive analytics a good fit for your context?</span>
+      <a href="./results_action.html" class="pagination-link" aria-label="Using results to inform decisions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Using results to inform decisions</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./scoping_usefindings.html" class="pagination-link" aria-label="How will findings be used?">
-        <span class="nav-page-text">How will findings be used?</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./deployment.html" class="pagination-link" aria-label="A brief overview of considerations">
+        <span class="nav-page-text">A brief overview of considerations</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

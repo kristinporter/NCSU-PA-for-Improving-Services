@@ -496,7 +496,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./results_describe.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Understanding PA results</span></a>
+ <span class="menu-text">Understanding and communicating PA results</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -515,6 +515,18 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="./results_VI.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">What are the most important predictors in my model?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results_action.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using results to inform decisions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results_limitations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Communicating limitations honestly</span></a>
   </div>
 </li>
       </ul>
@@ -581,23 +593,48 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>In the code template for assessing our learner performance in testing data, we examined the distribution of predicted probabilities overall (with density plots). However, we can gain further insights by looking at how predicted probabilities are distributed <em>within</em> groups and <em>across</em> groups - whether different sites (schools, banks, store locations, program locations, etc) or different demographic groups. Insights about how predicted probabilities are clustered can guide decisions about how to allocate resources.</p>
-<p>The following plot shows how predicted probabilities of whether students will drop out of school are distributed within a single school:</p>
+<p>After generating predicted probabilities for your test data, one of the first valuable steps is to examine how those probabilities are distributed — both within individual sites (like schools, clinics, or program locations) and across sites. This helps answer questions that stakeholders will inevitably ask:</p>
+<ul>
+<li>Is the population mostly low-risk, mostly high-risk, or mixed?</li>
+<li>Are some sites much higher-risk than others?</li>
+<li>Where might interventions or resources be most needed?</li>
+</ul>
+<p>Understanding these patterns is also essential for communicating your results clearly. Visualizations of predicted probability distributions can make complex model output accessible to non-technical audiences.</p>
+<section id="distribution-within-a-single-group" class="level2">
+<h2 class="anchored" data-anchor-id="distribution-within-a-single-group">Distribution within a single group</h2>
+<p>The plot below shows how predicted probabilities of dropping out of high school are distributed within a single school. Each student has one predicted probability between 0 and 1; the density curve shows how those values are spread across that range.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/predprobWithinSchool.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:8in"></p>
+<p><img src="images/predprobWithinSchool.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:7in"></p>
 </figure>
 </div>
-<p>We can see that for this school, we have a balance of low-risk students and high-risk, and we also have a lot of students for whom their dropout risk is very uncertain (their predicted probabilities are in the mid range, close to 0.5).</p>
-<p>The following plot also allows us to look at how predicted probabilities are distributed within schools but for many schools at a time.</p>
+<p>In this school, a few patterns stand out:</p>
+<ul>
+<li>Many students cluster at <strong>low predicted risk</strong> (below 0.25) — they are unlikely to drop out.</li>
+<li>A smaller group has <strong>high predicted risk</strong> (above 0.75) — these are the students the model flags as most in need of attention.</li>
+<li>A notable share falls <strong>near 0.5</strong>, where the model is most uncertain about their outcome.</li>
+</ul>
+<p>When communicating this plot to stakeholders, walk them through what the x-axis represents and highlight any notable clusters. It is worth addressing what a value near 0.5 means: not that a student will definitely drop out, but that the model is uncertain — which itself may be useful information for targeting follow-up.</p>
+</section>
+<section id="distribution-across-groups" class="level2">
+<h2 class="anchored" data-anchor-id="distribution-across-groups">Distribution across groups</h2>
+<p>The next plot extends this view across many schools at once, making it easy to compare sites.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/predprobAcrossSchools.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:8in"></p>
 </figure>
 </div>
-<p>NOTE THE Y-AXIS IS INCORRECT. I BELIEVE IT SHOULD BE NUMBER NOT PERCENT AND WE DO NOT KNOW THE SCALE BUT THERE ARE CLEARLY LARGER AND SMALLER SCHOOLS. For each school, we see three bars. The red bar indicates the number of students in the school. who have a predicted probability of dropping out that is less than or equal to 0.25. The yellow bar indicates the number of students who have a predicted probability that is greater than 0.25 but less than or equal to 0.75. And the green bar indicates the number of students who have a predicted probability greater than 0.75. This plot allows us to which schools have high concentrations or high numbers of students with a high-risk of dropping out of high school.</p>
+<p>For each school, students are grouped into three predicted risk categories:</p>
+<ul>
+<li><strong>Low risk</strong>: predicted probability ≤ 0.25</li>
+<li><strong>Moderate risk</strong>: predicted probability &gt; 0.25 and ≤ 0.75</li>
+<li><strong>High risk</strong>: predicted probability &gt; 0.75</li>
+</ul>
+<p>This view quickly reveals which schools have the largest concentrations of high-risk students — and which schools are larger or smaller overall. For stakeholders responsible for allocating support across sites, this kind of visualization is especially useful for deciding where to focus first.</p>
+<p>When presenting this plot, be ready to explain the thresholds used (0.25 and 0.75) — stakeholders will want to know how those cutoffs were chosen and what they imply for decisions. Threshold selection is covered in more detail in the <a href="./perform_selectthreshold.html">Selecting a threshold</a> section.</p>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1002,8 +1039,8 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./results_describe.html" class="pagination-link" aria-label="Understanding PA results">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Understanding PA results</span>
+      <a href="./results_describe.html" class="pagination-link" aria-label="Understanding and communicating PA results">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Understanding and communicating PA results</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Understanding PA results – Predictive Analytics (PA) for Improving Services</title>
+<title>Understanding and communicating PA results – Predictive Analytics (PA) for Improving Services</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -83,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results_describe.html">Understanding and communicating results</a></li><li class="breadcrumb-item"><a href="./results_describe.html">Understanding PA results</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results_describe.html">Understanding and communicating results</a></li><li class="breadcrumb-item"><a href="./results_describe.html">Understanding and communicating PA results</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -496,7 +496,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./results_describe.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Understanding PA results</span></a>
+ <span class="menu-text">Understanding and communicating PA results</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -515,6 +515,18 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="./results_VI.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">What are the most important predictors in my model?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results_action.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using results to inform decisions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results_limitations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Communicating limitations honestly</span></a>
   </div>
 </li>
       </ul>
@@ -562,9 +574,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results_describe.html">Understanding and communicating results</a></li><li class="breadcrumb-item"><a href="./results_describe.html">Understanding PA results</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results_describe.html">Understanding and communicating results</a></li><li class="breadcrumb-item"><a href="./results_describe.html">Understanding and communicating PA results</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Understanding PA results</h1>
+<h1 class="title">Understanding and communicating PA results</h1>
 </div>
 
 
@@ -581,14 +593,20 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>As you know, ultimately, after working through the entire PA workflow, you will have a single predicted probability of the outcome for each observation in your testing data, which was estimated with your final, selected model/learner.</p>
-<p>Based on the performance of the model/learner in your held-out testing data, you will decide whether to deploy your model. We will discuss deployment a little later.</p>
-<p>First, there are some valuable questions you may ask to better understand your test results (on new, held-out data) and your final, selected model. Answers to these questions can help with decision-making aimed at improving services, and they can help with explaining your model to stakeholders.</p>
+<p>At this stage in the PA workflow, you have built a model, evaluated its predictive performance, and assessed potential bias — all using held-out test data. You now have what the workflow was designed to produce: a predicted probability of the outcome for each individual in your test data.</p>
+<p>But having predictions isn’t the same as understanding them — or being able to explain them to others. This section focuses on two closely related goals:</p>
+<ul>
+<li><strong>Understanding</strong>: What patterns do your predictions reveal? What is driving them?</li>
+<li><strong>Communicating</strong>: How do you explain those patterns clearly to stakeholders — program staff, leadership, or policymakers — who need to act on the results?</li>
+</ul>
+<p>These goals are practical, not just technical. Stakeholders will have questions. They’ll want to know who the model identifies as high-risk, what factors are driving those predictions, and whether the patterns make sense given what they know about the population. Being able to answer those questions clearly is just as important as building a model that performs well.</p>
+<p>This section explores three questions that are especially useful for both understanding and communicating PA results:</p>
 <ol type="1">
-<li>How are predicted probabilities distributed across and within groups?</li>
+<li>How are predicted probabilities distributed within and across groups?</li>
 <li>Who has low or high predicted probabilities of the outcome?</li>
 <li>What are the most important predictors in my model?</li>
 </ol>
+<p>Together, these questions help you describe what the model is showing, who it flags as higher- or lower-risk, and what factors are driving those predictions — all of which are essential for making informed decisions about how to improve services, and for explaining your model to the people who will use it.</p>
 
 
 

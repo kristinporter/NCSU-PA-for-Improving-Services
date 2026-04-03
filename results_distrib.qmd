@@ -1,42 +1,70 @@
 ---
 title: "How are predicted probabilities distributed within and across groups?"
-editor: 
-  markdown: 
+editor:
+  markdown:
     wrap: 72
 ---
 
-In the code template for assessing our learner performance in testing
-data, we examined the distribution of predicted probabilities overall
-(with density plots). However, we can gain further insights by looking
-at how predicted probabilities are distributed *within* groups and
-*across* groups - whether different sites (schools, banks, store
-locations, program locations, etc) or different demographic groups.
-Insights about how predicted probabilities are clustered can guide
-decisions about how to allocate resources.
+After generating predicted probabilities for your test data, one of the
+first valuable steps is to examine how those probabilities are
+distributed --- both within individual sites (like schools, clinics, or
+program locations) and across sites. This helps answer questions that
+stakeholders will inevitably ask:
 
-The following plot shows how predicted probabilities of whether students
-will drop out of school are distributed within a single school:
+-   Is the population mostly low-risk, mostly high-risk, or mixed?
+-   Are some sites much higher-risk than others?
+-   Where might interventions or resources be most needed?
 
-![](images/predprobWithinSchool.png){fig-align="center" width="8in"}
+Understanding these patterns is also essential for communicating your
+results clearly. Visualizations of predicted probability distributions
+can make complex model output accessible to non-technical audiences.
 
-We can see that for this school, we have a balance of low-risk students
-and high-risk, and we also have a lot of students for whom their dropout
-risk is very uncertain (their predicted probabilities are in the mid
-range, close to 0.5).
+## Distribution within a single group
 
-The following plot also allows us to look at how predicted probabilities
-are distributed within schools but for many schools at a time.
+The plot below shows how predicted probabilities of dropping out of high
+school are distributed within a single school. Each student has one
+predicted probability between 0 and 1; the density curve shows how
+those values are spread across that range.
+
+![](images/predprobWithinSchool.png){fig-align="center" width="7in"}
+
+In this school, a few patterns stand out:
+
+-   Many students cluster at **low predicted risk** (below 0.25) ---
+    they are unlikely to drop out.
+-   A smaller group has **high predicted risk** (above 0.75) --- these
+    are the students the model flags as most in need of attention.
+-   A notable share falls **near 0.5**, where the model is most
+    uncertain about their outcome.
+
+When communicating this plot to stakeholders, walk them through what the
+x-axis represents and highlight any notable clusters. It is worth
+addressing what a value near 0.5 means: not that a student will
+definitely drop out, but that the model is uncertain --- which itself
+may be useful information for targeting follow-up.
+
+## Distribution across groups
+
+The next plot extends this view across many schools at once, making it
+easy to compare sites.
 
 ![](images/predprobAcrossSchools.png){fig-align="center" width="8in"}
 
-NOTE THE Y-AXIS IS INCORRECT. I BELIEVE IT SHOULD BE NUMBER NOT PERCENT
-AND WE DO NOT KNOW THE SCALE BUT THERE ARE CLEARLY LARGER AND SMALLER
-SCHOOLS. For each school, we see three bars. The red bar indicates the
-number of students in the school. who have a predicted probability of
-dropping out that is less than or equal to 0.25. The yellow bar
-indicates the number of students who have a predicted probability that
-is greater than 0.25 but less than or equal to 0.75. And the green bar
-indicates the number of students who have a predicted probability
-greater than 0.75. This plot allows us to which schools have high
-concentrations or high numbers of students with a high-risk of dropping
-out of high school.
+For each school, students are grouped into three predicted risk
+categories:
+
+-   **Low risk**: predicted probability ≤ 0.25
+-   **Moderate risk**: predicted probability \> 0.25 and ≤ 0.75
+-   **High risk**: predicted probability \> 0.75
+
+This view quickly reveals which schools have the largest concentrations
+of high-risk students --- and which schools are larger or smaller
+overall. For stakeholders responsible for allocating support across
+sites, this kind of visualization is especially useful for deciding
+where to focus first.
+
+When presenting this plot, be ready to explain the thresholds used
+(0.25 and 0.75) --- stakeholders will want to know how those cutoffs
+were chosen and what they imply for decisions. Threshold selection is
+covered in more detail in the [Selecting a
+threshold](perform_selectthreshold.qmd) section.

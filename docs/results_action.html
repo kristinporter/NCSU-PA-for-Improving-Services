@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>scoping_ex – Predictive Analytics (PA) for Improving Services</title>
+<title>Using results to inform decisions – Predictive Analytics (PA) for Improving Services</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./scoping_usefindings.html" rel="next">
-<link href="./paforimprovingss_context.html" rel="prev">
+<link href="./results_limitations.html" rel="next">
+<link href="./results_VI.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -83,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./scoping_ex.html">Scoping a PA project</a></li><li class="breadcrumb-item"><a href="./scoping_ex.html">A motivating example</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results_describe.html">Understanding and communicating results</a></li><li class="breadcrumb-item"><a href="./results_action.html">Using results to inform decisions</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -172,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./scoping_ex.html" class="sidebar-item-text sidebar-link active">
+  <a href="./scoping_ex.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A motivating example</span></a>
   </div>
 </li>
@@ -519,7 +519,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./results_action.html" class="sidebar-item-text sidebar-link">
+  <a href="./results_action.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Using results to inform decisions</span></a>
   </div>
 </li>
@@ -572,39 +572,49 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./scoping_ex.html">Scoping a PA project</a></li><li class="breadcrumb-item"><a href="./scoping_ex.html">A motivating example</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
 
-
-
-
-<section id="a-motivating-example" class="level3">
-<h3 class="anchored" data-anchor-id="a-motivating-example">A motivating example</h3>
-<p>Let’s begin with an example. This example is inspired by a project I was involved in, but I have made several modifications for illustration purposes. The project was in collaboration with a state agency overseeing the federal assistance program, Temporary Assistance for Needy Families (TANF). TANF’s primary goal is to empower families towards self-sufficiency by providing essential resources and services. Within this framework, state agencies administering the program extend a range of supportive services. These services are designed to assist families in overcoming obstacles to employment and self-reliance. Their approach revolves around tailoring assistance to the specific circumstances and needs of each family, ensuring a targeted response to diverse challenges and varying levels of need among households.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images\familygeneric.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:4.5in"></p>
-</figure>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results_describe.html">Understanding and communicating results</a></li><li class="breadcrumb-item"><a href="./results_action.html">Using results to inform decisions</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Using results to inform decisions</h1>
 </div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Understanding your PA results is only valuable if it leads to better decisions. This page bridges the gap between analysis and action — drawing on the results you have explored in the previous pages to think about how to put them to use.</p>
+<section id="allocating-resources-across-sites" class="level2">
+<h2 class="anchored" data-anchor-id="allocating-resources-across-sites">Allocating resources across sites</h2>
+<p>Distribution plots like the ones shown in the previous pages are especially useful for resource allocation decisions. When you can see which sites have the highest concentrations of high-risk individuals — and how large those sites are — you have a concrete basis for prioritizing where to direct limited resources.</p>
+<p>For example, if one school has a large share of students with predicted dropout probabilities above 0.75, while another has very few, a program director might reasonably target additional support to the first school first. The key is that this decision is now grounded in systematic evidence rather than intuition alone.</p>
+<p>When making these recommendations, be transparent about the threshold values driving the categorization. The choice of where to draw the line between “high risk” and “moderate risk” directly affects which sites and individuals get prioritized. This is worth surfacing explicitly in stakeholder conversations.</p>
 </section>
-<section id="the-agency-came-to-the-data-science-team-with-the-following-questions" class="level3">
-<h3 class="anchored" data-anchor-id="the-agency-came-to-the-data-science-team-with-the-following-questions"><strong>The agency came to the data science team with the following questions:</strong></h3>
-<ol type="1">
-<li><p>With a data-driven tool, could caseworkers better understand which clients were more at risk of not reaching key program outcomes? In particular, among those who were required to find employment, could they obtain reliable information about who was least likely to find employment? Note that the current practice for identifying clients who were most at-risk relied on caseworkers reviewing measures they thought were important (e.g.&nbsp;of previous employment history) and making a subjective decision based on their professional expertise. They wondered if predictive analytics would provide an improvement in terms of accuracy and fairness.</p></li>
-<li><p>Could we develop reliable risk scores that combine and weigh multiple risk factors into a single easy-to-understand number that can be incorporated into decision-making?</p></li>
-<li><p>Could trends in risk scores across the population of TANF clients provide new insights for program improvement and resource allocation?</p></li>
-</ol>
+<section id="thinking-about-intervention-design" class="level2">
+<h2 class="anchored" data-anchor-id="thinking-about-intervention-design">Thinking about intervention design</h2>
+<p>Variable importance results and group-level analyses can inform thinking about <em>what kinds</em> of interventions might be most effective. If absenteeism is the strongest predictor of dropout risk and is highly prevalent among high-risk students, this may point toward interventions focused on attendance — rather than, say, academic tutoring alone.</p>
+<p>However, this reasoning requires care. As emphasized earlier, VI and group-level associations reflect correlations in your data, not causal relationships. The fact that absenteeism is associated with dropout risk does not mean that reducing absenteeism will reduce dropout rates — other factors may be driving both. Use these findings to generate hypotheses and focus program attention, not to draw firm conclusions about what will work.</p>
+<p>Ideally, PA results are interpreted alongside the contextual knowledge of practitioners who understand the population. They may recognize patterns in the data that make sense given their experience — or flag findings that seem off and warrant further investigation.</p>
 </section>
-<section id="how-do-we-scope-a-project-that-helps-them-achieve-their-goals" class="level3">
-<h3 class="anchored" data-anchor-id="how-do-we-scope-a-project-that-helps-them-achieve-their-goals"><strong>How do we scope a project that helps them achieve their goals?</strong></h3>
-<p>Next, we will use this example to talk about <strong>project scoping.</strong> That is, we need to specify the following:</p>
+<section id="connecting-predictions-to-decisions-about-individuals" class="level2">
+<h2 class="anchored" data-anchor-id="connecting-predictions-to-decisions-about-individuals">Connecting predictions to decisions about individuals</h2>
+<p>In some public services contexts, PA results are used not just for population-level resource allocation but to inform decisions about specific individuals — for example, which students to reach out to, or which families to prioritize for case manager contact.</p>
+<p>When results are used this way, a few additional considerations apply:</p>
 <ul>
-<li><p>How would information about clients’ risks of adverse outcomes be used?</p></li>
-<li><p>What, <em>exactly</em>, are we trying to predict?</p></li>
-<li><p>For whom would we be making predictions?</p></li>
-<li><p>When would we be making the predictions?</p></li>
-<li><p>When specifying what, when and for whom we are making predictions - what data are available? What do the data allow?</p></li>
+<li><strong>Predicted probabilities are not decisions.</strong> A high predicted probability flags someone as potentially needing attention — it does not determine what should happen next. Professional judgment remains essential.</li>
+<li><strong>Consider the full range of risk.</strong> High-risk individuals are the most obvious targets for intervention, but those in the moderate-risk range may also benefit significantly, and in some cases may be more responsive to intervention than those at the highest risk.</li>
+<li><strong>Be thoughtful about how predictions are communicated to frontline staff.</strong> Caseworkers and program staff will interact with the people these predictions describe. How predictions are framed — and what staff are told to do with them — matters for both effectiveness and equity.</li>
 </ul>
-<p>Answering these questions allows us to move forward in planning a <strong>potential</strong> predictive analytics project. That is what I mean by scoping - what potential project could there be? But importantly, the next step is to investigate that potential - to see if we can <strong>reliably, clearly and fairly</strong> make <strong>useful and actionable</strong> predictions. I refer to this next step as the “proof-of-concept,” which we will turn to in the next main section.</p>
 
 
 </section>
@@ -1012,13 +1022,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./paforimprovingss_context.html" class="pagination-link" aria-label="Is predictive analytics a good fit for your context?">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Is predictive analytics a good fit for your context?</span>
+      <a href="./results_VI.html" class="pagination-link" aria-label="What are the most important predictors in my model?">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">What are the most important predictors in my model?</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./scoping_usefindings.html" class="pagination-link" aria-label="How will findings be used?">
-        <span class="nav-page-text">How will findings be used?</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./results_limitations.html" class="pagination-link" aria-label="Communicating limitations honestly">
+        <span class="nav-page-text">Communicating limitations honestly</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

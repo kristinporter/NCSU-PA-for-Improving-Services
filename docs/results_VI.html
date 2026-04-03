@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./deployment.html" rel="next">
+<link href="./results_action.html" rel="next">
 <link href="./results_groups.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -496,7 +496,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./results_describe.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Understanding PA results</span></a>
+ <span class="menu-text">Understanding and communicating PA results</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -515,6 +515,18 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="./results_VI.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">What are the most important predictors in my model?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results_action.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using results to inform decisions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results_limitations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Communicating limitations honestly</span></a>
   </div>
 </li>
       </ul>
@@ -581,96 +593,107 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Related to the previous question is: What are the most important predictors in my model? However, compared to the previous question about understanding who has low or high predicted probabilities, this question more specifically points to the model. The question takes us into a wide variety of methods focused on “variable importance” (VI).</p>
+<p>Understanding which predictors matter most in your model serves two closely related purposes:</p>
+<ul>
+<li><strong>Understanding your model</strong>: Which features is the model relying on most heavily? Does this align with what domain experts would expect?</li>
+<li><strong>Communicating results</strong>: Stakeholders will often want to know <em>why</em> the model flags certain individuals as high-risk. Variable importance (VI) provides a way to answer that question.</li>
+</ul>
+<p>VI results can also serve as a model check. If the most important predictor turns out to be something unexpected — or something you know to be a flawed measure — that is worth investigating before deployment.</p>
 <section id="the-value-of-variable-importance" class="level3">
 <h3 class="anchored" data-anchor-id="the-value-of-variable-importance">The value of variable importance</h3>
-<p>VI is helpful for understanding and explaining a predictive model. VI methods also answer a set of related questions. Sometimes these related questions are what is most of interest.</p>
-<p>The following chart provides some comparisons and contrasts of the types of questions answered by predictive analytics vs.&nbsp;variable importance:</p>
+<p>The following chart illustrates how VI relates to — but differs from — predictive analytics more broadly:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/PredVsVI.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:8in"></p>
 </figure>
 </div>
+<p>Predictive analytics asks: <em>How well can we predict who will experience the outcome?</em> Variable importance asks: <em>Which features does the model use most heavily to generate those predictions?</em> These are related but distinct questions. Importantly, VI does not tell you what <em>causes</em> the outcome — only what the model has learned to use as signals in your data.</p>
 </section>
 <section id="variable-importance-methods" class="level3">
 <h3 class="anchored" data-anchor-id="variable-importance-methods">Variable importance methods</h3>
-<p>There are a wide-range of methods for estimating VI.</p>
-<p>These methods may be “model-specific” or “model-agnostic.”</p>
+<p>There are many methods for estimating VI. Two distinctions are worth understanding before choosing an approach.</p>
+<p><strong>Model-specific vs.&nbsp;model-agnostic</strong></p>
 <ul>
-<li><p>Model-specific methods are only implemented for a specific modeling approach.</p></li>
-<li><p>Model-agnostic methods are more flexible and can be applied to any modeling approach</p></li>
+<li><em>Model-specific</em> methods are built into a particular modeling approach and can only be applied to that model type.</li>
+<li><em>Model-agnostic</em> methods can be applied to any model, making them more flexible — especially useful when comparing multiple learners.</li>
 </ul>
-<p><br>
-VI methods may also be “model-driven” or “parameter-driven.”</p>
+<p><strong>Global vs.&nbsp;local</strong></p>
 <ul>
-<li><p>Model-driven methods start with a predictive model and work to understand the predictive power of the predictors in the model. Model-driven methods for VI are either model-specific or model-agnostic.</p></li>
-<li><p>Parameter-driven methods start with a target parameter and can use a variety of modeling approaches for estimation. Parameter-driven methods are always model-agnostic.</p></li>
+<li><em>Global</em> VI methods summarize which predictors matter most across all predictions — useful for explaining the overall model to an audience.</li>
+<li><em>Local</em> VI methods explain a single individual’s prediction — useful when a caseworker or program staff member wants to understand why a specific person was flagged as high-risk.</li>
 </ul>
+<section id="model-specific-methods" class="level4">
+<h4 class="anchored" data-anchor-id="model-specific-methods">Model-specific methods</h4>
+<p>Each modeling approach has its own native VI measure. A few examples:</p>
+<ul>
+<li><strong>Logistic regression</strong>: VI is typically assessed based on the size and statistical significance of coefficients. Larger absolute coefficients indicate stronger associations with the outcome, though direct comparisons across variables on different scales can be misleading, and multicollinearity can complicate interpretation.</li>
+<li><strong>Tree-based models (decision trees, random forests, XGBoost)</strong>: VI is often measured by how much each feature reduces impurity (e.g., Gini importance) across splits. These methods can spread importance across many correlated features, so results should be interpreted with care.</li>
+</ul>
+<p>Model-specific methods are convenient but have limitations: they may not translate well across model types, and their behavior with correlated predictors varies.</p>
 </section>
-<section id="model-specific-methods" class="level3">
-<h3 class="anchored" data-anchor-id="model-specific-methods">Model-specific methods</h3>
-<p>As an example of model-driven VI, let’s take regression:</p>
+<section id="model-agnostic-methods" class="level4">
+<h4 class="anchored" data-anchor-id="model-agnostic-methods">Model-agnostic methods</h4>
+<p><strong>Permutation importance</strong></p>
+<p>Permutation-based VI measures how much model performance drops when a single feature’s values are randomly shuffled — breaking its relationship with the outcome. A large drop signals that the feature is important; a small drop suggests the model performs nearly as well without it. This method works with any modeling approach and can be applied to individual variables or groups of related variables.</p>
+<p><strong>SHAP (SHapley Additive exPlanations)</strong></p>
+<p>SHAP asks: <em>How much does each feature contribute to moving a specific prediction away from the model’s average prediction?</em></p>
+<p>SHAP can be used in two ways:</p>
 <ul>
-<li><p>In the context of regression models, VI is often assessed based on two main aspects: the size of the coefficients and the level of statistical significance, such as the t-statistic. It’s important to consider the absolute values of both these measures.</p></li>
-<li><p>The coefficients in a regression model are particularly informative. They tell us about the expected change in the outcome variable for a one-unit change in the predictor, while keeping other variables constant.</p></li>
-<li><p>However, there are several limitations to be aware of:</p>
-<ul>
-<li><p>When variables are on different scales, comparing their coefficients directly can be misleading. One way to address this issue is through standardization, but this approach isn’t always practical, especially when dealing with different types of variables.</p></li>
-<li><p>Multicollinearity, or the high correlation between predictor variables, can also pose a problem. It can make the estimates of the coefficients less reliable, as it’s harder to isolate the individual effect of each predictor.</p></li>
-<li><p>Lastly, if your model includes interaction terms, interpreting the importance of variables becomes more complex. Interaction terms represent the combined effect of two variables, which adds an additional layer to understanding the individual impact of each variable.</p></li>
-</ul></li>
+<li><strong>Globally</strong>: Averaging SHAP values across all predictions to summarize which features drive the model overall.</li>
+<li><strong>Locally</strong>: Examining SHAP values for a single individual to explain why they received a particular predicted probability.</li>
 </ul>
-<p>This overview provides a basic understanding of how variable importance is assessed in regression models and highlights some common challenges you might encounter in this process.In the context of regression models, understanding variable importance (VI) is key. VI is often assessed based on two main aspects: the size of the coefficients and the level of statistical significance, such as the t-statistic. It’s important to consider the absolute values of both these measures.</p>
-<ul>
-<li><p>The coefficients in a regression model are particularly informative. They tell us about the expected change in the outcome variable for a one-unit change in the predictor, while keeping other variables constant.</p></li>
-<li><p>However, there are several limitations to be aware of:</p>
-<ul>
-<li><p>When variables are on different scales, comparing their coefficients directly can be misleading. One way to address this issue is through standardization, but this approach isn’t always practical, especially when dealing with different types of variables.</p></li>
-<li><p>Multicollinearity, or the high correlation between predictor variables, can also pose a problem. It can make the estimates of the coefficients less reliable, as it’s harder to isolate the individual effect of each predictor.</p></li>
-<li><p>Lastly, if your model includes interaction terms, interpreting the importance of variables becomes more complex. Interaction terms represent the combined effect of two variables, which adds an additional layer to understanding the individual impact of each variable.</p></li>
-</ul></li>
-</ul>
-<p>This overview provides a basic understanding of how variable importance is assessed in regression models and highlights some common challenges you might encounter in this process.</p>
+<p>The global view might show that absenteeism is the strongest overall driver of predictions. The local view might reveal that for one specific student, a low reading score was the primary factor, even if absenteeism matters more across the population. This local interpretability is especially valuable in public services contexts, where staff may need to understand and explain decisions affecting specific individuals.</p>
+<p>SHAP accounts for interactions and dependencies among features, which often makes it more accurate than simpler approaches — though also more computationally intensive.</p>
 </section>
-<section id="model-agnostic-methods" class="level3">
-<h3 class="anchored" data-anchor-id="model-agnostic-methods">Model-agnostic methods</h3>
-<section id="permutation" class="level4">
-<h4 class="anchored" data-anchor-id="permutation">Permutation</h4>
-<ul>
-<li><p>A common approach to determining variable importance in models is the permutation-based method. This involves a few key steps:</p>
-<ul>
-<li><p>First, you train and validate your model to establish a baseline performance measure.</p></li>
-<li><p>Next, you permute, or shuffle, the values of one feature at a time. By doing this, you disrupt the relationship between that specific variable and the outcome.</p></li>
-<li><p>After permuting a feature, you re-evaluate the model’s performance and compare it to the performance before the permutation. A significant change in performance indicates that the feature is important.</p></li>
-<li><p>You repeat this process for all variables in your dataset, assessing the impact of each on model performance.</p></li>
-</ul></li>
-<li><p>This permutation method is quite flexible:</p>
-<ul>
-<li><p>It can be applied not just to individual variables but also to groups of variables.</p></li>
-<li><p>It’s applicable across different modeling approaches, but the results may vary depending on the specific model used. This variation reflects how different algorithms understand and use the data.</p></li>
-<li><p>For example, in models like random forests, which are known for spreading importance across many variables due to their ensemble nature, you might see a more distributed pattern of variable importance. In contrast, regularized regression models might show dominance of one variable over others, especially if the variables are correlated.</p></li>
-</ul></li>
-<li><p>There are also model-specific versions of this permutation method, tailored to fit the nuances of different algorithms. For instance, in Random Forest models, the permutation method takes advantage of the ensemble technique inherent in these models.</p></li>
-</ul>
 </section>
-<section id="shap-shapley-additive-explanations" class="level4">
-<h4 class="anchored" data-anchor-id="shap-shapley-additive-explanations">SHAP (SHapley Additive exPlanations)</h4>
-<p>SHAP is a sophisticated method used to determine the importance of variables in predictive models. It is based on a key question: How much does each variable contribute to the difference between a specific prediction and the average prediction of the model?</p>
-<p>The SHAP approach involves examining all possible combinations of variables in the model, considering whether each variable is present or absent. By doing this, it assesses how the presence or absence of a particular feature influences the model’s output compared to the average prediction.</p>
-<p>The intuition behind SHAP is to allow for a fair distribution of contribution among all the features. It uniquely accounts for interactions and dependencies among features, which can significantly impact their contribution to the model’s predictions.</p>
-<p>To compute the SHAP values (or Shapley values), the method calculates the average contribution of a variable across all possible combinations of other variables. Here’s how it works:</p>
+<section id="choosing-a-vi-method" class="level3">
+<h3 class="anchored" data-anchor-id="choosing-a-vi-method">Choosing a VI method</h3>
+<p>No single VI method is best in all situations. The table below offers practical guidance:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Situation</th>
+<th>Suggested approach</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Quick overview during model development</td>
+<td>Model-specific VI</td>
+</tr>
+<tr class="even">
+<td>Comparing VI across multiple learners</td>
+<td>Permutation importance</td>
+</tr>
+<tr class="odd">
+<td>Explaining the overall model to stakeholders</td>
+<td>SHAP (global)</td>
+</tr>
+<tr class="even">
+<td>Explaining an individual prediction to program staff</td>
+<td>SHAP (local)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="communicating-vi-results" class="level3">
+<h3 class="anchored" data-anchor-id="communicating-vi-results">Communicating VI results</h3>
+<p>When sharing VI results with stakeholders, a few principles help:</p>
 <ul>
-<li><p>For each combination of variables that excludes the variable of interest, the model’s prediction performance is calculated both with and without that feature.</p></li>
-<li><p>The contribution of the variable is then determined by the difference in the model’s predictions with the variable included versus excluded.</p></li>
-<li><p>This process is repeated and averaged over all possible subsets of variables that do not include the variable in question.</p></li>
+<li><strong>Lead with the “so what.”</strong> Don’t just present a ranked list of features — explain what the top predictors reveal about who the model is flagging and why.</li>
+<li><strong>Reinforce the causation caution.</strong> VI shows what the model is using as signals, not what causes the outcome. Make this explicit so stakeholders do not misinterpret these results as reasons to target specific characteristics directly.</li>
+<li><strong>Visualize clearly.</strong> A horizontal bar chart ranking features by importance is typically the most readable format for non-technical audiences.</li>
 </ul>
-<p>The SHAP method provides a detailed and nuanced view of variable importance, especially useful in models with complex interactions and dependencies among variables. It helps in understanding not just whether a variable is important, but how and why it influences the model's predictions in the context of other variables.</p>
-<p>These are just a few examples of a very large and often complex set of approaches to defining and estimating variable importance.</p>
-<p>Finally, as an optional extra reading, this paper conducts both predictive analytics and variable importance and uses some clever approaches for turning the results in to actionable insights for refining a program’s services:</p>
+<p>The plot below shows an example of what VI results might look like for the school dropout model:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/VI_barchart.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:7in"></p>
+</figure>
+</div>
+<p>Finally, as optional further reading, this paper demonstrates how PA and VI can be combined and translated into actionable insights for refining program services:</p>
 <p><a href="https://www.acf.hhs.gov/sites/default/files/documents/opre/Predicting-HMRF-Participation-Brief.pdf" class="uri">https://www.acf.hhs.gov/sites/default/files/documents/opre/Predicting-HMRF-Participation-Brief.pdf</a></p>
 
 
-</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -1081,8 +1104,8 @@ VI methods may also be “model-driven” or “parameter-driven.”</p>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./deployment.html" class="pagination-link" aria-label="A brief overview of considerations">
-        <span class="nav-page-text">A brief overview of considerations</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./results_action.html" class="pagination-link" aria-label="Using results to inform decisions">
+        <span class="nav-page-text">Using results to inform decisions</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
