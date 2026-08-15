@@ -1,0 +1,88 @@
+---
+title: "Role 2: The LLM as a way to create predictors"
+editor:
+  markdown:
+    wrap: sentence
+---
+
+This is, in my view, the most genuinely useful of the three roles for the kind of work this course is about --- and it is the one that gets the least attention.
+
+Think about what is actually sitting in the administrative systems of the organizations we have been discussing.
+A child welfare agency has structured fields --- ages, dates, prior referral counts --- and it has thousands of pages of caseworker narrative.
+A school district has attendance and grades, and it has counselor notes and disciplinary write-ups.
+A workforce program has demographics and program participation records, and it has intake interview summaries and open-ended responses about barriers to employment.
+
+Historically, only the structured half was usable.
+The narrative half contained a great deal of what the staff actually knew, and there was no practical way to get it into a model.
+That is the constraint that has changed.
+
+## Two ways to turn text into predictors
+
+**Embeddings.** An embedding model converts a piece of text into a vector of numbers --- typically several hundred to a couple thousand of them --- positioned so that texts with similar meaning land near each other in that space.
+Those numbers can be handed to any of the [modeling approaches](methods_overview.qmd) we have covered as ordinary predictors.
+
+The appeal is that this requires no decisions about what matters in the text.
+The drawback is a serious one for our purposes: the resulting predictors are completely uninterpretable.
+"Dimension 247" means nothing to anyone.
+You can compute [variable importance](results_VI.qmd) on them and learn essentially nothing you could explain to a program director.
+You have also added hundreds of predictors, which raises the [overfitting](data_overfitting.qmd) stakes considerably --- this is a setting where Lasso or another regularized approach earns its keep.
+
+**LLM-extracted structured fields.** Alternatively, you ask an LLM to read each narrative and return specific, pre-specified fields: *Does this note mention housing instability? (yes/no).* *Is a family member described as a support? (yes/no).* *On a 1-5 scale, how engaged does the client appear?*
+
+This gives up some information relative to embeddings, and it requires you to decide in advance what to look for.
+In exchange you get a handful of predictors that are named in plain language, that a program director can react to, that show up meaningfully in variable importance, and that can be audited.
+For service settings where results have to be explained and defended, this trade is usually worth making.
+
+There is also an emerging middle path sometimes called **LLM-assisted feature engineering**, where the LLM proposes candidate features from the variables and problem description, and those candidates are then evaluated empirically (see [LLM-FE](https://arxiv.org/pdf/2503.14434)).
+Treat suggestions from this as hypotheses to test within your existing learner-comparison framework, not as features to adopt.
+
+## What the evidence actually shows
+
+It would be easy to oversell this.
+The honest summary of the current research is that LLM-derived features help *sometimes*, and the pattern of when is fairly predictable:
+
+-   The gains are largest when your data contain genuine unstructured text or semantically rich categorical variables --- job titles, diagnosis descriptions, free-text program names.
+-   The gains are smallest, often zero, when your predictors are already clean numeric and categorical fields. An LLM has nothing to add to a column of ages.
+-   Gradient boosting on well-constructed structured features remains a very strong baseline, and often is not beaten.
+
+See, for example, [LLM Embeddings for Deep Learning on Tabular Data](https://arxiv.org/pdf/2502.11596).
+The practical implication is straightforward: text-derived predictors are a hypothesis, and they get tested the same way every other hypothesis in this course does.
+
+## Fitting this into the framework
+
+This role requires no new machinery at all.
+Text-derived predictors are simply another [predictor set](poc_learners.qmd), which means the way to evaluate them is the way you evaluate everything else --- by [adding learners incrementally](poc_compare.qmd):
+
+1.  Benchmark learner: the small set of structured predictors the agency already uses.
+2.  Full structured predictor set, with a more flexible algorithm.
+3.  Structured predictors **plus** LLM-extracted fields from the case notes.
+4.  Structured predictors **plus** text embeddings.
+
+Now the question "is the text worth the trouble?" has an empirical answer on held-out data, rather than being settled by enthusiasm.
+Given the cost, complexity, and interpretability penalty involved, that increment needs to be substantial to justify itself.
+
+## Cautions specific to text predictors
+
+**Leakage is much harder to see in text.**
+This is the big one.
+Case notes are written over time, and a note written *after* the outcome occurred will often refer to it, sometimes obliquely.
+A narrative that says "following the incident, the family was reassessed" tells your model the answer.
+Every rule from the [prediction timepoint](scoping_when.qmd) discussion applies to text, and it is dramatically harder to enforce, because you cannot eyeball a timestamp on a phrase inside a paragraph.
+You must filter narratives by date --- and you should read a sample of them yourself.
+
+**Text carries bias very efficiently.**
+Case notes are written by people, about people, and reflect how those people were perceived.
+Differences in tone, in which behaviors get recorded, and in which words get used across demographic groups are well documented, and a model trained on narratives will learn all of it.
+This makes the [bias analyses](bias_intro.qmd) more important here, not less.
+
+**The extraction step is itself a model that can drift.**
+If you use an LLM to extract fields, you have introduced a dependency on a specific model version.
+Providers update and retire models, and the same prompt can produce different extractions later.
+That is a [deployment and monitoring](deployment.qmd) problem: record the model version and prompt as part of your documentation, and re-check extractions when anything changes.
+
+**Validate the extraction before trusting it.**
+If you ask an LLM to flag housing instability across 5,000 case notes, hand-code a random sample of 100 yourself and compare.
+An extraction with 70% agreement is a noisy predictor, and you would want to know that before interpreting anything downstream.
+
+**Privacy constraints are real.**
+Case narratives are among the most sensitive records an agency holds. Sending them to an external API may be prohibited outright by law, by data use agreement, or by IRB. This is a question to answer *before* designing an analysis around it, not after.

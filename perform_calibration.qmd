@@ -1,0 +1,146 @@
+---
+title: "Calibration: do the predicted probabilities mean anything?"
+editor:
+  markdown:
+    wrap: sentence
+---
+
+The metrics on the previous two pages share an important limitation.
+Threshold-variant metrics (like sensitivity and precision) only care about which side of the threshold a prediction falls on.
+Threshold-invariant metrics like AUC-ROC only care about how predictions are *ranked* relative to each other.
+Neither one asks whether the predicted probabilities are *right* in an absolute sense.
+
+To see why this matters, imagine a model that predicts a 0.90 probability of not graduating on time for every student who will in fact not graduate, and 0.80 for every student who will graduate.
+This model has a perfect AUC-ROC of 1.0 --- it ranks every student correctly.
+But every single predicted probability is badly wrong.
+If a program director looked at these predictions and concluded "80% of our students are going to fail to graduate," they would be making a serious planning error based on a model with flawless discrimination.
+
+**Calibration** asks a different question than the metrics we have covered so far: among all the people we assigned a predicted probability of about 0.30, did about 30% of them actually experience the outcome?
+
+## When calibration matters (and when it doesn't)
+
+Calibration is not always essential.
+It depends --- as always --- on how the predictions will be used.
+
+Calibration matters **less** when you are simply ranking people and serving the top $K$.
+If a program has 50 tutoring slots and will fill them with the 50 highest-risk students, all that matters is that the ranking is good.
+You could add 0.2 to every predicted probability and the same 50 students would be served.
+
+Calibration matters **a great deal** when:
+
+-   **The predicted number is communicated to anyone.** As soon as a caseworker sees "72% risk" on a screen, that number carries meaning to them, and it should be meaningful. This is extremely common in service settings.
+
+-   **You are planning capacity or estimating need.** "We expect about 120 students in this cohort to need intensive support" is a sum of predicted probabilities. If the probabilities are inflated, so is the staffing plan.
+
+-   **You are doing any kind of cost-benefit reasoning.** Comparing the expected cost of a false positive against the expected benefit of a true positive requires the probabilities to be on a real scale.
+
+-   **You are combining the model with other information.** If a caseworker is meant to weigh a risk score alongside their own knowledge of a family, a systematically inflated score distorts that judgment.
+
+-   **You are choosing a threshold with a substantive meaning.** "Refer everyone above 50% risk" only makes sense if 50% means 50%.
+
+-   **You care about bias.** As we will see in the [section on bias](bias_define.qmd), one of the central fairness definitions --- predictive parity --- is just calibration computed separately within demographic groups.
+
+Notice that most of these describe exactly the kinds of decisions this course is about.
+In services contexts, calibration usually matters.
+
+## Looking at calibration: the calibration plot
+
+The most useful way to assess calibration is visual.
+A **calibration plot** (also called a reliability diagram) is built as follows:
+
+1.  Sort the units by their predicted probability and divide them into bins --- say, 10 bins of equal size, or bins defined by cut points like 0-0.1, 0.1-0.2, and so on.
+
+2.  Within each bin, compute two numbers: the *mean predicted probability* and the *observed proportion* of units that actually had the outcome.
+
+3.  Plot observed proportion on the $y$-axis against mean predicted probability on the $x$-axis.
+
+A perfectly calibrated model produces points that fall along the 45-degree diagonal.
+The shape of the departure from that line tells you what is going wrong:
+
+-   Points consistently **below** the diagonal mean the model is **over-predicting** risk --- it says 40% when the truth is 25%.
+
+-   Points consistently **above** the diagonal mean the model is **under-predicting** risk.
+
+-   An **S-shaped curve** --- under-predicting at the low end and over-predicting at the high end --- means the predictions are too spread out, or "over-confident." This is a very common pattern.
+
+-   A **flattened curve** hugging the base rate means the predictions are too compressed toward the middle, or "under-confident."
+
+Two practical cautions when reading these plots.
+First, the bins at the high end usually contain few units when the outcome is rare, so those points bounce around a lot; do not over-interpret a single wobbly point at the right edge.
+Second, as with every other performance metric in this course, you should be assessing calibration on the **validation folds** during model comparison and on the **held-out test data** for your final assessment --- never on the training data, where every model looks well calibrated.
+
+## Summarizing calibration with a number: the Brier score
+
+While the plot is more informative, it is helpful to have a single number for comparing learners.
+The **Brier score** is the mean squared difference between the predicted probability and the observed outcome:
+
+```{=tex}
+\begin{equation}
+Brier = \frac{1}{n}\sum_{i=1}^{n}(\hat{p}_i - y_i)^2
+\end{equation}
+```
+where $\hat{p}_i$ is the predicted probability for unit $i$ and $y_i$ is that unit's observed outcome (0 or 1).
+**Lower is better,** which is worth flagging because it runs opposite to most of the metrics we have seen.
+
+The Brier score is a *proper scoring rule*, which means it is minimized only by reporting your honest probabilities --- you cannot improve it by strategically shading your predictions toward 0 or 1.
+It rewards both discrimination and calibration at once.
+That is a strength (it is a good all-purpose summary) and a weakness (a mediocre Brier score does not tell you *which* of the two is the problem, which is why you still want the plot).
+
+One thing to be careful about: Brier scores are hard to interpret in isolation, especially with rare outcomes.
+A model that always predicts the base rate $\bar{p}$ achieves a Brier score of $\bar{p}(1-\bar{p})$.
+If only 8% of students fail to graduate on time, a model that ignores all the data and predicts 0.08 for everyone gets a Brier score of 0.0736 --- which looks impressively small but is completely uninformative.
+Always compare a learner's Brier score against this base-rate benchmark, in the same spirit as the [benchmark learner](poc_benchmark.qmd) framework.
+
+A closely related metric you will encounter is **log loss** (also called cross-entropy), which penalizes confident mistakes far more harshly than the Brier score does.
+It is also a proper scoring rule and is a reasonable alternative, though it has the awkward property of being infinite if you ever predict 0 or 1 and are wrong.
+
+## Why models come out miscalibrated
+
+It is worth knowing that miscalibration is usually not a mistake --- it is a predictable consequence of choices made earlier in the workflow.
+
+-   **Regularization.** Lasso shrinks coefficients toward zero on purpose, which compresses predicted probabilities toward the base rate. The shrinkage that buys you protection against [overfitting](data_overfitting.qmd) costs you calibration.
+
+-   **Boosting.** XGBoost and related algorithms optimize a loss function that pushes predictions toward 0 and 1. Boosted models are frequently over-confident.
+
+-   **Random Forest.** Because predictions are averages of votes across many trees, they tend to be pulled toward the middle of the range, and it is hard for a forest to output a probability very near 0 or 1.
+
+-   **Anything you did about class imbalance.** Up-sampling the rare class, down-sampling the common class, or applying SMOTE will systematically inflate predicted probabilities, because the model was trained on data where the outcome is more common than it is in reality. This one catches people by surprise. If you resampled to handle imbalance, you should assume your model is miscalibrated until you check.
+
+-   **Distribution shift.** A model trained on last year's cohort and applied to this year's will be miscalibrated if the base rate has moved, even if the relationships between predictors and outcome are unchanged. This connects directly to the monitoring issues discussed in the [deployment section](deployment.qmd).
+
+## Fixing calibration
+
+The good news is that calibration is often repairable without touching the underlying model, because it is a problem with the *scale* of the predictions rather than their *ordering*.
+
+The two standard approaches both fit a simple second model that maps raw predicted probabilities onto corrected ones:
+
+-   **Platt scaling** (logistic recalibration) fits a logistic regression of the observed outcome on the raw predicted values. It is simple, needs little data, and works well when the miscalibration has a smooth S-shape. Because it is a rigid parametric form, it cannot fix unusual patterns.
+
+-   **Isotonic regression** fits a flexible step function that is only required to be non-decreasing. It can correct almost any monotone miscalibration pattern, but it needs considerably more data and will overfit on small samples.
+
+Two rules govern how you use these:
+
+1.  **Never fit the recalibration on the training data.** The model's predictions on data it was trained on are already too good, so a recalibration fit there will learn the wrong correction. Fit it on held-out data --- within the cross-validation procedure, or on a separate calibration split.
+
+2.  **Recalibration is part of the learner.** Once you decide to recalibrate, the recalibration step becomes part of the model, and the final honest assessment still has to happen on [test data](data_test.qmd) that played no role in either fitting or recalibrating.
+
+Also note what recalibration cannot do: it does not change the ranking, so it will not improve AUC-ROC at all.
+If your model does not discriminate well, calibration will not save it.
+The two properties are separate, and you need both.
+
+## Calibration within subgroups
+
+Everything above can --- and in service applications, should --- be computed separately by subgroup.
+A model can be well calibrated overall while systematically over-predicting risk for one racial or gender group and under-predicting for another, because the overall picture averages the two errors away.
+
+This is the same quantity as the first fairness definition discussed in the [bias section](bias_define.qmd), where it goes by the name **predictive parity**.
+It is worth being aware, before you get there, of a result that section develops in more detail: when the base rate of the outcome genuinely differs across groups, it is mathematically impossible for a model to satisfy calibration within groups *and* equalize false positive and false negative rates across groups at the same time.
+You have to choose, and that choice is a values judgment about the specific application rather than a technical one.
+
+## Implementing calibration assessment in R
+
+The `probably` package (part of `tidymodels`) is the current standard tooling:
+
+-   `probably::cal_plot_breaks()` and `cal_plot_windowed()` produce calibration plots, and will facet by group if you pass a grouping variable --- which is what you want for the subgroup analysis above.
+-   `probably::cal_estimate_logistic()` and `cal_estimate_isotonic()` fit Platt scaling and isotonic regression, and `cal_apply()` applies the fitted correction to new predictions.
+-   `yardstick::brier_class()` and `yardstick::mn_log_loss()` compute the Brier score and log loss, and can be added to a metric set alongside the AUC metrics you are already computing during validation.

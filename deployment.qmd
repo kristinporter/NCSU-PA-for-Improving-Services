@@ -35,7 +35,7 @@ considerations at different stages of the process:
         and potential risks.
 2.  **Deploying Predictive Analytics**
     -   **Organizational Capacity**: While this should be an important
-        consideration at beore embarking on a predictive analytics
+        consideration before embarking on a predictive analytics
         proof-of-concept, it is worthwhile to revisit at this juncture.
         Assess if the organization has the necessary infrastructure,
         technical expertise, and resources to implement and support

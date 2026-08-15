@@ -86,7 +86,7 @@ While not a comprehensive list, some of the key tuning parameters include:
 
 [**Disadvantages of Random Forest**]{style="color:green"}
 
--   **Computationally Intensive**: While Random Forest handdle large datasets, it can be very time-consuming. Computation time depends on the number of trees. 
+-   **Computationally Intensive**: While Random Forest can handle large datasets, it can be very time-consuming. Computation time depends on the number of trees. 
 
 -   **Interpretability**: Individual decision trees, with their hierarchical structure, can be visualized and interpreted easily. However, Random Forest, being an ensemble of multiple trees, lacks this level of interpretability. "Variable importance" methods, which we will turn to later, can give some insights, however. 
 

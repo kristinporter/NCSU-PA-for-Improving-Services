@@ -1,0 +1,119 @@
+---
+title: "Predicting risk is not predicting benefit"
+editor:
+  markdown:
+    wrap: sentence
+---
+
+Early in this course, in the list of [limitations of PA](paforimprovingss_limitations.qmd), was this claim:
+
+> *Predictive analytics tells us nothing about causal relationships. Nor does it tell us that those with the lowest or highest probability of an outcome are the most likely to benefit from a new or revised service or intervention.*
+
+I promised we would return to it in more depth.
+This is that return, and it is worth its own section, because for a course called *Predictive Analytics for Improving Services* this is the most important limitation of all.
+
+Here is the situation.
+You have done everything right.
+You scoped the project carefully, built a set of learners, compared them honestly on held-out test data, checked calibration, examined bias across subgroups, and produced a model that predicts on-time high school graduation with an AUC-ROC of 0.82.
+You present the results.
+The program director says:
+
+> *Great. We have 100 slots in the mentoring program. Let's enroll the 100 highest-risk students.*
+
+This is the single most common way predictive analytics gets used in service settings, and it sounds so obviously reasonable that it usually goes unexamined.
+But notice what just happened.
+Your model answered the question *who is most likely to have a bad outcome?*
+The director used it to answer a completely different question: *who will the mentoring program help most?*
+
+Those are not the same question, and the model has no information about the second one.
+
+## The hidden assumption
+
+Targeting a service by predicted risk assumes that **benefit increases with risk** --- that the people most likely to experience the bad outcome are also the people the program will move the most.
+
+Sometimes that assumption is reasonable.
+Often it is not, and there are several distinct reasons it can fail.
+
+**There may be no room to move.**
+A student with a 0.95 predicted probability of not graduating on time may be dealing with housing instability, a serious health condition, or caregiving responsibilities for younger siblings.
+A weekly mentoring session is unlikely to change that trajectory.
+The prediction is correct --- this student is at very high risk --- and the program still does nothing for them, because the barrier the program addresses is not the barrier this student faces.
+
+**The highest-risk cases regress to the mean.**
+This one is subtle and causes an enormous amount of confusion.
+People identified as extreme in one period tend to be less extreme in the next, for purely statistical reasons, regardless of any intervention.
+If you select the highest-cost patients this year and enroll them in a care program, their costs will very likely fall next year --- and they would have fallen anyway.
+A program targeted this way will look effective in any before-and-after comparison while producing no actual benefit.
+
+**The low-risk cases would have succeeded anyway.**
+The mirror image.
+Serving people at low risk produces excellent-looking outcomes --- 95% of them graduate! --- and no benefit whatsoever, because they were going to graduate regardless.
+This is the mechanism behind "cream-skimming," where programs that select easy-to-serve participants report strong outcomes and evaluate to zero impact.
+
+**Some people are made worse off.**
+Being labeled at-risk carries stigma; extra services carry burden.
+As noted in the discussion of [context](bias_context.qmd), interventions *designed* to be beneficial can still impose costs, and a family that experiences an outreach contact as intrusive may disengage from services they were previously using.
+
+## A useful way to picture it
+
+It helps to imagine dividing everyone into four groups, based on what would happen to them with and without the program:
+
+|  | **Bad outcome without program** | **Good outcome without program** |
+|-------------------|-----------------------------|------------------------|
+| **Good outcome with program** | *Persuadables* --- the program works | *Harmed* --- the program backfires |
+| **Bad outcome with program** | *Not reachable* --- program can't help | *Sure things* --- didn't need it |
+
+The program's entire benefit comes from the **persuadables**.
+The *sure things* and the *not reachable* absorb resources and produce nothing, and the *harmed* group produces negative value.
+
+Now look at what a risk model does.
+It ranks people by their probability of a bad outcome, which puts the *persuadables* and the *not reachable* together at the top --- because both groups have bad outcomes without the program.
+The model cannot distinguish them.
+It sorts on the wrong axis entirely.
+
+Depending on the program, the persuadables may well be concentrated in the *middle* of the risk distribution: high enough risk to have something to gain, not so high that the program cannot reach them.
+Risk-based targeting ranks exactly those people second.
+
+## An illustration
+
+Suppose a mentoring program were evaluated and we could see, for each third of the predicted-risk distribution, what share of students fail to graduate on time with and without the program.
+The numbers below are **hypothetical** --- invented to show the shape of the problem:
+
+| Risk tier | Fail to graduate, no program | Fail to graduate, with program | Benefit |
+|------------------|------------------|------------------|------------------|
+| Highest third | 68% | 64% | 4 points |
+| Middle third | 34% | 22% | 12 points |
+| Lowest third | 9% | 8% | 1 point |
+
+Your risk model is working perfectly.
+It correctly identifies the highest third as having by far the worst outcomes --- 68% versus 9%.
+But filling the 100 slots from the highest third prevents about 4 bad outcomes per 100 students served, while filling them from the middle third prevents about 12.
+
+Same model, same budget, same staff, three times the impact.
+And nothing in your test-set performance metrics --- not AUC, not calibration, not precision at $K$ --- points toward that middle row.
+They cannot, because none of them contain information about what the program does.
+
+## This has happened in real life
+
+The most instructive real example comes from health care.
+The Camden Coalition's "hotspotting" program used data to identify medically and socially complex "superutilizer" patients --- people with very high hospital use --- and provided them an intensive care-transition program with nurses, social workers, and community health workers.
+
+The targeting model worked.
+These patients were genuinely at extremely high risk of readmission.
+The program was widely admired and widely replicated on the strength of before-and-after results.
+
+Then it was evaluated with a randomized trial of 800 patients [@FinkelsteinEtAl2020].
+The 180-day readmission rate was 62.3% in the program group and 61.7% in the control group --- no effect.
+The apparent success in earlier observational comparisons was, as the authors point out, largely regression to the mean: patients selected for being extreme were going to become less extreme anyway.
+
+Nothing was wrong with the prediction.
+The patients identified really were the highest-risk patients.
+The problem was the step where "highest risk" was treated as equivalent to "will benefit most."
+
+## Where this leaves us
+
+None of this means your risk model is useless, and the next two pages take that up seriously.
+It means that a predicted probability answers a narrower question than people assume when they act on it, and that the gap between those two questions is where a lot of well-intentioned programs quietly waste their resources.
+
+The next page asks what it would actually take to predict benefit rather than risk --- and why it is so much harder.
+The page after that deals with the situation nearly all of you will be in: needing to make targeting decisions without that evidence.

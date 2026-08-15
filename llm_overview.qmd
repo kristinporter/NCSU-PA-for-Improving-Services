@@ -1,0 +1,45 @@
+---
+title: "Three very different roles for LLMs"
+editor:
+  markdown:
+    wrap: sentence
+---
+
+Large language models (LLMs) --- ChatGPT, Claude, Gemini, and the tools built on top of them --- have changed how a great deal of data analysis gets done, including predictive analytics.
+You are almost certainly already using them.
+The purpose of this section is not to tell you whether to use them, but to help you think clearly about *what* you are using them for, because the answer changes the risks involved enormously.
+
+In conversations about "using AI for predictive analytics," three completely different activities routinely get blurred together.
+They deserve to be separated:
+
+1.  **The LLM as a coding assistant.** You describe what you want in English and it writes the R code. Here the LLM changes *how the work gets done*, but it does not change what is statistically correct. Every principle in this course still applies, and --- as we will discuss --- some of the most damaging mistakes in predictive analytics are exactly the ones LLM-generated code produces most confidently.
+
+2.  **The LLM as a way to create predictors.** You have case notes, referral narratives, intake summaries, or open-ended survey responses --- text that has never been usable in a model before. An LLM turns that text into numbers that can go into a predictor set. Here the LLM changes *what data you can use*, and this is genuinely the most promising of the three for service settings.
+
+3.  **The LLM as the prediction model itself.** You give the LLM a person's characteristics and ask it to output a risk score. Here the LLM *replaces* the learner. This is the role that gets the most attention and is, in most service contexts, the one you should be most skeptical of.
+
+These are not variations on a theme.
+They differ in what could go wrong, in what you would have to check, and in whether the resulting system could be defended to a stakeholder or a court.
+A student who says "we used AI in our predictive model" has told you almost nothing until they say which of the three they mean.
+
+![](images/ML.jpg){fig-align="left" width="6in"}
+
+## A framing worth holding on to
+
+Notice that the framework this course has built --- scope the problem, specify learners, compare them against a simple benchmark, evaluate on held-out test data, examine bias, then decide about deployment --- does not need to be rebuilt to accommodate any of this.
+
+Role 2 slots in as a new way of constructing a *predictor set*.
+Role 3 slots in as a new *modeling approach*.
+Both are still just [learners](poc_learners.qmd), and both still have to earn their place by beating the benchmark on data they have never seen.
+That is a useful thing to remember when a vendor or a headline suggests the old rules no longer apply.
+
+Role 1 sits outside the framework entirely, because it is about your workflow rather than your model.
+It is also the one every single one of you will use, so we start there.
+
+## Where this section sits in the course
+
+This section comes near the end deliberately.
+Almost everything worth saying about LLMs in predictive analytics depends on concepts covered earlier: [leakage and overfitting](data_overfitting.qmd), [how data are split](data_split.qmd), [calibration](perform_calibration.qmd), [bias](bias_intro.qmd), and [deployment](deployment.qmd).
+Now that those are in place, we can be specific rather than hand-wavy.
+
+The one exception is the [course policy on AI use](llm_policy.qmd), which applies from the first week --- so read that page early even though it appears last here.

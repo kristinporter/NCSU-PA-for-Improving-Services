@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Calibration: do the predicted probabilities mean anything? – Predictive Analytics (PA) for Improving Services</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./perform_goals.html" rel="next">
+<link href="./perform_thresholdinvariant.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-8a1f268e0011b07c45b73623cafa3f20.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./perform_confusionmatrix.html">Evaluating and comparing predictive performance</a></li><li class="breadcrumb-item"><a href="./perform_calibration.html">Calibration: do the predicted probabilities mean anything?</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Predictive Analytics (PA) for Improving Services</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Predictive Analytics for Improving Services</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./materials.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Defining PA for improving services</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./paforimprovingss_define.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What is predictive analytics (PA)?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./paforimprovingss_learn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How can PA be used to improve services?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./paforimprovingss_limitations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What are the limitations of PA for improving services?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./paforimprovingss_ethics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What are the ethical considerations for using PA to improve services?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./paforimprovingss_context.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Is predictive analytics a good fit for your context?</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Scoping a PA project</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./scoping_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A motivating example</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./scoping_usefindings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How will findings be used?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./scoping_what.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What are we trying to predict?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./scoping_who.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Who are we making predictions for?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./scoping_when.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">When are we making predictions?</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Conducting a PA proof-of-concept</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./poc_importance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The importance of a proof-of-concept</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./poc_learners.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Defining learners</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./poc_benchmark.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Specifying a benchmark learner</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./poc_compare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Adding and comparing learners</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data for PA: PART 1</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_overfitting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generalizing to new data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_split.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data workflow</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_identify.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Identifying data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Designating data for testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_trainvalidate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Training and validating learners</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_splitconsiderations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Additional considerations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data for PA: PART 2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data preparation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_whymissing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview of missing data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_missingpredictors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Handling missing data - predictors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_missingoutcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Missing data - outcomes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_EDA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory data analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_extract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extracting predictive value</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data2_changesovertime.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Changes in data over time</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Modeling approaches</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_logistic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logistic regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_lasso.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lasso</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_rf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Decision trees and Random Forest</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_xgboost.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gradient boosting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_naivebayes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Naive Bayes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_svm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support vector machines</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_nn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Neural networks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods_guidance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guidance for using ML</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Evaluating and comparing predictive performance</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./perform_confusionmatrix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The confusion matrix and threshold-variant metrics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./perform_thresholdinvariant.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Threshold-invariant metrics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./perform_calibration.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Calibration: do the predicted probabilities mean anything?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./perform_goals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prioritizing metrics that align with goals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./perform_selectthreshold.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Selecting a threshold</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Evaluating and comparing bias</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bias_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sources of bias</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bias_modeling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bias in estimating predicting probabilities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bias_use.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bias in how predicted probabilities are used</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bias_define.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting specific about empirically defining bias</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bias_context.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Context matters</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bias_address.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Addressing bias</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Understanding and communicating results</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results_describe.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Understanding and communicating PA results</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results_distrib.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How are predicted probabilities distributed within and across groups?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results_groups.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Who has low or high predicted probabilities?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results_VI.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What are the most important predictors in my model?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results_action.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using results to inform decisions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results_limitations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Communicating limitations honestly</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
+ <span class="menu-text">Predicting risk vs.&nbsp;predicting benefit</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./benefit_notrisk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Predicting risk is not predicting benefit</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./benefit_estimate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What it would take to predict benefit</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./benefit_practice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Making targeting decisions anyway</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true">
+ <span class="menu-text">Deploying predictive analytics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./deployment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A brief overview of considerations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true">
+ <span class="menu-text">Predictive analytics and LLMs</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./llm_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Three very different roles for LLMs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./llm_copilot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Role 1: The LLM as a coding assistant</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./llm_features.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Role 2: The LLM as a way to create predictors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./llm_predictor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Role 3: The LLM as the prediction model itself</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./llm_policy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using AI tools in this course</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true">
+ <span class="menu-text">Additional optional material</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./OptionalPAvsInfStat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Predictive Analytics vs.&nbsp;Inferential Statistics</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./perform_confusionmatrix.html">Evaluating and comparing predictive performance</a></li><li class="breadcrumb-item"><a href="./perform_calibration.html">Calibration: do the predicted probabilities mean anything?</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Calibration: do the predicted probabilities mean anything?</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>The metrics on the previous two pages share an important limitation. Threshold-variant metrics (like sensitivity and precision) only care about which side of the threshold a prediction falls on. Threshold-invariant metrics like AUC-ROC only care about how predictions are <em>ranked</em> relative to each other. Neither one asks whether the predicted probabilities are <em>right</em> in an absolute sense.</p>
+<p>To see why this matters, imagine a model that predicts a 0.90 probability of not graduating on time for every student who will in fact not graduate, and 0.80 for every student who will graduate. This model has a perfect AUC-ROC of 1.0 — it ranks every student correctly. But every single predicted probability is badly wrong. If a program director looked at these predictions and concluded “80% of our students are going to fail to graduate,” they would be making a serious planning error based on a model with flawless discrimination.</p>
+<p><strong>Calibration</strong> asks a different question than the metrics we have covered so far: among all the people we assigned a predicted probability of about 0.30, did about 30% of them actually experience the outcome?</p>
+<section id="when-calibration-matters-and-when-it-doesnt" class="level2">
+<h2 class="anchored" data-anchor-id="when-calibration-matters-and-when-it-doesnt">When calibration matters (and when it doesn’t)</h2>
+<p>Calibration is not always essential. It depends — as always — on how the predictions will be used.</p>
+<p>Calibration matters <strong>less</strong> when you are simply ranking people and serving the top <span class="math inline">\(K\)</span>. If a program has 50 tutoring slots and will fill them with the 50 highest-risk students, all that matters is that the ranking is good. You could add 0.2 to every predicted probability and the same 50 students would be served.</p>
+<p>Calibration matters <strong>a great deal</strong> when:</p>
+<ul>
+<li><p><strong>The predicted number is communicated to anyone.</strong> As soon as a caseworker sees “72% risk” on a screen, that number carries meaning to them, and it should be meaningful. This is extremely common in service settings.</p></li>
+<li><p><strong>You are planning capacity or estimating need.</strong> “We expect about 120 students in this cohort to need intensive support” is a sum of predicted probabilities. If the probabilities are inflated, so is the staffing plan.</p></li>
+<li><p><strong>You are doing any kind of cost-benefit reasoning.</strong> Comparing the expected cost of a false positive against the expected benefit of a true positive requires the probabilities to be on a real scale.</p></li>
+<li><p><strong>You are combining the model with other information.</strong> If a caseworker is meant to weigh a risk score alongside their own knowledge of a family, a systematically inflated score distorts that judgment.</p></li>
+<li><p><strong>You are choosing a threshold with a substantive meaning.</strong> “Refer everyone above 50% risk” only makes sense if 50% means 50%.</p></li>
+<li><p><strong>You care about bias.</strong> As we will see in the <a href="./bias_define.html">section on bias</a>, one of the central fairness definitions — predictive parity — is just calibration computed separately within demographic groups.</p></li>
+</ul>
+<p>Notice that most of these describe exactly the kinds of decisions this course is about. In services contexts, calibration usually matters.</p>
+</section>
+<section id="looking-at-calibration-the-calibration-plot" class="level2">
+<h2 class="anchored" data-anchor-id="looking-at-calibration-the-calibration-plot">Looking at calibration: the calibration plot</h2>
+<p>The most useful way to assess calibration is visual. A <strong>calibration plot</strong> (also called a reliability diagram) is built as follows:</p>
+<ol type="1">
+<li><p>Sort the units by their predicted probability and divide them into bins — say, 10 bins of equal size, or bins defined by cut points like 0-0.1, 0.1-0.2, and so on.</p></li>
+<li><p>Within each bin, compute two numbers: the <em>mean predicted probability</em> and the <em>observed proportion</em> of units that actually had the outcome.</p></li>
+<li><p>Plot observed proportion on the <span class="math inline">\(y\)</span>-axis against mean predicted probability on the <span class="math inline">\(x\)</span>-axis.</p></li>
+</ol>
+<p>A perfectly calibrated model produces points that fall along the 45-degree diagonal. The shape of the departure from that line tells you what is going wrong:</p>
+<ul>
+<li><p>Points consistently <strong>below</strong> the diagonal mean the model is <strong>over-predicting</strong> risk — it says 40% when the truth is 25%.</p></li>
+<li><p>Points consistently <strong>above</strong> the diagonal mean the model is <strong>under-predicting</strong> risk.</p></li>
+<li><p>An <strong>S-shaped curve</strong> — under-predicting at the low end and over-predicting at the high end — means the predictions are too spread out, or “over-confident.” This is a very common pattern.</p></li>
+<li><p>A <strong>flattened curve</strong> hugging the base rate means the predictions are too compressed toward the middle, or “under-confident.”</p></li>
+</ul>
+<p>Two practical cautions when reading these plots. First, the bins at the high end usually contain few units when the outcome is rare, so those points bounce around a lot; do not over-interpret a single wobbly point at the right edge. Second, as with every other performance metric in this course, you should be assessing calibration on the <strong>validation folds</strong> during model comparison and on the <strong>held-out test data</strong> for your final assessment — never on the training data, where every model looks well calibrated.</p>
+</section>
+<section id="summarizing-calibration-with-a-number-the-brier-score" class="level2">
+<h2 class="anchored" data-anchor-id="summarizing-calibration-with-a-number-the-brier-score">Summarizing calibration with a number: the Brier score</h2>
+<p>While the plot is more informative, it is helpful to have a single number for comparing learners. The <strong>Brier score</strong> is the mean squared difference between the predicted probability and the observed outcome:</p>
+<span class="math display">\[\begin{equation}
+Brier = \frac{1}{n}\sum_{i=1}^{n}(\hat{p}_i - y_i)^2
+\end{equation}\]</span>
+<p>where <span class="math inline">\(\hat{p}_i\)</span> is the predicted probability for unit <span class="math inline">\(i\)</span> and <span class="math inline">\(y_i\)</span> is that unit’s observed outcome (0 or 1). <strong>Lower is better,</strong> which is worth flagging because it runs opposite to most of the metrics we have seen.</p>
+<p>The Brier score is a <em>proper scoring rule</em>, which means it is minimized only by reporting your honest probabilities — you cannot improve it by strategically shading your predictions toward 0 or 1. It rewards both discrimination and calibration at once. That is a strength (it is a good all-purpose summary) and a weakness (a mediocre Brier score does not tell you <em>which</em> of the two is the problem, which is why you still want the plot).</p>
+<p>One thing to be careful about: Brier scores are hard to interpret in isolation, especially with rare outcomes. A model that always predicts the base rate <span class="math inline">\(\bar{p}\)</span> achieves a Brier score of <span class="math inline">\(\bar{p}(1-\bar{p})\)</span>. If only 8% of students fail to graduate on time, a model that ignores all the data and predicts 0.08 for everyone gets a Brier score of 0.0736 — which looks impressively small but is completely uninformative. Always compare a learner’s Brier score against this base-rate benchmark, in the same spirit as the <a href="./poc_benchmark.html">benchmark learner</a> framework.</p>
+<p>A closely related metric you will encounter is <strong>log loss</strong> (also called cross-entropy), which penalizes confident mistakes far more harshly than the Brier score does. It is also a proper scoring rule and is a reasonable alternative, though it has the awkward property of being infinite if you ever predict 0 or 1 and are wrong.</p>
+</section>
+<section id="why-models-come-out-miscalibrated" class="level2">
+<h2 class="anchored" data-anchor-id="why-models-come-out-miscalibrated">Why models come out miscalibrated</h2>
+<p>It is worth knowing that miscalibration is usually not a mistake — it is a predictable consequence of choices made earlier in the workflow.</p>
+<ul>
+<li><p><strong>Regularization.</strong> Lasso shrinks coefficients toward zero on purpose, which compresses predicted probabilities toward the base rate. The shrinkage that buys you protection against <a href="./data_overfitting.html">overfitting</a> costs you calibration.</p></li>
+<li><p><strong>Boosting.</strong> XGBoost and related algorithms optimize a loss function that pushes predictions toward 0 and 1. Boosted models are frequently over-confident.</p></li>
+<li><p><strong>Random Forest.</strong> Because predictions are averages of votes across many trees, they tend to be pulled toward the middle of the range, and it is hard for a forest to output a probability very near 0 or 1.</p></li>
+<li><p><strong>Anything you did about class imbalance.</strong> Up-sampling the rare class, down-sampling the common class, or applying SMOTE will systematically inflate predicted probabilities, because the model was trained on data where the outcome is more common than it is in reality. This one catches people by surprise. If you resampled to handle imbalance, you should assume your model is miscalibrated until you check.</p></li>
+<li><p><strong>Distribution shift.</strong> A model trained on last year’s cohort and applied to this year’s will be miscalibrated if the base rate has moved, even if the relationships between predictors and outcome are unchanged. This connects directly to the monitoring issues discussed in the <a href="./deployment.html">deployment section</a>.</p></li>
+</ul>
+</section>
+<section id="fixing-calibration" class="level2">
+<h2 class="anchored" data-anchor-id="fixing-calibration">Fixing calibration</h2>
+<p>The good news is that calibration is often repairable without touching the underlying model, because it is a problem with the <em>scale</em> of the predictions rather than their <em>ordering</em>.</p>
+<p>The two standard approaches both fit a simple second model that maps raw predicted probabilities onto corrected ones:</p>
+<ul>
+<li><p><strong>Platt scaling</strong> (logistic recalibration) fits a logistic regression of the observed outcome on the raw predicted values. It is simple, needs little data, and works well when the miscalibration has a smooth S-shape. Because it is a rigid parametric form, it cannot fix unusual patterns.</p></li>
+<li><p><strong>Isotonic regression</strong> fits a flexible step function that is only required to be non-decreasing. It can correct almost any monotone miscalibration pattern, but it needs considerably more data and will overfit on small samples.</p></li>
+</ul>
+<p>Two rules govern how you use these:</p>
+<ol type="1">
+<li><p><strong>Never fit the recalibration on the training data.</strong> The model’s predictions on data it was trained on are already too good, so a recalibration fit there will learn the wrong correction. Fit it on held-out data — within the cross-validation procedure, or on a separate calibration split.</p></li>
+<li><p><strong>Recalibration is part of the learner.</strong> Once you decide to recalibrate, the recalibration step becomes part of the model, and the final honest assessment still has to happen on <a href="./data_test.html">test data</a> that played no role in either fitting or recalibrating.</p></li>
+</ol>
+<p>Also note what recalibration cannot do: it does not change the ranking, so it will not improve AUC-ROC at all. If your model does not discriminate well, calibration will not save it. The two properties are separate, and you need both.</p>
+</section>
+<section id="calibration-within-subgroups" class="level2">
+<h2 class="anchored" data-anchor-id="calibration-within-subgroups">Calibration within subgroups</h2>
+<p>Everything above can — and in service applications, should — be computed separately by subgroup. A model can be well calibrated overall while systematically over-predicting risk for one racial or gender group and under-predicting for another, because the overall picture averages the two errors away.</p>
+<p>This is the same quantity as the first fairness definition discussed in the <a href="./bias_define.html">bias section</a>, where it goes by the name <strong>predictive parity</strong>. It is worth being aware, before you get there, of a result that section develops in more detail: when the base rate of the outcome genuinely differs across groups, it is mathematically impossible for a model to satisfy calibration within groups <em>and</em> equalize false positive and false negative rates across groups at the same time. You have to choose, and that choice is a values judgment about the specific application rather than a technical one.</p>
+</section>
+<section id="implementing-calibration-assessment-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="implementing-calibration-assessment-in-r">Implementing calibration assessment in R</h2>
+<p>The <code>probably</code> package (part of <code>tidymodels</code>) is the current standard tooling:</p>
+<ul>
+<li><code>probably::cal_plot_breaks()</code> and <code>cal_plot_windowed()</code> produce calibration plots, and will facet by group if you pass a grouping variable — which is what you want for the subgroup analysis above.</li>
+<li><code>probably::cal_estimate_logistic()</code> and <code>cal_estimate_isotonic()</code> fit Platt scaling and isotonic regression, and <code>cal_apply()</code> applies the fitted correction to new predictions.</li>
+<li><code>yardstick::brier_class()</code> and <code>yardstick::mn_log_loss()</code> compute the Brier score and log loss, and can be added to a metric set alongside the AUC metrics you are already computing during validation.</li>
+</ul>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./perform_thresholdinvariant.html" class="pagination-link" aria-label="Threshold-invariant metrics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Threshold-invariant metrics</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./perform_goals.html" class="pagination-link" aria-label="Prioritizing metrics that align with goals">
+        <span class="nav-page-text">Prioritizing metrics that align with goals</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

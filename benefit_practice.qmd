@@ -1,0 +1,114 @@
+---
+title: "Making targeting decisions anyway"
+editor:
+  markdown:
+    wrap: sentence
+---
+
+Here is the situation almost all of you will actually face.
+You have a risk model. The program has limited slots. Nobody has run a randomized trial of this program, and nobody is going to before the enrollment decisions have to be made.
+
+The two previous pages might seem to leave you stuck.
+They do not.
+What they do is change your job from *handing over a ranked list* to *helping an organization make a defensible decision and learn from it.*
+That is a more useful role, and this page is about how to fill it.
+
+## 1. Say the assumption out loud
+
+The most valuable thing you can do costs nothing.
+When the program director proposes serving the 100 highest-risk students, name the assumption that proposal rests on:
+
+> *"That approach assumes the students most likely to drop out are also the students this program can help the most. That may well be true --- but it's an assumption, not something the model tells us. Can we talk about whether it holds for this program?"*
+
+You will often find that practitioners have a well-formed view.
+"Honestly, the kids at the very top of that list have things going on that mentoring won't touch --- it's the ones in the middle we can actually reach."
+That is real information from people who have done the work for years, and it is not in your data.
+It deserves to enter the decision explicitly, rather than being silently overridden by a sorted column.
+
+The failure mode to avoid is one where a ranked list arrives with an implicit recommendation attached, and nobody ever articulates the assumption well enough to disagree with it.
+
+## 2. Ask how the program is supposed to work
+
+If you cannot measure who benefits, you can at least reason about it.
+Every program has a mechanism --- a story about what it changes and for whom.
+
+-   A tutoring program works by improving academic skills. It should help students whose barrier is academic. It will do little for a student whose barrier is chronic absence.
+-   A transportation subsidy works by removing a logistical obstacle. It helps enormously for people whose obstacle is transportation and not at all for everyone else.
+-   An intensive case management program needs the client to engage with it repeatedly. It cannot help someone who will not or cannot participate.
+
+Now this connects back to work you have already done.
+Your [variable importance](results_VI.qmd) results and your [group-level analyses](results_groups.qmd) tell you *what characterizes* the high-risk group.
+If the high-risk group is defined mostly by chronic absenteeism, and your program is tutoring, you have identified a mismatch through reasoning alone --- no evaluation required.
+That is a genuinely useful contribution to the design conversation, and it is the sort of thing the results section of this course was building toward.
+
+Be careful to keep the logic honest: this is a way of generating a plausible hypothesis about benefit, not evidence of it.
+But a well-reasoned hypothesis beats an unexamined assumption.
+
+## 3. Recognize that risk targeting may be right for reasons other than benefit
+
+There is an important move available here, and it is not a technical one.
+
+Serving those at greatest risk may be the right thing to do *because they are worst off* --- not because the program will move them the most.
+Prioritizing by need is a defensible and widely held ethical position.
+Many public services exist precisely to direct resources toward the people in the most difficulty, and "we could generate more measurable impact elsewhere" is not always a sufficient reason to abandon them.
+
+The reverse holds too, and it is worth being blunt about.
+Targeting purely by expected benefit can amount to cream-skimming: systematically directing scarce resources toward people who are easier to help, which often means people who are already better off.
+A program optimized for measurable impact can end up quietly abandoning the population it was created for.
+
+**These are competing values, and there is no technical resolution.**
+Efficiency and equity genuinely pull in different directions here, and the analysis cannot arbitrate between them.
+What the analysis *can* do is make the trade-off visible, so that the organization chooses knowingly.
+This connects directly to the [ethical considerations](paforimprovingss_ethics.qmd) discussed early in the course, and it is a conversation that should include the people affected.
+
+What is not acceptable is dressing a values choice in technical language --- claiming a targeting rule is "optimal" when it reflects a decision about whose needs matter, or claiming to maximize impact when what is really happening is serving whoever is easiest.
+
+## 4. Use the model for what it is genuinely good at
+
+Risk models remain valuable. Just be precise about the use:
+
+-   **Sizing the problem.** "About 340 students in this cohort are at substantial risk" is a planning fact that supports budgeting and staffing. This is a place where [calibration](perform_calibration.qmd) matters and where the model is on solid ground.
+-   **Allocating across sites.** Comparing risk concentrations across schools or offices, as in [using results to inform decisions](results_action.qmd), does not require any claim about individual benefit.
+-   **Triage rather than treatment.** Using a score to decide who gets a *closer look* by a human is a much weaker claim than using it to decide who gets *served* --- and it keeps professional judgment, which knows things the model does not, in the loop.
+-   **Surfacing people who would otherwise be missed.** In large systems, some high-risk individuals are invisible to staff simply because nobody has reviewed their file. A model that says "look at this person" is useful even if it says nothing about what to do next.
+-   **Identifying where to look for causes.** Not causal evidence, but a legitimate source of hypotheses for program design.
+
+## 5. Design the deployment so you learn
+
+This is the recommendation I would most like you to carry into your working lives, and it is the one most often missed.
+
+The moment a program deploys a targeting rule is the moment it could start generating the evidence it lacks --- if someone plans for it in advance.
+Almost nobody does, and the opportunity is gone permanently once enrollment begins.
+
+Several designs cost very little:
+
+-   **Randomize at the margin.** Suppose 250 students clear your risk threshold and there are 100 slots. Something must decide which 100. If that something is a lottery among the 250 --- or among the students near the cutoff, where staff are close to indifferent anyway --- you have built a randomized experiment into normal operations. In two years you will know what the program does. Rationing is already happening; randomizing it is often the *fairest* option available, and it happens to be the one that produces knowledge.
+
+-   **Stagger the rollout.** If the program expands across sites over three years, the order can be randomized or at least documented. Later sites serve as a comparison group for earlier ones.
+
+-   **Use the threshold itself.** If a rule genuinely assigns everyone above a cutoff and nobody below it, people just above and just below are very similar to each other, and comparing them supports a regression discontinuity analysis later. This requires that the rule actually be followed --- which is worth knowing regardless.
+
+-   **Hold out a small group.** Even 10% not served, chosen at random, converts an unanswerable question into an answerable one.
+
+-   **At minimum, record everything.** Who was scored, what the score was, who was offered the service, who accepted, who actually received it, and what happened. The number of organizations that deploy a model and cannot afterward reconstruct who it touched is remarkable. This overlaps with the documentation and monitoring practices in the [deployment section](deployment.qmd).
+
+There are real objections to raise here --- withholding a service from someone who qualifies is an ethical decision that deserves scrutiny, not a technicality. But it should be weighed against the alternative, which is running a program indefinitely without ever knowing whether it helps anyone. The hotspotting program was replicated widely for years on the strength of evidence that turned out to mean nothing.
+
+## 6. Think in cycles
+
+Putting it together, a realistic sequence for an organization starting from nothing:
+
+1.  **Now:** Use the risk model to identify a pool of people who plausibly need the service, with the targeting assumption stated openly and reviewed against practitioner knowledge.
+2.  **At the same time:** Build the deployment so it generates evidence --- randomize the rationing, stagger the rollout, or hold out a comparison group.
+3.  **Later:** Evaluate. Learn the average effect first, since that is what you will have power to detect.
+4.  **Later still, with adequate sample:** Examine whether effects differ across pre-specified subgroups, using the [approaches described on the previous page](benefit_estimate.qmd).
+5.  **Then:** Revise the targeting rule based on what benefit --- not risk --- actually looks like, and keep going.
+
+Very few organizations get past step 1.
+Understanding why steps 2 through 5 matter, and being able to explain it to a program director in language they find compelling, is one of the more valuable things you can take away from this course.
+
+## The short version
+
+Your model tells you who is likely to have a bad outcome.
+It does not tell you who your program will help.
+When you cannot know the second thing, the professional response is not to pretend the first thing answers it --- it is to be explicit about the gap, use practitioner knowledge and program logic to reason about it, be honest about which values are driving the decision, and build the deployment so that next time you will not have to guess.

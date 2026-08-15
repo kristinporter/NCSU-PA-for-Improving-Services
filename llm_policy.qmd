@@ -1,0 +1,68 @@
+---
+title: "Using AI tools in this course"
+editor:
+  markdown:
+    wrap: sentence
+---
+
+::: callout-note
+This page states the expectations for AI use in this class.
+Read it in the first week, even though it appears at the end of these materials.
+Where it conflicts with NCSU policy or with anything I say in class, those take precedence.
+:::
+
+I am not going to pretend you will not use these tools, and I do not want you to.
+Being able to work effectively with an LLM is part of doing data analysis now, and you would be poorly served by a course that pretended otherwise.
+What I care about is that you can tell the difference between work you understand and output you have accepted.
+
+## What you may do
+
+-   Use an LLM to help you write, debug, or explain R code.
+-   Use it to explain a concept from these materials in different words, or to work through an example.
+-   Use it to help you draft and revise your writing.
+-   Use it to explore an idea or generate hypotheses you then check.
+
+## What you may not do
+
+-   **Submit anything you cannot explain.** This is the whole rule, and everything else follows from it. If I ask why you standardized inside the recipe rather than before the split, "that is what it gave me" is not an answer. You may be asked this in class or in office hours about any submitted work.
+-   **Paste real data with identifiable information into a chatbot.** Course datasets are fine. If you ever do this work with actual administrative records --- in an internship, a job, a practicum --- sending them to an external service may violate law, a data use agreement, or an IRB protocol. Build the habit now.
+-   **Present LLM output as your own analysis without disclosure** (see below).
+
+## Disclosure
+
+For each submitted assignment, include a short note --- two or three sentences is plenty --- describing how you used AI tools.
+For example:
+
+> *I used Claude to debug an error in my recipe specification and to help me understand why my calibration plot was S-shaped. I wrote the learner specifications and the interpretation myself.*
+
+This is not a trap and it does not cost you points.
+I ask for it because being able to say clearly what a tool did and what you did is a professional skill, and because it makes the class conversation about these tools far more useful when it is based on what people actually did.
+
+## Why I care about this specifically in *this* course
+
+Predictive analytics has an unusual property that makes uncritical AI use more dangerous than in most subjects: **the serious mistakes do not announce themselves.**
+
+If an LLM writes bad code for plotting, the plot looks wrong and you fix it.
+If an LLM writes code that leaks test data into training, everything runs, the output looks great, and your AUC goes *up*.
+There is no error message. There is no visual cue. The only defense is a person who understands what should have happened and notices that it did not.
+
+That person is the one this course is trying to produce.
+The value you will add professionally is not typing `rand_forest()` --- an LLM does that faster than you.
+It is knowing that the model was trained on resampled data and its probabilities are therefore inflated.
+It is asking whether that predictor would actually have existed on the day the prediction gets made.
+It is recognizing that a model can be well calibrated overall and badly miscalibrated for a subgroup that matters.
+
+Every one of those is judgment about a specific context, and none of them is in the prompt.
+
+## In-class exercise: find the bug
+
+At one point during the semester we will do the following in class, and it is worth knowing about in advance:
+
+You will each receive an R script that performs a complete predictive analytics workflow on a familiar dataset --- loading, cleaning, splitting, training several learners, and reporting performance.
+It is written in the style of LLM-generated code, it runs without error, and it reports an AUC-ROC that should make you happy.
+
+It contains at least one planted flaw of the kind described on the [coding assistant page](llm_copilot.qmd) --- leakage, a predictor unavailable at the prediction timepoint, a silent sample-size drop, resampling that breaks calibration, or a split that ignores clustering.
+
+Your task is to find it, explain the mechanism by which it inflates the results, and estimate how much of the reported performance it accounts for.
+
+This is what code review of AI-generated analysis actually looks like, and it is a task you will be asked to do in your working life.

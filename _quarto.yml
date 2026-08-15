@@ -73,6 +73,7 @@ website:
         contents:
           - perform_confusionmatrix.qmd
           - perform_thresholdinvariant.qmd
+          - perform_calibration.qmd
           - perform_goals.qmd
           - perform_selectthreshold.qmd
       - section: "Evaluating and comparing bias"
@@ -91,9 +92,23 @@ website:
           - results_VI.qmd
           - results_action.qmd
           - results_limitations.qmd
+      - section: "Predicting risk vs. predicting benefit"
+        contents:
+          - benefit_notrisk.qmd
+          - benefit_estimate.qmd
+          - benefit_practice.qmd
+
       - section: "Deploying predictive analytics"
         contents:
           - deployment.qmd
+
+      - section: "Predictive analytics and LLMs"
+        contents:
+          - llm_overview.qmd
+          - llm_copilot.qmd
+          - llm_features.qmd
+          - llm_predictor.qmd
+          - llm_policy.qmd
 
       - section: "Additional optional material"
         contents:

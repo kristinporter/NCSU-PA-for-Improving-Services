@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./OptionalPAvsInfStat.html" rel="next">
-<link href="./results_limitations.html" rel="prev">
+<link href="./llm_overview.html" rel="next">
+<link href="./benefit_practice.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -320,7 +320,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data2_EDA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exploratory data analysies</span></a>
+ <span class="menu-text">Exploratory data analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -421,6 +421,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="./perform_thresholdinvariant.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Threshold-invariant metrics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./perform_calibration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Calibration: do the predicted probabilities mean anything?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -534,12 +540,41 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
- <span class="menu-text">Deploying predictive analytics</span></a>
+ <span class="menu-text">Predicting risk vs.&nbsp;predicting benefit</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./benefit_notrisk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Predicting risk is not predicting benefit</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./benefit_estimate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What it would take to predict benefit</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./benefit_practice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Making targeting decisions anyway</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true">
+ <span class="menu-text">Deploying predictive analytics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./deployment.html" class="sidebar-item-text sidebar-link active">
@@ -550,13 +585,54 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true">
- <span class="menu-text">Additional optional material</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true">
+ <span class="menu-text">Predictive analytics and LLMs</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./llm_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Three very different roles for LLMs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./llm_copilot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Role 1: The LLM as a coding assistant</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./llm_features.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Role 2: The LLM as a way to create predictors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./llm_predictor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Role 3: The LLM as the prediction model itself</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./llm_policy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using AI tools in this course</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true">
+ <span class="menu-text">Additional optional material</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./OptionalPAvsInfStat.html" class="sidebar-item-text sidebar-link">
@@ -603,7 +679,7 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 <li><strong>Deploying Predictive Analytics</strong>
 <ul>
-<li><p><strong>Organizational Capacity</strong>: While this should be an important consideration at beore embarking on a predictive analytics proof-of-concept, it is worthwhile to revisit at this juncture. Assess if the organization has the necessary infrastructure, technical expertise, and resources to implement and support predictive analytics.</p></li>
+<li><p><strong>Organizational Capacity</strong>: While this should be an important consideration before embarking on a predictive analytics proof-of-concept, it is worthwhile to revisit at this juncture. Assess if the organization has the necessary infrastructure, technical expertise, and resources to implement and support predictive analytics.</p></li>
 <li><p><strong>Integration with Existing Systems</strong>: Determine how the predictive analytics will integrate with existing systems and workflows. This could be as simple as taking coefficients from a regression model and applying them to data in a spreadsheet, or it could be a much more complex data engineering endeavor.</p></li>
 <li><p><strong>Frequency of Predictions</strong>: Decide on the frequency of making predictions. This depends on the nature of the data, the purpose of the model, the frequency of the need for updated information, how often new service recipients enter the picture, and the operational capabilities.</p></li>
 <li><p><strong>User Training and Support</strong>: In a real-world application, there would need to be in-depth consideration about how to provide adequate training and support to the users of the predictive analytics to ensure effective utilization.</p></li>
@@ -1023,13 +1099,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./results_limitations.html" class="pagination-link" aria-label="Communicating limitations honestly">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Communicating limitations honestly</span>
+      <a href="./benefit_practice.html" class="pagination-link" aria-label="Making targeting decisions anyway">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Making targeting decisions anyway</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./OptionalPAvsInfStat.html" class="pagination-link" aria-label="Predictive Analytics vs. Inferential Statistics">
-        <span class="nav-page-text">Predictive Analytics vs.&nbsp;Inferential Statistics</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./llm_overview.html" class="pagination-link" aria-label="Three very different roles for LLMs">
+        <span class="nav-page-text">Three very different roles for LLMs</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

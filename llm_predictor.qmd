@@ -1,0 +1,85 @@
+---
+title: "Role 3: The LLM as the prediction model itself"
+editor:
+  markdown:
+    wrap: sentence
+---
+
+The third role is the one people usually have in mind when they ask whether AI has changed predictive analytics.
+Instead of training a model, you write a prompt:
+
+> *Here is a student: 9th grade, 22 absences, 1.8 GPA, two disciplinary referrals, eligible for free lunch. What is the probability this student does not graduate on time?*
+
+The LLM will answer. It will produce a number, it will sound confident, and the number may not be unreasonable.
+
+This is technically possible and, for most public service applications, usually the wrong choice.
+Being able to explain *why* is worth more than knowing the conclusion --- so this page walks through the reasons, and then through the narrower cases where the answer flips.
+
+## Why this is usually the wrong tool for risk scoring
+
+**The probabilities are not calibrated, and cannot easily be made so.**
+Now that you have worked through [calibration](perform_calibration.qmd), you can see the problem clearly.
+An LLM's "0.7" is a plausible-sounding token, not an estimate from a distribution.
+There is no reason to expect that among everyone the model calls 0.7, about 70% experience the outcome, and in practice these numbers cluster on round values and shift with wording.
+For any of the uses where calibration matters --- capacity planning, cost-benefit reasoning, communicating a number to a caseworker --- this is disqualifying.
+
+**You cannot audit it.**
+A logistic regression has coefficients. A random forest has [variable importance](results_VI.qmd) and a describable procedure.
+When a family asks why they were flagged, or a journalist files a records request, or a court asks how the system reached a decision, you need an answer.
+"The model produced this output and we do not know from what" is not one.
+For high-stakes public decisions, this alone usually ends the conversation.
+
+**The training data are unknown and unauditable.**
+Every [bias](bias_intro.qmd) analysis in this course rests on knowing something about where your data came from.
+With a general-purpose LLM you know essentially nothing about the corpus behind the predictions, which means you cannot reason about whose patterns the model absorbed.
+You can still measure disparities in the outputs --- and you should --- but you cannot explain or fix their source.
+
+**The model changes underneath you.**
+Providers update models continuously, often without changing the name you call, and retire versions on their own schedule.
+A predictive system whose behavior can silently change on a vendor's timeline is very difficult to monitor, and directly at odds with everything on the [deployment](deployment.qmd) page. A model you trained yourself sits in a file and does the same thing tomorrow.
+
+**Prompt sensitivity.**
+Reorder the predictors, rephrase the question, change the units, and the number moves.
+A model whose output depends on incidental formatting choices is not a stable measurement instrument.
+
+**Benchmark contamination makes published comparisons unreliable.**
+When you read that an LLM performed impressively on some prediction task, ask whether that dataset was on the public internet before the model was trained.
+For most well-known benchmark datasets it was, so the model may be recalling rather than predicting.
+This is why your own [held-out test data](data_test.qmd) --- data the model provably could not have seen --- is the only evidence that settles the question.
+
+**Cost and latency.**
+An API call per prediction, at scale, is orders of magnitude more expensive and slower than scoring rows with a fitted model. For a one-time analysis this is irrelevant; for a system scoring every new referral it is not.
+
+## Where it is actually reasonable
+
+The case against LLM-as-predictor is specific to risk scoring on structured data in high-stakes settings.
+There are real situations where reaching for one makes sense:
+
+-   **You have no training data at all.** Every method in this course requires historical cases with known outcomes. If a program is brand new, you have nothing to train on, and an LLM's general knowledge may beat nothing --- as a stopgap, explicitly labeled as such, while you build the data infrastructure to do it properly.
+
+-   **The task is genuinely about language.** Classifying what a case note is about, routing an inquiry to the right department, or summarizing themes across open-ended responses are tasks where language understanding *is* the job. This is closer to [Role 2](llm_features.qmd) than to risk scoring.
+
+-   **The stakes are low and the volume is small.** Not every prediction problem is a consequential decision about a person.
+
+-   **As a source of hypotheses.** Asking what predictors are worth considering for a given outcome can be a useful starting point for a conversation with subject-matter experts --- as long as the answers are then tested rather than believed.
+
+## If you do it anyway, evaluate it identically
+
+Here is the part that matters most, and it is the reason this page belongs in a course rather than a policy memo.
+
+If a colleague or a vendor proposes an LLM-based risk score, you do not need to argue about it in the abstract.
+You already have the machinery to settle it.
+An LLM-based predictor is just another [learner](poc_learners.qmd), and it earns its place exactly the way every other learner does:
+
+-   Run it on your **held-out test data**, the same data used for every other learner.
+-   Compute the **same metrics** --- AUC-ROC, AUC-PR, and the [threshold-variant metrics](perform_confusionmatrix.qmd) at your chosen threshold.
+-   Compute the **Brier score and a calibration plot**. This is where these systems usually come apart.
+-   Run the **same [bias analyses](bias_define.qmd)** across the same subgroups.
+-   Compare it against your **[benchmark learner](poc_benchmark.qmd)** --- the simple, transparent, explainable one.
+
+Then apply the standard this course has used throughout: added complexity must earn its way in.
+An LLM-based predictor is not merely more complex than a logistic regression; it is less auditable, less stable, more expensive, and harder to govern.
+The performance improvement required to justify all of that is correspondingly large --- and in published comparisons on structured prediction tasks, it is usually not there.
+
+Being able to say "we tested it, here are the numbers, here is the calibration plot, and it did not beat our benchmark" is a far stronger professional position than either uncritical enthusiasm or reflexive dismissal.
+Learning to say a well-evidenced no is a real skill.

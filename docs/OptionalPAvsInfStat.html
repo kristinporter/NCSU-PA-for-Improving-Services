@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./deployment.html" rel="prev">
+<link href="./llm_policy.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -319,7 +319,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data2_EDA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exploratory data analysies</span></a>
+ <span class="menu-text">Exploratory data analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -420,6 +420,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="./perform_thresholdinvariant.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Threshold-invariant metrics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./perform_calibration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Calibration: do the predicted probabilities mean anything?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -533,12 +539,41 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
- <span class="menu-text">Deploying predictive analytics</span></a>
+ <span class="menu-text">Predicting risk vs.&nbsp;predicting benefit</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./benefit_notrisk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Predicting risk is not predicting benefit</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./benefit_estimate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What it would take to predict benefit</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./benefit_practice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Making targeting decisions anyway</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true">
+ <span class="menu-text">Deploying predictive analytics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./deployment.html" class="sidebar-item-text sidebar-link">
@@ -549,13 +584,54 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true">
- <span class="menu-text">Additional optional material</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true">
+ <span class="menu-text">Predictive analytics and LLMs</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./llm_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Three very different roles for LLMs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./llm_copilot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Role 1: The LLM as a coding assistant</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./llm_features.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Role 2: The LLM as a way to create predictors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./llm_predictor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Role 3: The LLM as the prediction model itself</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./llm_policy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using AI tools in this course</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true">
+ <span class="menu-text">Additional optional material</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./OptionalPAvsInfStat.html" class="sidebar-item-text sidebar-link active">
@@ -596,7 +672,7 @@ ul.task-list li input[type="checkbox"] {
 <p>In inference settings, we usually aim to understand properties of a population. “An inferential data analysis quantifies whether an observed pattern will likely hold beyond the data set in hand. This is the most common statistical analysis in the formal scientific literature (Leek and Peng (2015)).” We may ask: what is the mean height of all Gentoo penguins in the world? We can construct both a point estimate (such as 30 inches) and a measure of uncertainty, which can be expressed as a standard error (2 inches), or as a confidence interval (we are 95% confident the true mean height is between 26 and 34 inches). To construct these estimates about our population, we use information from a sample we have collected, such as a set of 20 Gentoo penguins caught and measured by ecologists.</p>
 <p>Statistical inference can also be used to understand relationships between variables. For example, we might be interested in the relationship between penguin body mass and penguin height, so we run a linear regression of body mass on height. The regression gives us a coefficient, which we can interpret as: for each increase in height by 1 inch, body mass increases on average by x inches.</p>
 <p>In predictive analytics, our goal is to make the most accurate prediction possible given the available data. In predictive analytics, we usually focus on point estimates, and often do not look at measures of uncertainty. Certain prediction algorithms give uncertainty estimates, such as regression, but others do not immediately provide uncertainty estimates (without modification or further more complicated algorithms). Without measures of uncertainty, we should take particular care in the use and interpretation of predictive analytics outputs. The algorithm gives its best possible guess of the outcome based on historical data, but we do not know how “confident” we are in the result. For example, consider using the above regression to predict the average body mass of a Gentoo penguin that is 32 inches tall. The regression tells us the expected body mass is 4000g, with a confidence interval of 3800 to 4200g. We then predict the average body mass of a Gentoo penguin that is 40 inches tall. For a penguin of this height, the expected body mass is 4500g, with a confidence interval of 2000g to 6000g. The confidence intervals for different heights have substantially different widths, telling us that we have different amounts of uncertainty around different predictions. In contrast, many prediction algorithms would not give us estimates of uncertainty, so we would only see the point estimates.</p>
-<p>Neither predictive analytics not inferential analysis should be used to make causal conclusions. “Predictive data analyses only show that you can predict one measurement from another; they do not necessarily explain why that choice of prediction works (Leek and Peng (2015)).” If we have an interpretable model, or we use a machine learning interpretation method, we can use the algorithm to better understand historical patterns and relationships in the data. For example, in the above regression, we can conclude that there is a particular historical relationship between body mass and height. However, we cannot conclude that these patterns are causal. Let’s say we aim to predict the number of ice cream sales on a future summer day. We find that the most useful predictor of the number of ice cream sales is the number of lifeguards on duty that day at the local beach. Are those extra lifeguards alone driving our ice cream sales? Probably not! Most likely weather is a confounding variable here. On hot sunny days, more people go to the beach, there are more life guards on duty, and more people buy ice cream. We have found a correlation, but we cannot conclude it is causal. To make conclusions about causal relationships, we must take an entirely different approach. To make rigorous causal conclusions, we would need to carefully design a study, ideally an experiment or in some cases a well-designed observational study. Such causal inference approaches are beyond the scope of this guide.</p>
+<p>Neither predictive analytics not inferential analysis should be used to make causal conclusions. “Predictive data analyses only show that you can predict one measurement from another; they do not necessarily explain why that choice of prediction works (Leek and Peng (2015)).” If we have an interpretable model, or we use a machine learning interpretation method, we can use the algorithm to better understand historical patterns and relationships in the data. For example, in the above regression, we can conclude that there is a particular historical relationship between body mass and height. However, we cannot conclude that these patterns are causal. Let’s say we aim to predict the number of ice cream sales on a future summer day. We find that the most useful predictor of the number of ice cream sales is the number of lifeguards on duty that day at the local beach. Are those extra lifeguards alone driving our ice cream sales? Probably not! Most likely weather is a confounding variable here. On hot sunny days, more people go to the beach, there are more life guards on duty, and more people buy ice cream. We have found a correlation, but we cannot conclude it is causal. To make conclusions about causal relationships, we must take an entirely different approach. To make rigorous causal conclusions, we would need to carefully design a study, ideally an experiment or in some cases a well-designed observational study. Such causal inference approaches are beyond the scope of this guide. However, because the distinction matters so much for deciding <em>who to serve</em>, the section on <a href="./benefit_notrisk.html">predicting risk vs.&nbsp;predicting benefit</a> discusses what these approaches are for and why prediction cannot substitute for them.</p>
 
 
 
@@ -1003,8 +1079,8 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./deployment.html" class="pagination-link" aria-label="A brief overview of considerations">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">A brief overview of considerations</span>
+      <a href="./llm_policy.html" class="pagination-link" aria-label="Using AI tools in this course">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Using AI tools in this course</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

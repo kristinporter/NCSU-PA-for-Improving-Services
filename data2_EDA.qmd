@@ -1,5 +1,5 @@
 ---
-title: "Exploratory data analysies"
+title: "Exploratory data analysis"
 editor: 
   markdown: 
     wrap: sentence

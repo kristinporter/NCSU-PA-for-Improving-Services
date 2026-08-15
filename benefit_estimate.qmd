@@ -1,0 +1,125 @@
+---
+title: "What it would take to predict benefit"
+editor:
+  markdown:
+    wrap: sentence
+---
+
+If predicted risk is the wrong quantity for targeting decisions, what is the right one, and could we build a model for *that* instead?
+
+The answer is yes in principle, and it requires something that no amount of predictive modeling skill can substitute for.
+This page explains what that something is.
+The goal here is conceptual --- I want you to understand what the quantity is, what data it demands, and why it is so much harder to estimate than a predicted probability.
+Actually carrying out these analyses is the subject of a course in causal inference or program evaluation, not this one.
+
+## Two outcomes, one observation
+
+Start with a single student, Maya.
+There are two versions of Maya's future:
+
+-   $Y(1)$: whether Maya graduates on time **if she is enrolled** in the mentoring program.
+-   $Y(0)$: whether Maya graduates on time **if she is not**.
+
+These are called **potential outcomes**.
+The benefit of the program *for Maya* is the difference between them: $Y(1) - Y(0)$.
+If she would graduate with the program and not without it, the benefit is 1 --- the program changed her life.
+If she would graduate either way, or fail either way, the benefit is 0.
+
+Here is the difficulty, and it is not a technical one that better methods will eventually solve.
+Maya either enrolls or she does not.
+We observe one of these two outcomes, ever, and the other is permanently unavailable.
+This is known as the **fundamental problem of causal inference**, and it means that individual-level benefit is not a quantity that exists in any dataset.
+
+Contrast this with prediction.
+When we predict whether Maya graduates, the truth is eventually observable --- we wait four years and look.
+That is exactly why the entire [test data](data_test.qmd) apparatus works: we can hold out data, make predictions, and check them against what actually happened.
+There is no equivalent check for benefit, because the comparison case never occurs.
+
+## The quantity we can estimate
+
+What we can estimate is an average.
+For groups of people who look alike on their observed characteristics, we can ask how much the program changes outcomes *on average* within that group.
+This is called the **conditional average treatment effect**, or CATE:
+
+```{=tex}
+\begin{equation}
+\tau(x) = E[Y(1) - Y(0) \mid X = x]
+\end{equation}
+```
+Read it as: *among people whose characteristics are $x$, how much does the program change the outcome, on average?*
+
+It is worth putting this side by side with what your models have been estimating all course:
+
+| | Quantity | Question answered |
+|-------------------|-------------------|----------------------------------|
+| **Prediction** | $E[Y \mid X = x]$ | How likely is the outcome for this kind of person? |
+| **Benefit** | $E[Y(1) - Y(0) \mid X = x]$ | How much does the service change the outcome for this kind of person? |
+
+The first is a level; the second is a difference between two worlds.
+A model can be superb at the first and carry no information at all about the second.
+
+Note also that a risk model built on historical data typically describes the world *as it currently operates*, which usually means outcomes under whatever mix of services people were already receiving.
+It is closer to an estimate of $E[Y(0) \mid X]$ than to anything about the program's effect.
+
+## What data this requires
+
+To estimate a CATE, you need to observe outcomes for people who received the service **and** people who did not, in a setting where the comparison is credible.
+The gold standard is a **randomized experiment**: eligible people are randomly assigned to receive the service or not, so the two groups differ only by chance and any difference in outcomes can be attributed to the program.
+Certain quasi-experimental designs --- regression discontinuity, difference-in-differences, instrumental variables --- can substitute when randomization is impossible, under assumptions that must be argued rather than assumed.
+
+Now here is the mistake I most want you to avoid, because organizations make it constantly.
+
+::: callout-warning
+## The comparison that seems obvious and does not work
+
+You have administrative data. Some clients received the service; some did not. Why not just compare their outcomes and call the difference the benefit?
+
+Because *who received the service is not random.* Staff enrolled the people they judged most in need, or most likely to engage, or most likely to benefit. That judgment is baked into who is in each group. If caseworkers referred the families they were most worried about, the served group will have worse outcomes than the unserved group, and a naive comparison will make an effective program look harmful.
+
+The selection process is precisely the thing that makes the comparison uninterpretable, and it is invisible in the data. No amount of controlling for observed characteristics fixes it, because caseworkers were responding to things you did not measure. This is the same regression-to-the-mean trap that made the hotspotting program look successful before it was evaluated properly.
+:::
+
+This is the real barrier.
+Predicting risk requires historical data, which most agencies already have.
+Estimating benefit requires *experimental or quasi-experimental variation in who got served*, which most agencies do not have and cannot create retroactively.
+That asymmetry is the whole reason risk models are everywhere and benefit models are rare --- not because anyone thinks risk is the better targeting variable.
+
+## Approaches, briefly
+
+Assuming you have appropriate data, the approaches to estimating heterogeneous benefit range from very simple to quite elaborate:
+
+-   **Pre-specified subgroup analysis.** Decide in advance on a handful of subgroups that theory or practice suggests may respond differently --- by baseline risk tier, by age, by site --- and estimate the program's effect separately within each. This is what most rigorous evaluations do. It is transparent, easy to explain, and much harder to fool yourself with than the alternatives.
+
+-   **The two-model approach** (sometimes called a T-learner). Fit one outcome model among those who received the service and a separate one among those who did not, then take the difference in predictions for each person. Very intuitive, and it uses tools you already know. Its weakness is that you are differencing two noisy models, so the estimated differences are noisier still.
+
+-   **Single-model approaches** (S-learner). Fit one model with treatment status included as a predictor, then compare predictions with that indicator flipped on and off. Simple, but flexible algorithms tend to under-use the treatment indicator, which biases estimated effects toward zero.
+
+-   **Causal forests.** A modification of the Random Forest you met [earlier](methods_rf.qmd), where trees are grown to split on differences in *treatment effect* rather than differences in outcome [@AtheyTibshiraniWager2019]. This is a genuinely elegant idea: the same recursive-partitioning machinery, pointed at a different target. Implemented in the R package [`grf`](https://grf-labs.github.io/grf/), with [`policytree`](https://grf-labs.github.io/policytree/) for turning estimated effects into interpretable targeting rules.
+
+-   **Uplift modeling.** The same set of ideas under a different name, developed in marketing to identify customers whose behavior a campaign would actually change. The vocabulary differs; the quantity is the same.
+
+## Why this is much harder than prediction
+
+If you take one thing from this page beyond the definitions, make it this.
+Estimating heterogeneous benefit is not "prediction with an extra variable." It is a substantially harder statistical problem, for reasons worth understanding:
+
+**The signal is tiny compared with the noise.**
+Suppose the mentoring program raises on-time graduation by 5 percentage points on average --- a genuinely successful program.
+Detecting a 5-point average difference already requires a decent sample.
+Now you want to detect *variation* in that 5 points across subgroups: is it 2 points for one group and 9 for another?
+You are looking for differences within a difference, and the sample size needed is far larger --- often several times larger than what would be required to detect the average effect at all.
+
+**Findings are fragile.**
+Subgroup effects have a poor replication record across nearly every field that studies them.
+Test 20 subgroups at conventional significance levels and roughly one will look "significant" by chance alone.
+Combine that with the natural human enthusiasm for a story about which clients a program helps most, and you have a reliable machine for producing findings that evaporate on retest.
+
+**Your instincts from this course are the right defense.**
+The discipline you have learned --- pre-specify, hold out data, never evaluate on what you fit --- is exactly what protects you here, and it matters *more* in this setting than in prediction.
+Good practice in this area means committing to the subgroups in advance, correcting for multiple comparisons, and validating discovered heterogeneity on a held-out sample.
+The `grf` implementation takes this seriously, using "honest" trees that use separate portions of the data to choose splits and to estimate effects within them --- the same principle as your train/test split, applied inside the algorithm.
+
+**And you still need an evaluation.**
+Which costs money, takes years, and requires that someone decided to build one before the program rolled out.
+
+Which brings us to the practical question: what do you do when you have a risk model, a targeting decision to make, and none of this evidence?

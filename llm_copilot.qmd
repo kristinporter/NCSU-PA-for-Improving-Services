@@ -1,0 +1,96 @@
+---
+title: "Role 1: The LLM as a coding assistant"
+editor:
+  markdown:
+    wrap: sentence
+---
+
+This is the role you are already using, and the one I have the least interest in discouraging.
+Asking an LLM to write the `tidymodels` code for a random forest, to explain an error message, or to reshape a data frame is a reasonable use of a good tool.
+It genuinely lowers the barrier to doing analysis, which for a course like this one is a real benefit.
+
+But it introduces a specific hazard that is worth understanding precisely.
+
+## The core problem: fluent code that is quietly wrong
+
+When an LLM writes code that does not run, you find out immediately.
+The error message appears, and you fix it.
+That is the *safe* failure mode.
+
+The dangerous failure mode is code that runs perfectly, produces a plausible-looking number, and is wrong in a way nothing will ever flag.
+Predictive analytics is unusually rich in these, because the most serious errors in this field do not produce errors --- they produce **optimistic results.**
+A leakage bug does not crash your script.
+It hands you an AUC of 0.94 and a good feeling.
+
+The pattern to internalize: *in predictive analytics, a suspiciously good result is a bug report.*
+
+## The specific mistakes to watch for
+
+Here are the errors I most often see in LLM-generated predictive analytics code. Every one of them is something this course has already taught you to catch.
+
+**1. Splitting after preprocessing instead of before.**
+The single most common one.
+The LLM imputes missing values, standardizes continuous predictors, or fits a transformation on the *whole* dataset, and only then splits into training and test sets.
+This means information from your test data --- the mean used for centering, the median used for imputation --- has leaked into training.
+Your [test data are no longer held out](data_test.qmd), and your performance estimate is optimistic.
+In `tidymodels` the correct pattern is to put all preprocessing inside a `recipe` so that it is estimated within each resample; ask for that explicitly.
+
+**2. Predictors that would not exist at the prediction timepoint.**
+The LLM has no idea when your data were collected.
+If your dataset contains a variable recorded after the moment you would actually be making a prediction, it will happily include it, and it will predict beautifully.
+This is a violation of the [scoping question about *when*](scoping_when.qmd) that no amount of code review will catch --- only knowing your data will.
+Ask yourself for every predictor: *would this value have been in the system on the day I claim to be making this prediction?*
+
+**3. Silently dropping incomplete rows.**
+Many R modeling functions default to complete-case analysis.
+The LLM will not warn you that 40% of your sample vanished, and it certainly will not tell you that the dropped units differ systematically from those retained.
+Everything on the [missing data pages](data2_whymissing.qmd) applies, and the check is simple: compare `nrow()` before and after.
+
+**4. Resampling for class imbalance without mentioning the consequences.**
+Ask about imbalanced data and you will frequently be handed SMOTE or up-sampling.
+It may be a reasonable choice, but it inflates your predicted probabilities and wrecks [calibration](perform_calibration.qmd), and it needs to happen inside the resampling loop rather than before it.
+This rarely comes with a warning attached.
+
+**5. Cross-validation that ignores structure in the data.**
+If your units are clustered --- students within schools, repeated observations on the same client, multiple years of data --- a plain random split puts related observations on both sides of the divide and overstates performance.
+See [additional considerations on splitting](data_splitconsiderations.qmd).
+The LLM cannot know your data have this structure unless you tell it.
+
+**6. Metrics that do not match the goal.**
+You will usually get accuracy and AUC-ROC by default.
+With a rare outcome, accuracy is close to meaningless and AUC-ROC can be [misleadingly optimistic](perform_thresholdinvariant.qmd).
+You choose the metrics based on [how the predictions will be used](perform_goals.qmd); the LLM chooses them based on what appears most often in tutorials.
+
+**7. Deprecated or hallucinated functions.**
+A smaller problem, because it usually errors out, but worth knowing: R package APIs change, and LLM training data have a cutoff.
+Confidently-named functions that do not exist, and arguments that were renamed two versions ago, are both common.
+
+Notice a theme.
+Errors 1, 3, 4, and 5 all come from the LLM not knowing the structure of your data.
+Error 2 comes from it not knowing the timeline of your project.
+Error 6 comes from it not knowing your goal.
+The LLM is not being careless --- it is answering the question you asked with the context you gave it, and the context that matters most in predictive analytics is exactly the context it does not have.
+
+## How to use it well
+
+-   **Give it the context it is missing.** Tell it the outcome, the prediction timepoint, the base rate, the clustering structure, and how the predictions will be used. Most of the errors above disappear when the model knows these things.
+
+-   **Ask for one step at a time.** A single request that spans loading, cleaning, splitting, training, and evaluating produces a wall of code you will not read carefully. Ask for the split. Check it. Then ask for the recipe.
+
+-   **Make it explain, not just produce.** "Why did you put the imputation step there?" is a productive question. If the explanation does not survive contact with what you learned in this course, the code probably will not either.
+
+-   **Check the sample size at every stage.** Cheap, fast, and catches a surprising share of real problems.
+
+-   **Be suspicious of good news.** If your AUC jumps from 0.71 to 0.93 after a change, your first hypothesis should be leakage, not success.
+
+-   **Never paste real service data into a general-purpose chatbot.** If you are ever working with actual administrative records on children, patients, or clients, this is a data privacy violation regardless of how useful the answer would have been. Ask about *code*, share *structure*, and keep the data local.
+
+## What this does not change
+
+An LLM will not decide what you are trying to predict, for whom, or at what timepoint.
+It will not tell you whether the outcome you can measure is the outcome you actually care about.
+It will not tell you whether a model is appropriate to deploy, or who might be harmed by it.
+
+Those are the parts of predictive analytics that are hard, and they are all judgment about a specific context.
+The coding has genuinely gotten easier.
+The thinking has not.

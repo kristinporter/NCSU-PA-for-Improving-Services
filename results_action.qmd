@@ -67,7 +67,11 @@ When results are used this way, a few additional considerations apply:
 -   **Consider the full range of risk.** High-risk individuals are the
     most obvious targets for intervention, but those in the moderate-risk
     range may also benefit significantly, and in some cases may be more
-    responsive to intervention than those at the highest risk.
+    responsive to intervention than those at the highest risk. This point
+    is important enough that the [next section](benefit_notrisk.qmd) is
+    devoted to it: predicted risk and expected benefit are different
+    quantities, and targeting by the first assumes something about the
+    second that your model cannot verify.
 -   **Be thoughtful about how predictions are communicated to frontline
     staff.** Caseworkers and program staff will interact with the people
     these predictions describe. How predictions are framed --- and what
