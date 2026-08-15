@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Who has low or high predicted probabilities? – Predictive Analytics (PA) for Improving Services</title>
+<title>How people actually use predictions – Predictive Analytics (PA) for Improving Services</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,8 +50,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./results_VI.html" rel="next">
-<link href="./results_distrib.html" rel="prev">
+<link href="./deploy_monitoring.html" rel="next">
+<link href="./deploy_documentation.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -83,7 +103,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results_describe.html">Understanding and communicating results</a></li><li class="breadcrumb-item"><a href="./results_groups.html">Who has low or high predicted probabilities?</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./deployment.html">Deploying predictive analytics</a></li><li class="breadcrumb-item"><a href="./deploy_humans.html">How people actually use predictions</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -519,7 +539,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./results_groups.html" class="sidebar-item-text sidebar-link active">
+  <a href="./results_groups.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Who has low or high predicted probabilities?</span></a>
   </div>
 </li>
@@ -595,7 +615,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./deploy_humans.html" class="sidebar-item-text sidebar-link">
+  <a href="./deploy_humans.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">How people actually use predictions</span></a>
   </div>
 </li>
@@ -680,9 +700,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results_describe.html">Understanding and communicating results</a></li><li class="breadcrumb-item"><a href="./results_groups.html">Who has low or high predicted probabilities?</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./deployment.html">Deploying predictive analytics</a></li><li class="breadcrumb-item"><a href="./deploy_humans.html">How people actually use predictions</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Who has low or high predicted probabilities?</h1>
+<h1 class="title">How people actually use predictions</h1>
 </div>
 
 
@@ -699,33 +719,50 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The previous page asked how predicted probabilities are distributed within and across groups. This page flips the question: instead of looking at <em>where</em> probabilities fall, we look at <em>who</em> ends up with low or high predicted probabilities.</p>
-<p>In other words — what do high-risk individuals tend to have in common? And how does that differ from low-risk individuals?</p>
-<p>This kind of analysis is valuable for two reasons:</p>
+<p>Everything in this course so far has been about producing a good number. This page is about what happens after the number appears on someone’s screen.</p>
+<p>It deserves its own page because of a fact that is easy to state and easy to forget: <strong>a model does not make decisions. A person does.</strong> A caseworker decides whether to open a case. A counselor decides whether to call a family. A supervisor decides whether to assign a slot. The predicted probability is an input to that person’s thinking, and how well the whole system works depends at least as much on that step as on your AUC.</p>
+<p>A model with excellent performance, used badly, produces bad outcomes. A model with modest performance, used thoughtfully, can genuinely help.</p>
+<section id="two-ways-it-goes-wrong" class="level2">
+<h2 class="anchored" data-anchor-id="two-ways-it-goes-wrong">Two ways it goes wrong</h2>
+<p><strong>People defer to the number too much.</strong> There is a well-documented tendency for people to trust output from a computer more than they trust their own judgment, even when they have information the computer does not. This has a name — <em>automation bias</em> — and it is a problem because your model does not know that this family just moved in with a supportive grandmother, or that this student’s attendance collapsed because of a temporary illness that has now resolved. The staff member knows those things. If the score overrides them, the system has thrown away its best information.</p>
+<p><strong>People ignore the number entirely.</strong> This is the more common failure, and it surprises people. Staff who do not trust the tool, were not consulted about it, do not understand it, or find it inconvenient will simply work around it. The scores get generated, nobody looks at them, and the organization believes it has a data-driven process when it does not. This failure is quieter than the first one, because from the outside everything appears to be working.</p>
+<p>Notice that these pull in opposite directions. The goal is not to maximize how much staff follow the model, nor to minimize it. It is for staff to weigh it appropriately — and that depends on design choices, not on hoping.</p>
+</section>
+<section id="what-the-evidence-looks-like" class="level2">
+<h2 class="anchored" data-anchor-id="what-the-evidence-looks-like">What the evidence looks like</h2>
+<p>The best-studied example in public services is the Allegheny Family Screening Tool, used in child welfare call screening in Allegheny County, Pennsylvania <span class="citation" data-cites="Allegheny2019">(<a href="#ref-Allegheny2019" role="doc-biblioref">Allegheny County Department of Human Services, 2019</a>)</span>. Its design is worth knowing about because it is thoughtful, and the findings are genuinely mixed in an instructive way.</p>
+<p>The tool produces a risk score, and for the very highest scores it triggers a protocol that defaults the referral toward being screened in for investigation. Critically, <strong>supervisors can override that default</strong> — they remain the decision-maker.</p>
+<p>Two findings stand out. First, supervisors used that authority substantially, overriding close to a quarter of the cases where the system defaulted to screening in. They were not rubber-stamping.</p>
+<p>Second, and more interesting: at one point a technical problem caused some scores to be badly miscalculated. Workers turned out to be <em>more</em> likely to override the scores that were most wrong. They were reading other information — the referral itself, their own knowledge — and noticing when the number did not fit.</p>
+<p>That is genuinely encouraging. It suggests human oversight can work rather than being a formality. But it is a finding about one carefully designed system with trained supervisors, not a general guarantee, and the same body of research raises real concerns that risk scores can amplify existing bias by nudging staff toward “safe” decisions that fall unevenly across groups. The lesson is not “humans will catch the errors.” It is that oversight works when it is designed for and checked.</p>
+</section>
+<section id="design-choices-that-change-behavior" class="level2">
+<h2 class="anchored" data-anchor-id="design-choices-that-change-behavior">Design choices that change behavior</h2>
+<p>These sound like small interface decisions. They are not.</p>
 <ul>
-<li><strong>Program design</strong>: If high-risk students share certain characteristics — like high absenteeism or low reading scores — this can point toward what kinds of interventions might help them most.</li>
-<li><strong>Communication</strong>: Showing stakeholders <em>who</em> is flagged as high-risk makes abstract predicted probabilities more concrete and interpretable.</li>
+<li><p><strong>What you show.</strong> A precise number (“0.73”) invites more deference than a category (“elevated”), which invites more than a list of the factors involved. Showing <em>why</em> a case was flagged tends to produce better decisions than showing only <em>that</em> it was.</p></li>
+<li><p><strong>What the default is.</strong> A system where a high score automatically triggers an action, and a person must actively intervene to stop it, produces very different behavior from one where the score is advisory. Defaults are powerful.</p></li>
+<li><p><strong>Whether overriding is easy or hard.</strong> Requiring written justification to override creates a record and encourages thought — and also discourages overriding, including when overriding is right. There is no setting that is free of trade-offs; choose deliberately.</p></li>
+<li><p><strong>Whether staff know how accurate it is.</strong> People calibrate their trust to what they are told. Staff who believe a tool is nearly always right will defer more than the evidence supports. Telling them plainly — “of the people this flags, roughly one in three experience the outcome” — helps them weigh it sensibly.</p></li>
+<li><p><strong>Whether staff helped design it.</strong> Tools that frontline staff were consulted on get used. Tools handed down do not. This is not only about buy-in: staff know things about the work that will improve the tool.</p></li>
 </ul>
-<section id="looking-at-characteristics-within-risk-groups" class="level2">
-<h2 class="anchored" data-anchor-id="looking-at-characteristics-within-risk-groups">Looking at characteristics within risk groups</h2>
-<p>One useful approach is to examine how individual characteristics are distributed across risk groups. The plot below illustrates this for the school dropout example, showing how absenteeism levels vary among students in each predicted risk category.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/predprobDataViz.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:8in"></p>
-</figure>
+</section>
+<section id="two-things-to-watch-after-launch" class="level2">
+<h2 class="anchored" data-anchor-id="two-things-to-watch-after-launch">Two things to watch after launch</h2>
+<p><strong>Track the humans, not just the model.</strong> Record how often staff override, in which direction, and — importantly — whether override patterns differ across demographic groups. A perfectly fair model can produce unfair outcomes if staff systematically override it more for one group than another. That is a bias pathway that never touches your model and would never appear in any of the metrics from the <a href="./bias_define.html">bias section</a>. It is invisible unless you deliberately look.</p>
+<p><strong>Watch for feedback loops.</strong> This one is subtle and matters a great deal. Once a model influences who receives a service, it starts shaping the data that future versions will be trained on.</p>
+<p>Suppose the model flags certain students, those students receive extra attention, and the attention helps. Next year’s data now shows those students doing better — and a model retrained on it may conclude they were never high risk. Or the reverse: flagged families receive more scrutiny, more scrutiny produces more recorded incidents, and the next model learns that this kind of family really does have more incidents. The model helped create the evidence for its own predictions.</p>
+<p>There is no clean technical fix. The defenses are awareness, keeping records of who was flagged and what was done, and — best of all — the kind of deliberate comparison group discussed in <a href="./benefit_practice.html">designing deployments that let you learn</a>.</p>
+
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-Allegheny2019" class="csl-entry" role="listitem">
+Allegheny County Department of Human Services. (2019). <em>Impact evaluation summary of the allegheny family screening tool</em>.
 </div>
-<p>Students with high predicted dropout risk have much higher rates of absenteeism compared to low-risk students. Patterns like this help program staff understand who is being flagged and why — and can point toward areas for intervention design.</p>
-<p><strong>An important caution:</strong> Finding that a characteristic is common among high-risk students does not mean that characteristic <em>causes</em> the outcome. Absenteeism may be strongly associated with dropout risk, but many factors contribute to a student’s situation, and correlation is not causation. This distinction matters when communicating findings to stakeholders, who may be tempted to treat these patterns as direct levers to pull. Frame your results carefully: these are associations observed in your data, not causal claims.</p>
-</section>
-<section id="considering-multiple-characteristics-at-once" class="level2">
-<h2 class="anchored" data-anchor-id="considering-multiple-characteristics-at-once">Considering multiple characteristics at once</h2>
-<p>The approach above works well for examining one characteristic at a time. When you want to explore several characteristics simultaneously, additional visualization strategies — such as mosaic plots or faceted bar charts — can help surface more complex patterns. The key is to choose a visualization that your audience can read intuitively, and to guide them through what they are seeing rather than leaving the chart to speak for itself.</p>
-<p>When communicating these results, focus on patterns that are most actionable for the program. Highlight where high-risk students are concentrated, and use the findings to prompt productive questions about program design — not to make deterministic claims about any individual student.</p>
-
-
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1128,13 +1165,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./results_distrib.html" class="pagination-link" aria-label="How are predicted probabilities distributed within and across groups?">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">How are predicted probabilities distributed within and across groups?</span>
+      <a href="./deploy_documentation.html" class="pagination-link" aria-label="Documenting what you built">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Documenting what you built</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./results_VI.html" class="pagination-link" aria-label="What are the most important predictors in my model?">
-        <span class="nav-page-text">What are the most important predictors in my model?</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./deploy_monitoring.html" class="pagination-link" aria-label="Monitoring after deployment">
+        <span class="nav-page-text">Monitoring after deployment</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

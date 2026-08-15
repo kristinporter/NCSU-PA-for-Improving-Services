@@ -6,7 +6,13 @@ editor:
 ---
 
 When it comes to deploying predictive analytics, there are several key
-considerations at different stages of the process:
+considerations at different stages of the process. This page gives an
+overview of all of them; the pages that follow take up four in more
+depth --- [documenting what you
+built](deploy_documentation.qmd), [how people actually use
+predictions](deploy_humans.qmd), [monitoring after
+deployment](deploy_monitoring.qmd), and the [rules and regulations
+](deploy_rules.qmd) that increasingly apply to this work.
 
 1.  **Deciding Whether to Deploy Predictive Analytics After a Proof of
     Concept**

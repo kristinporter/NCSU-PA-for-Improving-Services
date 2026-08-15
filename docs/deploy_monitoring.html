@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Who has low or high predicted probabilities? – Predictive Analytics (PA) for Improving Services</title>
+<title>Monitoring after deployment – Predictive Analytics (PA) for Improving Services</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,8 +50,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./results_VI.html" rel="next">
-<link href="./results_distrib.html" rel="prev">
+<link href="./deploy_rules.html" rel="next">
+<link href="./deploy_humans.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -83,7 +103,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results_describe.html">Understanding and communicating results</a></li><li class="breadcrumb-item"><a href="./results_groups.html">Who has low or high predicted probabilities?</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./deployment.html">Deploying predictive analytics</a></li><li class="breadcrumb-item"><a href="./deploy_monitoring.html">Monitoring after deployment</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -519,7 +539,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./results_groups.html" class="sidebar-item-text sidebar-link active">
+  <a href="./results_groups.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Who has low or high predicted probabilities?</span></a>
   </div>
 </li>
@@ -601,7 +621,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./deploy_monitoring.html" class="sidebar-item-text sidebar-link">
+  <a href="./deploy_monitoring.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Monitoring after deployment</span></a>
   </div>
 </li>
@@ -680,9 +700,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results_describe.html">Understanding and communicating results</a></li><li class="breadcrumb-item"><a href="./results_groups.html">Who has low or high predicted probabilities?</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./deployment.html">Deploying predictive analytics</a></li><li class="breadcrumb-item"><a href="./deploy_monitoring.html">Monitoring after deployment</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Who has low or high predicted probabilities?</h1>
+<h1 class="title">Monitoring after deployment</h1>
 </div>
 
 
@@ -699,33 +719,94 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The previous page asked how predicted probabilities are distributed within and across groups. This page flips the question: instead of looking at <em>where</em> probabilities fall, we look at <em>who</em> ends up with low or high predicted probabilities.</p>
-<p>In other words — what do high-risk individuals tend to have in common? And how does that differ from low-risk individuals?</p>
-<p>This kind of analysis is valuable for two reasons:</p>
-<ul>
-<li><strong>Program design</strong>: If high-risk students share certain characteristics — like high absenteeism or low reading scores — this can point toward what kinds of interventions might help them most.</li>
-<li><strong>Communication</strong>: Showing stakeholders <em>who</em> is flagged as high-risk makes abstract predicted probabilities more concrete and interpretable.</li>
-</ul>
-<section id="looking-at-characteristics-within-risk-groups" class="level2">
-<h2 class="anchored" data-anchor-id="looking-at-characteristics-within-risk-groups">Looking at characteristics within risk groups</h2>
-<p>One useful approach is to examine how individual characteristics are distributed across risk groups. The plot below illustrates this for the school dropout example, showing how absenteeism levels vary among students in each predicted risk category.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/predprobDataViz.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:8in"></p>
-</figure>
+<p>The <a href="./deployment.html">overview page</a> said that a deployed model needs regular checks on the data going into it and the performance coming out. This page makes that concrete: what to actually look at, how to measure it, and what to do about the awkward fact that the answer you most want is the one you have to wait longest for.</p>
+<p>The underlying problem is simple. Your model learned patterns from a particular set of people at a particular time. The world does not hold still. Populations change, programs change, data systems get replaced, and a model that was accurate in 2024 may be quietly wrong in 2027 while continuing to produce confident-looking numbers.</p>
+<p>There are four things to watch, and they are ordered here by how quickly you can see them.</p>
+<section id="did-the-data-going-in-change" class="level2">
+<h2 class="anchored" data-anchor-id="did-the-data-going-in-change">1. Did the data going in change?</h2>
+<p>You can check this immediately and continuously, without waiting for a single outcome. For each predictor, compare its distribution now against its distribution in the training data. Has average attendance shifted? Are more students missing a test score? Has the mix of referral sources changed?</p>
+<p>The simplest and best version of this is a plot: put this year’s distribution on top of the training distribution and look. A picture catches things a summary number misses.</p>
+<p>If you want a single number per variable, the common one is the <strong>Population Stability Index (PSI)</strong>. It compares two distributions by splitting them into bins and summarizing how much the proportions moved. The widely used rules of thumb are:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 73%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>PSI</th>
+<th>Usual interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Below 0.1</td>
+<td>Little meaningful change</td>
+</tr>
+<tr class="even">
+<td>0.1 to 0.25</td>
+<td>Moderate change — worth looking into</td>
+</tr>
+<tr class="odd">
+<td>Above 0.25</td>
+<td>Substantial change — investigate before trusting the model</td>
+</tr>
+</tbody>
+</table>
+<p>Treat those cutoffs as conventions rather than laws. They are useful for flagging things to look at, not for deciding anything on their own.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>Students with high predicted dropout risk have much higher rates of absenteeism compared to low-risk students. Patterns like this help program staff understand who is being flagged and why — and can point toward areas for intervention design.</p>
-<p><strong>An important caution:</strong> Finding that a characteristic is common among high-risk students does not mean that characteristic <em>causes</em> the outcome. Absenteeism may be strongly associated with dropout risk, but many factors contribute to a student’s situation, and correlation is not causation. This distinction matters when communicating findings to stakeholders, who may be tempted to treat these patterns as direct levers to pull. Frame your results carefully: these are associations observed in your data, not causal claims.</p>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>The most common cause is plumbing, not the world
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is natural to assume that when input data shifts, society shifted. Far more often, something broke.</p>
+<p>A field changed how it was coded. A data system was upgraded. A form was redesigned and a question moved. A join silently started failing, so a variable is now 90% missing when it used to be 3%.</p>
+<p>These are boring and unglamorous and they are the number one reason deployed models stop working. The single most valuable thing to monitor is the <strong>percentage missing for each variable over time</strong> — it is trivial to compute and it catches an enormous share of real failures.</p>
+</div>
+</div>
 </section>
-<section id="considering-multiple-characteristics-at-once" class="level2">
-<h2 class="anchored" data-anchor-id="considering-multiple-characteristics-at-once">Considering multiple characteristics at once</h2>
-<p>The approach above works well for examining one characteristic at a time. When you want to explore several characteristics simultaneously, additional visualization strategies — such as mosaic plots or faceted bar charts — can help surface more complex patterns. The key is to choose a visualization that your audience can read intuitively, and to guide them through what they are seeing rather than leaving the chart to speak for itself.</p>
-<p>When communicating these results, focus on patterns that are most actionable for the program. Highlight where high-risk students are concentrated, and use the findings to prompt productive questions about program design — not to make deterministic claims about any individual student.</p>
+<section id="did-the-predictions-coming-out-change" class="level2">
+<h2 class="anchored" data-anchor-id="did-the-predictions-coming-out-change">2. Did the predictions coming out change?</h2>
+<p>Also available immediately. Look at the distribution of predicted probabilities month over month, and at the share of people falling above your <a href="./perform_selectthreshold.html">threshold</a>.</p>
+<p>This is a useful early-warning signal because it aggregates everything upstream. If 12% of students were flagged last year and 19% are flagged now, something changed — the population, the data pipeline, or both — and it is worth understanding which before anyone acts on the larger list.</p>
+</section>
+<section id="did-the-outcome-rate-change" class="level2">
+<h2 class="anchored" data-anchor-id="did-the-outcome-rate-change">3. Did the outcome rate change?</h2>
+<p>If the underlying rate of the outcome shifts — more students graduating on time, fewer referrals substantiated — your model’s predicted probabilities will be systematically off even if every relationship it learned still holds. This is a <a href="./perform_calibration.html">calibration</a> problem, and it is often fixable by recalibrating rather than rebuilding.</p>
+<p>This is also the first thing on the list that requires waiting for outcomes.</p>
+</section>
+<section id="did-performance-change" class="level2">
+<h2 class="anchored" data-anchor-id="did-performance-change">4. Did performance change?</h2>
+<p>This is the question you actually care about, and it is last because it is the slowest.</p>
+<p>When outcomes do become available, the work is exactly what you already know how to do: run the same evaluation you ran on your original test data. The metrics you chose, the calibration check, and — critically — the <a href="./bias_define.html">bias analysis</a> across the same subgroups.</p>
+<p>Two points that are easy to miss:</p>
+<p><strong>Check subgroups separately.</strong> Overall performance can look perfectly stable while performance for one group degrades badly, because the overall number averages across everyone. Degradation is often concentrated.</p>
+<p><strong>The waiting problem is real.</strong> As the <a href="./deployment.html">overview page</a> notes, if you predict on-time graduation for entering 9th graders, you learn nothing about accuracy for four years. That is not an argument for skipping the check — it is the entire reason items 1 through 3 exist. They are the signals available while you wait.</p>
+<p>It is also worth looking for shorter-term outcomes that correlate with the real one — 10th grade credit accumulation, say — not as a substitute for the real evaluation, but as an earlier warning that something has drifted.</p>
+</section>
+<section id="making-it-actually-happen" class="level2">
+<h2 class="anchored" data-anchor-id="making-it-actually-happen">Making it actually happen</h2>
+<p>Monitoring fails in practice for an unglamorous reason: nobody owns it, and there is no agreed trigger, so a slowly worsening model never crosses any line that forces a conversation.</p>
+<p>Two things fix most of this:</p>
+<p><strong>Decide the triggers in advance, in writing.</strong> Something like: <em>if any of our top predictors shows PSI above 0.25, or missingness jumps by more than 5 percentage points, or the share flagged moves by more than 5 points, we investigate before continuing.</em> Setting thresholds before you see the numbers is the same discipline as choosing your metrics before you see your results — it stops you from rationalizing.</p>
+<p><strong>Name a person and a schedule.</strong> Quarterly is reasonable for most service settings. A named person, a recurring date, and a short written record of what was checked.</p>
+<p>And decide in advance what “investigate” leads to. The options are usually: do nothing and keep watching, recalibrate, retrain on newer data, or stop using the model. That last one has to be genuinely available, or the monitoring is theater. Retiring a model that is no longer working is a success of the process, not a failure of your work.</p>
+<p>For a deeper treatment of monitoring in production systems, <span class="citation" data-cites="Huyen2022">Huyen (<a href="#ref-Huyen2022" role="doc-biblioref">2022</a>)</span> is a good next step.</p>
+
 
 
 </section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-Huyen2022" class="csl-entry" role="listitem">
+Huyen, C. (2022). <em>Designing machine learning systems</em>. Sebastopol, California: O’Reily.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1128,13 +1209,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./results_distrib.html" class="pagination-link" aria-label="How are predicted probabilities distributed within and across groups?">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">How are predicted probabilities distributed within and across groups?</span>
+      <a href="./deploy_humans.html" class="pagination-link" aria-label="How people actually use predictions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">How people actually use predictions</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./results_VI.html" class="pagination-link" aria-label="What are the most important predictors in my model?">
-        <span class="nav-page-text">What are the most important predictors in my model?</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./deploy_rules.html" class="pagination-link" aria-label="Rules and regulations">
+        <span class="nav-page-text">Rules and regulations</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

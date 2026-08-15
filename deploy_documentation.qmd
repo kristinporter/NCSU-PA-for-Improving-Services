@@ -1,0 +1,79 @@
+---
+title: "Documenting what you built"
+editor:
+  markdown:
+    wrap: sentence
+---
+
+Imagine it is two years from now.
+You built a model, it was deployed, and you have since moved on to another job.
+A new analyst arrives, finds a scoring system running quietly in the background, and asks reasonable questions:
+
+*What exactly does this number mean? Who was it built for? What data trained it? How accurate is it? Was it ever checked for bias? Is it still supposed to be running?*
+
+In a great many real organizations, nobody can answer.
+The person who knew has left, the knowledge was never written down, and the model keeps producing scores that people keep acting on.
+
+This is one of the most common failures in deployed predictive analytics, and it is entirely preventable.
+
+## The good news
+
+Here is the encouraging part: **you have already done almost all of this work.**
+
+Everything a new analyst would need to know is something you figured out during the proof-of-concept --- what you were predicting, for whom, at what timepoint, with what data, how well it performed, and how it performed across groups.
+The documentation step is not new analysis.
+It is collecting what you already know into one place that outlives you.
+
+The standard way of doing this has a name --- a **model card** --- and the idea is simple.
+It is a short document, a few pages at most, written in plain language, that travels with the model.
+Not a technical appendix nobody reads. A summary a program director could pick up and understand.
+
+## What goes in it
+
+**What is being predicted.**
+Be precise, and include how the outcome was actually measured.
+"Risk of dropping out" is too vague. "Whether a student who enrolled in 9th grade does not graduate within four years, based on district enrollment records" is usable.
+This matters more than it sounds, because the gap between the outcome you can measure and the outcome you care about is where a lot of harm hides.
+
+**Who it is for, and who it is not for.**
+The [prediction population](scoping_who.qmd) --- and, just as importantly, who was excluded.
+If students who transferred out of the district were dropped from the training data, say so.
+A model built on 9th graders should not quietly get applied to 11th graders, and the only thing standing between the organization and that mistake is a sentence in this document.
+
+**When the prediction is made.**
+The [prediction timepoint](scoping_when.qmd), and what information is assumed to be available at that moment.
+
+**What data it was built on, and from when.**
+Which years, which systems, how many people.
+A model trained on data from 2019 through 2022 carries assumptions about a world that may no longer exist.
+
+**How well it performs.**
+Your [test data](data_test.qmd) results --- the metrics you chose, why you chose them, and the threshold in use if there is one.
+Include [calibration](perform_calibration.qmd), not just discrimination, since the people reading a score will treat the number as meaningful.
+
+**How it performs across groups.**
+Your [bias analysis](bias_define.qmd) results, including which definition of fairness you assessed and which you could not satisfy simultaneously.
+This section is often the one people most want to skip and the one that most needs to exist.
+
+**Known limitations and what it should not be used for.**
+Probably the most valuable section in the whole document.
+Most real-world harm comes not from a bad model but from a reasonable model applied to a population, a timepoint, or a decision it was never built for.
+Writing down "this should not be used to make disciplinary decisions" is cheap now and priceless later.
+
+**Who owns it.**
+A name, a role, a date, and a version number.
+Somebody has to be responsible for a system that affects people, and "the model" is not a person.
+
+## Two habits worth building
+
+**Write it as you go, not at the end.**
+Every item above corresponds to a decision you made at some point in the project.
+Recording decisions when you make them takes minutes; reconstructing them a year later takes days and you will get some of them wrong.
+
+**Write for the person who will read it.**
+The audience is not a data scientist.
+It is a program director, a supervisor, a new analyst, an auditor, or a member of the public.
+If the document only makes sense to someone who took this course, it has failed at its job.
+
+There is a further benefit worth knowing about, which the [page on rules and regulations](deploy_rules.qmd) returns to: nearly every AI governance framework now in existence asks for essentially this document.
+Doing it because it is good practice happens to also be doing it because it is increasingly required.

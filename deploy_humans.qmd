@@ -1,0 +1,88 @@
+---
+title: "How people actually use predictions"
+editor:
+  markdown:
+    wrap: sentence
+---
+
+Everything in this course so far has been about producing a good number.
+This page is about what happens after the number appears on someone's screen.
+
+It deserves its own page because of a fact that is easy to state and easy to forget: **a model does not make decisions. A person does.**
+A caseworker decides whether to open a case. A counselor decides whether to call a family. A supervisor decides whether to assign a slot.
+The predicted probability is an input to that person's thinking, and how well the whole system works depends at least as much on that step as on your AUC.
+
+A model with excellent performance, used badly, produces bad outcomes.
+A model with modest performance, used thoughtfully, can genuinely help.
+
+## Two ways it goes wrong
+
+**People defer to the number too much.**
+There is a well-documented tendency for people to trust output from a computer more than they trust their own judgment, even when they have information the computer does not.
+This has a name --- *automation bias* --- and it is a problem because your model does not know that this family just moved in with a supportive grandmother, or that this student's attendance collapsed because of a temporary illness that has now resolved.
+The staff member knows those things. If the score overrides them, the system has thrown away its best information.
+
+**People ignore the number entirely.**
+This is the more common failure, and it surprises people.
+Staff who do not trust the tool, were not consulted about it, do not understand it, or find it inconvenient will simply work around it.
+The scores get generated, nobody looks at them, and the organization believes it has a data-driven process when it does not.
+This failure is quieter than the first one, because from the outside everything appears to be working.
+
+Notice that these pull in opposite directions.
+The goal is not to maximize how much staff follow the model, nor to minimize it.
+It is for staff to weigh it appropriately --- and that depends on design choices, not on hoping.
+
+## What the evidence looks like
+
+The best-studied example in public services is the Allegheny Family Screening Tool, used in child welfare call screening in Allegheny County, Pennsylvania [@Allegheny2019].
+Its design is worth knowing about because it is thoughtful, and the findings are genuinely mixed in an instructive way.
+
+The tool produces a risk score, and for the very highest scores it triggers a protocol that defaults the referral toward being screened in for investigation.
+Critically, **supervisors can override that default** --- they remain the decision-maker.
+
+Two findings stand out.
+First, supervisors used that authority substantially, overriding close to a quarter of the cases where the system defaulted to screening in.
+They were not rubber-stamping.
+
+Second, and more interesting: at one point a technical problem caused some scores to be badly miscalculated.
+Workers turned out to be *more* likely to override the scores that were most wrong.
+They were reading other information --- the referral itself, their own knowledge --- and noticing when the number did not fit.
+
+That is genuinely encouraging.
+It suggests human oversight can work rather than being a formality.
+But it is a finding about one carefully designed system with trained supervisors, not a general guarantee, and the same body of research raises real concerns that risk scores can amplify existing bias by nudging staff toward "safe" decisions that fall unevenly across groups.
+The lesson is not "humans will catch the errors." It is that oversight works when it is designed for and checked.
+
+## Design choices that change behavior
+
+These sound like small interface decisions. They are not.
+
+-   **What you show.** A precise number ("0.73") invites more deference than a category ("elevated"), which invites more than a list of the factors involved. Showing *why* a case was flagged tends to produce better decisions than showing only *that* it was.
+
+-   **What the default is.** A system where a high score automatically triggers an action, and a person must actively intervene to stop it, produces very different behavior from one where the score is advisory. Defaults are powerful.
+
+-   **Whether overriding is easy or hard.** Requiring written justification to override creates a record and encourages thought --- and also discourages overriding, including when overriding is right. There is no setting that is free of trade-offs; choose deliberately.
+
+-   **Whether staff know how accurate it is.** People calibrate their trust to what they are told. Staff who believe a tool is nearly always right will defer more than the evidence supports. Telling them plainly --- "of the people this flags, roughly one in three experience the outcome" --- helps them weigh it sensibly.
+
+-   **Whether staff helped design it.** Tools that frontline staff were consulted on get used. Tools handed down do not. This is not only about buy-in: staff know things about the work that will improve the tool.
+
+## Two things to watch after launch
+
+**Track the humans, not just the model.**
+Record how often staff override, in which direction, and --- importantly --- whether override patterns differ across demographic groups.
+A perfectly fair model can produce unfair outcomes if staff systematically override it more for one group than another.
+That is a bias pathway that never touches your model and would never appear in any of the metrics from the [bias section](bias_define.qmd).
+It is invisible unless you deliberately look.
+
+**Watch for feedback loops.**
+This one is subtle and matters a great deal.
+Once a model influences who receives a service, it starts shaping the data that future versions will be trained on.
+
+Suppose the model flags certain students, those students receive extra attention, and the attention helps.
+Next year's data now shows those students doing better --- and a model retrained on it may conclude they were never high risk.
+Or the reverse: flagged families receive more scrutiny, more scrutiny produces more recorded incidents, and the next model learns that this kind of family really does have more incidents.
+The model helped create the evidence for its own predictions.
+
+There is no clean technical fix.
+The defenses are awareness, keeping records of who was flagged and what was done, and --- best of all --- the kind of deliberate comparison group discussed in [designing deployments that let you learn](benefit_practice.qmd).

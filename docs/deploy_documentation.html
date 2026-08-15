@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Who has low or high predicted probabilities? – Predictive Analytics (PA) for Improving Services</title>
+<title>Documenting what you built – Predictive Analytics (PA) for Improving Services</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./results_VI.html" rel="next">
-<link href="./results_distrib.html" rel="prev">
+<link href="./deploy_humans.html" rel="next">
+<link href="./deployment.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -83,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results_describe.html">Understanding and communicating results</a></li><li class="breadcrumb-item"><a href="./results_groups.html">Who has low or high predicted probabilities?</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./deployment.html">Deploying predictive analytics</a></li><li class="breadcrumb-item"><a href="./deploy_documentation.html">Documenting what you built</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -519,7 +519,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./results_groups.html" class="sidebar-item-text sidebar-link active">
+  <a href="./results_groups.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Who has low or high predicted probabilities?</span></a>
   </div>
 </li>
@@ -589,7 +589,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./deploy_documentation.html" class="sidebar-item-text sidebar-link">
+  <a href="./deploy_documentation.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Documenting what you built</span></a>
   </div>
 </li>
@@ -680,9 +680,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results_describe.html">Understanding and communicating results</a></li><li class="breadcrumb-item"><a href="./results_groups.html">Who has low or high predicted probabilities?</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./deployment.html">Deploying predictive analytics</a></li><li class="breadcrumb-item"><a href="./deploy_documentation.html">Documenting what you built</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Who has low or high predicted probabilities?</h1>
+<h1 class="title">Documenting what you built</h1>
 </div>
 
 
@@ -699,28 +699,32 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The previous page asked how predicted probabilities are distributed within and across groups. This page flips the question: instead of looking at <em>where</em> probabilities fall, we look at <em>who</em> ends up with low or high predicted probabilities.</p>
-<p>In other words — what do high-risk individuals tend to have in common? And how does that differ from low-risk individuals?</p>
-<p>This kind of analysis is valuable for two reasons:</p>
-<ul>
-<li><strong>Program design</strong>: If high-risk students share certain characteristics — like high absenteeism or low reading scores — this can point toward what kinds of interventions might help them most.</li>
-<li><strong>Communication</strong>: Showing stakeholders <em>who</em> is flagged as high-risk makes abstract predicted probabilities more concrete and interpretable.</li>
-</ul>
-<section id="looking-at-characteristics-within-risk-groups" class="level2">
-<h2 class="anchored" data-anchor-id="looking-at-characteristics-within-risk-groups">Looking at characteristics within risk groups</h2>
-<p>One useful approach is to examine how individual characteristics are distributed across risk groups. The plot below illustrates this for the school dropout example, showing how absenteeism levels vary among students in each predicted risk category.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/predprobDataViz.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:8in"></p>
-</figure>
-</div>
-<p>Students with high predicted dropout risk have much higher rates of absenteeism compared to low-risk students. Patterns like this help program staff understand who is being flagged and why — and can point toward areas for intervention design.</p>
-<p><strong>An important caution:</strong> Finding that a characteristic is common among high-risk students does not mean that characteristic <em>causes</em> the outcome. Absenteeism may be strongly associated with dropout risk, but many factors contribute to a student’s situation, and correlation is not causation. This distinction matters when communicating findings to stakeholders, who may be tempted to treat these patterns as direct levers to pull. Frame your results carefully: these are associations observed in your data, not causal claims.</p>
+<p>Imagine it is two years from now. You built a model, it was deployed, and you have since moved on to another job. A new analyst arrives, finds a scoring system running quietly in the background, and asks reasonable questions:</p>
+<p><em>What exactly does this number mean? Who was it built for? What data trained it? How accurate is it? Was it ever checked for bias? Is it still supposed to be running?</em></p>
+<p>In a great many real organizations, nobody can answer. The person who knew has left, the knowledge was never written down, and the model keeps producing scores that people keep acting on.</p>
+<p>This is one of the most common failures in deployed predictive analytics, and it is entirely preventable.</p>
+<section id="the-good-news" class="level2">
+<h2 class="anchored" data-anchor-id="the-good-news">The good news</h2>
+<p>Here is the encouraging part: <strong>you have already done almost all of this work.</strong></p>
+<p>Everything a new analyst would need to know is something you figured out during the proof-of-concept — what you were predicting, for whom, at what timepoint, with what data, how well it performed, and how it performed across groups. The documentation step is not new analysis. It is collecting what you already know into one place that outlives you.</p>
+<p>The standard way of doing this has a name — a <strong>model card</strong> — and the idea is simple. It is a short document, a few pages at most, written in plain language, that travels with the model. Not a technical appendix nobody reads. A summary a program director could pick up and understand.</p>
 </section>
-<section id="considering-multiple-characteristics-at-once" class="level2">
-<h2 class="anchored" data-anchor-id="considering-multiple-characteristics-at-once">Considering multiple characteristics at once</h2>
-<p>The approach above works well for examining one characteristic at a time. When you want to explore several characteristics simultaneously, additional visualization strategies — such as mosaic plots or faceted bar charts — can help surface more complex patterns. The key is to choose a visualization that your audience can read intuitively, and to guide them through what they are seeing rather than leaving the chart to speak for itself.</p>
-<p>When communicating these results, focus on patterns that are most actionable for the program. Highlight where high-risk students are concentrated, and use the findings to prompt productive questions about program design — not to make deterministic claims about any individual student.</p>
+<section id="what-goes-in-it" class="level2">
+<h2 class="anchored" data-anchor-id="what-goes-in-it">What goes in it</h2>
+<p><strong>What is being predicted.</strong> Be precise, and include how the outcome was actually measured. “Risk of dropping out” is too vague. “Whether a student who enrolled in 9th grade does not graduate within four years, based on district enrollment records” is usable. This matters more than it sounds, because the gap between the outcome you can measure and the outcome you care about is where a lot of harm hides.</p>
+<p><strong>Who it is for, and who it is not for.</strong> The <a href="./scoping_who.html">prediction population</a> — and, just as importantly, who was excluded. If students who transferred out of the district were dropped from the training data, say so. A model built on 9th graders should not quietly get applied to 11th graders, and the only thing standing between the organization and that mistake is a sentence in this document.</p>
+<p><strong>When the prediction is made.</strong> The <a href="./scoping_when.html">prediction timepoint</a>, and what information is assumed to be available at that moment.</p>
+<p><strong>What data it was built on, and from when.</strong> Which years, which systems, how many people. A model trained on data from 2019 through 2022 carries assumptions about a world that may no longer exist.</p>
+<p><strong>How well it performs.</strong> Your <a href="./data_test.html">test data</a> results — the metrics you chose, why you chose them, and the threshold in use if there is one. Include <a href="./perform_calibration.html">calibration</a>, not just discrimination, since the people reading a score will treat the number as meaningful.</p>
+<p><strong>How it performs across groups.</strong> Your <a href="./bias_define.html">bias analysis</a> results, including which definition of fairness you assessed and which you could not satisfy simultaneously. This section is often the one people most want to skip and the one that most needs to exist.</p>
+<p><strong>Known limitations and what it should not be used for.</strong> Probably the most valuable section in the whole document. Most real-world harm comes not from a bad model but from a reasonable model applied to a population, a timepoint, or a decision it was never built for. Writing down “this should not be used to make disciplinary decisions” is cheap now and priceless later.</p>
+<p><strong>Who owns it.</strong> A name, a role, a date, and a version number. Somebody has to be responsible for a system that affects people, and “the model” is not a person.</p>
+</section>
+<section id="two-habits-worth-building" class="level2">
+<h2 class="anchored" data-anchor-id="two-habits-worth-building">Two habits worth building</h2>
+<p><strong>Write it as you go, not at the end.</strong> Every item above corresponds to a decision you made at some point in the project. Recording decisions when you make them takes minutes; reconstructing them a year later takes days and you will get some of them wrong.</p>
+<p><strong>Write for the person who will read it.</strong> The audience is not a data scientist. It is a program director, a supervisor, a new analyst, an auditor, or a member of the public. If the document only makes sense to someone who took this course, it has failed at its job.</p>
+<p>There is a further benefit worth knowing about, which the <a href="./deploy_rules.html">page on rules and regulations</a> returns to: nearly every AI governance framework now in existence asks for essentially this document. Doing it because it is good practice happens to also be doing it because it is increasingly required.</p>
 
 
 </section>
@@ -1128,13 +1132,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./results_distrib.html" class="pagination-link" aria-label="How are predicted probabilities distributed within and across groups?">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">How are predicted probabilities distributed within and across groups?</span>
+      <a href="./deployment.html" class="pagination-link" aria-label="A brief overview of considerations">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">A brief overview of considerations</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./results_VI.html" class="pagination-link" aria-label="What are the most important predictors in my model?">
-        <span class="nav-page-text">What are the most important predictors in my model?</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./deploy_humans.html" class="pagination-link" aria-label="How people actually use predictions">
+        <span class="nav-page-text">How people actually use predictions</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1,0 +1,99 @@
+---
+title: "Rules and regulations"
+editor:
+  markdown:
+    wrap: sentence
+---
+
+::: callout-note
+I am not a lawyer and this is not legal advice.
+The purpose of this page is to give you a rough map of a landscape you will encounter if you work in public services, so that you know what questions to ask and who to ask them of.
+:::
+
+Until recently, someone building a predictive model for a school district or a county agency operated under essentially no rules specific to what they were doing.
+That has changed, and it is changing quickly enough that the details below will be out of date before long.
+
+So read this page for the **shape** of things, not the specifics.
+I will flag at the end the parts that have been stable, which are the parts worth remembering.
+
+One thing to notice up front: the applications this course focuses on --- education, employment services, and access to public benefits --- are not incidental to these rules.
+They are named explicitly, in nearly every framework, as the highest-risk category.
+That is a reasonable signal about how seriously to take this work.
+
+## Voluntary frameworks: the NIST AI RMF
+
+In the United States, the most widely used reference is the **AI Risk Management Framework** from the National Institute of Standards and Technology, released in early 2023.
+
+It is **voluntary** --- not a law, with no penalties.
+It is organized around four activities: *Govern* (who is responsible, and what are the policies), *Map* (what is this system, in what context, and what could go wrong), *Measure* (how do we assess performance, bias, and reliability), and *Manage* (what do we do about what we found, on an ongoing basis).
+
+Two reasons it matters even though it is voluntary.
+It has become a common vocabulary --- when someone asks whether your project "aligns with the AI RMF," they are asking whether you did the things in those four buckets.
+And it increasingly shows up as a *contractual* requirement, in procurement documents and grant conditions, which makes it binding in practice for a lot of organizations even though it is not binding in law.
+
+## Binding law: the EU AI Act
+
+The European Union's AI Act is the most detailed AI law in existence and is serving as the template much of the world is reacting to.
+
+It sorts systems by risk.
+A small number of uses are prohibited outright.
+A larger set is designated **high-risk**, and that list --- Annex III --- explicitly includes systems used for access to education and vocational training, for employment and worker management, and for access to essential public services and benefits.
+
+If that sounds like a description of this course, it is.
+A model that helps decide who gets into a program, who receives a benefit, or who gets flagged in a school system is squarely inside the category the law treats most seriously.
+
+High-risk systems carry obligations that should look familiar by now: risk management, record-keeping and logging, transparency about how the system works, **meaningful human oversight**, and specific duties for the organization deploying the system, not only the one that built it.
+
+**On timing**, which is where most published summaries are now wrong.
+A package known as the Digital Omnibus on AI was adopted in mid-2026 and pushed the high-risk deadlines back significantly --- standalone high-risk systems now come into scope in **December 2027** rather than August 2026, and systems embedded in regulated products in 2028.
+Other parts were not delayed: the ban on prohibited practices has applied since early 2025, obligations on general-purpose AI providers since mid-2025, and transparency and AI-content-labeling duties took effect in August 2026 as originally planned.
+
+The Act applies to systems used in the EU, so it may well not bind a North Carolina school district directly.
+It matters anyway, because it is shaping what "responsible practice" is understood to mean everywhere.
+
+## The US state patchwork
+
+In the absence of a federal law, individual states have moved, and the result is genuinely fragmented.
+
+Colorado's AI Act is the most instructive case, because its history tells you something about the direction of travel.
+It was passed in 2024 as the most ambitious US state AI law --- a duty of care to prevent algorithmic discrimination, required risk management programs, required impact assessments.
+It then had its effective date pushed back repeatedly, and in May 2026 it was amended again: delayed to January 2027 *and substantially narrowed*, dropping the duty of care and the impact assessment and risk-program requirements in favor of a narrower focus on disclosure and transparency.
+
+That is worth understanding as a pattern rather than a detail.
+The current momentum in US states is toward **telling people that an automated system was used** rather than toward requiring organizations to assess and manage its effects.
+Colorado now sits closer to California's disclosure-oriented approach than to the EU's.
+
+Whether that is the right balance is a genuine policy debate.
+What it means for you practically is that you should not assume the law will require you to check your model for bias.
+In many places it will not.
+
+## What has actually been stable
+
+Here is the part to remember, because it has been consistent across every framework, in every jurisdiction, through every delay and amendment:
+
+-   **Write down what the system is and what it does** --- essentially the [model card](deploy_documentation.qmd).
+-   **Check it for disparate effects across groups** before and after deployment.
+-   **Keep a person meaningfully in the loop**, with real authority to override.
+-   **Log decisions**, so that what happened can be reconstructed later.
+-   **Tell people** when an automated system is being used to make decisions about them.
+-   **Monitor it after launch**, and be willing to turn it off.
+
+Read that list again and notice something: **it is a summary of this course.**
+Scoping carefully, evaluating on held-out data, measuring bias across subgroups, documenting limitations, keeping professional judgment central, monitoring after deployment --- these were presented as good practice long before they were anyone's legal requirement, and they remain good practice in the many places where no law requires them.
+
+The specific deadlines will keep moving. That list will not.
+
+## Practical advice
+
+**Find out what already applies to you.**
+General AI rules are frequently not the binding constraint.
+Sector-specific law usually is, and it has been in force for decades --- student education records are governed by FERPA, health information by HIPAA, and many programs carry their own confidentiality rules.
+These will shape what data you may use long before any AI-specific statute does.
+
+**Ask early, not late.**
+Whether you can use a data source, share it with a vendor, or send it to an outside service is a question to resolve while you are scoping the project.
+Discovering the answer after you have built the model is expensive.
+
+**Find the person who knows.**
+Most agencies have a general counsel, a privacy officer, or a data governance committee.
+Your job is not to know the law. It is to recognize when a question is a legal one and to route it to someone who does.

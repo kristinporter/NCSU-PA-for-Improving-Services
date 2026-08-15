@@ -102,6 +102,10 @@ website:
       - section: "Deploying predictive analytics"
         contents:
           - deployment.qmd
+          - deploy_documentation.qmd
+          - deploy_humans.qmd
+          - deploy_monitoring.qmd
+          - deploy_rules.qmd
 
       - section: "Predictive analytics and LLMs"
         contents:

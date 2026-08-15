@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Who has low or high predicted probabilities? – Predictive Analytics (PA) for Improving Services</title>
+<title>Rules and regulations – Predictive Analytics (PA) for Improving Services</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./results_VI.html" rel="next">
-<link href="./results_distrib.html" rel="prev">
+<link href="./llm_overview.html" rel="next">
+<link href="./deploy_monitoring.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -83,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results_describe.html">Understanding and communicating results</a></li><li class="breadcrumb-item"><a href="./results_groups.html">Who has low or high predicted probabilities?</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./deployment.html">Deploying predictive analytics</a></li><li class="breadcrumb-item"><a href="./deploy_rules.html">Rules and regulations</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -519,7 +519,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./results_groups.html" class="sidebar-item-text sidebar-link active">
+  <a href="./results_groups.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Who has low or high predicted probabilities?</span></a>
   </div>
 </li>
@@ -607,7 +607,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./deploy_rules.html" class="sidebar-item-text sidebar-link">
+  <a href="./deploy_rules.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Rules and regulations</span></a>
   </div>
 </li>
@@ -680,9 +680,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results_describe.html">Understanding and communicating results</a></li><li class="breadcrumb-item"><a href="./results_groups.html">Who has low or high predicted probabilities?</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./deployment.html">Deploying predictive analytics</a></li><li class="breadcrumb-item"><a href="./deploy_rules.html">Rules and regulations</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Who has low or high predicted probabilities?</h1>
+<h1 class="title">Rules and regulations</h1>
 </div>
 
 
@@ -699,28 +699,63 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The previous page asked how predicted probabilities are distributed within and across groups. This page flips the question: instead of looking at <em>where</em> probabilities fall, we look at <em>who</em> ends up with low or high predicted probabilities.</p>
-<p>In other words — what do high-risk individuals tend to have in common? And how does that differ from low-risk individuals?</p>
-<p>This kind of analysis is valuable for two reasons:</p>
-<ul>
-<li><strong>Program design</strong>: If high-risk students share certain characteristics — like high absenteeism or low reading scores — this can point toward what kinds of interventions might help them most.</li>
-<li><strong>Communication</strong>: Showing stakeholders <em>who</em> is flagged as high-risk makes abstract predicted probabilities more concrete and interpretable.</li>
-</ul>
-<section id="looking-at-characteristics-within-risk-groups" class="level2">
-<h2 class="anchored" data-anchor-id="looking-at-characteristics-within-risk-groups">Looking at characteristics within risk groups</h2>
-<p>One useful approach is to examine how individual characteristics are distributed across risk groups. The plot below illustrates this for the school dropout example, showing how absenteeism levels vary among students in each predicted risk category.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/predprobDataViz.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:8in"></p>
-</figure>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>Students with high predicted dropout risk have much higher rates of absenteeism compared to low-risk students. Patterns like this help program staff understand who is being flagged and why — and can point toward areas for intervention design.</p>
-<p><strong>An important caution:</strong> Finding that a characteristic is common among high-risk students does not mean that characteristic <em>causes</em> the outcome. Absenteeism may be strongly associated with dropout risk, but many factors contribute to a student’s situation, and correlation is not causation. This distinction matters when communicating findings to stakeholders, who may be tempted to treat these patterns as direct levers to pull. Frame your results carefully: these are associations observed in your data, not causal claims.</p>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I am not a lawyer and this is not legal advice. The purpose of this page is to give you a rough map of a landscape you will encounter if you work in public services, so that you know what questions to ask and who to ask them of.</p>
+</div>
+</div>
+<p>Until recently, someone building a predictive model for a school district or a county agency operated under essentially no rules specific to what they were doing. That has changed, and it is changing quickly enough that the details below will be out of date before long.</p>
+<p>So read this page for the <strong>shape</strong> of things, not the specifics. I will flag at the end the parts that have been stable, which are the parts worth remembering.</p>
+<p>One thing to notice up front: the applications this course focuses on — education, employment services, and access to public benefits — are not incidental to these rules. They are named explicitly, in nearly every framework, as the highest-risk category. That is a reasonable signal about how seriously to take this work.</p>
+<section id="voluntary-frameworks-the-nist-ai-rmf" class="level2">
+<h2 class="anchored" data-anchor-id="voluntary-frameworks-the-nist-ai-rmf">Voluntary frameworks: the NIST AI RMF</h2>
+<p>In the United States, the most widely used reference is the <strong>AI Risk Management Framework</strong> from the National Institute of Standards and Technology, released in early 2023.</p>
+<p>It is <strong>voluntary</strong> — not a law, with no penalties. It is organized around four activities: <em>Govern</em> (who is responsible, and what are the policies), <em>Map</em> (what is this system, in what context, and what could go wrong), <em>Measure</em> (how do we assess performance, bias, and reliability), and <em>Manage</em> (what do we do about what we found, on an ongoing basis).</p>
+<p>Two reasons it matters even though it is voluntary. It has become a common vocabulary — when someone asks whether your project “aligns with the AI RMF,” they are asking whether you did the things in those four buckets. And it increasingly shows up as a <em>contractual</em> requirement, in procurement documents and grant conditions, which makes it binding in practice for a lot of organizations even though it is not binding in law.</p>
 </section>
-<section id="considering-multiple-characteristics-at-once" class="level2">
-<h2 class="anchored" data-anchor-id="considering-multiple-characteristics-at-once">Considering multiple characteristics at once</h2>
-<p>The approach above works well for examining one characteristic at a time. When you want to explore several characteristics simultaneously, additional visualization strategies — such as mosaic plots or faceted bar charts — can help surface more complex patterns. The key is to choose a visualization that your audience can read intuitively, and to guide them through what they are seeing rather than leaving the chart to speak for itself.</p>
-<p>When communicating these results, focus on patterns that are most actionable for the program. Highlight where high-risk students are concentrated, and use the findings to prompt productive questions about program design — not to make deterministic claims about any individual student.</p>
+<section id="binding-law-the-eu-ai-act" class="level2">
+<h2 class="anchored" data-anchor-id="binding-law-the-eu-ai-act">Binding law: the EU AI Act</h2>
+<p>The European Union’s AI Act is the most detailed AI law in existence and is serving as the template much of the world is reacting to.</p>
+<p>It sorts systems by risk. A small number of uses are prohibited outright. A larger set is designated <strong>high-risk</strong>, and that list — Annex III — explicitly includes systems used for access to education and vocational training, for employment and worker management, and for access to essential public services and benefits.</p>
+<p>If that sounds like a description of this course, it is. A model that helps decide who gets into a program, who receives a benefit, or who gets flagged in a school system is squarely inside the category the law treats most seriously.</p>
+<p>High-risk systems carry obligations that should look familiar by now: risk management, record-keeping and logging, transparency about how the system works, <strong>meaningful human oversight</strong>, and specific duties for the organization deploying the system, not only the one that built it.</p>
+<p><strong>On timing</strong>, which is where most published summaries are now wrong. A package known as the Digital Omnibus on AI was adopted in mid-2026 and pushed the high-risk deadlines back significantly — standalone high-risk systems now come into scope in <strong>December 2027</strong> rather than August 2026, and systems embedded in regulated products in 2028. Other parts were not delayed: the ban on prohibited practices has applied since early 2025, obligations on general-purpose AI providers since mid-2025, and transparency and AI-content-labeling duties took effect in August 2026 as originally planned.</p>
+<p>The Act applies to systems used in the EU, so it may well not bind a North Carolina school district directly. It matters anyway, because it is shaping what “responsible practice” is understood to mean everywhere.</p>
+</section>
+<section id="the-us-state-patchwork" class="level2">
+<h2 class="anchored" data-anchor-id="the-us-state-patchwork">The US state patchwork</h2>
+<p>In the absence of a federal law, individual states have moved, and the result is genuinely fragmented.</p>
+<p>Colorado’s AI Act is the most instructive case, because its history tells you something about the direction of travel. It was passed in 2024 as the most ambitious US state AI law — a duty of care to prevent algorithmic discrimination, required risk management programs, required impact assessments. It then had its effective date pushed back repeatedly, and in May 2026 it was amended again: delayed to January 2027 <em>and substantially narrowed</em>, dropping the duty of care and the impact assessment and risk-program requirements in favor of a narrower focus on disclosure and transparency.</p>
+<p>That is worth understanding as a pattern rather than a detail. The current momentum in US states is toward <strong>telling people that an automated system was used</strong> rather than toward requiring organizations to assess and manage its effects. Colorado now sits closer to California’s disclosure-oriented approach than to the EU’s.</p>
+<p>Whether that is the right balance is a genuine policy debate. What it means for you practically is that you should not assume the law will require you to check your model for bias. In many places it will not.</p>
+</section>
+<section id="what-has-actually-been-stable" class="level2">
+<h2 class="anchored" data-anchor-id="what-has-actually-been-stable">What has actually been stable</h2>
+<p>Here is the part to remember, because it has been consistent across every framework, in every jurisdiction, through every delay and amendment:</p>
+<ul>
+<li><strong>Write down what the system is and what it does</strong> — essentially the <a href="./deploy_documentation.html">model card</a>.</li>
+<li><strong>Check it for disparate effects across groups</strong> before and after deployment.</li>
+<li><strong>Keep a person meaningfully in the loop</strong>, with real authority to override.</li>
+<li><strong>Log decisions</strong>, so that what happened can be reconstructed later.</li>
+<li><strong>Tell people</strong> when an automated system is being used to make decisions about them.</li>
+<li><strong>Monitor it after launch</strong>, and be willing to turn it off.</li>
+</ul>
+<p>Read that list again and notice something: <strong>it is a summary of this course.</strong> Scoping carefully, evaluating on held-out data, measuring bias across subgroups, documenting limitations, keeping professional judgment central, monitoring after deployment — these were presented as good practice long before they were anyone’s legal requirement, and they remain good practice in the many places where no law requires them.</p>
+<p>The specific deadlines will keep moving. That list will not.</p>
+</section>
+<section id="practical-advice" class="level2">
+<h2 class="anchored" data-anchor-id="practical-advice">Practical advice</h2>
+<p><strong>Find out what already applies to you.</strong> General AI rules are frequently not the binding constraint. Sector-specific law usually is, and it has been in force for decades — student education records are governed by FERPA, health information by HIPAA, and many programs carry their own confidentiality rules. These will shape what data you may use long before any AI-specific statute does.</p>
+<p><strong>Ask early, not late.</strong> Whether you can use a data source, share it with a vendor, or send it to an outside service is a question to resolve while you are scoping the project. Discovering the answer after you have built the model is expensive.</p>
+<p><strong>Find the person who knows.</strong> Most agencies have a general counsel, a privacy officer, or a data governance committee. Your job is not to know the law. It is to recognize when a question is a legal one and to route it to someone who does.</p>
 
 
 </section>
@@ -1128,13 +1163,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./results_distrib.html" class="pagination-link" aria-label="How are predicted probabilities distributed within and across groups?">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">How are predicted probabilities distributed within and across groups?</span>
+      <a href="./deploy_monitoring.html" class="pagination-link" aria-label="Monitoring after deployment">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Monitoring after deployment</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./results_VI.html" class="pagination-link" aria-label="What are the most important predictors in my model?">
-        <span class="nav-page-text">What are the most important predictors in my model?</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./llm_overview.html" class="pagination-link" aria-label="Three very different roles for LLMs">
+        <span class="nav-page-text">Three very different roles for LLMs</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

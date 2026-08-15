@@ -1,0 +1,100 @@
+---
+title: "Monitoring after deployment"
+editor:
+  markdown:
+    wrap: sentence
+---
+
+The [overview page](deployment.qmd) said that a deployed model needs regular checks on the data going into it and the performance coming out.
+This page makes that concrete: what to actually look at, how to measure it, and what to do about the awkward fact that the answer you most want is the one you have to wait longest for.
+
+The underlying problem is simple.
+Your model learned patterns from a particular set of people at a particular time.
+The world does not hold still. Populations change, programs change, data systems get replaced, and a model that was accurate in 2024 may be quietly wrong in 2027 while continuing to produce confident-looking numbers.
+
+There are four things to watch, and they are ordered here by how quickly you can see them.
+
+## 1. Did the data going in change?
+
+You can check this immediately and continuously, without waiting for a single outcome.
+For each predictor, compare its distribution now against its distribution in the training data.
+Has average attendance shifted? Are more students missing a test score? Has the mix of referral sources changed?
+
+The simplest and best version of this is a plot: put this year's distribution on top of the training distribution and look.
+A picture catches things a summary number misses.
+
+If you want a single number per variable, the common one is the **Population Stability Index (PSI)**.
+It compares two distributions by splitting them into bins and summarizing how much the proportions moved.
+The widely used rules of thumb are:
+
+| PSI | Usual interpretation |
+|-------------------|-----------------------------------------------------|
+| Below 0.1 | Little meaningful change |
+| 0.1 to 0.25 | Moderate change --- worth looking into |
+| Above 0.25 | Substantial change --- investigate before trusting the model |
+
+Treat those cutoffs as conventions rather than laws. They are useful for flagging things to look at, not for deciding anything on their own.
+
+::: callout-important
+## The most common cause is plumbing, not the world
+
+It is natural to assume that when input data shifts, society shifted. Far more often, something broke.
+
+A field changed how it was coded. A data system was upgraded. A form was redesigned and a question moved. A join silently started failing, so a variable is now 90% missing when it used to be 3%.
+
+These are boring and unglamorous and they are the number one reason deployed models stop working. The single most valuable thing to monitor is the **percentage missing for each variable over time** --- it is trivial to compute and it catches an enormous share of real failures.
+:::
+
+## 2. Did the predictions coming out change?
+
+Also available immediately.
+Look at the distribution of predicted probabilities month over month, and at the share of people falling above your [threshold](perform_selectthreshold.qmd).
+
+This is a useful early-warning signal because it aggregates everything upstream.
+If 12% of students were flagged last year and 19% are flagged now, something changed --- the population, the data pipeline, or both --- and it is worth understanding which before anyone acts on the larger list.
+
+## 3. Did the outcome rate change?
+
+If the underlying rate of the outcome shifts --- more students graduating on time, fewer referrals substantiated --- your model's predicted probabilities will be systematically off even if every relationship it learned still holds.
+This is a [calibration](perform_calibration.qmd) problem, and it is often fixable by recalibrating rather than rebuilding.
+
+This is also the first thing on the list that requires waiting for outcomes.
+
+## 4. Did performance change?
+
+This is the question you actually care about, and it is last because it is the slowest.
+
+When outcomes do become available, the work is exactly what you already know how to do: run the same evaluation you ran on your original test data.
+The metrics you chose, the calibration check, and --- critically --- the [bias analysis](bias_define.qmd) across the same subgroups.
+
+Two points that are easy to miss:
+
+**Check subgroups separately.**
+Overall performance can look perfectly stable while performance for one group degrades badly, because the overall number averages across everyone. Degradation is often concentrated.
+
+**The waiting problem is real.**
+As the [overview page](deployment.qmd) notes, if you predict on-time graduation for entering 9th graders, you learn nothing about accuracy for four years.
+That is not an argument for skipping the check --- it is the entire reason items 1 through 3 exist.
+They are the signals available while you wait.
+
+It is also worth looking for shorter-term outcomes that correlate with the real one --- 10th grade credit accumulation, say --- not as a substitute for the real evaluation, but as an earlier warning that something has drifted.
+
+## Making it actually happen
+
+Monitoring fails in practice for an unglamorous reason: nobody owns it, and there is no agreed trigger, so a slowly worsening model never crosses any line that forces a conversation.
+
+Two things fix most of this:
+
+**Decide the triggers in advance, in writing.**
+Something like: *if any of our top predictors shows PSI above 0.25, or missingness jumps by more than 5 percentage points, or the share flagged moves by more than 5 points, we investigate before continuing.*
+Setting thresholds before you see the numbers is the same discipline as choosing your metrics before you see your results --- it stops you from rationalizing.
+
+**Name a person and a schedule.**
+Quarterly is reasonable for most service settings. A named person, a recurring date, and a short written record of what was checked.
+
+And decide in advance what "investigate" leads to.
+The options are usually: do nothing and keep watching, recalibrate, retrain on newer data, or stop using the model.
+That last one has to be genuinely available, or the monitoring is theater.
+Retiring a model that is no longer working is a success of the process, not a failure of your work.
+
+For a deeper treatment of monitoring in production systems, @Huyen2022 is a good next step.
