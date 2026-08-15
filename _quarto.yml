@@ -68,6 +68,7 @@ website:
           - methods_naivebayes.qmd
           - methods_svm.qmd
           - methods_nn.qmd
+          - methods_tfm.qmd
           - methods_guidance.qmd
       - section: "Evaluating and comparing predictive performance"
         contents:

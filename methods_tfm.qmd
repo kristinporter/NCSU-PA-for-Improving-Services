@@ -1,0 +1,146 @@
+---
+title: "Tabular foundation models"
+editor:
+  markdown:
+    wrap: sentence
+---
+
+This page covers the newest approach in this section, and the one that works most differently from everything else you have read about.
+It is worth understanding even though you may not use it, because it is changing quickly and you will hear about it.
+
+## A different idea about where the learning happens
+
+Think about what every method so far has in common.
+You hand the algorithm your data, and it figures out the patterns *in your data, from scratch.*
+Random Forest grows its trees out of your rows.
+Logistic regression estimates its coefficients from your rows.
+If you gave any of these methods a different dataset, they would start over from nothing.
+The learning happens when you press "run."
+
+A **tabular foundation model** flips this around.
+The model was already trained --- long before it ever encountered your project --- on millions of datasets.
+And here is the surprising part: those datasets were *made up.*
+The developers generated millions of artificial datasets with all sorts of built-in patterns --- variables that relate to each other in different ways, skewed distributions, interactions, missing values --- and trained the model on all of them.
+
+So what did the model learn?
+Not "what predicts high school graduation." It has never seen education data, or your data, or any real data at all.
+What it learned is something more general: **what patterns in a table tend to look like, and how to spot them.**
+
+Then, when you give it your actual dataset, it does not train in the usual sense.
+It looks at your rows, recognizes the kinds of patterns it has seen countless times before, and produces predictions right away.
+
+"Tabular" just means data in a table --- rows and columns --- which is what this whole course is about.
+"Foundation model" is the same term used for the models behind ChatGPT, and it means roughly the same thing here: one big pre-trained model that gets applied to many different specific tasks.
+
+::: callout-important
+## This is not ChatGPT
+
+Because of the shared name, it is easy to assume a tabular foundation model is a chatbot applied to spreadsheets. It is not, and the difference matters.
+
+A tabular foundation model was built for one job --- making predictions from tables of numbers --- and it was trained on artificial tables, not on text from the internet. It does not read, write, or understand language, and you do not prompt it. You give it a dataset and it gives you predicted probabilities, exactly like the other methods in this section.
+
+Asking ChatGPT to guess someone's risk score is a completely different thing, with completely different problems. That is discussed [later in the course](llm_predictor.qmd).
+:::
+
+## An analogy
+
+Imagine two analysts.
+
+The first has never worked with data before. You hand her your dataset, and she works through it carefully from the beginning, discovering everything about it herself.
+Given enough rows, she will do a good job.
+That is Random Forest, XGBoost, and every other method in this section.
+
+The second analyst has looked at thousands and thousands of datasets over her career.
+She has never seen *your* data, and she knows nothing about schools.
+But she has developed strong instincts about how variables in a table tend to behave.
+You show her your dataset, and within moments she is making sensible predictions --- not because she knows your subject, but because she knows what data looks like.
+
+That second analyst is the foundation model.
+Notice where her advantage is biggest: when your dataset is **small.**
+The first analyst struggles with 400 rows because there is not much to learn from.
+The second analyst does fine, because most of what she is drawing on she brought with her.
+
+## Why this matters for you specifically
+
+This is the part I most want you to take away.
+
+Most advances you hear about in AI need enormous amounts of data.
+This one is the opposite --- foundation models shine on **small and medium-sized datasets**, and their advantage shrinks as datasets get very large.
+
+Small and medium-sized datasets are exactly what you will be working with.
+A school district has a few thousand students. A county program has a few hundred clients.
+This is the setting where the other machine learning algorithms often *fail* to beat a simple benchmark, because there is not enough data for them to learn much that logistic regression could not.
+So this is a genuinely relevant development for the kind of work this course is about --- not just something happening at large tech companies.
+
+## How good are they, really?
+
+Well-run comparisons across many datasets currently place the best foundation models at the top, ahead of tuned gradient boosting.
+That is a real result and it has held up across several rounds of testing.
+
+But you should learn to read claims like that carefully, and this is a good place to practice, so here are three honest caveats:
+
+-   **Some benchmark results come from the people who built the models.** The main leaderboard involves researchers connected to one of the model developers, and in at least one published comparison the foundation model was given fewer tuning attempts than the gradient boosting models it was compared against. None of this means the results are wrong. It means independent testing matters.
+
+-   **The answer depends on how you set up the comparison.** When models are combined together in ensembles, foundation models come out ahead. When you compare a single well-tuned model against a single foundation model, a good gradient boosting implementation can move back in front. "Which is better" is not a question with one answer.
+
+-   **The field changes every few months.** Specific model names go out of date quickly, and anything I write here about which one is best will likely be stale by the time you read it. Learn the idea; look up the current state when you need it.
+
+There is also a broader lesson here that applies well beyond this page.
+**None of these benchmark results tell you what will happen on your data.**
+They are averages across dozens of datasets that are not yours, with different sizes, different outcomes, and different amounts of signal.
+The only thing that settles the question for your project is the thing this course has had you doing all along: run it as another learner, and compare it on your own held-out test data.
+
+## Fitting it into the framework
+
+Which is exactly how you should treat it.
+A tabular foundation model is simply another [learner](poc_learners.qmd) --- one more modeling approach to line up against the others and against your [benchmark](poc_benchmark.qmd).
+It does not require you to think differently about splitting your data, about [overfitting](data_overfitting.qmd), about [calibration](perform_calibration.qmd), or about [bias](bias_intro.qmd).
+Every one of those still applies, unchanged.
+
+If it beats your benchmark by a meaningful margin on test data, that is worth knowing.
+If it does not --- which happens --- you have learned something useful, and the simpler model wins on every other criterion.
+
+[**Advantages of tabular foundation models**]{style="color:green"}
+
+-   **Strong performance on small and medium datasets.** This is the main draw, and it lines up well with the size of data available in most service settings.
+
+-   **Little or no tuning required.** Recall from the previous pages how much of the work in Random Forest and XGBoost goes into choosing tuning parameters. Foundation models perform well out of the box, which removes a step where beginners often go wrong.
+
+-   **Handles messy data reasonably well.** Because the artificial data they were trained on included missing values, skewed variables, and mixed variable types, they cope with these without much preparation from you. (This does *not* excuse you from understanding your missing data --- see the [missing data pages](data2_whymissing.qmd) --- but it is one less technical hurdle.)
+
+-   **Fast to get a prediction.** There is no lengthy training step.
+
+[**Disadvantages of tabular foundation models**]{style="color:green"}
+
+-   **Very limited transparency.** This is the big one for our purposes. Logistic regression has coefficients you can show someone. Random Forest has [variable importance](results_VI.qmd) and a procedure you can describe in plain language. With a foundation model, you can say very little about *why* a particular person received a particular score. In public service settings, where you may need to explain a decision to a family, a director, or a court, this is a serious limitation --- and it may rule the approach out regardless of how well it performs.
+
+-   **Size limits.** These models work within limits on how many rows and columns they can take. Earlier versions capped out around ten thousand rows; newer ones handle far more. This is loosening quickly, but it is worth checking before you plan around one.
+
+-   **Harder to run.** Unlike the other methods in this section, these need extra setup, and they are much faster on a computer with a graphics card (GPU). They are not as simple as loading a package and calling a function.
+
+-   **Licensing restrictions.** Several of the leading models are free for non-commercial use only, and some require a paid license otherwise. An agency planning to deploy one needs to sort this out early. This is a newer concern in a field that has been overwhelmingly open-source.
+
+-   **Not plug-and-play.** Despite the "no tuning required" advantage, getting good results still takes care, and the published performance numbers come from people who know these models well.
+
+[**Implementing tabular foundation models in R**]{style="color:green"}
+
+Until recently these were difficult to use from R at all.
+That has changed: the `tabpfn` package, from the same team that develops `tidymodels`, is now available on CRAN and provides an R interface to TabPFN, one of the leading models.
+
+```r
+install.packages("tabpfn")
+```
+
+The syntax will look familiar:
+
+```r
+tab_fit  <- tab_pfn(outcome ~ ., data = training_data)
+tab_pred <- augment(tab_fit, test_data)
+```
+
+Two practical notes.
+The package works by calling the underlying model, which is written in Python, so there is a one-time setup step to get that connection working.
+You also need to accept the model's license and set up an access token before first use.
+Both steps are documented at the [package website](https://tabpfn.tidymodels.org/), and the setup requirements do change between versions, so follow the current instructions there rather than any you find elsewhere.
+
+If you would like to read further, the [TabArena leaderboard](https://tabarena.ai) tracks current results across many models and datasets, and [this overview](https://mindfulmodeler.substack.com/p/the-state-of-tabular-foundation-models) gives a readable and appropriately skeptical summary of where things stand.
