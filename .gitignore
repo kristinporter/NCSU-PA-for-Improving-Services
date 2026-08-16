@@ -6,3 +6,6 @@
 course_description.qmd
 
 **/*.quarto_ipynb
+
+# Duplicate files created by cloud-sync/backup tools (e.g. "index 2.html")
+* [0-9].*
