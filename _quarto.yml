@@ -113,7 +113,6 @@ website:
           - llm_copilot.qmd
           - llm_features.qmd
           - llm_predictor.qmd
-          - llm_policy.qmd
 
       - section: "Additional optional material"
         contents:

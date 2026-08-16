@@ -41,5 +41,3 @@ It is also the one every single one of you will use, so we start there.
 This section comes near the end deliberately.
 Almost everything worth saying about LLMs in predictive analytics depends on concepts covered earlier: [leakage and overfitting](data_overfitting.qmd), [how data are split](data_split.qmd), [calibration](perform_calibration.qmd), [bias](bias_intro.qmd), and [deployment](deployment.qmd).
 Now that those are in place, we can be specific rather than hand-wavy.
-
-The one exception is the [course policy on AI use](llm_policy.qmd), which applies from the first week --- so read that page early even though it appears last here.

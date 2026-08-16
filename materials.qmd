@@ -16,10 +16,6 @@ The materials consist of text, links (to articles, blog posts, videos, etc.), an
 
 -   In addition, you will see citations throughout. There is no expectation for you to read the cited papers unless you want to.
 
-### A note on AI tools
-
-The last section of these materials covers how large language models fit into predictive analytics. It appears at the end because it builds on concepts from throughout the course. However, the page on [using AI tools in this course](llm_policy.qmd) states expectations that apply from the first week, so please read that one now.
-
 ### Acknowledgements
 
 These course materials were put together by me, Kristin Porter. All errors and omissions are mine. But I have also had lots of help - many sections draw on and even copy valuable text written by Zarni Htet at MDRC and Kristen Hunter at the University of South Wales, Sydney. The framework presented in this class was developed at [MDRC](https://www.mdrc.org), a nonprofit social policy research organization where I was employed for 16 years. Kristen Hunter also provided very helpful review of all these materials.
